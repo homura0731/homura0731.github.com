@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[圖形驗證reCAPTCHA使用C#]]></title>
+      <url>%2F2017%2F04%2FGoogle-Api-reCAPTCHA-C_sharp%2F</url>
+      <content type="text"><![CDATA[前言由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧! 開始實作reCAPTCHA註冊首先要去官方註冊 註冊連結點這邊因為我們要在自己的機子測試所以label和Domains都填localhost註冊完會得到一組Site key和一組Secret key reCAPTCHA的驗證流程驗證流程我用小畫家隨便畫了一下，大概是像上面那樣 程式實作前端部分先來看看 官方文件解釋文件寫了很多，但是我覺得不是很重要，我們直接實作第二個範例12345678910111213141516171819202122232425&lt;html&gt; &lt;head&gt; &lt;title&gt;reCAPTCHA&lt;/title&gt; &lt;script type="text/javascript"&gt; // 驗證成功後執行 var onSubmit = function(token) &#123; $('#captchaToken').val() = token; &#125;; var onloadCallback = function() &#123; grecaptcha.render('reCAPTCHA', &#123; 'sitekey': '自己的site_key', // 這邊填寫自己的site_key 'callback': onSubmit // 執行成功後onSubmit變數接收 &#125;); &#125;; &lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;form method="POST"&gt; &lt;div id="reCAPTCHA"&gt;&lt;/div&gt; &lt;input id="captchaToken" name="captchaToken" type="hidden" /&gt; &lt;input name="submit" type="submit" /&gt; &lt;/form&gt; &lt;script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit" async defer&gt;&lt;/script&gt; &lt;/body&gt;&lt;/html&gt; 範例我有稍微改寫了一下，然後開始解說，我有在裡面加一個hidden的input，驗證成功後剛剛建立的input會接收回傳的token，然後使用者登入後就會把token傳回到後端 後端部分再來看看官方的後端文件 官方文件解釋2前面一堆廢話就不用看了，直接看API Request和API Response的部分我們需要POST三個值到https://www.google.com/recaptcha/api/siteverify這位置上，然後官方丟回驗證是否成功的JSON字串回來。然後就來開始實作吧! 1234567891011121314151617181920212223242526272829303132// 確認是否有Token回傳回來if (Request.Form["captchaToken"] == "")&#123; Msg.Text = "請確認是否為機器人";&#125;else&#123; // 建立一個HttpWebRequest網址指向Google的驗證API var req = (HttpWebRequest)HttpWebRequest.Create("https://www.google.com/recaptcha/api/siteverify"); // Post的資料 // secret:secret_key // response:回傳的Token // remoteip:設定的Domain Name string posStr = "secret=自己的secret_key&amp;response=" + Request.Form["captchaToken"] + "&amp;remoteip=" + Request.Url.Host; byte[] byteStr = Encoding.UTF8.GetBytes(posStr); req.Method = "POST"; req.ContentType = "application/x-www-form-urlencoded"; // 把要Post資料寫進HttpWebRequest using (Stream streamArr = req.GetRequestStream()) &#123; streamArr.Write(byteStr, 0, byteStr.Length); &#125; // 取得回傳資料 using (var res = (HttpWebResponse)req.GetResponse()) &#123; using (StreamReader getJson = new StreamReader(res.GetResponseStream())) &#123; string json = getJson.ReadToEnd(); Msg.Text = json; &#125; &#125;&#125; 我們用C#模擬HTML的form POST給google API認證，Msg物件則是是用來存放訊息用的，如果成功就會變跟下圖一樣如果錯誤的話success會是false。 補充reCAPTCHA申請完後再進去設定裡會多一個Advanced Settings，可以用來調整驗證通過的難度 後記其實這個API算簡單才花1天就做好了，Google登入這個還比較難，官方文件寫得亂七八糟，還好這個寫得很清楚流程又簡單，就當是又學到一個好東西(完)。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Hexo文章分類方法]]></title>
+      <url>%2F2017%2F04%2FHexo-folder-category%2F</url>
+      <content type="text"><![CDATA[前言雖然Hexo這框架我才用幾天，但發現文章都集中在source/_post 底下這樣文章只要一多起來一定很難管理，所以這篇就來記錄一下管理的方法 管理方法官方文件的做法官方建議在產生文章加上日期在.md檔案名稱上去_config.yml底下修改new_post_name設定1new_post_name: :year-:month-:day-:title.md 個人做法官方那樣做確實比較好管理，但是我還是覺得都在同一個資料夾下實在太亂了所以自己想到一個比較好的方法就是用改成資料夾管理，一個月跟一個資料夾，這樣分類方便多首先得先把預設設定日期資料夾分類先關閉，一樣_config.yml底下1new_post_name: :year/:month/:title.md 如果沒有那月份的資料夾指令輸入完會自動建立]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Hexo指令和設定筆記]]></title>
+      <url>%2F2017%2F04%2FHexo-Command-Line-Note%2F</url>
+      <content type="text"><![CDATA[前言首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的 常用指令集啟動伺服器1$ hexo server 建立新文章1$ hexo new "文章名" 產生後並佈署到github(第一次用時一直只有產生，結果因為檔案沒更新一直傳不上去..)1$ hexo deploy --generate hexo套件安裝(例如我的themes需要hexo-until)1$ npm install --save hexo-util 複製themes1$ git clone github位置 themes/主題資料夾名稱 設定相關新增分類頁面(標籤同方法)1.新增一個頁面1$ hexo new page categories 2.設定頁面屬性1type: "categories" 3.去thems資料夾的_config.yml，設定頁面1categories: /categories 佈署佈署到github時，需要先設定根目錄下的_config.yml12345deploy: type: git repo: github: https://github.com/github帳號/github帳號.github.com.git branch: master 成功的話會跳出github登入視窗，登入後應該就成功了 後記之後還有需要會在不定時更新]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Blog開張]]></title>
+      <url>%2F2017%2F04%2FNew-Blog%2F</url>
+      <content type="text"><![CDATA[紀念的第一篇的文章(完)]]></content>
+    </entry>
+
+    
+  
+  
+</search>

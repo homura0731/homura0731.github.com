@@ -1,0 +1,1043 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C#,Google-API,javascript,reCAPTCHA," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homura's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前言由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧! 開始實作reCAPTCHA註冊首先要去官方註冊 註冊連結點這邊">
+<meta name="keywords" content="C#,Google-API,javascript,reCAPTCHA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="圖形驗證reCAPTCHA使用C#">
+<meta property="og:url" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/index.html">
+<meta property="og:site_name" content="Homura's Blog">
+<meta property="og:description" content="前言由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧! 開始實作reCAPTCHA註冊首先要去官方註冊 註冊連結點這邊">
+<meta property="og:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/1.JPG">
+<meta property="og:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/2.JPG">
+<meta property="og:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/3.JPG">
+<meta property="og:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/4.JPG">
+<meta property="og:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/5.JPG">
+<meta property="og:updated_time" content="2017-04-19T12:23:03.821Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="圖形驗證reCAPTCHA使用C#">
+<meta name="twitter:description" content="前言由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧! 開始實作reCAPTCHA註冊首先要去官方註冊 註冊連結點這邊">
+<meta name="twitter:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/1.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/"/>
+
+
+
+
+
+  <title>圖形驗證reCAPTCHA使用C# | Homura's Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homura's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">這邊紀錄平常Coding的心得</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Homura Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/gabucyan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homura's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                圖形驗證reCAPTCHA使用C#
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-04-18T20:34:16+08:00">
+                2017-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ASP-NET/" itemprop="url" rel="index">
+                    <span itemprop="name">ASP.NET</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/Google-Api-reCAPTCHA-C_sharp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/Google-Api-reCAPTCHA-C_sharp/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧!</p>
+<h1 id="開始實作reCAPTCHA"><a href="#開始實作reCAPTCHA" class="headerlink" title="開始實作reCAPTCHA"></a>開始實作reCAPTCHA</h1><h2 id="註冊"><a href="#註冊" class="headerlink" title="註冊"></a>註冊</h2><p>首先要去官方註冊 <a href="https://www.google.com/recaptcha/admin#list" target="_blank" rel="external">註冊連結點這邊</a><br>因為我們要在自己的機子測試所以label和Domains都填localhost<br><img src="1.JPG" alt="註冊"><br>註冊完會得到一組Site key和一組Secret key<br><img src="2.JPG" alt="註冊成功"></p>
+<h2 id="reCAPTCHA的驗證流程"><a href="#reCAPTCHA的驗證流程" class="headerlink" title="reCAPTCHA的驗證流程"></a>reCAPTCHA的驗證流程</h2><p><img src="3.JPG" alt="驗證流程圖"><br>驗證流程我用小畫家隨便畫了一下，大概是像上面那樣</p>
+<h2 id="程式實作"><a href="#程式實作" class="headerlink" title="程式實作"></a>程式實作</h2><h3 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h3><p>先來看看 <a href="https://developers.google.com/recaptcha/docs/invisible" target="_blank" rel="external">官方文件解釋</a><br>文件寫了很多，但是我覺得不是很重要，我們直接實作第二個範例<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>reCAPTCHA<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">        // 驗證成功後執行</div><div class="line">        var onSubmit = function(token) &#123;</div><div class="line">            $('#captchaToken').val() = token;</div><div class="line">        &#125;;</div><div class="line">        var onloadCallback = function() &#123;</div><div class="line">            grecaptcha.render('reCAPTCHA', &#123;</div><div class="line">            'sitekey': '自己的site_key', // 這邊填寫自己的site_key</div><div class="line">            'callback': onSubmit // 執行成功後onSubmit變數接收</div><div class="line">            &#125;);</div><div class="line">        &#125;;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"reCAPTCHA"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"captchaToken"</span> <span class="attr">name</span>=<span class="string">"captchaToken"</span> <span class="attr">type</span>=<span class="string">"hidden"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">type</span>=<span class="string">"submit"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit"</span> <span class="attr">async</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>範例我有稍微改寫了一下，然後開始解說，我有在裡面加一個hidden的input，驗證成功後剛剛建立的input會接收回傳的token，然後使用者登入後就會把token傳回到後端</p>
+<h3 id="後端部分"><a href="#後端部分" class="headerlink" title="後端部分"></a>後端部分</h3><p>再來看看官方的後端文件 <a href="https://developers.google.com/recaptcha/docs/verify" target="_blank" rel="external">官方文件解釋2</a><br>前面一堆廢話就不用看了，直接看API Request和API Response的部分<br>我們需要POST三個值到<a href="https://www.google.com/recaptcha/api/siteverify" target="_blank" rel="external">https://www.google.com/recaptcha/api/siteverify</a>這位置上，然後官方丟回驗證是否成功的JSON字串回來。<br>然後就來開始實作吧!</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 確認是否有Token回傳回來</span></div><div class="line"><span class="keyword">if</span> (Request.Form[<span class="string">"captchaToken"</span>] == <span class="string">""</span>)</div><div class="line">&#123;</div><div class="line">    Msg.Text = <span class="string">"請確認是否為機器人"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 建立一個HttpWebRequest網址指向Google的驗證API</span></div><div class="line">    <span class="keyword">var</span> req = (HttpWebRequest)HttpWebRequest.Create(<span class="string">"https://www.google.com/recaptcha/api/siteverify"</span>);</div><div class="line">    <span class="comment">// Post的資料</span></div><div class="line">    <span class="comment">// secret:secret_key</span></div><div class="line">    <span class="comment">// response:回傳的Token</span></div><div class="line">    <span class="comment">// remoteip:設定的Domain Name</span></div><div class="line">    <span class="keyword">string</span> posStr = <span class="string">"secret=自己的secret_key&amp;response="</span> + Request.Form[<span class="string">"captchaToken"</span>] + <span class="string">"&amp;remoteip="</span> + Request.Url.Host;</div><div class="line">    <span class="keyword">byte</span>[] byteStr = Encoding.UTF8.GetBytes(posStr);</div><div class="line">    req.Method = <span class="string">"POST"</span>;</div><div class="line">    req.ContentType = <span class="string">"application/x-www-form-urlencoded"</span>;</div><div class="line">    <span class="comment">// 把要Post資料寫進HttpWebRequest</span></div><div class="line">    <span class="keyword">using</span> (Stream streamArr = req.GetRequestStream())</div><div class="line">    &#123;</div><div class="line">        streamArr.Write(byteStr, <span class="number">0</span>, byteStr.Length);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 取得回傳資料</span></div><div class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> res = (HttpWebResponse)req.GetResponse())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">using</span> (StreamReader getJson = <span class="keyword">new</span> StreamReader(res.GetResponseStream()))</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">string</span> json = getJson.ReadToEnd();</div><div class="line">            Msg.Text = json;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我們用C#模擬HTML的form POST給google API認證，Msg物件則是是用來存放訊息用的，如果成功就會變跟下圖一樣<br><img src="4.JPG" alt="驗證成功圖"><br>如果錯誤的話success會是false。</p>
+<h1 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h1><p>reCAPTCHA申請完後再進去設定裡會多一個Advanced Settings，可以用來調整驗證通過的難度<br><img src="5.JPG" alt="驗證難度設定"></p>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>其實這個API算簡單才花1天就做好了，Google登入這個還比較難，官方文件寫得亂七八糟，還好這個寫得很清楚流程又簡單，就當是又學到一個好東西(完)。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C#</a>
+          
+            <a href="/tags/Google-API/" rel="tag"># Google-API</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/reCAPTCHA/" rel="tag"># reCAPTCHA</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/Hexo-folder-category/" rel="prev" title="Hexo文章分類方法">
+                Hexo文章分類方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/gabucyan.jpg"
+               alt="Homura Lin" />
+          <p class="site-author-name" itemprop="name">Homura Lin</p>
+           
+              <p class="site-description motion-element" itemprop="description">平常都在打電動，偶爾心血來潮才會Coding</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分類</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#開始實作reCAPTCHA"><span class="nav-number">2.</span> <span class="nav-text">開始實作reCAPTCHA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#註冊"><span class="nav-number">2.1.</span> <span class="nav-text">註冊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reCAPTCHA的驗證流程"><span class="nav-number">2.2.</span> <span class="nav-text">reCAPTCHA的驗證流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程式實作"><span class="nav-number">2.3.</span> <span class="nav-text">程式實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前端部分"><span class="nav-number">2.3.1.</span> <span class="nav-text">前端部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#後端部分"><span class="nav-number">2.3.2.</span> <span class="nav-text">後端部分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#補充"><span class="nav-number">3.</span> <span class="nav-text">補充</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#後記"><span class="nav-number">4.</span> <span class="nav-text">後記</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homura Lin</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://homura0731.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/';
+          this.page.identifier = '2017/04/Google-Api-reCAPTCHA-C_sharp/';
+          this.page.title = '圖形驗證reCAPTCHA使用C#';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://homura0731.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            var resultItems = [];
+            if (this.value.trim().length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCountInArticle = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCountInArticle = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  var resultItem = '';
+
+                  function highlightKeyword(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+
+                    var matchText = text.substring(start, end);
+                    var matchResult = [];
+                    var prevEnd = 0;
+                    while (position + word.length <= end && index.length != 0) {
+
+                      // highlight keyword
+
+                      var wordBegin = position - start;
+                      var wordEnd = position - start + word.length;
+                      matchResult.push(matchText.substring(prevEnd, wordBegin));
+                      matchResult.push("<b class=\"search-keyword\">" + matchText.substring(wordBegin, wordEnd) + "</b>");
+
+                      // move to next position of hit
+
+                      index.pop();
+                      prevEnd = wordEnd;
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (prevEnd > position - start) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    matchResult.push(matchText.substring(prevEnd));
+                    return matchResult.join('');
+                  }
+
+                  // sort index by position of keyword
+
+                  indexOfTitle.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  indexOfContent.sort(function (itemLeft, itemRight) {
+                    return itemRight.position - itemLeft.position;
+                  });
+
+                  // highlight title
+
+                  if (indexOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, 0, title.length, indexOfTitle) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  // highlight content
+
+                  var resultUpperBound = parseInt(1);
+                  var withoutUpperBound = false;
+                  if (resultUpperBound === -1) {
+                    withoutUpperBound = true;
+                  }
+                  var currentResultNum = 0;
+                  while (indexOfContent.length != 0 && (withoutUpperBound || (currentResultNum < resultUpperBound))) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                    "<p class=\"search-result\">" + highlightKeyword(content, start, end, indexOfContent) +
+                    "...</p>" + "</a>";
+                    currentResultNum++;
+                  }
+                  resultItem += "</li>";
+                  resultItems.push({item: resultItem, hitCount: hitCountInArticle, id: resultItems.length});
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              $resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.hitCount != resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultLeft.id - resultRight.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result, i) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              $resultContent.innerHTML = searchResultList;
+            }
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

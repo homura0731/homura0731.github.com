@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Homura&#39;s Blog</title>
+  <subtitle>這邊紀錄平常Coding的心得</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://homura0731.github.io/"/>
+  <updated>2017-04-19T12:23:03.821Z</updated>
+  <id>https://homura0731.github.io/</id>
+  
+  <author>
+    <name>Homura Lin</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>圖形驗證reCAPTCHA使用C#</title>
+    <link href="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/"/>
+    <id>https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/</id>
+    <published>2017-04-18T12:34:16.000Z</published>
+    <updated>2017-04-19T12:23:03.821Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧!</p>
+<h1 id="開始實作reCAPTCHA"><a href="#開始實作reCAPTCHA" class="headerlink" title="開始實作reCAPTCHA"></a>開始實作reCAPTCHA</h1><h2 id="註冊"><a href="#註冊" class="headerlink" title="註冊"></a>註冊</h2><p>首先要去官方註冊 <a href="https://www.google.com/recaptcha/admin#list" target="_blank" rel="external">註冊連結點這邊</a><br>因為我們要在自己的機子測試所以label和Domains都填localhost<br><img src="1.JPG" alt="註冊"><br>註冊完會得到一組Site key和一組Secret key<br><img src="2.JPG" alt="註冊成功"></p>
+<h2 id="reCAPTCHA的驗證流程"><a href="#reCAPTCHA的驗證流程" class="headerlink" title="reCAPTCHA的驗證流程"></a>reCAPTCHA的驗證流程</h2><p><img src="3.JPG" alt="驗證流程圖"><br>驗證流程我用小畫家隨便畫了一下，大概是像上面那樣</p>
+<h2 id="程式實作"><a href="#程式實作" class="headerlink" title="程式實作"></a>程式實作</h2><h3 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h3><p>先來看看 <a href="https://developers.google.com/recaptcha/docs/invisible" target="_blank" rel="external">官方文件解釋</a><br>文件寫了很多，但是我覺得不是很重要，我們直接實作第二個範例<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>reCAPTCHA<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">        // 驗證成功後執行</div><div class="line">        var onSubmit = function(token) &#123;</div><div class="line">            $('#captchaToken').val() = token;</div><div class="line">        &#125;;</div><div class="line">        var onloadCallback = function() &#123;</div><div class="line">            grecaptcha.render('reCAPTCHA', &#123;</div><div class="line">            'sitekey': '自己的site_key', // 這邊填寫自己的site_key</div><div class="line">            'callback': onSubmit // 執行成功後onSubmit變數接收</div><div class="line">            &#125;);</div><div class="line">        &#125;;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"reCAPTCHA"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"captchaToken"</span> <span class="attr">name</span>=<span class="string">"captchaToken"</span> <span class="attr">type</span>=<span class="string">"hidden"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">type</span>=<span class="string">"submit"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit"</span> <span class="attr">async</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>範例我有稍微改寫了一下，然後開始解說，我有在裡面加一個hidden的input，驗證成功後剛剛建立的input會接收回傳的token，然後使用者登入後就會把token傳回到後端</p>
+<h3 id="後端部分"><a href="#後端部分" class="headerlink" title="後端部分"></a>後端部分</h3><p>再來看看官方的後端文件 <a href="https://developers.google.com/recaptcha/docs/verify" target="_blank" rel="external">官方文件解釋2</a><br>前面一堆廢話就不用看了，直接看API Request和API Response的部分<br>我們需要POST三個值到<a href="https://www.google.com/recaptcha/api/siteverify" target="_blank" rel="external">https://www.google.com/recaptcha/api/siteverify</a>這位置上，然後官方丟回驗證是否成功的JSON字串回來。<br>然後就來開始實作吧!</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 確認是否有Token回傳回來</span></div><div class="line"><span class="keyword">if</span> (Request.Form[<span class="string">"captchaToken"</span>] == <span class="string">""</span>)</div><div class="line">&#123;</div><div class="line">    Msg.Text = <span class="string">"請確認是否為機器人"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 建立一個HttpWebRequest網址指向Google的驗證API</span></div><div class="line">    <span class="keyword">var</span> req = (HttpWebRequest)HttpWebRequest.Create(<span class="string">"https://www.google.com/recaptcha/api/siteverify"</span>);</div><div class="line">    <span class="comment">// Post的資料</span></div><div class="line">    <span class="comment">// secret:secret_key</span></div><div class="line">    <span class="comment">// response:回傳的Token</span></div><div class="line">    <span class="comment">// remoteip:設定的Domain Name</span></div><div class="line">    <span class="keyword">string</span> posStr = <span class="string">"secret=自己的secret_key&amp;response="</span> + Request.Form[<span class="string">"captchaToken"</span>] + <span class="string">"&amp;remoteip="</span> + Request.Url.Host;</div><div class="line">    <span class="keyword">byte</span>[] byteStr = Encoding.UTF8.GetBytes(posStr);</div><div class="line">    req.Method = <span class="string">"POST"</span>;</div><div class="line">    req.ContentType = <span class="string">"application/x-www-form-urlencoded"</span>;</div><div class="line">    <span class="comment">// 把要Post資料寫進HttpWebRequest</span></div><div class="line">    <span class="keyword">using</span> (Stream streamArr = req.GetRequestStream())</div><div class="line">    &#123;</div><div class="line">        streamArr.Write(byteStr, <span class="number">0</span>, byteStr.Length);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 取得回傳資料</span></div><div class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> res = (HttpWebResponse)req.GetResponse())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">using</span> (StreamReader getJson = <span class="keyword">new</span> StreamReader(res.GetResponseStream()))</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">string</span> json = getJson.ReadToEnd();</div><div class="line">            Msg.Text = json;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我們用C#模擬HTML的form POST給google API認證，Msg物件則是是用來存放訊息用的，如果成功就會變跟下圖一樣<br><img src="4.JPG" alt="驗證成功圖"><br>如果錯誤的話success會是false。</p>
+<h1 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h1><p>reCAPTCHA申請完後再進去設定裡會多一個Advanced Settings，可以用來調整驗證通過的難度<br><img src="5.JPG" alt="驗證難度設定"></p>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>其實這個API算簡單才花1天就做好了，Google登入這個還比較難，官方文件寫得亂七八糟，還好這個寫得很清楚流程又簡單，就當是又學到一個好東西(完)。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一
+    
+    </summary>
+    
+      <category term="ASP.NET" scheme="https://homura0731.github.io/categories/ASP-NET/"/>
+    
+    
+      <category term="C#" scheme="https://homura0731.github.io/tags/C/"/>
+    
+      <category term="Google-API" scheme="https://homura0731.github.io/tags/Google-API/"/>
+    
+      <category term="javascript" scheme="https://homura0731.github.io/tags/javascript/"/>
+    
+      <category term="reCAPTCHA" scheme="https://homura0731.github.io/tags/reCAPTCHA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo文章分類方法</title>
+    <link href="https://homura0731.github.io/2017/04/Hexo-folder-category/"/>
+    <id>https://homura0731.github.io/2017/04/Hexo-folder-category/</id>
+    <published>2017-04-16T06:40:48.000Z</published>
+    <updated>2017-04-19T12:26:50.966Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>雖然Hexo這框架我才用幾天，但發現文章都集中在source/_post 底下<br>這樣文章只要一多起來一定很難管理，所以這篇就來記錄一下管理的方法</p>
+<h1 id="管理方法"><a href="#管理方法" class="headerlink" title="管理方法"></a>管理方法</h1><h2 id="官方文件的做法"><a href="#官方文件的做法" class="headerlink" title="官方文件的做法"></a>官方文件的做法</h2><p>官方建議在產生文章加上日期在.md檔案名稱上<br>去_config.yml底下修改new_post_name設定<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">new_post_name:</span> <span class="string">:year-:month-:day-:title.md</span></div></pre></td></tr></table></figure></p>
+<h2 id="個人做法"><a href="#個人做法" class="headerlink" title="個人做法"></a>個人做法</h2><p>官方那樣做確實比較好管理，但是我還是覺得都在同一個資料夾下實在太亂了<br>所以自己想到一個比較好的方法就是用改成資料夾管理，一個月跟一個資料夾，這樣分類方便多<br>首先得先把預設設定日期資料夾分類先關閉，一樣_config.yml底下<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">new_post_name:</span> <span class="string">:year/:month/:title.md</span></div></pre></td></tr></table></figure></p>
+<p>如果沒有那月份的資料夾指令輸入完會自動建立</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;雖然Hexo這框架我才用幾天，但發現文章都集中在source/_post 底下&lt;br&gt;這樣文章只要一多起來一定很難管理，所以這篇就來記錄一下
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://homura0731.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://homura0731.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo指令和設定筆記</title>
+    <link href="https://homura0731.github.io/2017/04/Hexo-Command-Line-Note/"/>
+    <id>https://homura0731.github.io/2017/04/Hexo-Command-Line-Note/</id>
+    <published>2017-04-15T02:31:14.000Z</published>
+    <updated>2017-04-19T12:26:06.301Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的</p>
+<h1 id="常用指令集"><a href="#常用指令集" class="headerlink" title="常用指令集"></a>常用指令集</h1><p>啟動伺服器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
+<p>建立新文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"文章名"</span></div></pre></td></tr></table></figure></p>
+<p>產生後並佈署到github(第一次用時一直只有產生，結果因為檔案沒更新一直傳不上去..)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy --generate</div></pre></td></tr></table></figure></p>
+<p>hexo套件安裝(例如我的themes需要hexo-until)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save hexo-util</div></pre></td></tr></table></figure></p>
+<p>複製themes<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> github位置 themes/主題資料夾名稱</div></pre></td></tr></table></figure></p>
+<h1 id="設定相關"><a href="#設定相關" class="headerlink" title="設定相關"></a>設定相關</h1><h2 id="新增分類頁面-標籤同方法"><a href="#新增分類頁面-標籤同方法" class="headerlink" title="新增分類頁面(標籤同方法)"></a>新增分類頁面(標籤同方法)</h2><p>1.新增一個頁面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page categories</div></pre></td></tr></table></figure></p>
+<p>2.設定頁面屬性<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">type:</span> <span class="string">"categories"</span></div></pre></td></tr></table></figure></p>
+<p>3.去thems資料夾的_config.yml，設定頁面<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">categories:</span> <span class="string">/categories</span></div></pre></td></tr></table></figure></p>
+<h2 id="佈署"><a href="#佈署" class="headerlink" title="佈署"></a>佈署</h2><p>佈署到github時，需要先設定根目錄下的_config.yml<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repo:</span></div><div class="line"><span class="attr">    github:</span> <span class="attr">https://github.com/github帳號/github帳號.github.com.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure></p>
+<p>成功的話會跳出github登入視窗，登入後應該就成功了</p>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>之後還有需要會在不定時更新</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的&lt;/p&gt;
+&lt;h1 id=&quot;常用指令集&quot;&gt;&lt;a href=
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://homura0731.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://homura0731.github.io/tags/Hexo/"/>
+    
+      <category term="command-line" scheme="https://homura0731.github.io/tags/command-line/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Blog開張</title>
+    <link href="https://homura0731.github.io/2017/04/New-Blog/"/>
+    <id>https://homura0731.github.io/2017/04/New-Blog/</id>
+    <published>2017-04-13T11:37:42.000Z</published>
+    <updated>2017-04-16T11:31:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>紀念的第一篇的文章(完)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;紀念的第一篇的文章(完)&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
