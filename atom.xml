@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homura0731.github.io/"/>
-  <updated>2017-04-19T12:23:03.821Z</updated>
+  <updated>2017-04-23T17:06:07.066Z</updated>
   <id>https://homura0731.github.io/</id>
   
   <author>
@@ -16,11 +16,52 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Cordova安裝</title>
+    <link href="https://homura0731.github.io/2017/04/Cordova-Set_up/"/>
+    <id>https://homura0731.github.io/2017/04/Cordova-Set_up/</id>
+    <published>2017-04-23T11:19:59.000Z</published>
+    <updated>2017-04-23T17:06:07.066Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什麼是Cordova"><a href="#什麼是Cordova" class="headerlink" title="什麼是Cordova?"></a>什麼是Cordova?</h2><p>Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。</p>
+<h2 id="Cordova的演變"><a href="#Cordova的演變" class="headerlink" title="Cordova的演變"></a>Cordova的演變</h2><p>來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改名叫做Adobe PhoneGap，Adobe又把代碼捐給Apache基金會，但保留商標所有權，Apache這邊則是改叫另一個名稱叫Apache Cordova。<br>基本上Adobe PhoneGap和Apache Cordova的基底都是Cordova，所以兩邊的寫的程式碼可以共通是沒問題，不過platform建議是用同一邊寫的，然後兩邊環境有什麼不同也大概說一下Adobe PhoneGap這邊是要付費的而且編譯器是在雲端上編輯，沒付費的話還是能用，只是線上的專案只能創建一個，可以拿到的軟體部分只有模擬器的部分，Apache Cordova這邊則是編譯和模擬器全都有，這邊以Apache Cordova為主。</p>
+<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="事前準備工具"><a href="#事前準備工具" class="headerlink" title="事前準備工具"></a>事前準備工具</h2><ul>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a></li>
+<li><a href="https://developer.android.com/studio/index.html" target="_blank" rel="external">Android SDK</a></li>
+</ul>
+<h2 id="安裝Cordova"><a href="#安裝Cordova" class="headerlink" title="安裝Cordova"></a>安裝Cordova</h2><p>首先開啟自己的cmd安裝，Mac OS可能會有權限問題 npm前面記得加sudo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g cordova</div></pre></td></tr></table></figure></p>
+<p>裝好之後就能使用以下指令創建專案了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova create 專案名稱</div></pre></td></tr></table></figure></p>
+<p>再來我們要幫專案加入使用平台，我們一般會先用瀏覽器看，所以我們先裝browser這個platform，還有不要忘記指向自己的專案資料夾底下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova platform add browser</div></pre></td></tr></table></figure></p>
+<p>然後就能用我們的瀏覽器來跑了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova run browser</div></pre></td></tr></table></figure></p>
+<p>執行成功會自動開啟瀏覽器，然後按F12開啟開發人員模式，切成手機模式瀏覽，如下圖<br><img src="1.jpg" alt="執行browser"></p>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>其實Cordova這框架是老闆想寫App但是沒人會，所以找來老師上了幾堂簡單的App課程，當時教得是Adobe PhoneGap，其實不知道為什麼不是教Apache Cordva，這個能做的事情明明比較多，後來想想好像是因為Adobe PhoneGap有圖形介面，大概是考慮了這問題，反正就因為這樣就莫名其妙開始使用了這框架，編譯成Android之前會在另外寫一篇，就先這樣啦!</p>
+<h1 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h1><ul>
+<li><a href="https://zh.wikipedia.org/wiki/Adobe_PhoneGap" target="_blank" rel="external">維基百科</a></li>
+<li><a href="http://phonegap.com/" target="_blank" rel="external">Adobe PhoneGap官網</a></li>
+<li><a href="http://cordova.apache.org/" target="_blank" rel="external">Apach Cordova官網</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;h2 id=&quot;什麼是Cordova&quot;&gt;&lt;a href=&quot;#什麼是Cordova&quot; class=&quot;headerlink&quot; title=&quot;什麼是Co
+    
+    </summary>
+    
+      <category term="Cordova" scheme="https://homura0731.github.io/categories/Cordova/"/>
+    
+    
+      <category term="Cordova" scheme="https://homura0731.github.io/tags/Cordova/"/>
+    
+      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>圖形驗證reCAPTCHA使用C#</title>
     <link href="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/"/>
     <id>https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/</id>
     <published>2017-04-18T12:34:16.000Z</published>
-    <updated>2017-04-19T12:23:03.821Z</updated>
+    <updated>2017-04-23T11:33:49.391Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧!</p>
 <h1 id="開始實作reCAPTCHA"><a href="#開始實作reCAPTCHA" class="headerlink" title="開始實作reCAPTCHA"></a>開始實作reCAPTCHA</h1><h2 id="註冊"><a href="#註冊" class="headerlink" title="註冊"></a>註冊</h2><p>首先要去官方註冊 <a href="https://www.google.com/recaptcha/admin#list" target="_blank" rel="external">註冊連結點這邊</a><br>因為我們要在自己的機子測試所以label和Domains都填localhost<br><img src="1.JPG" alt="註冊"><br>註冊完會得到一組Site key和一組Secret key<br><img src="2.JPG" alt="註冊成功"></p>
@@ -43,11 +84,11 @@
       <category term="ASP.NET" scheme="https://homura0731.github.io/categories/ASP-NET/"/>
     
     
+      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
+    
       <category term="C#" scheme="https://homura0731.github.io/tags/C/"/>
     
       <category term="Google-API" scheme="https://homura0731.github.io/tags/Google-API/"/>
-    
-      <category term="javascript" scheme="https://homura0731.github.io/tags/javascript/"/>
     
       <category term="reCAPTCHA" scheme="https://homura0731.github.io/tags/reCAPTCHA/"/>
     
@@ -84,7 +125,7 @@
     <link href="https://homura0731.github.io/2017/04/Hexo-Command-Line-Note/"/>
     <id>https://homura0731.github.io/2017/04/Hexo-Command-Line-Note/</id>
     <published>2017-04-15T02:31:14.000Z</published>
-    <updated>2017-04-19T12:26:06.301Z</updated>
+    <updated>2017-04-23T11:34:00.637Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的</p>
 <h1 id="常用指令集"><a href="#常用指令集" class="headerlink" title="常用指令集"></a>常用指令集</h1><p>啟動伺服器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
@@ -112,7 +153,7 @@
     
       <category term="Hexo" scheme="https://homura0731.github.io/tags/Hexo/"/>
     
-      <category term="command-line" scheme="https://homura0731.github.io/tags/command-line/"/>
+      <category term="bash" scheme="https://homura0731.github.io/tags/bash/"/>
     
   </entry>
   
