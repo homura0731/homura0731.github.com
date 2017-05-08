@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homura0731.github.io/"/>
-  <updated>2017-05-08T15:35:28.446Z</updated>
+  <updated>2017-05-08T15:41:46.962Z</updated>
   <id>https://homura0731.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://homura0731.github.io/2017/05/Cordova-Set_up-Android/"/>
     <id>https://homura0731.github.io/2017/05/Cordova-Set_up-Android/</id>
     <published>2017-05-08T12:14:58.000Z</published>
-    <updated>2017-05-08T15:35:28.446Z</updated>
+    <updated>2017-05-08T15:41:46.962Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>繼上篇<a href="https://homura0731.github.io/2017/04/Cordova-Set_up/">Cordova安裝</a>之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的編譯器之前，都是用Adobe Phonegap的線上編譯器，其實用久真的不是很好用，還是能在自己的PC編譯比較好，那就廢話不多說進入實作吧。</p>
 <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="幫專案添加android-platform"><a href="#幫專案添加android-platform" class="headerlink" title="幫專案添加android platform"></a>幫專案添加android platform</h2><p>使用以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova platform add android</div></pre></td></tr></table></figure></p>
@@ -30,7 +30,7 @@
 <h2 id="設置Android-Home和Android的path"><a href="#設置Android-Home和Android的path" class="headerlink" title="設置Android_Home和Android的path"></a>設置Android_Home和Android的path</h2><p>對我的電腦右鍵內容-&gt;進階系統設定-&gt;進階-&gt;環境變數<br>環境變數在windows上分2種一種是指對使用者(上面)，一種是對全部使用者(下面)，這邊編輯使用者就好了!<br><img src="4.png" alt="path設定1"><br>然後找出自己sdk的安裝位置，然後新增的2個值，指向platform-tools和tools這2個位置，如果是win7的話記得都要在後面加上;，我這邊是win10比較高級有UI可以用..<br><img src="5.png" alt="path設定2"><br>再新增一個ANDROID_HOME變數指向android-sdk根目錄<br><img src="6.png" alt="path設定2"></p>
 <p>設置完成後記得關掉命令提示字元(終端機)，因為他不會自己重讀path一定要重開，我第一次就笨笨的設好了為啥還抓不到…<br>然後在執行一次剛剛的指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova run android</div></pre></td></tr></table></figure></p>
 <p>應該會有抓不完jdk，然後又丟新錯誤給我<br><img src="7.png" alt="path設定3"></p>
-<h2 id="添加licenses"><a href="#添加licenses" class="headerlink" title="添加licenses"></a>添加licenses</h2><p>這步我記得在win7是沒這問題，不知道是不是新版sdk有什麼問題，google了一下用這2行指令解決<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir <span class="string">"<span class="variable">$ANDROID_HOME</span>/licenses"</span></div><div class="line">$ <span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"\n8933bad161af4178b1185d1a37fbf41ea5269c55"</span> &gt; <span class="string">"<span class="variable">$ANDROID_HOME</span>/licenses/android-sdk-license"</span></div></pre></td></tr></table></figure></p>
+<h2 id="添加licenses"><a href="#添加licenses" class="headerlink" title="添加licenses"></a>添加licenses</h2><p>這步我記得在win7是沒這問題，不知道是不是新版sdk有什麼問題，google了一下用這2行指令解決<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir <span class="string">"%ANDROID_HOME%\licenses"</span></div><div class="line">$ <span class="built_in">echo</span> |<span class="built_in">set</span> /p=<span class="string">"8933bad161af4178b1185d1a37fbf41ea5269c55"</span> &gt; <span class="string">"%ANDROID_HOME%\licenses\android-sdk-license"</span></div></pre></td></tr></table></figure></p>
 <p>然後正常來說應該就行了，但是win10很討厭把資料夾的權限鎖住了，造成以下錯誤訊息<br><img src="8.png" alt="系統權限"></p>
 <h2 id="打開sdk資料夾權限"><a href="#打開sdk資料夾權限" class="headerlink" title="打開sdk資料夾權限"></a>打開sdk資料夾權限</h2><p>這邊先用系統管理員權限打開cmd，然後指向android-sdk根目錄，輸入以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 777 Android</div></pre></td></tr></table></figure></p>
 <p>輸入完後就能修改資料夾權限了</p>
