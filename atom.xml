@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homura0731.github.io/"/>
-  <updated>2017-04-23T17:06:07.066Z</updated>
+  <updated>2017-05-08T12:24:03.717Z</updated>
   <id>https://homura0731.github.io/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cordova安裝2-Android篇</title>
+    <link href="https://homura0731.github.io/2017/05/Cordova-Set_up-Android/"/>
+    <id>https://homura0731.github.io/2017/05/Cordova-Set_up-Android/</id>
+    <published>2017-05-08T12:14:58.000Z</published>
+    <updated>2017-05-08T12:24:03.717Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>繼上篇<a href="https://homura0731.github.io/2017/04/Cordova-Set_up/">Cordova安裝</a>之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;繼上篇&lt;a href=&quot;https://homura0731.github.io/2017/04/Cordova-Set_up/&quot;&gt;Cord
+    
+    </summary>
+    
+      <category term="Cordova" scheme="https://homura0731.github.io/categories/Cordova/"/>
+    
+    
+      <category term="Cordova" scheme="https://homura0731.github.io/tags/Cordova/"/>
+    
+      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>Cordova安裝</title>
