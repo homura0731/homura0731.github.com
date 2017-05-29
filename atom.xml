@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homura0731.github.io/"/>
-  <updated>2017-05-08T15:41:46.962Z</updated>
+  <updated>2017-05-29T14:44:51.720Z</updated>
   <id>https://homura0731.github.io/</id>
   
   <author>
@@ -16,11 +16,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Cordova安裝2 - Android篇</title>
+    <title>Entity Framework - 區間查詢字串日期</title>
+    <link href="https://homura0731.github.io/2017/05/Entity-DataBase_String-Date-select/"/>
+    <id>https://homura0731.github.io/2017/05/Entity-DataBase_String-Date-select/</id>
+    <published>2017-05-29T13:13:33.000Z</published>
+    <updated>2017-05-29T14:44:51.720Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime型態當日期的儲存格式，可是公司的舊的設計方式已經丟出去給客戶上線了，大家應該都知道以前很多人都是使用String型態來儲存日期，但是一到EF這種物件導向式的用法上就出問題了，所以這篇就是紀錄一下我查到的方法。</p>
+<h1 id="SQL查詢"><a href="#SQL查詢" class="headerlink" title="SQL查詢"></a>SQL查詢</h1><p>先做一個假資料如下圖<br><img src="1.png" alt="資料庫資料"><br>我們依照以前SQL的查詢方法以下語法是可以使用的<br>例如要查4/12到4/15的資料<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Schedule <span class="keyword">WHERE</span> sDate <span class="keyword">BETWEEN</span> <span class="string">'2017/04/12'</span> <span class="keyword">AND</span> <span class="string">'2017/04/15'</span></div></pre></td></tr></table></figure></p>
+<h1 id="LINQ-To-Entity-查詢"><a href="#LINQ-To-Entity-查詢" class="headerlink" title="LINQ To Entity 查詢"></a>LINQ To Entity 查詢</h1><p>如果只是單純SQL轉成LINQ應該會寫成像下圖這樣<br><img src="2.png" alt="linq查詢錯誤示範"><br>但是物件導向的寫法這樣當然是錯誤的不能string比對string的範圍</p>
+<p>這邊真的讓我卡了一下，查資料查半天都是錯的，後來發現原來我關鍵字打反了，一直打成linq entity dateTime to string，應該是要查linq entity string to datetime，結果一查果然對了。<br>原來有對應的Method可以解決這問題，使用compare這方法可以解決，程式碼如下<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Data = <span class="keyword">from</span> s <span class="keyword">in</span> db.Schedule <span class="keyword">where</span> s.sDate.CompareTo(<span class="string">"2017/04/12"</span>) &gt;=<span class="number">0</span>  &amp;&amp; s.sDate.CompareTo(<span class="string">"2017/04/15"</span>) &lt;= <span class="number">0</span> <span class="keyword">select</span> s;</div></pre></td></tr></table></figure></p>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>最近再把大量sql語法查詢都改成LINQ To Entity，這樣不但好Debug，又能防止SQL Injection 真的方便多了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime
+    
+    </summary>
+    
+      <category term="Entity Framework" scheme="https://homura0731.github.io/categories/Entity-Framework/"/>
+    
+    
+      <category term="C#" scheme="https://homura0731.github.io/tags/C/"/>
+    
+      <category term="Entity Framework" scheme="https://homura0731.github.io/tags/Entity-Framework/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cordova - 環境安裝2 - Android篇</title>
     <link href="https://homura0731.github.io/2017/05/Cordova-Set_up-Android/"/>
     <id>https://homura0731.github.io/2017/05/Cordova-Set_up-Android/</id>
     <published>2017-05-08T12:14:58.000Z</published>
-    <updated>2017-05-08T15:41:46.962Z</updated>
+    <updated>2017-05-29T13:56:30.081Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>繼上篇<a href="https://homura0731.github.io/2017/04/Cordova-Set_up/">Cordova安裝</a>之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的編譯器之前，都是用Adobe Phonegap的線上編譯器，其實用久真的不是很好用，還是能在自己的PC編譯比較好，那就廢話不多說進入實作吧。</p>
 <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="幫專案添加android-platform"><a href="#幫專案添加android-platform" class="headerlink" title="幫專案添加android platform"></a>幫專案添加android platform</h2><p>使用以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova platform add android</div></pre></td></tr></table></figure></p>
@@ -60,11 +89,11 @@
   </entry>
   
   <entry>
-    <title>Cordova安裝</title>
+    <title>Cordova - 環境安裝</title>
     <link href="https://homura0731.github.io/2017/04/Cordova-Set_up/"/>
     <id>https://homura0731.github.io/2017/04/Cordova-Set_up/</id>
     <published>2017-04-23T11:19:59.000Z</published>
-    <updated>2017-04-23T17:06:07.066Z</updated>
+    <updated>2017-05-29T13:56:19.377Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什麼是Cordova"><a href="#什麼是Cordova" class="headerlink" title="什麼是Cordova?"></a>什麼是Cordova?</h2><p>Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。</p>
 <h2 id="Cordova的演變"><a href="#Cordova的演變" class="headerlink" title="Cordova的演變"></a>Cordova的演變</h2><p>來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改名叫做Adobe PhoneGap，Adobe又把代碼捐給Apache基金會，但保留商標所有權，Apache這邊則是改叫另一個名稱叫Apache Cordova。<br>基本上Adobe PhoneGap和Apache Cordova的基底都是Cordova，所以兩邊的寫的程式碼可以共通是沒問題，不過platform建議是用同一邊寫的，然後兩邊環境有什麼不同也大概說一下Adobe PhoneGap這邊是要付費的而且編譯器是在雲端上編輯，沒付費的話還是能用，只是線上的專案只能創建一個，可以拿到的軟體部分只有模擬器的部分，Apache Cordova這邊則是編譯和模擬器全都有，這邊以Apache Cordova為主。</p>
@@ -101,11 +130,11 @@
   </entry>
   
   <entry>
-    <title>圖形驗證reCAPTCHA使用C#</title>
+    <title>Google API - 圖形驗證reCAPTCHA使用C#</title>
     <link href="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/"/>
     <id>https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/</id>
     <published>2017-04-18T12:34:16.000Z</published>
-    <updated>2017-04-23T11:33:49.391Z</updated>
+    <updated>2017-05-29T13:56:10.535Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧!</p>
 <h1 id="開始實作reCAPTCHA"><a href="#開始實作reCAPTCHA" class="headerlink" title="開始實作reCAPTCHA"></a>開始實作reCAPTCHA</h1><h2 id="註冊"><a href="#註冊" class="headerlink" title="註冊"></a>註冊</h2><p>首先要去官方註冊 <a href="https://www.google.com/recaptcha/admin#list" target="_blank" rel="external">註冊連結點這邊</a><br>因為我們要在自己的機子測試所以label和Domains都填localhost<br><img src="1.JPG" alt="註冊"><br>註冊完會得到一組Site key和一組Secret key<br><img src="2.JPG" alt="註冊成功"></p>
@@ -139,11 +168,11 @@
   </entry>
   
   <entry>
-    <title>Hexo文章分類方法</title>
+    <title>Hexo - 文章分類方法</title>
     <link href="https://homura0731.github.io/2017/04/Hexo-folder-category/"/>
     <id>https://homura0731.github.io/2017/04/Hexo-folder-category/</id>
     <published>2017-04-16T06:40:48.000Z</published>
-    <updated>2017-04-19T12:26:50.966Z</updated>
+    <updated>2017-05-29T13:56:01.175Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>雖然Hexo這框架我才用幾天，但發現文章都集中在source/_post 底下<br>這樣文章只要一多起來一定很難管理，所以這篇就來記錄一下管理的方法</p>
 <h1 id="管理方法"><a href="#管理方法" class="headerlink" title="管理方法"></a>管理方法</h1><h2 id="官方文件的做法"><a href="#官方文件的做法" class="headerlink" title="官方文件的做法"></a>官方文件的做法</h2><p>官方建議在產生文章加上日期在.md檔案名稱上<br>去_config.yml底下修改new_post_name設定<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">new_post_name:</span> <span class="string">:year-:month-:day-:title.md</span></div></pre></td></tr></table></figure></p>
@@ -165,11 +194,11 @@
   </entry>
   
   <entry>
-    <title>Hexo指令和設定筆記</title>
+    <title>Hexo - 指令和設定筆記</title>
     <link href="https://homura0731.github.io/2017/04/Hexo-Command-Line-Note/"/>
     <id>https://homura0731.github.io/2017/04/Hexo-Command-Line-Note/</id>
     <published>2017-04-15T02:31:14.000Z</published>
-    <updated>2017-04-23T11:34:00.637Z</updated>
+    <updated>2017-05-29T13:55:54.297Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的</p>
 <h1 id="常用指令集"><a href="#常用指令集" class="headerlink" title="常用指令集"></a>常用指令集</h1><p>啟動伺服器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>

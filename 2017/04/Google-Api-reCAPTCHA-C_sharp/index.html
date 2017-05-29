@@ -95,7 +95,7 @@
 <meta name="description" content="前言由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧! 開始實作reCAPTCHA註冊首先要去官方註冊 註冊連結點這邊">
 <meta name="keywords" content="JavaScript,C#,Google-API,reCAPTCHA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="圖形驗證reCAPTCHA使用C#">
+<meta property="og:title" content="Google API - 圖形驗證reCAPTCHA使用C#">
 <meta property="og:url" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/index.html">
 <meta property="og:site_name" content="Homura's Blog">
 <meta property="og:description" content="前言由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧! 開始實作reCAPTCHA註冊首先要去官方註冊 註冊連結點這邊">
@@ -104,9 +104,9 @@
 <meta property="og:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/3.JPG">
 <meta property="og:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/4.JPG">
 <meta property="og:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/5.JPG">
-<meta property="og:updated_time" content="2017-04-23T11:33:49.391Z">
+<meta property="og:updated_time" content="2017-05-29T13:56:10.535Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="圖形驗證reCAPTCHA使用C#">
+<meta name="twitter:title" content="Google API - 圖形驗證reCAPTCHA使用C#">
 <meta name="twitter:description" content="前言由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧! 開始實作reCAPTCHA註冊首先要去官方註冊 註冊連結點這邊">
 <meta name="twitter:image" content="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/1.JPG">
 
@@ -142,7 +142,7 @@
 
 
 
-  <title>圖形驗證reCAPTCHA使用C# | Homura's Blog</title>
+  <title>Google API - 圖形驗證reCAPTCHA使用C# | Homura's Blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -326,7 +326,7 @@
             
             
               
-                圖形驗證reCAPTCHA使用C#
+                Google API - 圖形驗證reCAPTCHA使用C#
               
             
           </h1>
@@ -467,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/Cordova-Set_up/" rel="next" title="Cordova安裝">
-                <i class="fa fa-chevron-left"></i> Cordova安裝
+              <a href="/2017/04/Cordova-Set_up/" rel="next" title="Cordova - 環境安裝">
+                <i class="fa fa-chevron-left"></i> Cordova - 環境安裝
               </a>
             
           </div>
@@ -477,8 +477,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/Hexo-folder-category/" rel="prev" title="Hexo文章分類方法">
-                Hexo文章分類方法 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/Hexo-folder-category/" rel="prev" title="Hexo - 文章分類方法">
+                Hexo - 文章分類方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -558,7 +558,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -569,7 +569,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分類</span>
               </a>
             </div>
@@ -580,7 +580,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -787,7 +787,7 @@
         var disqus_config = function () {
           this.page.url = 'https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/';
           this.page.identifier = '2017/04/Google-Api-reCAPTCHA-C_sharp/';
-          this.page.title = '圖形驗證reCAPTCHA使用C#';
+          this.page.title = 'Google API - 圖形驗證reCAPTCHA使用C#';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://homura0731.disqus.com/embed.js';

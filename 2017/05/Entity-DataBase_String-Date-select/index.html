@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Cordova,JavaScript," />
+  <meta name="keywords" content="C#,Entity Framework," />
 
 
 
@@ -92,19 +92,20 @@
 
 
 
-<meta name="description" content="前言什麼是Cordova?Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。 Cordova的演變來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改名叫做">
-<meta name="keywords" content="Cordova,JavaScript">
+<meta name="description" content="前言其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime型態當日期的儲存格式，可是公司的舊的設計方式已經丟出去給客戶上線了，大家應該都知道以前很多人都是使用String型態來儲存日期，但是一到EF這種物件導向式的用法上就出問題了，所以這篇就是紀錄一下我查到的方法。 SQL查詢先做一個假資料如下圖我們依照以前SQ">
+<meta name="keywords" content="C#,Entity Framework">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cordova - 環境安裝">
-<meta property="og:url" content="https://homura0731.github.io/2017/04/Cordova-Set_up/index.html">
+<meta property="og:title" content="Entity Framework - 區間查詢字串日期">
+<meta property="og:url" content="https://homura0731.github.io/2017/05/Entity-DataBase_String-Date-select/index.html">
 <meta property="og:site_name" content="Homura's Blog">
-<meta property="og:description" content="前言什麼是Cordova?Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。 Cordova的演變來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改名叫做">
-<meta property="og:image" content="https://homura0731.github.io/2017/04/Cordova-Set_up/1.jpg">
-<meta property="og:updated_time" content="2017-05-29T13:56:19.377Z">
+<meta property="og:description" content="前言其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime型態當日期的儲存格式，可是公司的舊的設計方式已經丟出去給客戶上線了，大家應該都知道以前很多人都是使用String型態來儲存日期，但是一到EF這種物件導向式的用法上就出問題了，所以這篇就是紀錄一下我查到的方法。 SQL查詢先做一個假資料如下圖我們依照以前SQ">
+<meta property="og:image" content="https://homura0731.github.io/2017/05/Entity-DataBase_String-Date-select/1.png">
+<meta property="og:image" content="https://homura0731.github.io/2017/05/Entity-DataBase_String-Date-select/2.png">
+<meta property="og:updated_time" content="2017-05-29T14:44:51.720Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cordova - 環境安裝">
-<meta name="twitter:description" content="前言什麼是Cordova?Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。 Cordova的演變來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改名叫做">
-<meta name="twitter:image" content="https://homura0731.github.io/2017/04/Cordova-Set_up/1.jpg">
+<meta name="twitter:title" content="Entity Framework - 區間查詢字串日期">
+<meta name="twitter:description" content="前言其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime型態當日期的儲存格式，可是公司的舊的設計方式已經丟出去給客戶上線了，大家應該都知道以前很多人都是使用String型態來儲存日期，但是一到EF這種物件導向式的用法上就出問題了，所以這篇就是紀錄一下我查到的方法。 SQL查詢先做一個假資料如下圖我們依照以前SQ">
+<meta name="twitter:image" content="https://homura0731.github.io/2017/05/Entity-DataBase_String-Date-select/1.png">
 
 
 
@@ -132,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://homura0731.github.io/2017/04/Cordova-Set_up/"/>
+  <link rel="canonical" href="https://homura0731.github.io/2017/05/Entity-DataBase_String-Date-select/"/>
 
 
 
 
 
-  <title>Cordova - 環境安裝 | Homura's Blog</title>
+  <title>Entity Framework - 區間查詢字串日期 | Homura's Blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -301,7 +302,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://homura0731.github.io/2017/04/Cordova-Set_up/">
+    <link itemprop="mainEntityOfPage" href="https://homura0731.github.io/2017/05/Entity-DataBase_String-Date-select/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Homura Lin">
@@ -322,7 +323,7 @@
             
             
               
-                Cordova - 環境安裝
+                Entity Framework - 區間查詢字串日期
               
             
           </h1>
@@ -337,8 +338,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-04-23T19:19:59+08:00">
-                2017-04-23
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-05-29T21:13:33+08:00">
+                2017-05-29
               </time>
             
 
@@ -360,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Cordova/" itemprop="url" rel="index">
-                    <span itemprop="name">Cordova</span>
+                  <a href="/categories/Entity-Framework/" itemprop="url" rel="index">
+                    <span itemprop="name">Entity Framework</span>
                   </a>
                 </span>
 
@@ -378,9 +379,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/Cordova-Set_up/#comments" itemprop="discussionUrl">
+                <a href="/2017/05/Entity-DataBase_String-Date-select/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/Cordova-Set_up/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/05/Entity-DataBase_String-Date-select/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -405,23 +406,11 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什麼是Cordova"><a href="#什麼是Cordova" class="headerlink" title="什麼是Cordova?"></a>什麼是Cordova?</h2><p>Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。</p>
-<h2 id="Cordova的演變"><a href="#Cordova的演變" class="headerlink" title="Cordova的演變"></a>Cordova的演變</h2><p>來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改名叫做Adobe PhoneGap，Adobe又把代碼捐給Apache基金會，但保留商標所有權，Apache這邊則是改叫另一個名稱叫Apache Cordova。<br>基本上Adobe PhoneGap和Apache Cordova的基底都是Cordova，所以兩邊的寫的程式碼可以共通是沒問題，不過platform建議是用同一邊寫的，然後兩邊環境有什麼不同也大概說一下Adobe PhoneGap這邊是要付費的而且編譯器是在雲端上編輯，沒付費的話還是能用，只是線上的專案只能創建一個，可以拿到的軟體部分只有模擬器的部分，Apache Cordova這邊則是編譯和模擬器全都有，這邊以Apache Cordova為主。</p>
-<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="事前準備工具"><a href="#事前準備工具" class="headerlink" title="事前準備工具"></a>事前準備工具</h2><ul>
-<li><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a></li>
-<li><a href="https://developer.android.com/studio/index.html" target="_blank" rel="external">Android SDK</a></li>
-</ul>
-<h2 id="安裝Cordova"><a href="#安裝Cordova" class="headerlink" title="安裝Cordova"></a>安裝Cordova</h2><p>首先開啟自己的cmd安裝，Mac OS可能會有權限問題 npm前面記得加sudo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g cordova</div></pre></td></tr></table></figure></p>
-<p>裝好之後就能使用以下指令創建專案了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova create 專案名稱</div></pre></td></tr></table></figure></p>
-<p>再來我們要幫專案加入使用平台，我們一般會先用瀏覽器看，所以我們先裝browser這個platform，還有不要忘記指向自己的專案資料夾底下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova platform add browser</div></pre></td></tr></table></figure></p>
-<p>然後就能用我們的瀏覽器來跑了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova run browser</div></pre></td></tr></table></figure></p>
-<p>執行成功會自動開啟瀏覽器，然後按F12開啟開發人員模式，切成手機模式瀏覽，如下圖<br><img src="1.jpg" alt="執行browser"></p>
-<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>其實Cordova這框架是老闆想寫App但是沒人會，所以找來老師上了幾堂簡單的App課程，當時教得是Adobe PhoneGap，其實不知道為什麼不是教Apache Cordva，這個能做的事情明明比較多，後來想想好像是因為Adobe PhoneGap有圖形介面，大概是考慮了這問題，反正就因為這樣就莫名其妙開始使用了這框架，編譯成Android之前會在另外寫一篇，就先這樣啦!</p>
-<h1 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h1><ul>
-<li><a href="https://zh.wikipedia.org/wiki/Adobe_PhoneGap" target="_blank" rel="external">維基百科</a></li>
-<li><a href="http://phonegap.com/" target="_blank" rel="external">Adobe PhoneGap官網</a></li>
-<li><a href="http://cordova.apache.org/" target="_blank" rel="external">Apach Cordova官網</a></li>
-</ul>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime型態當日期的儲存格式，可是公司的舊的設計方式已經丟出去給客戶上線了，大家應該都知道以前很多人都是使用String型態來儲存日期，但是一到EF這種物件導向式的用法上就出問題了，所以這篇就是紀錄一下我查到的方法。</p>
+<h1 id="SQL查詢"><a href="#SQL查詢" class="headerlink" title="SQL查詢"></a>SQL查詢</h1><p>先做一個假資料如下圖<br><img src="1.png" alt="資料庫資料"><br>我們依照以前SQL的查詢方法以下語法是可以使用的<br>例如要查4/12到4/15的資料<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Schedule <span class="keyword">WHERE</span> sDate <span class="keyword">BETWEEN</span> <span class="string">'2017/04/12'</span> <span class="keyword">AND</span> <span class="string">'2017/04/15'</span></div></pre></td></tr></table></figure></p>
+<h1 id="LINQ-To-Entity-查詢"><a href="#LINQ-To-Entity-查詢" class="headerlink" title="LINQ To Entity 查詢"></a>LINQ To Entity 查詢</h1><p>如果只是單純SQL轉成LINQ應該會寫成像下圖這樣<br><img src="2.png" alt="linq查詢錯誤示範"><br>但是物件導向的寫法這樣當然是錯誤的不能string比對string的範圍</p>
+<p>這邊真的讓我卡了一下，查資料查半天都是錯的，後來發現原來我關鍵字打反了，一直打成linq entity dateTime to string，應該是要查linq entity string to datetime，結果一查果然對了。<br>原來有對應的Method可以解決這問題，使用compare這方法可以解決，程式碼如下<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Data = <span class="keyword">from</span> s <span class="keyword">in</span> db.Schedule <span class="keyword">where</span> s.sDate.CompareTo(<span class="string">"2017/04/12"</span>) &gt;=<span class="number">0</span>  &amp;&amp; s.sDate.CompareTo(<span class="string">"2017/04/15"</span>) &lt;= <span class="number">0</span> <span class="keyword">select</span> s;</div></pre></td></tr></table></figure></p>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>最近再把大量sql語法查詢都改成LINQ To Entity，這樣不但好Debug，又能防止SQL Injection 真的方便多了。</p>
 
       
     </div>
@@ -451,9 +440,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Cordova/" rel="tag"># Cordova</a>
+            <a href="/tags/C/" rel="tag"># C#</a>
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/Entity-Framework/" rel="tag"># Entity Framework</a>
           
         </div>
       
@@ -466,18 +455,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/Cordova-Set_up-Android/" rel="next" title="Cordova - 環境安裝2 - Android篇">
-                <i class="fa fa-chevron-left"></i> Cordova - 環境安裝2 - Android篇
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/Google-Api-reCAPTCHA-C_sharp/" rel="prev" title="Google API - 圖形驗證reCAPTCHA使用C#">
-                Google API - 圖形驗證reCAPTCHA使用C# <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/Cordova-Set_up-Android/" rel="prev" title="Cordova - 環境安裝2 - Android篇">
+                Cordova - 環境安裝2 - Android篇 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -641,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什麼是Cordova"><span class="nav-number">1.1.</span> <span class="nav-text">什麼是Cordova?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cordova的演變"><span class="nav-number">1.2.</span> <span class="nav-text">Cordova的演變</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#實作"><span class="nav-number">2.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事前準備工具"><span class="nav-number">2.1.</span> <span class="nav-text">事前準備工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝Cordova"><span class="nav-number">2.2.</span> <span class="nav-text">安裝Cordova</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#後記"><span class="nav-number">3.</span> <span class="nav-text">後記</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考文獻"><span class="nav-number">4.</span> <span class="nav-text">參考文獻</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL查詢"><span class="nav-number">2.</span> <span class="nav-text">SQL查詢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LINQ-To-Entity-查詢"><span class="nav-number">3.</span> <span class="nav-text">LINQ To Entity 查詢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#後記"><span class="nav-number">4.</span> <span class="nav-text">後記</span></a></li></ol></div>
             
 
           </div>
@@ -784,9 +769,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://homura0731.github.io/2017/04/Cordova-Set_up/';
-          this.page.identifier = '2017/04/Cordova-Set_up/';
-          this.page.title = 'Cordova - 環境安裝';
+          this.page.url = 'https://homura0731.github.io/2017/05/Entity-DataBase_String-Date-select/';
+          this.page.identifier = '2017/05/Entity-DataBase_String-Date-select/';
+          this.page.title = 'Entity Framework - 區間查詢字串日期';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://homura0731.disqus.com/embed.js';
