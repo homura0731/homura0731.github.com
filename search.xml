@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[CSS - Animate.css 好用的Css動畫函式庫]]></title>
+      <url>%2F2017%2F06%2FCss-Animate-Css%2F</url>
+      <content type="text"><![CDATA[前言今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回家後馬上抓來玩玩看效果還不錯，在這邊紀錄一下筆記。 使用方法先去官網取的Animate.css這隻檔案然後引入自己的網頁裡1&lt;link href="animate.css" rel="stylesheet" type="text/css"&gt; 再來只要修改標籤的class改成要的效果，效果可以看官網的範例，然後再class還要再加上animated就行了例如我要給一行字執行wobble這個特效1&lt;p class="wobble animated"&gt;Test&lt;/p&gt; 這樣就OK了，不過只會執行一次喔!想要多次當然只能依靠JS幫忙簡單寫一下，例如我要按下一個Button讓文字產生效果Html部分12&lt;button id="testBtn"&gt;Test&lt;/buttion&gt;&lt;p id="testWord"&gt;&lt;/p&gt; JS部分(我很懶直接用Jquery了)123$('#testBtn').click(function()&#123; $('#testWord').attr("class","wobble animated");&#125;); 簡單範例因為同事問過是不是能用在圖片，所以我就用圖片當範例不用文字了! 效果： wobble fadeInRight jello hinge 執行動畫 $('#test').click(function(){ $('#animateTest').attr("class",$('#selAnime').val()+" animated").delay(500); setTimeout(animateCacel,1000); }); function animateCacel() { $('#animateTest').attr("class",""); } 後記這個真的蠻好玩的，配合JS都能自己做出簡單的輪播，對後端工程師來說真的很好上手。 附錄 Animate.css的GitHub]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Entity Framework - 日期區間查詢使用字串日期]]></title>
       <url>%2F2017%2F05%2FEntity-DataBase-String-Date-select%2F</url>
       <content type="text"><![CDATA[前言其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime型態當日期的儲存格式，可是公司的舊的設計方式已經丟出去給客戶上線了，大家應該都知道以前很多人都是使用String型態來儲存日期，但是一到EF這種物件導向式的用法上就出問題了，所以這篇就是紀錄一下我查到的方法。 SQL查詢先做一個假資料如下圖我們依照以前SQL的查詢方法以下語法是可以使用的例如要查4/12到4/15的資料1SELECT * FROM Schedule WHERE sDate BETWEEN '2017/04/12' AND '2017/04/15' 使用EF如果只是單純SQL轉成LINQ應該會寫成像下圖這樣但是物件導向的寫法這樣當然是錯誤的不能string比對string的範圍…. 這邊真的讓我卡了一下，查資料查半天都是錯的，後來發現原來我關鍵字打反了，一直打成linq entity dateTime to string，應該是要查linq entity string to datetime，結果一查果然對了。原來有對應的Method可以解決這問題，使用compare這方法可以解決，程式碼如下 LINQ To Entity 查詢1var Data = from s in db.Schedule where s.sDate.CompareTo("2017/04/12") &gt;=0 &amp;&amp; s.sDate.CompareTo("2017/04/15") &lt;= 0 select s; Lambda 語法1var lambda = db.Schedule.Where(s =&gt; s.sDate.CompareTo("2017/04/12") &gt;= 0 &amp;&amp; s.sDate.CompareTo("2017/04/15") &lt;= 0); 後記最近再把大量sql語法查詢都改成LINQ To Entity，這樣不但好Debug，又能防止SQL Injection 真的方便多了。 參考文獻 https://stackoverflow.com/questions/7740693/big-issue-in-converting-string-to-datetime-using-linq-to-entities]]></content>
