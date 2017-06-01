@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homura0731.github.io/"/>
-  <updated>2017-06-01T16:00:53.875Z</updated>
+  <updated>2017-06-01T16:07:22.102Z</updated>
   <id>https://homura0731.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CSS - Animate.css 好用的Css動畫函式庫</title>
+    <title>CSS - Animate.css 好用的CSS動畫函式庫</title>
     <link href="https://homura0731.github.io/2017/06/Css-Animate-Css/"/>
     <id>https://homura0731.github.io/2017/06/Css-Animate-Css/</id>
     <published>2017-06-01T13:37:20.000Z</published>
-    <updated>2017-06-01T16:00:53.875Z</updated>
+    <updated>2017-06-01T16:07:22.102Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回家後馬上抓來玩玩看效果還不錯，在這邊紀錄一下筆記。</p>
 <h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>先去<a href="https://daneden.github.io/animate.css/" target="_blank" rel="external">官網</a>取的Animate.css這隻檔案<br>然後引入自己的網頁裡<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"animate.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -81,13 +81,13 @@ function animateCacel()
     <link href="https://homura0731.github.io/2017/05/Entity-DataBase-String-Date-select/"/>
     <id>https://homura0731.github.io/2017/05/Entity-DataBase-String-Date-select/</id>
     <published>2017-05-29T13:13:33.000Z</published>
-    <updated>2017-06-01T14:53:46.853Z</updated>
+    <updated>2017-06-01T16:04:38.687Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime型態當日期的儲存格式，可是公司的舊的設計方式已經丟出去給客戶上線了，大家應該都知道以前很多人都是使用String型態來儲存日期，但是一到EF這種物件導向式的用法上就出問題了，所以這篇就是紀錄一下我查到的方法。</p>
 <h1 id="SQL查詢"><a href="#SQL查詢" class="headerlink" title="SQL查詢"></a>SQL查詢</h1><p>先做一個假資料如下圖<br><img src="1.png" alt="資料庫資料"><br>我們依照以前SQL的查詢方法以下語法是可以使用的<br>例如要查4/12到4/15的資料<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Schedule <span class="keyword">WHERE</span> sDate <span class="keyword">BETWEEN</span> <span class="string">'2017/04/12'</span> <span class="keyword">AND</span> <span class="string">'2017/04/15'</span></div></pre></td></tr></table></figure></p>
 <h1 id="使用EF"><a href="#使用EF" class="headerlink" title="使用EF"></a>使用EF</h1><p>如果只是單純SQL轉成LINQ應該會寫成像下圖這樣<br><img src="2.png" alt="linq查詢錯誤示範"><br>但是物件導向的寫法這樣當然是錯誤的不能string比對string的範圍….</p>
 <p>這邊真的讓我卡了一下，查資料查半天都是錯的，後來發現原來我關鍵字打反了，一直打成linq entity dateTime to string，應該是要查linq entity string to datetime，結果一查果然對了。<br>原來有對應的Method可以解決這問題，使用compare這方法可以解決，程式碼如下</p>
-<h2 id="LINQ-To-Entity-查詢"><a href="#LINQ-To-Entity-查詢" class="headerlink" title="LINQ To Entity 查詢"></a>LINQ To Entity 查詢</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Data = <span class="keyword">from</span> s <span class="keyword">in</span> db.Schedule <span class="keyword">where</span> s.sDate.CompareTo(<span class="string">"2017/04/12"</span>) &gt;=<span class="number">0</span>  &amp;&amp; s.sDate.CompareTo(<span class="string">"2017/04/15"</span>) &lt;= <span class="number">0</span> <span class="keyword">select</span> s;</div></pre></td></tr></table></figure>
+<h2 id="LINQ-To-Entity-查詢"><a href="#LINQ-To-Entity-查詢" class="headerlink" title="LINQ To Entity 查詢"></a>LINQ To Entity 查詢</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Data = <span class="keyword">from</span> s <span class="keyword">in</span> db.Schedule </div><div class="line">           <span class="keyword">where</span> s.sDate.CompareTo(<span class="string">"2017/04/12"</span>) &gt;=<span class="number">0</span>  &amp;&amp; s.sDate.CompareTo(<span class="string">"2017/04/15"</span>) &lt;= <span class="number">0</span> <span class="keyword">select</span> s;</div></pre></td></tr></table></figure>
 <h2 id="Lambda-語法"><a href="#Lambda-語法" class="headerlink" title="Lambda 語法"></a>Lambda 語法</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lambda = db.Schedule.Where(s =&gt; s.sDate.CompareTo(<span class="string">"2017/04/12"</span>) &gt;= <span class="number">0</span> &amp;&amp; s.sDate.CompareTo(<span class="string">"2017/04/15"</span>) &lt;= <span class="number">0</span>);</div></pre></td></tr></table></figure>
 <h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>最近再把大量sql語法查詢都改成LINQ To Entity，這樣不但好Debug，又能防止SQL Injection 真的方便多了。</p>
 <h1 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h1><ul>
@@ -104,11 +104,11 @@ function animateCacel()
       <category term="Entity Framework" scheme="https://homura0731.github.io/categories/Entity-Framework/"/>
     
     
-      <category term="C#" scheme="https://homura0731.github.io/tags/C/"/>
-    
       <category term="Entity Framework" scheme="https://homura0731.github.io/tags/Entity-Framework/"/>
     
       <category term="Entity" scheme="https://homura0731.github.io/tags/Entity/"/>
+    
+      <category term="C#" scheme="https://homura0731.github.io/tags/C/"/>
     
   </entry>
   
