@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homura0731.github.io/"/>
-  <updated>2017-06-10T09:08:43.905Z</updated>
+  <updated>2017-06-10T09:34:48.162Z</updated>
   <id>https://homura0731.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://homura0731.github.io/2017/06/Entity-Data-Paging/"/>
     <id>https://homura0731.github.io/2017/06/Entity-Data-Paging/</id>
     <published>2017-06-10T06:47:35.000Z</published>
-    <updated>2017-06-10T09:08:43.905Z</updated>
+    <updated>2017-06-10T09:34:48.162Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其實資料分頁在.net已經有很多好用的套件或是現成物件可以用了，例如WebForm的GridView和MVC的PagedList.Mvc，但是以前我還在寫PHP的時候，其實這些東西完全不需要使用這些東西，只要sql語法就能做到，所以這篇我寫紀錄一下不依賴這些東西就能完成的方法。</p>
 <h1 id="資料分頁在-PHP-的作法"><a href="#資料分頁在-PHP-的作法" class="headerlink" title="資料分頁在 PHP 的作法"></a>資料分頁在 PHP 的作法</h1><p>有使用過PHP的工程師應該都是到MySQL可以使用Limit的方式來限制出現的資料數量來實作分頁。<br>例如以下語法假設我讀第3頁，一次讀10條資料，也就是讀第21~30條的資料<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">Table</span> <span class="keyword">Limit</span> <span class="number">20</span>,<span class="number">10</span></div></pre></td></tr></table></figure></p>
@@ -59,7 +59,7 @@
     <link href="https://homura0731.github.io/2017/06/Css-Animate-Css/"/>
     <id>https://homura0731.github.io/2017/06/Css-Animate-Css/</id>
     <published>2017-06-01T13:37:20.000Z</published>
-    <updated>2017-06-10T03:24:27.551Z</updated>
+    <updated>2017-06-10T17:17:37.453Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回家後馬上抓來玩玩看效果還不錯，在這邊紀錄一下筆記。</p>
 <h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>先去<a href="https://daneden.github.io/animate.css/" target="_blank" rel="external">官網</a>取的Animate.css這隻檔案<br>然後引入自己的網頁裡<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"animate.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -106,8 +106,6 @@ function animateCacel()
     
       <category term="CSS" scheme="https://homura0731.github.io/categories/CSS/"/>
     
-    
-      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
     
       <category term="CSS" scheme="https://homura0731.github.io/tags/CSS/"/>
     
@@ -156,7 +154,7 @@ function animateCacel()
     <link href="https://homura0731.github.io/2017/05/Cordova-Set_up-Android/"/>
     <id>https://homura0731.github.io/2017/05/Cordova-Set_up-Android/</id>
     <published>2017-05-08T12:14:58.000Z</published>
-    <updated>2017-05-29T13:56:30.081Z</updated>
+    <updated>2017-06-10T17:17:30.291Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>繼上篇<a href="https://homura0731.github.io/2017/04/Cordova-Set_up/">Cordova安裝</a>之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的編譯器之前，都是用Adobe Phonegap的線上編譯器，其實用久真的不是很好用，還是能在自己的PC編譯比較好，那就廢話不多說進入實作吧。</p>
 <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="幫專案添加android-platform"><a href="#幫專案添加android-platform" class="headerlink" title="幫專案添加android platform"></a>幫專案添加android platform</h2><p>使用以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova platform add android</div></pre></td></tr></table></figure></p>
@@ -191,8 +189,6 @@ function animateCacel()
     
       <category term="Cordova" scheme="https://homura0731.github.io/tags/Cordova/"/>
     
-      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
-    
   </entry>
   
   <entry>
@@ -200,7 +196,7 @@ function animateCacel()
     <link href="https://homura0731.github.io/2017/04/Cordova-Set_up/"/>
     <id>https://homura0731.github.io/2017/04/Cordova-Set_up/</id>
     <published>2017-04-23T11:19:59.000Z</published>
-    <updated>2017-05-29T13:56:19.377Z</updated>
+    <updated>2017-06-10T17:17:12.581Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什麼是Cordova"><a href="#什麼是Cordova" class="headerlink" title="什麼是Cordova?"></a>什麼是Cordova?</h2><p>Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。</p>
 <h2 id="Cordova的演變"><a href="#Cordova的演變" class="headerlink" title="Cordova的演變"></a>Cordova的演變</h2><p>來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改名叫做Adobe PhoneGap，Adobe又把代碼捐給Apache基金會，但保留商標所有權，Apache這邊則是改叫另一個名稱叫Apache Cordova。<br>基本上Adobe PhoneGap和Apache Cordova的基底都是Cordova，所以兩邊的寫的程式碼可以共通是沒問題，不過platform建議是用同一邊寫的，然後兩邊環境有什麼不同也大概說一下Adobe PhoneGap這邊是要付費的而且編譯器是在雲端上編輯，沒付費的話還是能用，只是線上的專案只能創建一個，可以拿到的軟體部分只有模擬器的部分，Apache Cordova這邊則是編譯和模擬器全都有，這邊以Apache Cordova為主。</p>
@@ -232,8 +228,6 @@ function animateCacel()
     
       <category term="Cordova" scheme="https://homura0731.github.io/tags/Cordova/"/>
     
-      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
-    
   </entry>
   
   <entry>
@@ -241,7 +235,7 @@ function animateCacel()
     <link href="https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/"/>
     <id>https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/</id>
     <published>2017-04-18T12:34:16.000Z</published>
-    <updated>2017-05-29T13:56:10.535Z</updated>
+    <updated>2017-06-10T17:19:02.155Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧!</p>
 <h1 id="開始實作reCAPTCHA"><a href="#開始實作reCAPTCHA" class="headerlink" title="開始實作reCAPTCHA"></a>開始實作reCAPTCHA</h1><h2 id="註冊"><a href="#註冊" class="headerlink" title="註冊"></a>註冊</h2><p>首先要去官方註冊 <a href="https://www.google.com/recaptcha/admin#list" target="_blank" rel="external">註冊連結點這邊</a><br>因為我們要在自己的機子測試所以label和Domains都填localhost<br><img src="1.JPG" alt="註冊"><br>註冊完會得到一組Site key和一組Secret key<br><img src="2.JPG" alt="註冊成功"></p>
@@ -263,8 +257,6 @@ function animateCacel()
     
       <category term="ASP.NET" scheme="https://homura0731.github.io/categories/ASP-NET/"/>
     
-    
-      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
     
       <category term="C#" scheme="https://homura0731.github.io/tags/C/"/>
     
