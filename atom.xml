@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homura0731.github.io/"/>
-  <updated>2017-06-01T16:08:47.091Z</updated>
+  <updated>2017-06-10T09:08:43.905Z</updated>
   <id>https://homura0731.github.io/</id>
   
   <author>
@@ -16,11 +16,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Entity Framawork - 實作資料分頁</title>
+    <link href="https://homura0731.github.io/2017/06/Entity-Data-Paging/"/>
+    <id>https://homura0731.github.io/2017/06/Entity-Data-Paging/</id>
+    <published>2017-06-10T06:47:35.000Z</published>
+    <updated>2017-06-10T09:08:43.905Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其實資料分頁在.net已經有很多好用的套件或是現成物件可以用了，例如WebForm的GridView和MVC的PagedList.Mvc，但是以前我還在寫PHP的時候，其實這些東西完全不需要使用這些東西，只要sql語法就能做到，所以這篇我寫紀錄一下不依賴這些東西就能完成的方法。</p>
+<h1 id="資料分頁在-PHP-的作法"><a href="#資料分頁在-PHP-的作法" class="headerlink" title="資料分頁在 PHP 的作法"></a>資料分頁在 PHP 的作法</h1><p>有使用過PHP的工程師應該都是到MySQL可以使用Limit的方式來限制出現的資料數量來實作分頁。<br>例如以下語法假設我讀第3頁，一次讀10條資料，也就是讀第21~30條的資料<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">Table</span> <span class="keyword">Limit</span> <span class="number">20</span>,<span class="number">10</span></div></pre></td></tr></table></figure></p>
+<p>簡化的規則變成以下這樣<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">Table</span> <span class="keyword">Limit</span> pageIndex * pageSize,pageSize</div></pre></td></tr></table></figure></p>
+<p>pageIndex：是當前分頁索引<br>pageSize：每頁的資料量<br>但是在SQL Server這邊沒有Limit這個描述，該怎麼做呢?</p>
+<h1 id="資料分頁在-Net-的作法"><a href="#資料分頁在-Net-的作法" class="headerlink" title="資料分頁在 .Net 的作法"></a>資料分頁在 .Net 的作法</h1><h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>在SqlServer這邊沒有Limit那麼好用的方法，但是我們有Top和NOT IN混用也能用出差不多的效果，<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TOP(pageSize) * <span class="keyword">FROM</span> <span class="keyword">Table</span> </div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">NOT</span> <span class="keyword">IN</span> (</div><div class="line">    <span class="keyword">SELECT</span> TOP(pageIndex * pageSize) <span class="keyword">FROM</span> <span class="keyword">Table</span></div><div class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> <span class="keyword">DESC</span></div><div class="line">    )</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> <span class="keyword">DESC</span></div></pre></td></tr></table></figure></p>
+<p>雖然複雜點但是效果是差不多，這邊Google過還有蠻多方法的，以上只是其中一種。</p>
+<h2 id="LINQ-To-Entity"><a href="#LINQ-To-Entity" class="headerlink" title="LINQ To Entity"></a>LINQ To Entity</h2><p>LINQ則是先用Skip跳過不需要的資料，在使用Take限制取得的資料量，db為我的ADO.NET實體資料庫模型<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="keyword">from</span> t <span class="keyword">in</span> db.Table <span class="keyword">orderby</span> t.Id <span class="keyword">descending</span> <span class="keyword">select</span> t).Skip(pageIndex * pageSize).Take(pageSize);</div></pre></td></tr></table></figure></p>
+<h2 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h2><p>Lambda語法大同小異<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.table.OrderByDescending(t =&gt; t.Id).Skip(pageIndex * pageSize).Take(pageSize);</div></pre></td></tr></table></figure></p>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>其實這些寫法我都是用在API上比較多，大部分的人應該還是都依賴套件的寫法，寫起來會比較快速。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="http://blog.miniasp.com/post/2007/12/11/Paging-using-simple-T-SQL-in-SQL-Server.aspx" target="_blank" rel="external">http://blog.miniasp.com/post/2007/12/11/Paging-using-simple-T-SQL-in-SQL-Server.aspx</a></li>
+<li><a href="https://dotblogs.com.tw/kim66766/2011/04/10/sql-paging-method" target="_blank" rel="external">https://dotblogs.com.tw/kim66766/2011/04/10/sql-paging-method</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;其實資料分頁在.net已經有很多好用的套件或是現成物件可以用了，例如WebForm的GridView和MVC的PagedList.Mvc，但
+    
+    </summary>
+    
+      <category term="Entity Framework" scheme="https://homura0731.github.io/categories/Entity-Framework/"/>
+    
+    
+      <category term="C#" scheme="https://homura0731.github.io/tags/C/"/>
+    
+      <category term="Entity Framework" scheme="https://homura0731.github.io/tags/Entity-Framework/"/>
+    
+      <category term="Entity" scheme="https://homura0731.github.io/tags/Entity/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CSS - Animate.css 好用的CSS動畫函式庫</title>
     <link href="https://homura0731.github.io/2017/06/Css-Animate-Css/"/>
     <id>https://homura0731.github.io/2017/06/Css-Animate-Css/</id>
     <published>2017-06-01T13:37:20.000Z</published>
-    <updated>2017-06-01T16:08:47.091Z</updated>
+    <updated>2017-06-10T03:24:27.551Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回家後馬上抓來玩玩看效果還不錯，在這邊紀錄一下筆記。</p>
 <h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>先去<a href="https://daneden.github.io/animate.css/" target="_blank" rel="external">官網</a>取的Animate.css這隻檔案<br>然後引入自己的網頁裡<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"animate.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -44,12 +83,12 @@
 <img src="0001536375.JPG" id="animateTest">
 <script>
 $('#test').click(function(){
-    $('#animateTest').attr("class",$('#selAnime').val()+" animated").delay(500);
-    setTimeout(animateCacel,1000);
+    $('#animateTest').attr("class",$('#selAnime').val() + " animated" ).delay(500);
+    setTimeout(animateCacel, 1000);
 });
 function animateCacel()
 {
-    $('#animateTest').attr("class","");
+    $('#animateTest').attr("class", "");
 }
 </script>
 
@@ -150,9 +189,9 @@ function animateCacel()
       <category term="Cordova" scheme="https://homura0731.github.io/categories/Cordova/"/>
     
     
-      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
-    
       <category term="Cordova" scheme="https://homura0731.github.io/tags/Cordova/"/>
+    
+      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
     
   </entry>
   
@@ -191,9 +230,9 @@ function animateCacel()
       <category term="Cordova" scheme="https://homura0731.github.io/categories/Cordova/"/>
     
     
-      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
-    
       <category term="Cordova" scheme="https://homura0731.github.io/tags/Cordova/"/>
+    
+      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
     
   </entry>
   
@@ -225,11 +264,11 @@ function animateCacel()
       <category term="ASP.NET" scheme="https://homura0731.github.io/categories/ASP-NET/"/>
     
     
+      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
+    
       <category term="C#" scheme="https://homura0731.github.io/tags/C/"/>
     
       <category term="Google-API" scheme="https://homura0731.github.io/tags/Google-API/"/>
-    
-      <category term="JavaScript" scheme="https://homura0731.github.io/tags/JavaScript/"/>
     
       <category term="reCAPTCHA" scheme="https://homura0731.github.io/tags/reCAPTCHA/"/>
     

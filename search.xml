@@ -3,9 +3,16 @@
   
     
     <entry>
+      <title><![CDATA[Entity Framawork - 實作資料分頁]]></title>
+      <url>%2F2017%2F06%2FEntity-Data-Paging%2F</url>
+      <content type="text"><![CDATA[前言其實資料分頁在.net已經有很多好用的套件或是現成物件可以用了，例如WebForm的GridView和MVC的PagedList.Mvc，但是以前我還在寫PHP的時候，其實這些東西完全不需要使用這些東西，只要sql語法就能做到，所以這篇我寫紀錄一下不依賴這些東西就能完成的方法。 資料分頁在 PHP 的作法有使用過PHP的工程師應該都是到MySQL可以使用Limit的方式來限制出現的資料數量來實作分頁。例如以下語法假設我讀第3頁，一次讀10條資料，也就是讀第21~30條的資料1SELECT * FROM Table Limit 20,10 簡化的規則變成以下這樣1SELECT * FROM Table Limit pageIndex * pageSize,pageSize pageIndex：是當前分頁索引pageSize：每頁的資料量但是在SQL Server這邊沒有Limit這個描述，該怎麼做呢? 資料分頁在 .Net 的作法SQL在SqlServer這邊沒有Limit那麼好用的方法，但是我們有Top和NOT IN混用也能用出差不多的效果，123456SELECT TOP(pageSize) * FROM Table WHERE id NOT IN ( SELECT TOP(pageIndex * pageSize) FROM Table ORDER BY id DESC )ORDER BY id DESC 雖然複雜點但是效果是差不多，這邊Google過還有蠻多方法的，以上只是其中一種。 LINQ To EntityLINQ則是先用Skip跳過不需要的資料，在使用Take限制取得的資料量，db為我的ADO.NET實體資料庫模型1(from t in db.Table orderby t.Id descending select t).Skip(pageIndex * pageSize).Take(pageSize); LambdaLambda語法大同小異1db.table.OrderByDescending(t =&gt; t.Id).Skip(pageIndex * pageSize).Take(pageSize); 後記其實這些寫法我都是用在API上比較多，大部分的人應該還是都依賴套件的寫法，寫起來會比較快速。 參考資料 http://blog.miniasp.com/post/2007/12/11/Paging-using-simple-T-SQL-in-SQL-Server.aspx https://dotblogs.com.tw/kim66766/2011/04/10/sql-paging-method]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[CSS - Animate.css 好用的CSS動畫函式庫]]></title>
       <url>%2F2017%2F06%2FCss-Animate-Css%2F</url>
-      <content type="text"><![CDATA[前言今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回家後馬上抓來玩玩看效果還不錯，在這邊紀錄一下筆記。 使用方法先去官網取的Animate.css這隻檔案然後引入自己的網頁裡1&lt;link href="animate.css" rel="stylesheet" type="text/css"&gt; 再來只要修改標籤的class改成要的效果，效果可以看官網的範例，然後再class還要再加上animated就行了例如我要給一行字執行wobble這個特效1&lt;p class="wobble animated"&gt;Test&lt;/p&gt; 這樣就OK了，不過只會執行一次喔!想要多次當然只能依靠JS幫忙簡單寫一下，例如我要按下一個Button讓文字產生效果Html部分12&lt;button id="testBtn"&gt;Test&lt;/buttion&gt;&lt;p id="testWord"&gt;Test Word&lt;/p&gt; JS部分(我很懶直接用Jquery了)123$('#testBtn').click(function()&#123; $('#testWord').attr("class","wobble animated");&#125;); 簡單範例因為同事問過是不是能用在圖片，所以我就用圖片當範例不用文字了! 效果： wobble fadeInRight jello hinge 執行動畫 $('#test').click(function(){ $('#animateTest').attr("class",$('#selAnime').val()+" animated").delay(500); setTimeout(animateCacel,1000); }); function animateCacel() { $('#animateTest').attr("class",""); } 後記這個真的蠻好玩的，配合JS都能自己做出簡單的輪播，對後端工程師來說真的很好上手。 附錄 Animate.css的GitHub]]></content>
+      <content type="text"><![CDATA[前言今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回家後馬上抓來玩玩看效果還不錯，在這邊紀錄一下筆記。 使用方法先去官網取的Animate.css這隻檔案然後引入自己的網頁裡1&lt;link href="animate.css" rel="stylesheet" type="text/css"&gt; 再來只要修改標籤的class改成要的效果，效果可以看官網的範例，然後再class還要再加上animated就行了例如我要給一行字執行wobble這個特效1&lt;p class="wobble animated"&gt;Test&lt;/p&gt; 這樣就OK了，不過只會執行一次喔!想要多次當然只能依靠JS幫忙簡單寫一下，例如我要按下一個Button讓文字產生效果Html部分12&lt;button id="testBtn"&gt;Test&lt;/buttion&gt;&lt;p id="testWord"&gt;Test Word&lt;/p&gt; JS部分(我很懶直接用Jquery了)123$('#testBtn').click(function()&#123; $('#testWord').attr("class","wobble animated");&#125;); 簡單範例因為同事問過是不是能用在圖片，所以我就用圖片當範例不用文字了! 效果： wobble fadeInRight jello hinge 執行動畫 $('#test').click(function(){ $('#animateTest').attr("class",$('#selAnime').val() + " animated" ).delay(500); setTimeout(animateCacel, 1000); }); function animateCacel() { $('#animateTest').attr("class", ""); } 後記這個真的蠻好玩的，配合JS都能自己做出簡單的輪播，對後端工程師來說真的很好上手。 附錄 Animate.css的GitHub]]></content>
     </entry>
 
     
