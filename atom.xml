@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://homura0731.github.io/"/>
-  <updated>2017-06-10T09:34:48.162Z</updated>
+  <updated>2017-06-10T17:26:22.243Z</updated>
   <id>https://homura0731.github.io/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="https://homura0731.github.io/2017/06/Entity-Data-Paging/"/>
     <id>https://homura0731.github.io/2017/06/Entity-Data-Paging/</id>
     <published>2017-06-10T06:47:35.000Z</published>
-    <updated>2017-06-10T09:34:48.162Z</updated>
+    <updated>2017-06-10T17:26:22.243Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其實資料分頁在.net已經有很多好用的套件或是現成物件可以用了，例如WebForm的GridView和MVC的PagedList.Mvc，但是以前我還在寫PHP的時候，其實這些東西完全不需要使用這些東西，只要sql語法就能做到，所以這篇我寫紀錄一下不依賴這些東西就能完成的方法。</p>
-<h1 id="資料分頁在-PHP-的作法"><a href="#資料分頁在-PHP-的作法" class="headerlink" title="資料分頁在 PHP 的作法"></a>資料分頁在 PHP 的作法</h1><p>有使用過PHP的工程師應該都是到MySQL可以使用Limit的方式來限制出現的資料數量來實作分頁。<br>例如以下語法假設我讀第3頁，一次讀10條資料，也就是讀第21~30條的資料<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">Table</span> <span class="keyword">Limit</span> <span class="number">20</span>,<span class="number">10</span></div></pre></td></tr></table></figure></p>
-<p>簡化的規則變成以下這樣<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">Table</span> <span class="keyword">Limit</span> pageIndex * pageSize,pageSize</div></pre></td></tr></table></figure></p>
+<h1 id="資料分頁在-PHP-的作法"><a href="#資料分頁在-PHP-的作法" class="headerlink" title="資料分頁在 PHP 的作法"></a>資料分頁在 PHP 的作法</h1><p>有使用過PHP的工程師應該都是到MySQL可以使用Limit的方式來限制出現的資料數量來實作分頁。<br>例如以下語法假設我讀第3頁，一次讀10條資料，也就是讀第21~30條的資料<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">Table</span> <span class="keyword">LIMIT</span> <span class="number">20</span>,<span class="number">10</span></div></pre></td></tr></table></figure></p>
+<p>簡化的規則變成以下這樣<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">Table</span> <span class="keyword">LIMIT</span> (pageIndex * pageSize),pageSize</div></pre></td></tr></table></figure></p>
 <p>pageIndex：是當前分頁索引<br>pageSize：每頁的資料量<br>但是在SQL Server這邊沒有Limit這個描述，該怎麼做呢?</p>
 <h1 id="資料分頁在-Net-的作法"><a href="#資料分頁在-Net-的作法" class="headerlink" title="資料分頁在 .Net 的作法"></a>資料分頁在 .Net 的作法</h1><h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>在SqlServer這邊沒有Limit那麼好用的方法，但是我們有Top和NOT IN混用也能用出差不多的效果，<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TOP(pageSize) * <span class="keyword">FROM</span> <span class="keyword">Table</span> </div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">NOT</span> <span class="keyword">IN</span> (</div><div class="line">    <span class="keyword">SELECT</span> TOP(pageIndex * pageSize) <span class="keyword">FROM</span> <span class="keyword">Table</span></div><div class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> <span class="keyword">DESC</span></div><div class="line">    )</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> <span class="keyword">DESC</span></div></pre></td></tr></table></figure></p>
 <p>雖然複雜點但是效果是差不多，這邊Google過還有蠻多方法的，以上只是其中一種。</p>
@@ -123,8 +123,20 @@ function animateCacel()
     <updated>2017-06-01T16:04:38.687Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime型態當日期的儲存格式，可是公司的舊的設計方式已經丟出去給客戶上線了，大家應該都知道以前很多人都是使用String型態來儲存日期，但是一到EF這種物件導向式的用法上就出問題了，所以這篇就是紀錄一下我查到的方法。</p>
-<h1 id="SQL查詢"><a href="#SQL查詢" class="headerlink" title="SQL查詢"></a>SQL查詢</h1><p>先做一個假資料如下圖<br><img src="1.png" alt="資料庫資料"><br>我們依照以前SQL的查詢方法以下語法是可以使用的<br>例如要查4/12到4/15的資料<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Schedule <span class="keyword">WHERE</span> sDate <span class="keyword">BETWEEN</span> <span class="string">'2017/04/12'</span> <span class="keyword">AND</span> <span class="string">'2017/04/15'</span></div></pre></td></tr></table></figure></p>
-<h1 id="使用EF"><a href="#使用EF" class="headerlink" title="使用EF"></a>使用EF</h1><p>如果只是單純SQL轉成LINQ應該會寫成像下圖這樣<br><img src="2.png" alt="linq查詢錯誤示範"><br>但是物件導向的寫法這樣當然是錯誤的不能string比對string的範圍….</p>
+<h1 id="SQL查詢"><a href="#SQL查詢" class="headerlink" title="SQL查詢"></a>SQL查詢</h1><p>先做一個假資料如下圖<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="1.png" alt="資料庫資料" title="">
+                </div>
+                <div class="image-caption">資料庫資料</div>
+            </figure><br>我們依照以前SQL的查詢方法以下語法是可以使用的<br>例如要查4/12到4/15的資料<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Schedule <span class="keyword">WHERE</span> sDate <span class="keyword">BETWEEN</span> <span class="string">'2017/04/12'</span> <span class="keyword">AND</span> <span class="string">'2017/04/15'</span></div></pre></td></tr></table></figure></p>
+<h1 id="使用EF"><a href="#使用EF" class="headerlink" title="使用EF"></a>使用EF</h1><p>如果只是單純SQL轉成LINQ應該會寫成像下圖這樣<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="2.png" alt="linq查詢錯誤示範" title="">
+                </div>
+                <div class="image-caption">linq查詢錯誤示範</div>
+            </figure><br>但是物件導向的寫法這樣當然是錯誤的不能string比對string的範圍….</p>
 <p>這邊真的讓我卡了一下，查資料查半天都是錯的，後來發現原來我關鍵字打反了，一直打成linq entity dateTime to string，應該是要查linq entity string to datetime，結果一查果然對了。<br>原來有對應的Method可以解決這問題，使用compare這方法可以解決，程式碼如下</p>
 <h2 id="LINQ-To-Entity-查詢"><a href="#LINQ-To-Entity-查詢" class="headerlink" title="LINQ To Entity 查詢"></a>LINQ To Entity 查詢</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Data = <span class="keyword">from</span> s <span class="keyword">in</span> db.Schedule </div><div class="line">           <span class="keyword">where</span> s.sDate.CompareTo(<span class="string">"2017/04/12"</span>) &gt;=<span class="number">0</span>  &amp;&amp; s.sDate.CompareTo(<span class="string">"2017/04/15"</span>) &lt;= <span class="number">0</span> <span class="keyword">select</span> s;</div></pre></td></tr></table></figure>
 <h2 id="Lambda-語法"><a href="#Lambda-語法" class="headerlink" title="Lambda 語法"></a>Lambda 語法</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lambda = db.Schedule.Where(s =&gt; s.sDate.CompareTo(<span class="string">"2017/04/12"</span>) &gt;= <span class="number">0</span> &amp;&amp; s.sDate.CompareTo(<span class="string">"2017/04/15"</span>) &lt;= <span class="number">0</span>);</div></pre></td></tr></table></figure>
@@ -160,19 +172,80 @@ function animateCacel()
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>繼上篇<a href="https://homura0731.github.io/2017/04/Cordova-Set_up/">Cordova安裝</a>之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的編譯器之前，都是用Adobe Phonegap的線上編譯器，其實用久真的不是很好用，還是能在自己的PC編譯比較好，那就廢話不多說進入實作吧。</p>
 <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="幫專案添加android-platform"><a href="#幫專案添加android-platform" class="headerlink" title="幫專案添加android platform"></a>幫專案添加android platform</h2><p>使用以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova platform add android</div></pre></td></tr></table></figure></p>
-<p><img src="1.png" alt="添加android platform"><br>成功的話專案下的platforms資料夾底下會多出一個android資料夾<br><img src="2.png" alt="添加android platform 成功"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="1.png" alt="添加android platform" title="">
+                </div>
+                <div class="image-caption">添加android platform</div>
+            </figure>
+<p>成功的話專案下的platforms資料夾底下會多出一個android資料夾<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="2.png" alt="添加android platform 成功" title="">
+                </div>
+                <div class="image-caption">添加android platform 成功</div>
+            </figure></p>
 <h2 id="使用android-模擬器模擬"><a href="#使用android-模擬器模擬" class="headerlink" title="使用android 模擬器模擬"></a>使用android 模擬器模擬</h2><p>使用以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova run android</div></pre></td></tr></table></figure></p>
-<p>然後應該會看到以下錯誤訊息，因為還沒設置android sdk的path<br><img src="3.png" alt="執行android模擬器失敗"></p>
-<h2 id="設置Android-Home和Android的path"><a href="#設置Android-Home和Android的path" class="headerlink" title="設置Android_Home和Android的path"></a>設置Android_Home和Android的path</h2><p>對我的電腦右鍵內容-&gt;進階系統設定-&gt;進階-&gt;環境變數<br>環境變數在windows上分2種一種是指對使用者(上面)，一種是對全部使用者(下面)，這邊編輯使用者就好了!<br><img src="4.png" alt="path設定1"><br>然後找出自己sdk的安裝位置，然後新增的2個值，指向platform-tools和tools這2個位置，如果是win7的話記得都要在後面加上;，我這邊是win10比較高級有UI可以用..<br><img src="5.png" alt="path設定2"><br>再新增一個ANDROID_HOME變數指向android-sdk根目錄<br><img src="6.png" alt="path設定2"></p>
+<p>然後應該會看到以下錯誤訊息，因為還沒設置android sdk的path<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="3.png" alt="執行android模擬器失敗" title="">
+                </div>
+                <div class="image-caption">執行android模擬器失敗</div>
+            </figure></p>
+<h2 id="設置Android-Home和Android的path"><a href="#設置Android-Home和Android的path" class="headerlink" title="設置Android_Home和Android的path"></a>設置Android_Home和Android的path</h2><p>對我的電腦右鍵內容-&gt;進階系統設定-&gt;進階-&gt;環境變數<br>環境變數在windows上分2種一種是指對使用者(上面)，一種是對全部使用者(下面)，這邊編輯使用者就好了!<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="4.png" alt="path設定1" title="">
+                </div>
+                <div class="image-caption">path設定1</div>
+            </figure><br>然後找出自己sdk的安裝位置，然後新增的2個值，指向platform-tools和tools這2個位置，如果是win7的話記得都要在後面加上;，我這邊是win10比較高級有UI可以用..<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="5.png" alt="path設定2" title="">
+                </div>
+                <div class="image-caption">path設定2</div>
+            </figure><br>再新增一個ANDROID_HOME變數指向android-sdk根目錄<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="6.png" alt="path設定2" title="">
+                </div>
+                <div class="image-caption">path設定2</div>
+            </figure></p>
 <p>設置完成後記得關掉命令提示字元(終端機)，因為他不會自己重讀path一定要重開，我第一次就笨笨的設好了為啥還抓不到…<br>然後在執行一次剛剛的指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova run android</div></pre></td></tr></table></figure></p>
-<p>應該會有抓不完jdk，然後又丟新錯誤給我<br><img src="7.png" alt="path設定3"></p>
+<p>應該會有抓不完jdk，然後又丟新錯誤給我<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="7.png" alt="path設定3" title="">
+                </div>
+                <div class="image-caption">path設定3</div>
+            </figure></p>
 <h2 id="添加licenses"><a href="#添加licenses" class="headerlink" title="添加licenses"></a>添加licenses</h2><p>這步我記得在win7是沒這問題，不知道是不是新版sdk有什麼問題，google了一下用這2行指令解決<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir <span class="string">"%ANDROID_HOME%\licenses"</span></div><div class="line">$ <span class="built_in">echo</span> |<span class="built_in">set</span> /p=<span class="string">"8933bad161af4178b1185d1a37fbf41ea5269c55"</span> &gt; <span class="string">"%ANDROID_HOME%\licenses\android-sdk-license"</span></div></pre></td></tr></table></figure></p>
-<p>然後正常來說應該就行了，但是win10很討厭把資料夾的權限鎖住了，造成以下錯誤訊息<br><img src="8.png" alt="系統權限"></p>
+<p>然後正常來說應該就行了，但是win10很討厭把資料夾的權限鎖住了，造成以下錯誤訊息<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="8.png" alt="系統權限" title="">
+                </div>
+                <div class="image-caption">系統權限</div>
+            </figure></p>
 <h2 id="打開sdk資料夾權限"><a href="#打開sdk資料夾權限" class="headerlink" title="打開sdk資料夾權限"></a>打開sdk資料夾權限</h2><p>這邊先用系統管理員權限打開cmd，然後指向android-sdk根目錄，輸入以下指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 777 Android</div></pre></td></tr></table></figure></p>
 <p>輸入完後就能修改資料夾權限了</p>
 <h2 id="執行及編譯成apk"><a href="#執行及編譯成apk" class="headerlink" title="執行及編譯成apk"></a>執行及編譯成apk</h2><p>到這步我是沒問題了，如果還有問題可能是sdk的platform設定有問題，個人公司的win7碰到的，有問題去目錄底下的AVD Manager.exe設定一下目標平台<br>然後再執行一次<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova run android</div></pre></td></tr></table></figure></p>
-<p>成功後如下圖結果<br><img src="9.png" alt="模擬成功"><br>然後編譯apk指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova build android</div></pre></td></tr></table></figure></p>
-<p>編譯後可以再專案目錄底下找到apk<br><img src="10.png" alt="apk編譯"></p>
+<p>成功後如下圖結果<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="9.png" alt="模擬成功" title="">
+                </div>
+                <div class="image-caption">模擬成功</div>
+            </figure><br>然後編譯apk指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova build android</div></pre></td></tr></table></figure></p>
+<p>編譯後可以再專案目錄底下找到apk<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="10.png" alt="apk編譯" title="">
+                </div>
+                <div class="image-caption">apk編譯</div>
+            </figure></p>
 <h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>其實工作時我並沒有成功過使用模擬器，只有編譯成apk，工作的電腦好像沒有Hype-V的功能連模擬器都不能用，在家用win10果然可以用，搞了好久終於設定完成!(累癱)</p>
 <h1 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h1><ul>
 <li><a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html" target="_blank" rel="external">Apach Cordova官網文件</a></li>
@@ -212,7 +285,13 @@ function animateCacel()
 <p>裝好之後就能使用以下指令創建專案了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova create 專案名稱</div></pre></td></tr></table></figure></p>
 <p>再來我們要幫專案加入使用平台，我們一般會先用瀏覽器看，所以我們先裝browser這個platform，還有不要忘記指向自己的專案資料夾底下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova platform add browser</div></pre></td></tr></table></figure></p>
 <p>然後就能用我們的瀏覽器來跑了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cordova run browser</div></pre></td></tr></table></figure></p>
-<p>執行成功會自動開啟瀏覽器，然後按F12開啟開發人員模式，切成手機模式瀏覽，如下圖<br><img src="1.jpg" alt="執行browser"></p>
+<p>執行成功會自動開啟瀏覽器，然後按F12開啟開發人員模式，切成手機模式瀏覽，如下圖<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="1.jpg" alt="執行browser" title="">
+                </div>
+                <div class="image-caption">執行browser</div>
+            </figure></p>
 <h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>其實Cordova這框架是老闆想寫App但是沒人會，所以找來老師上了幾堂簡單的App課程，當時教得是Adobe PhoneGap，其實不知道為什麼不是教Apache Cordva，這個能做的事情明明比較多，後來想想好像是因為Adobe PhoneGap有圖形介面，大概是考慮了這問題，反正就因為這樣就莫名其妙開始使用了這框架，編譯成Android之前會在另外寫一篇，就先這樣啦!</p>
 <h1 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h1><ul>
 <li><a href="https://zh.wikipedia.org/wiki/Adobe_PhoneGap" target="_blank" rel="external">維基百科</a></li>
@@ -244,14 +323,45 @@ function animateCacel()
     <updated>2017-06-10T17:21:17.270Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧!</p>
-<h1 id="開始實作reCAPTCHA"><a href="#開始實作reCAPTCHA" class="headerlink" title="開始實作reCAPTCHA"></a>開始實作reCAPTCHA</h1><h2 id="註冊"><a href="#註冊" class="headerlink" title="註冊"></a>註冊</h2><p>首先要去官方註冊 <a href="https://www.google.com/recaptcha/admin#list" target="_blank" rel="external">註冊連結點這邊</a><br>因為我們要在自己的機子測試所以label和Domains都填localhost<br><img src="1.JPG" alt="註冊"><br>註冊完會得到一組Site key和一組Secret key<br><img src="2.JPG" alt="註冊成功"></p>
-<h2 id="reCAPTCHA的驗證流程"><a href="#reCAPTCHA的驗證流程" class="headerlink" title="reCAPTCHA的驗證流程"></a>reCAPTCHA的驗證流程</h2><p><img src="3.JPG" alt="驗證流程圖"><br>驗證流程我用小畫家隨便畫了一下，大概是像上面那樣</p>
+<h1 id="開始實作reCAPTCHA"><a href="#開始實作reCAPTCHA" class="headerlink" title="開始實作reCAPTCHA"></a>開始實作reCAPTCHA</h1><h2 id="註冊"><a href="#註冊" class="headerlink" title="註冊"></a>註冊</h2><p>首先要去官方註冊 <a href="https://www.google.com/recaptcha/admin#list" target="_blank" rel="external">註冊連結點這邊</a><br>因為我們要在自己的機子測試所以label和Domains都填localhost<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="1.JPG" alt="註冊" title="">
+                </div>
+                <div class="image-caption">註冊</div>
+            </figure><br>註冊完會得到一組Site key和一組Secret key<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="2.JPG" alt="註冊成功" title="">
+                </div>
+                <div class="image-caption">註冊成功</div>
+            </figure></p>
+<h2 id="reCAPTCHA的驗證流程"><a href="#reCAPTCHA的驗證流程" class="headerlink" title="reCAPTCHA的驗證流程"></a>reCAPTCHA的驗證流程</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="3.JPG" alt="驗證流程圖" title="">
+                </div>
+                <div class="image-caption">驗證流程圖</div>
+            </figure>
+<p>驗證流程我用小畫家隨便畫了一下，大概是像上面那樣</p>
 <h2 id="程式實作"><a href="#程式實作" class="headerlink" title="程式實作"></a>程式實作</h2><h3 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h3><p>先來看看 <a href="https://developers.google.com/recaptcha/docs/invisible" target="_blank" rel="external">官方文件解釋</a><br>文件寫了很多，但是我覺得不是很重要，我們直接實作第二個範例<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>reCAPTCHA<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">        // 驗證成功後執行</div><div class="line">        var onSubmit = function(token) &#123;</div><div class="line">            $('#captchaToken').val() = token;</div><div class="line">        &#125;;</div><div class="line">        var onloadCallback = function() &#123;</div><div class="line">            grecaptcha.render('reCAPTCHA', &#123;</div><div class="line">            'sitekey': '自己的site_key', // 這邊填寫自己的site_key</div><div class="line">            'callback': onSubmit // 執行成功後onSubmit變數接收</div><div class="line">            &#125;);</div><div class="line">        &#125;;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"reCAPTCHA"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"captchaToken"</span> <span class="attr">name</span>=<span class="string">"captchaToken"</span> <span class="attr">type</span>=<span class="string">"hidden"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">type</span>=<span class="string">"submit"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit"</span> <span class="attr">async</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>範例我有稍微改寫了一下，然後開始解說，我有在裡面加一個hidden的input，驗證成功後剛剛建立的input會接收回傳的token，然後使用者登入後就會把token傳回到後端</p>
 <h3 id="後端部分"><a href="#後端部分" class="headerlink" title="後端部分"></a>後端部分</h3><p>再來看看官方的後端文件 <a href="https://developers.google.com/recaptcha/docs/verify" target="_blank" rel="external">官方文件解釋2</a><br>前面一堆廢話就不用看了，直接看API Request和API Response的部分<br>我們需要POST三個值到<a href="https://www.google.com/recaptcha/api/siteverify" target="_blank" rel="external">https://www.google.com/recaptcha/api/siteverify</a>這位置上，然後官方丟回驗證是否成功的JSON字串回來。<br>然後就來開始實作吧!</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 確認是否有Token回傳回來</span></div><div class="line"><span class="keyword">if</span> (Request.Form[<span class="string">"captchaToken"</span>] == <span class="string">""</span>)</div><div class="line">&#123;</div><div class="line">    Msg.Text = <span class="string">"請確認是否為機器人"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 建立一個HttpWebRequest網址指向Google的驗證API</span></div><div class="line">    <span class="keyword">var</span> req = (HttpWebRequest)HttpWebRequest.Create(<span class="string">"https://www.google.com/recaptcha/api/siteverify"</span>);</div><div class="line">    <span class="comment">// Post的資料</span></div><div class="line">    <span class="comment">// secret:secret_key</span></div><div class="line">    <span class="comment">// response:回傳的Token</span></div><div class="line">    <span class="comment">// remoteip:設定的Domain Name</span></div><div class="line">    <span class="keyword">string</span> posStr = <span class="string">"secret=自己的secret_key&amp;response="</span> + Request.Form[<span class="string">"captchaToken"</span>] + <span class="string">"&amp;remoteip="</span> + Request.Url.Host;</div><div class="line">    <span class="keyword">byte</span>[] byteStr = Encoding.UTF8.GetBytes(posStr);</div><div class="line">    req.Method = <span class="string">"POST"</span>;</div><div class="line">    req.ContentType = <span class="string">"application/x-www-form-urlencoded"</span>;</div><div class="line">    <span class="comment">// 把要Post資料寫進HttpWebRequest</span></div><div class="line">    <span class="keyword">using</span> (Stream streamArr = req.GetRequestStream())</div><div class="line">    &#123;</div><div class="line">        streamArr.Write(byteStr, <span class="number">0</span>, byteStr.Length);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 取得回傳資料</span></div><div class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> res = (HttpWebResponse)req.GetResponse())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">using</span> (StreamReader getJson = <span class="keyword">new</span> StreamReader(res.GetResponseStream()))</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">string</span> json = getJson.ReadToEnd();</div><div class="line">            Msg.Text = json;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我們用C#模擬HTML的form POST給google API認證，Msg物件則是是用來存放訊息用的，如果成功就會變跟下圖一樣<br><img src="4.JPG" alt="驗證成功圖"><br>如果錯誤的話success會是false。</p>
-<h1 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h1><p>reCAPTCHA申請完後再進去設定裡會多一個Advanced Settings，可以用來調整驗證通過的難度<br><img src="5.JPG" alt="驗證難度設定"></p>
+<p>我們用C#模擬HTML的form POST給google API認證，Msg物件則是是用來存放訊息用的，如果成功就會變跟下圖一樣<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="4.JPG" alt="驗證成功圖" title="">
+                </div>
+                <div class="image-caption">驗證成功圖</div>
+            </figure><br>如果錯誤的話success會是false。</p>
+<h1 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h1><p>reCAPTCHA申請完後再進去設定裡會多一個Advanced Settings，可以用來調整驗證通過的難度<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="5.JPG" alt="驗證難度設定" title="">
+                </div>
+                <div class="image-caption">驗證難度設定</div>
+            </figure></p>
 <h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>其實這個API算簡單才花1天就做好了，Google登入這個還比較難，官方文件寫得亂七八糟，還好這個寫得很清楚流程又簡單，就當是又學到一個好東西(完)。</p>
 ]]></content>
     
