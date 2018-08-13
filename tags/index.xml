@@ -111,6 +111,15 @@
     </item>
     
     <item>
+      <title>New</title>
+      <link>http://localhost:1313/tags/new/</link>
+      <pubDate>Thu, 13 Apr 2017 19:37:42 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/new/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ReCAPTCHA</title>
       <link>http://localhost:1313/tags/recaptcha/</link>
       <pubDate>Tue, 18 Apr 2017 20:34:16 +0000</pubDate>

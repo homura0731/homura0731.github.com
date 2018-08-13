@@ -73,6 +73,13 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/post/2017/04/new-blog/</loc>
+    <lastmod>2017-04-13T19:37:42+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/categories/asp.net/</loc>
     <lastmod>2017-04-18T20:34:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -194,6 +201,13 @@
   <url>
     <loc>http://localhost:1313/tags/javascript/</loc>
     <lastmod>2017-09-10T21:06:07+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/new/</loc>
+    <lastmod>2017-04-13T19:37:42+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

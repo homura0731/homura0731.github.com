@@ -101,5 +101,14 @@
       <description>前言 首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的 常用指令集 啟動伺服器 $ hexo server 建立新文章 $ hexo new &amp;quot</description>
     </item>
     
+    <item>
+      <title>Blog開張</title>
+      <link>http://localhost:1313/post/2017/04/new-blog/</link>
+      <pubDate>Thu, 13 Apr 2017 19:37:42 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/04/new-blog/</guid>
+      <description>紀念的第一篇的文章(完)</description>
+    </item>
+    
   </channel>
 </rss>
