@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homura&#39;s Blog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Homura&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Fri, 10 Aug 2018 21:52:23 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog更換成Hugo</title>
+      <link>http://localhost:1313/post/2018/08/move-to-hugo/</link>
+      <pubDate>Fri, 10 Aug 2018 21:52:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2018/08/move-to-hugo/</guid>
+      <description>換用Hugo的契機 最近看到微軟某位MVP把Blogger搬到Hugo上了，然後我去Google了一下跟Hexo的差別，發現幾乎都是說Hexo</description>
+    </item>
+    
+    <item>
+      <title>Vue.js - 表單驗證實作</title>
+      <link>http://localhost:1313/post/2017/09/vue-form-check/</link>
+      <pubDate>Sun, 10 Sep 2017 21:06:07 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/09/vue-form-check/</guid>
+      <description>前言 最近覺得Vue還蠻好玩的，剛好我需要挑一個前端框架來玩玩，所以就挑這個囉！ 實作說明 整體流程 我要用Vue來監控Form所有的值，使用Reg</description>
+    </item>
+    
+    <item>
+      <title>Entity Framawork - 實作資料分頁</title>
+      <link>http://localhost:1313/post/2017/06/entity-data-paging/</link>
+      <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/06/entity-data-paging/</guid>
+      <description>前言 其實資料分頁在.net已經有很多好用的套件或是現成物件可以用了，例如WebForm的GridView和MVC的PagedList.Mvc</description>
+    </item>
+    
+    <item>
+      <title>CSS - Animate.css 好用的CSS動畫函式庫</title>
+      <link>http://localhost:1313/post/2017/06/css-animate-css/</link>
+      <pubDate>Thu, 01 Jun 2017 21:37:20 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/06/css-animate-css/</guid>
+      <description>前言 今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework - 日期區間查詢使用字串日期</title>
+      <link>http://localhost:1313/post/2017/05/entity-database-string-date-select/</link>
+      <pubDate>Mon, 29 May 2017 21:13:33 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/05/entity-database-string-date-select/</guid>
+      <description>前言 其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetim</description>
+    </item>
+    
+    <item>
+      <title>Cordova - 環境安裝2 - Android篇</title>
+      <link>http://localhost:1313/post/2017/05/cordova-set_up-android/</link>
+      <pubDate>Mon, 08 May 2017 20:14:58 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/05/cordova-set_up-android/</guid>
+      <description>前言 繼上篇Cordova安裝之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的</description>
+    </item>
+    
+    <item>
+      <title>Cordova - 環境安裝</title>
+      <link>http://localhost:1313/post/2017/04/cordova-set_up/</link>
+      <pubDate>Sun, 23 Apr 2017 19:19:59 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/04/cordova-set_up/</guid>
+      <description>前言 什麼是Cordova? Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機Ap</description>
+    </item>
+    
+    <item>
+      <title>Google API - 圖形驗證reCAPTCHA使用C#</title>
+      <link>http://localhost:1313/post/2017/04/google-api-recaptcha-c_sharp/</link>
+      <pubDate>Tue, 18 Apr 2017 20:34:16 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/04/google-api-recaptcha-c_sharp/</guid>
+      <description>前言 由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新</description>
+    </item>
+    
+    <item>
+      <title>Hexo - 文章分類方法</title>
+      <link>http://localhost:1313/post/2017/04/hexo-folder-category/</link>
+      <pubDate>Sun, 16 Apr 2017 14:40:48 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/04/hexo-folder-category/</guid>
+      <description>前言 雖然Hexo這框架我才用幾天，但發現文章都集中在source/_post 底下 這樣文章只要一多起來一定很難管理，所以這篇就來記錄一下管理的</description>
+    </item>
+    
+    <item>
+      <title>Hexo - 指令和設定筆記</title>
+      <link>http://localhost:1313/post/2017/04/hexo-command-line-note/</link>
+      <pubDate>Sat, 15 Apr 2017 10:31:14 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/04/hexo-command-line-note/</guid>
+      <description>前言 首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的 常用指令集 啟動伺服器 $ hexo server 建立新文章 $ hexo new &amp;quot</description>
+    </item>
+    
+  </channel>
+</rss>

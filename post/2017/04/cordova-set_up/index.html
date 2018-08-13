@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cordova - 環境安裝 - Homura&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Homura Lin" />
+  <meta name="description" content="前言 什麼是Cordova? Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機Ap" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2017/04/cordova-set_up/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Cordova - 環境安裝" />
+<meta property="og:description" content="前言 什麼是Cordova? Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機Ap" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/2017/04/cordova-set_up/" />
+
+
+
+<meta property="article:published_time" content="2017-04-23T19:19:59&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-04-23T19:19:59&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Cordova - 環境安裝">
+<meta itemprop="description" content="前言 什麼是Cordova? Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機Ap">
+
+
+<meta itemprop="datePublished" content="2017-04-23T19:19:59&#43;00:00" />
+<meta itemprop="dateModified" content="2017-04-23T19:19:59&#43;00:00" />
+<meta itemprop="wordCount" content="931">
+
+
+
+<meta itemprop="keywords" content="Cordova,JavaScript," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cordova - 環境安裝"/>
+<meta name="twitter:description" content="前言 什麼是Cordova? Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機Ap"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Homura&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Homura&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cordova - 環境安裝</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-04-23 </span>
+        <div class="post-category">
+            
+              <a href="/categories/cordova/"> Cordova </a>
+            
+          </div>
+        <span class="more-meta"> 约 931 字 </span>
+        <span class="more-meta"> 預計閱讀 2 分鐘 </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目錄</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#前言">前言</a>
+<ul>
+<li><a href="#什麼是cordova">什麼是Cordova?</a></li>
+<li><a href="#cordova的演變">Cordova的演變</a></li>
+</ul></li>
+<li><a href="#實作">實作</a>
+<ul>
+<li><a href="#事前準備工具">事前準備工具</a></li>
+<li><a href="#安裝cordova">安裝Cordova</a></li>
+</ul></li>
+<li><a href="#後記">後記</a></li>
+<li><a href="#參考文獻">參考文獻</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="前言">前言</h1>
+
+<h2 id="什麼是cordova">什麼是Cordova?</h2>
+
+<p>Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。</p>
+
+<h2 id="cordova的演變">Cordova的演變</h2>
+
+<p>來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改名叫做Adobe PhoneGap，Adobe又把代碼捐給Apache基金會，但保留商標所有權，Apache這邊則是改叫另一個名稱叫Apache Cordova。
+基本上Adobe PhoneGap和Apache Cordova的基底都是Cordova，所以兩邊的寫的程式碼可以共通是沒問題，不過platform建議是用同一邊寫的，然後兩邊環境有什麼不同也大概說一下Adobe PhoneGap這邊是要付費的而且編譯器是在雲端上編輯，沒付費的話還是能用，只是線上的專案只能創建一個，可以拿到的軟體部分只有模擬器的部分，Apache Cordova這邊則是編譯和模擬器全都有，這邊以Apache Cordova為主。</p>
+
+<h1 id="實作">實作</h1>
+
+<h2 id="事前準備工具">事前準備工具</h2>
+
+<ul>
+<li><a href="https://nodejs.org/en/">Node.js</a></li>
+<li><a href="https://developer.android.com/studio/index.html">Android SDK</a></li>
+</ul>
+
+<h2 id="安裝cordova">安裝Cordova</h2>
+
+<p>首先開啟自己的cmd安裝，Mac OS可能會有權限問題 npm前面記得加sudo</p>
+
+<pre><code class="language-bash">$ npm install -g cordova
+</code></pre>
+
+<p>裝好之後就能使用以下指令創建專案了</p>
+
+<pre><code class="language-bash">$ cordova create 專案名稱
+</code></pre>
+
+<p>再來我們要幫專案加入使用平台，我們一般會先用瀏覽器看，所以我們先裝browser這個platform，還有不要忘記指向自己的專案資料夾底下</p>
+
+<pre><code class="language-bash">$ cordova platform add browser
+</code></pre>
+
+<p>然後就能用我們的瀏覽器來跑了</p>
+
+<pre><code class="language-bash">$ cordova run browser
+</code></pre>
+
+<p>執行成功會自動開啟瀏覽器，然後按F12開啟開發人員模式，切成手機模式瀏覽，如下圖
+<img src="1.jpg" alt="執行browser" /></p>
+
+<h1 id="後記">後記</h1>
+
+<p>其實Cordova這框架是老闆想寫App但是沒人會，所以找來老師上了幾堂簡單的App課程，當時教得是Adobe PhoneGap，其實不知道為什麼不是教Apache Cordva，這個能做的事情明明比較多，後來想想好像是因為Adobe PhoneGap有圖形介面，大概是考慮了這問題，反正就因為這樣就莫名其妙開始使用了這框架，編譯成Android之前會在另外寫一篇，就先這樣啦!</p>
+
+<h1 id="參考文獻">參考文獻</h1>
+
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/Adobe_PhoneGap">維基百科</a></li>
+<li><a href="http://phonegap.com/">Adobe PhoneGap官網</a></li>
+<li><a href="http://cordova.apache.org/">Apach Cordova官網</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Homura Lin</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-04-23</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/cordova/">Cordova</a>
+          
+          <a href="/tags/javascript/">JavaScript</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/2017/05/cordova-set_up-android/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cordova - 環境安裝2 - Android篇</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/2017/04/google-api-recaptcha-c_sharp/">
+            <span class="next-text nav-default">Google API - 圖形驗證reCAPTCHA使用C#</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'homura0731';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Homura Lin</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

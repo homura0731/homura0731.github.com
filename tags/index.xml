@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Homura&#39;s Blog</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Homura&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 01 Jun 2017 21:37:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Animate.css</title>
+      <link>http://localhost:1313/tags/animate.css/</link>
+      <pubDate>Thu, 01 Jun 2017 21:37:20 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/animate.css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>http://localhost:1313/tags/bash/</link>
+      <pubDate>Sat, 15 Apr 2017 10:31:14 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C#</title>
+      <link>http://localhost:1313/tags/c#/</link>
+      <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/c#/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSS</title>
+      <link>http://localhost:1313/tags/css/</link>
+      <pubDate>Thu, 01 Jun 2017 21:37:20 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cordova</title>
+      <link>http://localhost:1313/tags/cordova/</link>
+      <pubDate>Mon, 08 May 2017 20:14:58 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/cordova/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Entity</title>
+      <link>http://localhost:1313/tags/entity/</link>
+      <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/entity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Entity Framework</title>
+      <link>http://localhost:1313/tags/entity-framework/</link>
+      <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/entity-framework/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google-API</title>
+      <link>http://localhost:1313/tags/google-api/</link>
+      <pubDate>Tue, 18 Apr 2017 20:34:16 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/google-api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hexo</title>
+      <link>http://localhost:1313/tags/hexo/</link>
+      <pubDate>Sun, 16 Apr 2017 14:40:48 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>http://localhost:1313/tags/hugo/</link>
+      <pubDate>Fri, 10 Aug 2018 21:52:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>http://localhost:1313/tags/javascript/</link>
+      <pubDate>Sun, 10 Sep 2017 21:06:07 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ReCAPTCHA</title>
+      <link>http://localhost:1313/tags/recaptcha/</link>
+      <pubDate>Tue, 18 Apr 2017 20:34:16 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/recaptcha/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue.js</title>
+      <link>http://localhost:1313/tags/vue.js/</link>
+      <pubDate>Sun, 10 Sep 2017 21:06:07 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/vue.js/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

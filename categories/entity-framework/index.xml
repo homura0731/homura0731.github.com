@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Entity Framework on Homura&#39;s Blog</title>
+    <link>http://localhost:1313/categories/entity-framework/</link>
+    <description>Recent content in Entity Framework on Homura&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Sat, 10 Jun 2017 14:47:35 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/entity-framework/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Entity Framawork - 實作資料分頁</title>
+      <link>http://localhost:1313/post/2017/06/entity-data-paging/</link>
+      <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/06/entity-data-paging/</guid>
+      <description>前言 其實資料分頁在.net已經有很多好用的套件或是現成物件可以用了，例如WebForm的GridView和MVC的PagedList.Mvc</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework - 日期區間查詢使用字串日期</title>
+      <link>http://localhost:1313/post/2017/05/entity-database-string-date-select/</link>
+      <pubDate>Mon, 29 May 2017 21:13:33 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/05/entity-database-string-date-select/</guid>
+      <description>前言 其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetim</description>
+    </item>
+    
+  </channel>
+</rss>

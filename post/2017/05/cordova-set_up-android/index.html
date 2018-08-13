@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cordova - 環境安裝2 - Android篇 - Homura&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Homura Lin" />
+  <meta name="description" content="前言 繼上篇Cordova安裝之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2017/05/cordova-set_up-android/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Cordova - 環境安裝2 - Android篇" />
+<meta property="og:description" content="前言 繼上篇Cordova安裝之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/2017/05/cordova-set_up-android/" />
+
+
+
+<meta property="article:published_time" content="2017-05-08T20:14:58&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-05-08T20:14:58&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Cordova - 環境安裝2 - Android篇">
+<meta itemprop="description" content="前言 繼上篇Cordova安裝之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的">
+
+
+<meta itemprop="datePublished" content="2017-05-08T20:14:58&#43;00:00" />
+<meta itemprop="dateModified" content="2017-05-08T20:14:58&#43;00:00" />
+<meta itemprop="wordCount" content="1028">
+
+
+
+<meta itemprop="keywords" content="Cordova,JavaScript," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cordova - 環境安裝2 - Android篇"/>
+<meta name="twitter:description" content="前言 繼上篇Cordova安裝之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Homura&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Homura&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cordova - 環境安裝2 - Android篇</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-05-08 </span>
+        <div class="post-category">
+            
+              <a href="/categories/cordova/"> Cordova </a>
+            
+          </div>
+        <span class="more-meta"> 约 1028 字 </span>
+        <span class="more-meta"> 預計閱讀 3 分鐘 </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目錄</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#實作">實作</a>
+<ul>
+<li><a href="#幫專案添加android-platform">幫專案添加android platform</a></li>
+<li><a href="#使用android-模擬器模擬">使用android 模擬器模擬</a></li>
+<li><a href="#設置android-home和android的path">設置Android_Home和Android的path</a></li>
+<li><a href="#添加licenses">添加licenses</a></li>
+<li><a href="#打開sdk資料夾權限">打開sdk資料夾權限</a></li>
+<li><a href="#執行及編譯成apk">執行及編譯成apk</a></li>
+</ul></li>
+<li><a href="#後記">後記</a></li>
+<li><a href="#參考文獻">參考文獻</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="前言">前言</h1>
+
+<p>繼上篇<a href="https://homura0731.github.io/2017/04/Cordova-Set_up/">Cordova安裝</a>之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的編譯器之前，都是用Adobe Phonegap的線上編譯器，其實用久真的不是很好用，還是能在自己的PC編譯比較好，那就廢話不多說進入實作吧。</p>
+
+<h1 id="實作">實作</h1>
+
+<h2 id="幫專案添加android-platform">幫專案添加android platform</h2>
+
+<p>使用以下指令</p>
+
+<pre><code class="language-bash">$ cordova platform add android
+</code></pre>
+
+<p><img src="1.png" alt="添加android platform" />
+成功的話專案下的platforms資料夾底下會多出一個android資料夾
+<img src="2.png" alt="添加android platform 成功" /></p>
+
+<h2 id="使用android-模擬器模擬">使用android 模擬器模擬</h2>
+
+<p>使用以下指令</p>
+
+<pre><code class="language-bash">$ cordova run android
+</code></pre>
+
+<p>然後應該會看到以下錯誤訊息，因為還沒設置android sdk的path
+<img src="3.png" alt="執行android模擬器失敗" /></p>
+
+<h2 id="設置android-home和android的path">設置Android_Home和Android的path</h2>
+
+<p>對我的電腦右鍵內容-&gt;進階系統設定-&gt;進階-&gt;環境變數
+環境變數在windows上分2種一種是指對使用者(上面)，一種是對全部使用者(下面)，這邊編輯使用者就好了!
+<img src="4.png" alt="path設定1" />
+然後找出自己sdk的安裝位置，然後新增的2個值，指向platform-tools和tools這2個位置，如果是win7的話記得都要在後面加上;，我這邊是win10比較高級有UI可以用..
+<img src="5.png" alt="path設定2" />
+再新增一個ANDROID_HOME變數指向android-sdk根目錄
+<img src="6.png" alt="path設定2" /></p>
+
+<p>設置完成後記得關掉命令提示字元(終端機)，因為他不會自己重讀path一定要重開，我第一次就笨笨的設好了為啥還抓不到&hellip;
+然後在執行一次剛剛的指令</p>
+
+<pre><code class="language-bash">$ cordova run android
+</code></pre>
+
+<p>應該會有抓不完jdk，然後又丟新錯誤給我
+<img src="7.png" alt="path設定3" /></p>
+
+<h2 id="添加licenses">添加licenses</h2>
+
+<p>這步我記得在win7是沒這問題，不知道是不是新版sdk有什麼問題，google了一下用這2行指令解決</p>
+
+<pre><code class="language-bash">$ mkdir &quot;%ANDROID_HOME%\licenses&quot;
+$ echo |set /p=&quot;8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;%ANDROID_HOME%\licenses\android-sdk-license&quot;
+</code></pre>
+
+<p>然後正常來說應該就行了，但是win10很討厭把資料夾的權限鎖住了，造成以下錯誤訊息
+<img src="8.png" alt="系統權限" /></p>
+
+<h2 id="打開sdk資料夾權限">打開sdk資料夾權限</h2>
+
+<p>這邊先用系統管理員權限打開cmd，然後指向android-sdk根目錄，輸入以下指令</p>
+
+<pre><code class="language-bash">$ chmod 777 Android
+</code></pre>
+
+<p>輸入完後就能修改資料夾權限了</p>
+
+<h2 id="執行及編譯成apk">執行及編譯成apk</h2>
+
+<p>到這步我是沒問題了，如果還有問題可能是sdk的platform設定有問題，個人公司的win7碰到的，有問題去目錄底下的AVD Manager.exe設定一下目標平台
+然後再執行一次</p>
+
+<pre><code class="language-bash">$ cordova run android
+</code></pre>
+
+<p>成功後如下圖結果
+<img src="9.png" alt="模擬成功" />
+然後編譯apk指令</p>
+
+<pre><code class="language-bash">$ cordova build android
+</code></pre>
+
+<p>編譯後可以再專案目錄底下找到apk
+<img src="10.png" alt="apk編譯" /></p>
+
+<h1 id="後記">後記</h1>
+
+<p>其實工作時我並沒有成功過使用模擬器，只有編譯成apk，工作的電腦好像沒有Hype-V的功能連模擬器都不能用，在家用win10果然可以用，搞了好久終於設定完成!(累癱)</p>
+
+<h1 id="參考文獻">參考文獻</h1>
+
+<ul>
+<li><a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html">Apach Cordova官網文件</a></li>
+<li><a href="http://stackoverflow.com/questions/40383323/cant-accept-license-agreement-android-sdk-platform-24">stackoverflow</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Homura Lin</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-05-08</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/cordova/">Cordova</a>
+          
+          <a href="/tags/javascript/">JavaScript</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/2017/05/entity-database-string-date-select/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Entity Framework - 日期區間查詢使用字串日期</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/2017/04/cordova-set_up/">
+            <span class="next-text nav-default">Cordova - 環境安裝</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'homura0731';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Homura Lin</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

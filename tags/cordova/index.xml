@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cordova on Homura&#39;s Blog</title>
+    <link>http://localhost:1313/tags/cordova/</link>
+    <description>Recent content in Cordova on Homura&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Mon, 08 May 2017 20:14:58 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/cordova/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cordova - 環境安裝2 - Android篇</title>
+      <link>http://localhost:1313/post/2017/05/cordova-set_up-android/</link>
+      <pubDate>Mon, 08 May 2017 20:14:58 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/05/cordova-set_up-android/</guid>
+      <description>前言 繼上篇Cordova安裝之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的</description>
+    </item>
+    
+    <item>
+      <title>Cordova - 環境安裝</title>
+      <link>http://localhost:1313/post/2017/04/cordova-set_up/</link>
+      <pubDate>Sun, 23 Apr 2017 19:19:59 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/04/cordova-set_up/</guid>
+      <description>前言 什麼是Cordova? Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機Ap</description>
+    </item>
+    
+  </channel>
+</rss>

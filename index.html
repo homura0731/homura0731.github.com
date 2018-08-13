@@ -1,760 +1,456 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-tw">
 <head>
-    
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Homura&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-    
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Homura Lin" />
+  <meta name="description" content="Hugo theme even example site." />
+  <meta name="keywords" content="Hugo, theme, even" />
 
 
 
-    <meta charset="utf-8">
-    
-    
-    
-    <title>Homura&#39;s Blog | 這邊紀錄平常Coding的心得</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="undefined">
-    <meta name="google-site-verification" content="IS8PZiCNvYqouPO8vCB_i4giUUllqRseOoU2S7vXTfM" />
-    <meta name="description" content="平常都在打電動，偶爾心血來潮才會Coding">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Homura&#39;s Blog">
-<meta property="og:url" content="https://homura0731.github.io/index.html">
-<meta property="og:site_name" content="Homura&#39;s Blog">
-<meta property="og:description" content="平常都在打電動，偶爾心血來潮才會Coding">
-<meta property="og:locale" content="zh-tw">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Homura&#39;s Blog">
-<meta name="twitter:description" content="平常都在打電動，偶爾心血來潮才會Coding">
-    
-        <link rel="alternate" type="application/atom+xml" title="Homura&#39;s Blog" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="http://localhost:1313/" />
+<link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="Homura&#39;s Blog" />
+  <link href="http://localhost:1313/index.xml" rel="feed" type="application/rss+xml" title="Homura&#39;s Blog" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Homura&#39;s Blog" />
+<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/" />
+
+
+
+<meta property="og:updated_time" content="2018-08-10T21:52:23&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Homura&#39;s Blog">
+<meta itemprop="description" content="Hugo theme even example site.">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Homura&#39;s Blog"/>
+<meta name="twitter:description" content="Hugo theme even example site."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
 </head>
-
 <body>
-    <div id="loading" class="active"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Homura&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Homura&#39;s Blog</a>
+</div>
 
-    <aside id="menu"  >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/uploads/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Homura Lin</h5>
-          <a href="mailto:a4352690@gmail.com" title="a4352690@gmail.com" class="mail">a4352690@gmail.com</a>
-        </hgroup>
-      </div>
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          
+  <section id="posts" class="posts">
+    
+    
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2018/08/move-to-hugo/">Blog更換成Hugo</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-08-10 </span>
+      
+      <span class="more-meta"> 约 213 字 </span>
+      <span class="more-meta"> 預計閱讀 1 分鐘 </span>
     </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect active">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                首頁
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                歸檔
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                標籤
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                分類
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/homura0731" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/atom.xml" target="_blank" >
-                <i class="icon icon-lg icon-rss"></i>
-                RSS
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://www.facebook.com/kunhan1" target="_blank" >
-                <i class="icon icon-lg icon-facebook"></i>
-                Facebook
-              </a>
-            </li>
-        
-      </ul>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      換用Hugo的契機 最近看到微軟某位MVP把Blogger搬到Hugo上了，然後我去Google了一下跟Hexo的差別，發現幾乎都是說Hexo
+    </div>
+    <div class="read-more">
+      <a href="/post/2018/08/move-to-hugo/" class="read-more-link">閱讀更多</a>
     </div>
   </div>
-</aside>
+</article>
 
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Homura&#39;s Blog</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2017/09/vue-form-check/">Vue.js - 表單驗證實作</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-09-10 </span>
+      <div class="post-category">
+          
+            <a href="/categories/vue.js/"> Vue.js </a>
+          
+        </div>
+      <span class="more-meta"> 约 1095 字 </span>
+      <span class="more-meta"> 預計閱讀 3 分鐘 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 最近覺得Vue還蠻好玩的，剛好我需要挑一個前端框架來玩玩，所以就挑這個囉！ 實作說明 整體流程 我要用Vue來監控Form所有的值，使用Reg
+    </div>
+    <div class="read-more">
+      <a href="/post/2017/09/vue-form-check/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2017/06/entity-data-paging/">Entity Framawork - 實作資料分頁</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-06-10 </span>
+      <div class="post-category">
+          
+            <a href="/categories/entity-framework/"> Entity Framework </a>
+          
+        </div>
+      <span class="more-meta"> 约 594 字 </span>
+      <span class="more-meta"> 預計閱讀 2 分鐘 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 其實資料分頁在.net已經有很多好用的套件或是現成物件可以用了，例如WebForm的GridView和MVC的PagedList.Mvc
+    </div>
+    <div class="read-more">
+      <a href="/post/2017/06/entity-data-paging/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2017/06/css-animate-css/">CSS - Animate.css 好用的CSS動畫函式庫</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-06-01 </span>
+      <div class="post-category">
+          
+            <a href="/categories/css/"> CSS </a>
+          
+        </div>
+      <span class="more-meta"> 约 441 字 </span>
+      <span class="more-meta"> 預計閱讀 1 分鐘 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回
+    </div>
+    <div class="read-more">
+      <a href="/post/2017/06/css-animate-css/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2017/05/entity-database-string-date-select/">Entity Framework - 日期區間查詢使用字串日期</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-05-29 </span>
+      <div class="post-category">
+          
+            <a href="/categories/entity-framework/"> Entity Framework </a>
+          
+        </div>
+      <span class="more-meta"> 约 542 字 </span>
+      <span class="more-meta"> 預計閱讀 2 分鐘 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetim
+    </div>
+    <div class="read-more">
+      <a href="/post/2017/05/entity-database-string-date-select/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2017/05/cordova-set_up-android/">Cordova - 環境安裝2 - Android篇</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-05-08 </span>
+      <div class="post-category">
+          
+            <a href="/categories/cordova/"> Cordova </a>
+          
+        </div>
+      <span class="more-meta"> 约 1028 字 </span>
+      <span class="more-meta"> 預計閱讀 3 分鐘 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 繼上篇Cordova安裝之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的
+    </div>
+    <div class="read-more">
+      <a href="/post/2017/05/cordova-set_up-android/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2017/04/cordova-set_up/">Cordova - 環境安裝</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-04-23 </span>
+      <div class="post-category">
+          
+            <a href="/categories/cordova/"> Cordova </a>
+          
+        </div>
+      <span class="more-meta"> 约 931 字 </span>
+      <span class="more-meta"> 預計閱讀 2 分鐘 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 什麼是Cordova? Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機Ap
+    </div>
+    <div class="read-more">
+      <a href="/post/2017/04/cordova-set_up/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2017/04/google-api-recaptcha-c_sharp/">Google API - 圖形驗證reCAPTCHA使用C#</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-04-18 </span>
+      <div class="post-category">
+          
+            <a href="/categories/asp.net/"> ASP.NET </a>
+          
+        </div>
+      <span class="more-meta"> 约 1177 字 </span>
+      <span class="more-meta"> 預計閱讀 3 分鐘 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新
+    </div>
+    <div class="read-more">
+      <a href="/post/2017/04/google-api-recaptcha-c_sharp/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2017/04/hexo-folder-category/">Hexo - 文章分類方法</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-04-16 </span>
+      <div class="post-category">
+          
+            <a href="/categories/hexo/"> Hexo </a>
+          
+        </div>
+      <span class="more-meta"> 约 276 字 </span>
+      <span class="more-meta"> 預計閱讀 1 分鐘 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 雖然Hexo這框架我才用幾天，但發現文章都集中在source/_post 底下 這樣文章只要一多起來一定很難管理，所以這篇就來記錄一下管理的
+    </div>
+    <div class="read-more">
+      <a href="/post/2017/04/hexo-folder-category/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2017/04/hexo-command-line-note/">Hexo - 指令和設定筆記</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-04-15 </span>
+      <div class="post-category">
+          
+            <a href="/categories/hexo/"> Hexo </a>
+          
+        </div>
+      <span class="more-meta"> 约 402 字 </span>
+      <span class="more-meta"> 預計閱讀 1 分鐘 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的 常用指令集 啟動伺服器 $ hexo server 建立新文章 $ hexo new &quot
+    </div>
+    <div class="read-more">
+      <a href="/post/2017/04/hexo-command-line-note/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+  </section>
+  
+  <nav class="pagination">
+    
+    
+  </nav>
+
         </div>
         
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header index-header">
 
-    <div class="container fade-scale">
-        <h1 class="title">Homura&#39;s Blog</h1>
-        <h5 class="subtitle">
-            
-                這邊紀錄平常Coding的心得
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-<div class="container body-wrap">
-
-    <ul class="post-list">
-    
-        <li class="post-list-item fade">
-            <article id="post-vue-form-check"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-09-10 21:06:07" datetime="2017-09-10T13:06:07.000Z"  itemprop="datePublished">2017-09-10</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Vue-js/">Vue.js</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/09/vue-form-check/">Vue.js - 表單驗證實作</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前言最近覺得Vue還蠻好玩的，剛好我需要挑一個前端框架來玩玩，所以就挑這個囉！
-實作說明整體流程我要用Vue來監控Form所有的值，使用Regular Expression(正規表達式)來驗證是否錯誤，錯誤提示的部分使用Bootstrap 4
-簡單範例HTML部分建立一個input數值使用v-model綁在data上，v-bind:class則是顯示錯誤的開關在建立一個invalid-fee...
-    
-
-        <a href="/2017/09/vue-form-check/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Entity-Data-Paging"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-06-10 14:47:35" datetime="2017-06-10T06:47:35.000Z"  itemprop="datePublished">2017-06-10</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Entity-Framework/">Entity Framework</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/06/Entity-Data-Paging/">Entity Framawork - 實作資料分頁</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前言其實資料分頁在.net已經有很多好用的套件或是現成物件可以用了，例如WebForm的GridView和MVC的PagedList.Mvc，但是以前我還在寫PHP的時候，其實這些東西完全不需要使用這些東西，只要sql語法就能做到，所以這篇我寫紀錄一下不依賴這些東西就能完成的方法。
-資料分頁在 PHP 的作法有使用過PHP的工程師應該都是到MySQL可以使用Limit的方式來限制出現的資料數...
-    
-
-        <a href="/2017/06/Entity-Data-Paging/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Entity/">Entity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Css-Animate-Css"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-06-01 21:37:20" datetime="2017-06-01T13:37:20.000Z"  itemprop="datePublished">2017-06-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CSS/">CSS</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/06/Css-Animate-Css/">CSS - Animate.css 好用的CSS動畫函式庫</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前言今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回家後馬上抓來玩玩看效果還不錯，在這邊紀錄一下筆記。
-使用方法先去官網取的Animate.css這隻檔案然後引入自己的網頁裡1&lt;link href="animate.css" rel="stylesheet" type="text/css"&g...
-    
-
-        <a href="/2017/06/Css-Animate-Css/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Animate-css/">Animate.css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Entity-DataBase-String-Date-select"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-05-29 21:13:33" datetime="2017-05-29T13:13:33.000Z"  itemprop="datePublished">2017-05-29</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Entity-Framework/">Entity Framework</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/05/Entity-DataBase-String-Date-select/">Entity Framework - 日期區間查詢使用字串日期</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前言其實這應該是使用SQL跳到Entity Framework(以下簡稱EF)的一種不適應，但是如果是新設計的資料庫應該都會使用datetime型態當日期的儲存格式，可是公司的舊的設計方式已經丟出去給客戶上線了，大家應該都知道以前很多人都是使用String型態來儲存日期，但是一到EF這種物件導向式的用法上就出問題了，所以這篇就是紀錄一下我查到的方法。
-SQL查詢先做一個假資料如下圖
-    ...
-    
-
-        <a href="/2017/05/Entity-DataBase-String-Date-select/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Entity/">Entity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Cordova-Set_up-Android"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-05-08 20:14:58" datetime="2017-05-08T12:14:58.000Z"  itemprop="datePublished">2017-05-08</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Cordova/">Cordova</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/05/Cordova-Set_up-Android/">Cordova - 環境安裝2 - Android篇</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前言繼上篇Cordova安裝之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的編譯器之前，都是用Adobe Phonegap的線上編譯器，其實用久真的不是很好用，還是能在自己的PC編譯比較好，那就廢話不多說進入實作吧。
-實作幫專案添加android platform使用以下指令1$ cordova platform add an...
-    
-
-        <a href="/2017/05/Cordova-Set_up-Android/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cordova/">Cordova</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Cordova-Set_up"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-23 19:19:59" datetime="2017-04-23T11:19:59.000Z"  itemprop="datePublished">2017-04-23</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Cordova/">Cordova</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/Cordova-Set_up/">Cordova - 環境安裝</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前言什麼是Cordova?Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。
-Cordova的演變來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改...
-    
-
-        <a href="/2017/04/Cordova-Set_up/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cordova/">Cordova</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Google-Api-reCAPTCHA-C_sharp"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-18 20:34:16" datetime="2017-04-18T12:34:16.000Z"  itemprop="datePublished">2017-04-18</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ASP-NET/">ASP.NET</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/Google-Api-reCAPTCHA-C_sharp/">Google API - 圖形驗證reCAPTCHA使用C#</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前言由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧!
-開始實作reCAPTCHA註冊首先要去官方註冊 註冊連結...
-    
-
-        <a href="/2017/04/Google-Api-reCAPTCHA-C_sharp/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Google-API/">Google-API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reCAPTCHA/">reCAPTCHA</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Hexo-folder-category"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-16 14:40:48" datetime="2017-04-16T06:40:48.000Z"  itemprop="datePublished">2017-04-16</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/Hexo-folder-category/">Hexo - 文章分類方法</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前言雖然Hexo這框架我才用幾天，但發現文章都集中在source/_post 底下這樣文章只要一多起來一定很難管理，所以這篇就來記錄一下管理的方法
-管理方法官方文件的做法官方建議在產生文章加上日期在.md檔案名稱上去_config.yml底下修改new_post_name設定1new_post_name: :year-:month-:day-:title.md
-個人做法官方那樣做確實比較好管...
-    
-
-        <a href="/2017/04/Hexo-folder-category/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Hexo-Command-Line-Note"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-15 10:31:14" datetime="2017-04-15T02:31:14.000Z"  itemprop="datePublished">2017-04-15</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/Hexo-Command-Line-Note/">Hexo - 指令和設定筆記</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前言首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的
-常用指令集啟動伺服器1$ hexo server
-建立新文章1$ hexo new "文章名"
-產生後並佈署到github(第一次用時一直只有產生，結果因為檔案沒更新一直傳不上去..)1$ hexo deploy --generate
-hexo套件安裝(例如我的themes需要hexo-until)1$...
-    
-
-        <a href="/2017/04/Hexo-Command-Line-Note/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/">bash</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-New-Blog"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-13 19:37:42" datetime="2017-04-13T11:37:42.000Z"  itemprop="datePublished">2017-04-13</time>
-
-        
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/New-Blog/">Blog開張</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        紀念的第一篇的文章(完)
-
-    
-
-        <a href="/2017/04/New-Blog/" class="post-more waves-effect waves-button">
-            閱讀全文
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-    </ul>
-
-    
-
-</div>
-
-        <footer class="footer">
-    <div class="bottom">
-        <p>
-            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
-            <span>Homura Lin &copy; 2017</span>
-        </p>
-    </div>
-</footer>
-
+      </div>
     </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://homura0731.github.io/&title=Homura's Blog&pic=https://homura0731.github.io/uploads/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://homura0731.github.io/&title=Homura's Blog&source=平常都在打電動，偶爾心血來潮才會Coding" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://homura0731.github.io/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Homura's Blog&url=https://homura0731.github.io/&via=https://homura0731.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://homura0731.github.io/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://homura0731.github.io/" alt="微信分享二维码">
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
 
+  
 
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
-
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Homura Lin</span>
+  </span>
 </div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
+    </footer>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
 
 
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
 
 
 

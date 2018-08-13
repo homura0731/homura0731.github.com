@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vue.js on Homura&#39;s Blog</title>
+    <link>http://localhost:1313/categories/vue.js/</link>
+    <description>Recent content in Vue.js on Homura&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Sun, 10 Sep 2017 21:06:07 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/vue.js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vue.js - 表單驗證實作</title>
+      <link>http://localhost:1313/post/2017/09/vue-form-check/</link>
+      <pubDate>Sun, 10 Sep 2017 21:06:07 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2017/09/vue-form-check/</guid>
+      <description>前言 最近覺得Vue還蠻好玩的，剛好我需要挑一個前端框架來玩玩，所以就挑這個囉！ 實作說明 整體流程 我要用Vue來監控Form所有的值，使用Reg</description>
+    </item>
+    
+  </channel>
+</rss>

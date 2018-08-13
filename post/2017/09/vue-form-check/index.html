@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Vue.js - 表單驗證實作 - Homura&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Homura Lin" />
+  <meta name="description" content="前言 最近覺得Vue還蠻好玩的，剛好我需要挑一個前端框架來玩玩，所以就挑這個囉！ 實作說明 整體流程 我要用Vue來監控Form所有的值，使用Reg" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2017/09/vue-form-check/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Vue.js - 表單驗證實作" />
+<meta property="og:description" content="前言 最近覺得Vue還蠻好玩的，剛好我需要挑一個前端框架來玩玩，所以就挑這個囉！ 實作說明 整體流程 我要用Vue來監控Form所有的值，使用Reg" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/2017/09/vue-form-check/" />
+
+
+
+<meta property="article:published_time" content="2017-09-10T21:06:07&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-09-10T21:06:07&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Vue.js - 表單驗證實作">
+<meta itemprop="description" content="前言 最近覺得Vue還蠻好玩的，剛好我需要挑一個前端框架來玩玩，所以就挑這個囉！ 實作說明 整體流程 我要用Vue來監控Form所有的值，使用Reg">
+
+
+<meta itemprop="datePublished" content="2017-09-10T21:06:07&#43;00:00" />
+<meta itemprop="dateModified" content="2017-09-10T21:06:07&#43;00:00" />
+<meta itemprop="wordCount" content="1095">
+
+
+
+<meta itemprop="keywords" content="JavaScript,Vue.js," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vue.js - 表單驗證實作"/>
+<meta name="twitter:description" content="前言 最近覺得Vue還蠻好玩的，剛好我需要挑一個前端框架來玩玩，所以就挑這個囉！ 實作說明 整體流程 我要用Vue來監控Form所有的值，使用Reg"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Homura&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Homura&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Vue.js - 表單驗證實作</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-09-10 </span>
+        <div class="post-category">
+            
+              <a href="/categories/vue.js/"> Vue.js </a>
+            
+          </div>
+        <span class="more-meta"> 约 1095 字 </span>
+        <span class="more-meta"> 預計閱讀 3 分鐘 </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目錄</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#實作說明">實作說明</a>
+<ul>
+<li><a href="#整體流程">整體流程</a></li>
+<li><a href="#簡單範例">簡單範例</a></li>
+</ul></li>
+<li><a href="#完整實作範例">完整實作範例</a></li>
+<li><a href="#後記">後記</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="前言">前言</h1>
+
+<p>最近覺得Vue還蠻好玩的，剛好我需要挑一個前端框架來玩玩，所以就挑這個囉！</p>
+
+<h1 id="實作說明">實作說明</h1>
+
+<h2 id="整體流程">整體流程</h2>
+
+<p>我要用Vue來監控Form所有的值，使用Regular Expression(正規表達式)來驗證是否錯誤，錯誤提示的部分使用Bootstrap 4</p>
+
+<h2 id="簡單範例">簡單範例</h2>
+
+<p>HTML部分建立一個input
+數值使用v-model綁在data上，v-bind:class則是顯示錯誤的開關
+在建立一個invalid-feedback的div，裡面用來放錯誤訊息</p>
+
+<pre><code class="language-html">&lt;label for=&quot;username&quot;&gt;帳號&lt;/label&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;username&quot; v-bind:class=&quot;{ 'is-invalid': usernameError }&quot; v-model=&quot;username&quot;
+    placeholder=&quot;Username&quot;&gt;(最多10個字)
+&lt;div class=&quot;invalid-feedback&quot;&gt;
+    {{ userErrMsg }}
+&lt;/div&gt;
+</code></pre>
+
+<p>Vue部分
+創建3個Data
+username用來繫結輸入的值、usernameError用來控制是否錯誤、userErrMsg用來控制錯誤訊息
+使用Vue的watch事件用正規表達式檢查是否錯誤</p>
+
+<pre><code class="language-js">var app = new Vue({
+    el: '#app',
+    data: {
+        username: '',
+        usernameError: false,
+        userErrMsg: ''
+    },
+    watch: {
+        username: function () {
+            var isText = /^[a-zA-Z0-9]+$/;
+            if (!isText.test(this.username)) {
+                this.usernameError = true;
+                this.userErrMsg = '請勿包含特殊字元';
+            }
+            else if (this.username.length &gt; 10) {
+                this.usernameError = true;
+                this.userErrMsg = '請勿超過10個字';
+            }
+            else {
+                this.usernameError = false;
+            }
+        }
+    }
+});
+</code></pre>
+
+<h1 id="完整實作範例">完整實作範例</h1>
+
+<p>HTML部分</p>
+
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;username&quot;&gt;帳號&lt;/label&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;username&quot; v-bind:class=&quot;{ 'is-invalid': usernameError }&quot; v-model=&quot;username&quot;
+                placeholder=&quot;Username&quot;&gt;(最多10個字)
+            &lt;div class=&quot;invalid-feedback&quot;&gt;
+                {{ userErrMsg }}
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;&quot;&gt;密碼&lt;/label&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;password&quot; v-bind:class=&quot;{ 'is-invalid': passwordError }&quot; v-model=&quot;password&quot;
+                placeholder=&quot;Password&quot;&gt;(至少6位，小於15位，必須包含大小寫和數字)
+            &lt;div class=&quot;invalid-feedback&quot;&gt;
+                {{ passErrMsg }}
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;&quot;&gt;E-Mail&lt;/label&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;email&quot; v-bind:class=&quot;{ 'is-invalid': emailError }&quot; v-model=&quot;email&quot; placeholder=&quot;Email&quot;&gt;
+            &lt;div class=&quot;invalid-feedback&quot;&gt;
+                {{ emailErrMsg }}
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>JS部分</p>
+
+<pre><code class="language-js">var app = new Vue({
+    el: '#app',
+    data: {
+        username: '',
+        usernameError: false,
+        userErrMsg: '',
+        password: '',
+        passwordError: false,
+        passErrMsg: '',
+        email: '',
+        emailError: false,
+        emailErrMsg: ''
+    },
+    watch: {
+        username: function () {
+            var isText = /^[a-zA-Z0-9]+$/;
+            if (!isText.test(this.username)) {
+                this.usernameError = true;
+                this.userErrMsg = '請勿包含特殊字元';
+            }
+            else if (this.username.length &gt; 10) {
+                this.usernameError = true;
+                this.userErrMsg = '請勿超過10個字';
+            }
+            else {
+                this.usernameError = false;
+            }
+        },
+        password: function () {
+            var isText = /^[a-zA-Z0-9]+$/;
+            var inclde = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
+
+            if (!isText.test(this.password)) {
+                this.passwordError = true;
+                this.passErrMsg = '請勿包含特殊字元';
+            }
+            else if (this.password.length &lt; 6) {
+                this.passwordError = true;
+                this.passErrMsg = '請勿少於6個字';
+            }
+            else if (this.password.length &gt; 15) {
+                this.passwordError = true;
+                this.passErrMsg = '請勿超過15個字';
+            }
+            else if (!include.test(this.password)) {
+                this.passwordError = true;
+                this.passErrMsg = '至少包括一個大小寫字母或數字';
+            }
+            else {
+                this.passwordError = false;
+            }
+        },
+        email: function () {
+            var isMail = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            if (!isMail.test(this.email)) {
+                this.emailError = true;
+                this.emailErrMsg = 'email格式錯誤';
+            }
+            else {
+                this.emailError = false;
+            }
+        }
+    }
+});
+
+</code></pre>
+
+<h1 id="後記">後記</h1>
+
+<p>表單驗證使用Vue.js之後做起來方便多了，驗證的非常及時，跟Bootstrap搭配起來也非常方便，只要監控的數值改變，Vue.js便會重新渲染，相較自己寫JS按下Submit才檢查來得更即時。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Homura Lin</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-09-10</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/javascript/">JavaScript</a>
+          
+          <a href="/tags/vue.js/">Vue.js</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/2018/08/move-to-hugo/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Blog更換成Hugo</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/2017/06/entity-data-paging/">
+            <span class="next-text nav-default">Entity Framawork - 實作資料分頁</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'homura0731';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Homura Lin</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

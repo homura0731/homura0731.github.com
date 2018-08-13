@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Homura&#39;s Blog</title>
+    <link>http://localhost:1313/tags/hugo/</link>
+    <description>Recent content in Hugo on Homura&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Fri, 10 Aug 2018 21:52:23 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog更換成Hugo</title>
+      <link>http://localhost:1313/post/2018/08/move-to-hugo/</link>
+      <pubDate>Fri, 10 Aug 2018 21:52:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2018/08/move-to-hugo/</guid>
+      <description>換用Hugo的契機 最近看到微軟某位MVP把Blogger搬到Hugo上了，然後我去Google了一下跟Hexo的差別，發現幾乎都是說Hexo</description>
+    </item>
+    
+  </channel>
+</rss>

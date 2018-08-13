@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Homura&#39;s Blog</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on Homura&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Tue, 18 Apr 2017 20:34:16 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ASP.NET</title>
+      <link>http://localhost:1313/categories/asp.net/</link>
+      <pubDate>Tue, 18 Apr 2017 20:34:16 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/asp.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSS</title>
+      <link>http://localhost:1313/categories/css/</link>
+      <pubDate>Thu, 01 Jun 2017 21:37:20 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cordova</title>
+      <link>http://localhost:1313/categories/cordova/</link>
+      <pubDate>Mon, 08 May 2017 20:14:58 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/cordova/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Entity Framework</title>
+      <link>http://localhost:1313/categories/entity-framework/</link>
+      <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/entity-framework/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hexo</title>
+      <link>http://localhost:1313/categories/hexo/</link>
+      <pubDate>Sun, 16 Apr 2017 14:40:48 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue.js</title>
+      <link>http://localhost:1313/categories/vue.js/</link>
+      <pubDate>Sun, 10 Sep 2017 21:06:07 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/vue.js/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

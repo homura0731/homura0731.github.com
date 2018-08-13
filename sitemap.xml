@@ -1,88 +1,236 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="http://localhost:1313/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://homura0731.github.io/2017/09/vue-form-check/</loc>
-    
-    <lastmod>2017-09-10T14:06:57.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2018/08/move-to-hugo/</loc>
+    <lastmod>2018-08-10T21:52:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/2017/06/Css-Animate-Css/</loc>
-    
-    <lastmod>2017-06-18T13:59:02.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2017/09/vue-form-check/</loc>
+    <lastmod>2017-09-10T21:06:07+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/index.html</loc>
-    
-    <lastmod>2017-06-18T13:02:12.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2017/06/entity-data-paging/</loc>
+    <lastmod>2017-06-10T14:47:35+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/categories/index.html</loc>
-    
-    <lastmod>2017-06-18T13:02:10.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2017/06/css-animate-css/</loc>
+    <lastmod>2017-06-01T21:37:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/2017/06/Entity-Data-Paging/</loc>
-    
-    <lastmod>2017-06-10T17:26:22.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2017/05/entity-database-string-date-select/</loc>
+    <lastmod>2017-05-29T21:13:33+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/2017/04/Cordova-Set_up/</loc>
-    
-    <lastmod>2017-06-10T17:21:38.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2017/05/cordova-set_up-android/</loc>
+    <lastmod>2017-05-08T20:14:58+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/2017/05/Cordova-Set_up-Android/</loc>
-    
-    <lastmod>2017-06-10T17:21:34.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2017/04/cordova-set_up/</loc>
+    <lastmod>2017-04-23T19:19:59+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/2017/04/Google-Api-reCAPTCHA-C_sharp/</loc>
-    
-    <lastmod>2017-06-10T17:21:16.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2017/04/google-api-recaptcha-c_sharp/</loc>
+    <lastmod>2017-04-18T20:34:16+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/2017/05/Entity-DataBase-String-Date-select/</loc>
-    
-    <lastmod>2017-06-01T16:04:38.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2017/04/hexo-folder-category/</loc>
+    <lastmod>2017-04-16T14:40:48+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/2017/04/Hexo-folder-category/</loc>
-    
-    <lastmod>2017-05-29T13:56:00.000Z</lastmod>
-    
+    <loc>http://localhost:1313/post/2017/04/hexo-command-line-note/</loc>
+    <lastmod>2017-04-15T10:31:14+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/2017/04/Hexo-Command-Line-Note/</loc>
-    
-    <lastmod>2017-05-29T13:55:54.000Z</lastmod>
-    
+    <loc>http://localhost:1313/categories/asp.net/</loc>
+    <lastmod>2017-04-18T20:34:16+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/2017/04/New-Blog/</loc>
-    
-    <lastmod>2017-04-16T11:31:04.000Z</lastmod>
-    
+    <loc>http://localhost:1313/tags/animate.css/</loc>
+    <lastmod>2017-06-01T21:37:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/bash/</loc>
+    <lastmod>2017-04-15T10:31:14+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/c#/</loc>
+    <lastmod>2017-06-10T14:47:35+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/css/</loc>
+    <lastmod>2017-06-01T21:37:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/css/</loc>
+    <lastmod>2017-06-01T21:37:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2017-04-18T20:34:16+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/cordova/</loc>
+    <lastmod>2017-05-08T20:14:58+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/cordova/</loc>
+    <lastmod>2017-05-08T20:14:58+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/entity/</loc>
+    <lastmod>2017-06-10T14:47:35+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/entity-framework/</loc>
+    <lastmod>2017-06-10T14:47:35+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/entity-framework/</loc>
+    <lastmod>2017-06-10T14:47:35+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/google-api/</loc>
+    <lastmod>2017-04-18T20:34:16+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/hexo/</loc>
+    <lastmod>2017-04-16T14:40:48+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/hexo/</loc>
+    <lastmod>2017-04-16T14:40:48+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2018-08-10T21:52:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/hugo/</loc>
+    <lastmod>2018-08-10T21:52:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/javascript/</loc>
+    <lastmod>2017-09-10T21:06:07+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2018-08-10T21:52:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/recaptcha/</loc>
+    <lastmod>2017-04-18T20:34:16+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2017-06-01T21:37:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/vue.js/</loc>
+    <lastmod>2017-09-10T21:06:07+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/vue.js/</loc>
+    <lastmod>2017-09-10T21:06:07+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
   </url>
   
 </urlset>
