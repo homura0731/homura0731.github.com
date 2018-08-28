@@ -6,10 +6,19 @@
     <description>Recent content in Hugo on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Fri, 10 Aug 2018 21:52:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Aug 2018 00:01:09 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo使用筆記</title>
+      <link>http://localhost:1313/post/2018/08/hugo-note/</link>
+      <pubDate>Wed, 15 Aug 2018 00:01:09 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2018/08/hugo-note/</guid>
+      <description>前言 記錄一下使用筆記，因為還在摸索，不定時更新 指令 新增文章 hugo原生是產在posts底下，even主題是post $ hugo new /post/文章名稱</description>
+    </item>
     
     <item>
       <title>Blog更換成Hugo</title>

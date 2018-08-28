@@ -10,8 +10,22 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/post/2018/08/hugo-note/</loc>
+    <lastmod>2018-08-15T00:01:09+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/post/2018/08/move-to-hugo/</loc>
     <lastmod>2018-08-10T21:52:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/2018/05/vue-use-progressbars/</loc>
+    <lastmod>2018-05-14T21:20:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -108,6 +122,13 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/tags/bootstrap4/</loc>
+    <lastmod>2018-05-14T21:20:59+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/tags/c#/</loc>
     <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -115,14 +136,14 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/css/</loc>
+    <loc>http://localhost:1313/tags/css/</loc>
     <lastmod>2017-06-01T21:37:20+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/css/</loc>
+    <loc>http://localhost:1313/categories/css/</loc>
     <lastmod>2017-06-01T21:37:20+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -136,14 +157,14 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/cordova/</loc>
+    <loc>http://localhost:1313/tags/cordova/</loc>
     <lastmod>2017-05-08T20:14:58+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/cordova/</loc>
+    <loc>http://localhost:1313/categories/cordova/</loc>
     <lastmod>2017-05-08T20:14:58+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -157,14 +178,14 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/entity-framework/</loc>
+    <loc>http://localhost:1313/tags/entity-framework/</loc>
     <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/entity-framework/</loc>
+    <loc>http://localhost:1313/categories/entity-framework/</loc>
     <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -178,14 +199,14 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/hexo/</loc>
+    <loc>http://localhost:1313/tags/hexo/</loc>
     <lastmod>2017-04-16T14:40:48+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/hexo/</loc>
+    <loc>http://localhost:1313/categories/hexo/</loc>
     <lastmod>2017-04-16T14:40:48+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -199,15 +220,15 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/hugo/</loc>
-    <lastmod>2018-08-10T21:52:23+08:00</lastmod>
+    <loc>http://localhost:1313/tags/hugo/</loc>
+    <lastmod>2018-08-15T00:01:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
-    <lastmod>2018-08-10T21:52:23+08:00</lastmod>
+    <loc>http://localhost:1313/categories/hugo/</loc>
+    <lastmod>2018-08-15T00:01:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -228,7 +249,7 @@
   
   <url>
     <loc>http://localhost:1313/post/</loc>
-    <lastmod>2018-08-10T21:52:23+08:00</lastmod>
+    <lastmod>2018-08-15T00:01:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -248,15 +269,15 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/vue.js/</loc>
-    <lastmod>2017-09-10T21:06:07+00:00</lastmod>
+    <loc>http://localhost:1313/tags/vue.js/</loc>
+    <lastmod>2018-05-14T21:20:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/vue.js/</loc>
-    <lastmod>2017-09-10T21:06:07+00:00</lastmod>
+    <loc>http://localhost:1313/categories/vue.js/</loc>
+    <lastmod>2018-05-14T21:20:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

@@ -21,12 +21,30 @@
     </item>
     
     <item>
+      <title>Hugo使用筆記</title>
+      <link>http://localhost:1313/post/2018/08/hugo-note/</link>
+      <pubDate>Wed, 15 Aug 2018 00:01:09 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2018/08/hugo-note/</guid>
+      <description>前言 記錄一下使用筆記，因為還在摸索，不定時更新 指令 新增文章 hugo原生是產在posts底下，even主題是post $ hugo new /post/文章名稱</description>
+    </item>
+    
+    <item>
       <title>Blog更換成Hugo</title>
       <link>http://localhost:1313/post/2018/08/move-to-hugo/</link>
       <pubDate>Fri, 10 Aug 2018 21:52:23 +0800</pubDate>
       
       <guid>http://localhost:1313/post/2018/08/move-to-hugo/</guid>
       <description>換用Hugo的契機 最近看到微軟某位MVP把Blogger搬到Hugo上了，然後我去Google了一下跟Hexo的差別，發現幾乎都是說Hexo</description>
+    </item>
+    
+    <item>
+      <title>Vue.js - 使用BootStrap4 Progress Bar</title>
+      <link>http://localhost:1313/post/2018/05/vue-use-progressbars/</link>
+      <pubDate>Mon, 14 May 2018 21:20:59 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2018/05/vue-use-progressbars/</guid>
+      <description>前言 這篇是我在IT邦幫忙第一個最佳解,也是第一個回答 做個紀錄當回憶 https://ithelp.ithome.com.tw/questions/10189197 使用框架 Vue.js 2.x BootStrap4 實作 Bootstrap progress bars範例 先去Bootstrap4官方文件找出範</description>
     </item>
     
     <item>

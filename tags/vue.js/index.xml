@@ -6,10 +6,19 @@
     <description>Recent content in Vue.js on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Sun, 10 Sep 2017 21:06:07 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 May 2018 21:20:59 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/vue.js/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue.js - 使用BootStrap4 Progress Bar</title>
+      <link>http://localhost:1313/post/2018/05/vue-use-progressbars/</link>
+      <pubDate>Mon, 14 May 2018 21:20:59 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2018/05/vue-use-progressbars/</guid>
+      <description>前言 這篇是我在IT邦幫忙第一個最佳解,也是第一個回答 做個紀錄當回憶 https://ithelp.ithome.com.tw/questions/10189197 使用框架 Vue.js 2.x BootStrap4 實作 Bootstrap progress bars範例 先去Bootstrap4官方文件找出範</description>
+    </item>
     
     <item>
       <title>Vue.js - 表單驗證實作</title>

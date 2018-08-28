@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>Bootstrap4</title>
+      <link>http://localhost:1313/tags/bootstrap4/</link>
+      <pubDate>Mon, 14 May 2018 21:20:59 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/bootstrap4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>C#</title>
       <link>http://localhost:1313/tags/c#/</link>
       <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
@@ -95,7 +104,7 @@
     <item>
       <title>Hugo</title>
       <link>http://localhost:1313/tags/hugo/</link>
-      <pubDate>Fri, 10 Aug 2018 21:52:23 +0800</pubDate>
+      <pubDate>Wed, 15 Aug 2018 00:01:09 +0800</pubDate>
       
       <guid>http://localhost:1313/tags/hugo/</guid>
       <description></description>
@@ -131,7 +140,7 @@
     <item>
       <title>Vue.js</title>
       <link>http://localhost:1313/tags/vue.js/</link>
-      <pubDate>Sun, 10 Sep 2017 21:06:07 +0000</pubDate>
+      <pubDate>Mon, 14 May 2018 21:20:59 +0800</pubDate>
       
       <guid>http://localhost:1313/tags/vue.js/</guid>
       <description></description>
