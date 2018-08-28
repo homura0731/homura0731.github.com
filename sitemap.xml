@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2018-08-15T23:35:37+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/post/2018/08/move-to-hugo/</loc>
     <lastmod>2018-08-10T21:52:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -108,14 +115,14 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/css/</loc>
+    <loc>http://localhost:1313/categories/css/</loc>
     <lastmod>2017-06-01T21:37:20+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/css/</loc>
+    <loc>http://localhost:1313/tags/css/</loc>
     <lastmod>2017-06-01T21:37:20+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -129,14 +136,14 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/cordova/</loc>
+    <loc>http://localhost:1313/categories/cordova/</loc>
     <lastmod>2017-05-08T20:14:58+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/cordova/</loc>
+    <loc>http://localhost:1313/tags/cordova/</loc>
     <lastmod>2017-05-08T20:14:58+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -150,14 +157,14 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/entity-framework/</loc>
+    <loc>http://localhost:1313/categories/entity-framework/</loc>
     <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/entity-framework/</loc>
+    <loc>http://localhost:1313/tags/entity-framework/</loc>
     <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -171,13 +178,6 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/hexo/</loc>
-    <lastmod>2017-04-16T14:40:48+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/categories/hexo/</loc>
     <lastmod>2017-04-16T14:40:48+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -185,7 +185,21 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/tags/hexo/</loc>
+    <lastmod>2017-04-16T14:40:48+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2018-08-15T23:35:37+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/hugo/</loc>
     <lastmod>2018-08-10T21:52:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -234,14 +248,14 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/vue.js/</loc>
+    <loc>http://localhost:1313/categories/vue.js/</loc>
     <lastmod>2017-09-10T21:06:07+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/vue.js/</loc>
+    <loc>http://localhost:1313/tags/vue.js/</loc>
     <lastmod>2017-09-10T21:06:07+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

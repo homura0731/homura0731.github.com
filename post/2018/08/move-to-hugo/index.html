@@ -19,7 +19,7 @@
 <meta name="author" content="Homura Lin" />
   <meta name="description" content="換用Hugo的契機 最近看到微軟某位MVP把Blogger搬到Hugo上了，然後我去Google了一下跟Hexo的差別，發現幾乎都是說Hexo" />
 
-  <meta name="keywords" content="Hugo, theme, even" />
+  <meta name="keywords" content="IT, theme, even" />
 
 
 
@@ -76,7 +76,7 @@
 
 <meta itemprop="datePublished" content="2018-08-10T21:52:23&#43;08:00" />
 <meta itemprop="dateModified" content="2018-08-10T21:52:23&#43;08:00" />
-<meta itemprop="wordCount" content="213">
+<meta itemprop="wordCount" content="417">
 
 
 
@@ -109,13 +109,15 @@
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
     <a href="/">
-        <li class="mobile-menu-item">Home</li>
+        <li class="mobile-menu-item">首頁</li>
       </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
+        <li class="mobile-menu-item">歸檔</li>
       </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
+        <li class="mobile-menu-item">標籤</li>
       </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
+        <li class="mobile-menu-item">分類</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於我</li>
       </a>
   </ul>
 </nav>
@@ -128,13 +130,15 @@
 <nav class="site-navbar">
   <ul id="menu" class="menu">
     <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
+        <a class="menu-item-link" href="/">首頁</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
+        <a class="menu-item-link" href="/post/">歸檔</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
+        <a class="menu-item-link" href="/tags/">標籤</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
+        <a class="menu-item-link" href="/categories/">分類</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">關於我</a>
       </li>
   </ul>
 </nav>
@@ -150,8 +154,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-08-10 </span>
-        
-        <span class="more-meta"> 约 213 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/hugo/"> Hugo </a>
+            
+          </div>
+        <span class="more-meta"> 约 417 字 </span>
         <span class="more-meta"> 預計閱讀 1 分鐘 </span>
         
       </div>
@@ -165,10 +173,6 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li>
-<ul>
-<li>
-<ul>
 <li><a href="#換用hugo的契機">換用Hugo的契機</a></li>
 <li><a href="#使用hugo的感想">使用Hugo的感想</a></li>
 <li><a href="#比較一下啟動速度">比較一下啟動速度</a>
@@ -176,8 +180,7 @@
 <li><a href="#hexo">Hexo</a></li>
 <li><a href="#hugo">Hugo</a></li>
 </ul></li>
-</ul></li>
-</ul></li>
+<li><a href="#gitpage從hexo更換到hugo">Gitpage從Hexo更換到Hugo</a></li>
 </ul>
 </nav>
   </div>
@@ -190,30 +193,54 @@
     <div class="post-content">
       
 
-<h3 id="換用hugo的契機">換用Hugo的契機</h3>
+<h1 id="換用hugo的契機">換用Hugo的契機</h1>
 
 <p>最近看到微軟某位MVP把Blogger搬到Hugo上了，然後我去Google了一下跟Hexo的差別，發現幾乎都是說Hexo太慢了&hellip;..</p>
 
 <p>所以我也考慮一下換用Hugo</p>
 
-<h3 id="使用hugo的感想">使用Hugo的感想</h3>
+<h1 id="使用hugo的感想">使用Hugo的感想</h1>
 
 <p>編譯的速度已經不能說是快一些，Hugo的編譯速度實在太快，幾乎一儲存就編譯好&hellip;..</p>
 
 <p>還在用Hexo的人可以趕快換Hugo了</p>
 
-<h3 id="比較一下啟動速度">比較一下啟動速度</h3>
+<h1 id="比較一下啟動速度">比較一下啟動速度</h1>
 
-<h4 id="hexo">Hexo</h4>
+<h2 id="hexo">Hexo</h2>
 
 <p><img src="hexo.gif" alt="hexo" /></p>
 
-<h4 id="hugo">Hugo</h4>
+<h2 id="hugo">Hugo</h2>
 
 <p><img src="hugo.gif" alt="hugo" /></p>
 
 <p>是不是差很多&hellip;
 剩下讓大家自己去體驗一下吧!!!</p>
+
+<h1 id="gitpage從hexo更換到hugo">Gitpage從Hexo更換到Hugo</h1>
+
+<p>其實很簡單只要把發行的檔案更換成Hugo的就行了
+不過因為我們Gitpage上面已經有檔案
+所以不能直接傳上去
+要先拉下來</p>
+
+<pre><code class="language-bash">$ git pull https://github.com/帳號/帳號.github.com
+</code></pre>
+
+<p>然後資料夾改名成public丟到hugo專案底下
+hugo 產生發行檔</p>
+
+<pre><code class="language-bash">$ hugo -t 主題名稱
+</code></pre>
+
+<p>路徑指到public裡,推上Gitpage</p>
+
+<pre><code class="language-bash">$ cd public
+$ git commit -m &quot;隨便打&quot;
+$ git add .
+$ git push origin master
+</code></pre>
 
     </div>
 
@@ -278,6 +305,7 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/10272735/homura-lin?tab=profile" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
       <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
       <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
   <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>

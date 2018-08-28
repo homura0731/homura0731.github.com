@@ -6,10 +6,19 @@
     <description>Recent content on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Fri, 10 Aug 2018 21:52:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Aug 2018 23:35:37 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Wed, 15 Aug 2018 23:35:37 +0800</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>簡介 一個喜歡很喜歡Coding和TV Game的人 使用的語言或框架 C# C++ JavaScript PHP Vue.js ASP.NET ASP.NET Core 喜歡TV Game系列 神奇寶貝 (Pokemon) 偶像大師 (IdolM@ster) 惡魔獵人 (Devil May Cry) 洛克人</description>
+    </item>
     
     <item>
       <title>Blog更換成Hugo</title>
