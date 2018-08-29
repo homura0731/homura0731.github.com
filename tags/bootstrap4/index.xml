@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bootstrap4 on Homura&#39;s Blog</title>
-    <link>http://localhost:1313/tags/bootstrap4/</link>
+    <link>https://homura0731.github.io/tags/bootstrap4/</link>
     <description>Recent content in Bootstrap4 on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
     <lastBuildDate>Mon, 14 May 2018 21:20:59 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/bootstrap4/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://homura0731.github.io/tags/bootstrap4/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Vue.js - 使用BootStrap4 Progress Bar</title>
-      <link>http://localhost:1313/post/2018/05/vue-use-progressbars/</link>
+      <link>https://homura0731.github.io/post/2018/05/vue-use-progressbars/</link>
       <pubDate>Mon, 14 May 2018 21:20:59 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2018/05/vue-use-progressbars/</guid>
+      <guid>https://homura0731.github.io/post/2018/05/vue-use-progressbars/</guid>
       <description>前言 這篇是我在IT邦幫忙第一個最佳解,也是第一個回答 做個紀錄當回憶 https://ithelp.ithome.com.tw/questions/10189197 使用框架 Vue.js 2.x BootStrap4 實作 Bootstrap progress bars範例 先去Bootstrap4官方文件找出範</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ASP.NET on Homura&#39;s Blog</title>
-    <link>http://localhost:1313/categories/asp.net/</link>
+    <link>https://homura0731.github.io/categories/asp.net/</link>
     <description>Recent content in ASP.NET on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
     <lastBuildDate>Tue, 18 Apr 2017 20:34:16 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/asp.net/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://homura0731.github.io/categories/asp.net/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Google API - 圖形驗證reCAPTCHA使用C#</title>
-      <link>http://localhost:1313/post/2017/04/google-api-recaptcha-c_sharp/</link>
+      <link>https://homura0731.github.io/post/2017/04/google-api-recaptcha-c_sharp/</link>
       <pubDate>Tue, 18 Apr 2017 20:34:16 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017/04/google-api-recaptcha-c_sharp/</guid>
+      <guid>https://homura0731.github.io/post/2017/04/google-api-recaptcha-c_sharp/</guid>
       <description>前言 由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CSS on Homura&#39;s Blog</title>
-    <link>http://localhost:1313/categories/css/</link>
+    <link>https://homura0731.github.io/categories/css/</link>
     <description>Recent content in CSS on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
     <lastBuildDate>Thu, 01 Jun 2017 21:37:20 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/css/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://homura0731.github.io/categories/css/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CSS - Animate.css 好用的CSS動畫函式庫</title>
-      <link>http://localhost:1313/post/2017/06/css-animate-css/</link>
+      <link>https://homura0731.github.io/post/2017/06/css-animate-css/</link>
       <pubDate>Thu, 01 Jun 2017 21:37:20 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017/06/css-animate-css/</guid>
+      <guid>https://homura0731.github.io/post/2017/06/css-animate-css/</guid>
       <description>前言 今天上班時發現好玩的Css動畫函式庫 Animate.css，由Daniel Eden製作，Soure Code也有公開是GitHub上面，回</description>
     </item>
     

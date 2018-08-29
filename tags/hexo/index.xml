@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hexo on Homura&#39;s Blog</title>
-    <link>http://localhost:1313/tags/hexo/</link>
+    <link>https://homura0731.github.io/tags/hexo/</link>
     <description>Recent content in Hexo on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
     <lastBuildDate>Sun, 16 Apr 2017 14:40:48 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://homura0731.github.io/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hexo - 文章分類方法</title>
-      <link>http://localhost:1313/post/2017/04/hexo-folder-category/</link>
+      <link>https://homura0731.github.io/post/2017/04/hexo-folder-category/</link>
       <pubDate>Sun, 16 Apr 2017 14:40:48 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017/04/hexo-folder-category/</guid>
+      <guid>https://homura0731.github.io/post/2017/04/hexo-folder-category/</guid>
       <description>前言 雖然Hexo這框架我才用幾天，但發現文章都集中在source/_post 底下 這樣文章只要一多起來一定很難管理，所以這篇就來記錄一下管理的</description>
     </item>
     
     <item>
       <title>Hexo - 指令和設定筆記</title>
-      <link>http://localhost:1313/post/2017/04/hexo-command-line-note/</link>
+      <link>https://homura0731.github.io/post/2017/04/hexo-command-line-note/</link>
       <pubDate>Sat, 15 Apr 2017 10:31:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017/04/hexo-command-line-note/</guid>
+      <guid>https://homura0731.github.io/post/2017/04/hexo-command-line-note/</guid>
       <description>前言 首先先來寫一篇Hexo常用指令集和一些常會去調的設定，不然老是去翻官方文件也蠻麻煩的 常用指令集 啟動伺服器 $ hexo server 建立新文章 $ hexo new &amp;quot</description>
     </item>
     

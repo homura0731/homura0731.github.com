@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>New on Homura&#39;s Blog</title>
-    <link>http://localhost:1313/tags/new/</link>
+    <link>https://homura0731.github.io/tags/new/</link>
     <description>Recent content in New on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
     <lastBuildDate>Thu, 13 Apr 2017 19:37:42 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/new/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://homura0731.github.io/tags/new/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blog開張</title>
-      <link>http://localhost:1313/post/2017/04/new-blog/</link>
+      <link>https://homura0731.github.io/post/2017/04/new-blog/</link>
       <pubDate>Thu, 13 Apr 2017 19:37:42 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017/04/new-blog/</guid>
+      <guid>https://homura0731.github.io/post/2017/04/new-blog/</guid>
       <description>紀念的第一篇的文章(完)</description>
     </item>
     

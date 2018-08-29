@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on Homura&#39;s Blog</title>
-    <link>http://localhost:1313/tags/hugo/</link>
+    <link>https://homura0731.github.io/tags/hugo/</link>
     <description>Recent content in Hugo on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
     <lastBuildDate>Wed, 15 Aug 2018 00:01:09 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://homura0731.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo使用筆記</title>
-      <link>http://localhost:1313/post/2018/08/hugo-note/</link>
+      <link>https://homura0731.github.io/post/2018/08/hugo-note/</link>
       <pubDate>Wed, 15 Aug 2018 00:01:09 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2018/08/hugo-note/</guid>
+      <guid>https://homura0731.github.io/post/2018/08/hugo-note/</guid>
       <description>前言 記錄一下使用筆記，因為還在摸索，不定時更新 指令 新增文章 hugo原生是產在posts底下，even主題是post $ hugo new /post/文章名稱</description>
     </item>
     
     <item>
       <title>Blog更換成Hugo</title>
-      <link>http://localhost:1313/post/2018/08/move-to-hugo/</link>
+      <link>https://homura0731.github.io/post/2018/08/move-to-hugo/</link>
       <pubDate>Fri, 10 Aug 2018 21:52:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2018/08/move-to-hugo/</guid>
+      <guid>https://homura0731.github.io/post/2018/08/move-to-hugo/</guid>
       <description>換用Hugo的契機 最近看到微軟某位MVP把Blogger搬到Hugo上了，然後我去Google了一下跟Hexo的差別，發現幾乎都是說Hexo</description>
     </item>
     
