@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>使用Lodash debounce做事件延遲</title>
+      <title>Lodash - 使用debounce做事件延遲</title>
       <link>https://homura0731.github.io/post/2018/09/lodash-debounce/</link>
       <pubDate>Wed, 05 Sep 2018 20:54:53 +0800</pubDate>
       
@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>Hugo使用筆記</title>
+      <title>Hugo - Hugo使用筆記</title>
       <link>https://homura0731.github.io/post/2018/08/hugo-note/</link>
       <pubDate>Wed, 15 Aug 2018 00:01:09 +0800</pubDate>
       
@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>Blog更換成Hugo</title>
+      <title>Blog - 更換成Hugo</title>
       <link>https://homura0731.github.io/post/2018/08/move-to-hugo/</link>
       <pubDate>Fri, 10 Aug 2018 21:52:23 +0800</pubDate>
       
@@ -57,7 +57,7 @@
     </item>
     
     <item>
-      <title>Entity Framawork - 實作資料分頁</title>
+      <title>EF - 實作資料分頁</title>
       <link>https://homura0731.github.io/post/2017/06/entity-data-paging/</link>
       <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
       
@@ -75,7 +75,7 @@
     </item>
     
     <item>
-      <title>Entity Framework - 日期區間查詢使用字串日期</title>
+      <title>EF - 日期區間查詢使用字串日期</title>
       <link>https://homura0731.github.io/post/2017/05/entity-database-string-date-select/</link>
       <pubDate>Mon, 29 May 2017 21:13:33 +0000</pubDate>
       
@@ -129,7 +129,7 @@
     </item>
     
     <item>
-      <title>Blog開張</title>
+      <title>Blog - Blog開張</title>
       <link>https://homura0731.github.io/post/2017/04/new-blog/</link>
       <pubDate>Thu, 13 Apr 2017 19:37:42 +0000</pubDate>
       

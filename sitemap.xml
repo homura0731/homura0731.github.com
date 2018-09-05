@@ -248,6 +248,20 @@
   </url>
   
   <url>
+    <loc>https://homura0731.github.io/tags/it%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2017-04-13T19:37:42+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://homura0731.github.io/categories/it%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2017-04-13T19:37:42+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://homura0731.github.io/tags/javascript/</loc>
     <lastmod>2018-09-05T20:54:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -264,13 +278,6 @@
   <url>
     <loc>https://homura0731.github.io/tags/lodash/</loc>
     <lastmod>2018-09-05T20:54:53+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://homura0731.github.io/tags/new/</loc>
-    <lastmod>2017-04-13T19:37:42+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
