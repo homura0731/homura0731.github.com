@@ -76,7 +76,7 @@
 
 <meta itemprop="datePublished" content="2018-09-05T20:54:53&#43;08:00" />
 <meta itemprop="dateModified" content="2018-09-05T20:54:53&#43;08:00" />
-<meta itemprop="wordCount" content="582">
+<meta itemprop="wordCount" content="589">
 
 
 
@@ -159,7 +159,7 @@
               <a href="/categories/javascript/"> JavaScript </a>
             
           </div>
-        <span class="more-meta"> 约 582 字 </span>
+        <span class="more-meta"> 约 589 字 </span>
         <span class="more-meta"> 預計閱讀 2 分鐘 </span>
         
       </div>
@@ -233,7 +233,7 @@
 &lt;div id=&quot;Message&quot;&gt;&lt;/div&gt;
 </code></pre>
 
-<p>寫一個函數顯示訊息，並使用<code>_.bounce()</code>延遲執行訊息消失事件</p>
+<p>寫一個函數顯示訊息，並使用<code>_.debounce()</code>延遲執行訊息消失事件</p>
 
 <pre><code class="language-js">var showBtn = document.getElementById('showBtn');
 var msg = document.getElementById('Message');
@@ -254,7 +254,7 @@ showBtn.onclick = function(){
 </code></pre>
 
 <blockquote>
-<p>註：如果_.debounce()沒包在funtion裡面會沒效果</p>
+<p>註：如果_.debounce()要放在funtion或變數裡，不然會沒效果</p>
 </blockquote>
 
 <h2 id="demo">Demo</h2>
