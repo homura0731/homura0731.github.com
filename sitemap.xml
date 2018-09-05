@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://homura0731.github.io/post/2018/09/lodash-debounce/</loc>
+    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://homura0731.github.io/about/</loc>
     <lastmod>2018-08-15T23:35:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -171,6 +178,13 @@
   </url>
   
   <url>
+    <loc>https://homura0731.github.io/tags/debounce/</loc>
+    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://homura0731.github.io/tags/entity/</loc>
     <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -214,7 +228,7 @@
   
   <url>
     <loc>https://homura0731.github.io/</loc>
-    <lastmod>2018-08-15T23:35:37+08:00</lastmod>
+    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -235,7 +249,21 @@
   
   <url>
     <loc>https://homura0731.github.io/tags/javascript/</loc>
-    <lastmod>2017-09-10T21:06:07+00:00</lastmod>
+    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://homura0731.github.io/categories/javascript/</loc>
+    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://homura0731.github.io/tags/lodash/</loc>
+    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -249,7 +277,7 @@
   
   <url>
     <loc>https://homura0731.github.io/post/</loc>
-    <lastmod>2018-08-15T00:01:09+08:00</lastmod>
+    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

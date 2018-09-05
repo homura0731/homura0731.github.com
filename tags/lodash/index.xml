@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lodash on Homura&#39;s Blog</title>
+    <link>https://homura0731.github.io/tags/lodash/</link>
+    <description>Recent content in Lodash on Homura&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Wed, 05 Sep 2018 20:54:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://homura0731.github.io/tags/lodash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用Lodash debounce做事件延遲</title>
+      <link>https://homura0731.github.io/post/2018/09/lodash-debounce/</link>
+      <pubDate>Wed, 05 Sep 2018 20:54:53 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/2018/09/lodash-debounce/</guid>
+      <description>前言 這篇也是在IT邦幫忙解決的題目，最初問法是說做一個計時器，結果搞半天不是， 他是想做一個事件延遲3秒再執行才對，而且如果按鈕連續點擊，會以</description>
+    </item>
+    
+  </channel>
+</rss>
