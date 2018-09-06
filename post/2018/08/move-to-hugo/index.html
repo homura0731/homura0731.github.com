@@ -76,7 +76,7 @@
 
 <meta itemprop="datePublished" content="2018-08-10T21:52:23&#43;08:00" />
 <meta itemprop="dateModified" content="2018-08-10T21:52:23&#43;08:00" />
-<meta itemprop="wordCount" content="417">
+<meta itemprop="wordCount" content="533">
 
 
 
@@ -159,8 +159,8 @@
               <a href="/categories/hugo/"> Hugo </a>
             
           </div>
-        <span class="more-meta"> 约 417 字 </span>
-        <span class="more-meta"> 預計閱讀 1 分鐘 </span>
+        <span class="more-meta"> 约 533 字 </span>
+        <span class="more-meta"> 預計閱讀 2 分鐘 </span>
         
       </div>
     </header>
@@ -234,10 +234,33 @@ hugo 產生發行檔</p>
 <pre><code class="language-bash">$ hugo -t 主題名稱
 </code></pre>
 
-<p>路徑指到public裡,推上Gitpage</p>
+<p>先建立public資料夾
+路徑指到public裡,</p>
 
-<pre><code class="language-bash">$ cd public
-$ git add .
+<pre><code class="language-bash">$ mkdir public
+$ cd public
+</code></pre>
+
+<p>初始化git，指向原本的專案</p>
+
+<pre><code class="language-bash">$ git init
+$ git remote add origin https://github.com/帳號/帳號.github.com.git
+</code></pre>
+
+<p>拉下原本的專案</p>
+
+<pre><code class="language-bash">$ git pull origin master
+</code></pre>
+
+<p>先回hugo專案，再發行hugo專案</p>
+
+<pre><code class="language-bash">$ cd ../
+$ hugo -t 主題名稱
+</code></pre>
+
+<p>推上Gitpage</p>
+
+<pre><code class="language-bash">$ git add .
 $ git commit -m &quot;隨便打&quot;
 $ git push origin master
 </code></pre>
