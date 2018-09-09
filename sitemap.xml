@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://homura0731.github.io/post/2018/09/js-history-recoder/</loc>
+    <lastmod>2018-09-08T21:12:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://homura0731.github.io/post/2018/09/lodash-debounce/</loc>
     <lastmod>2018-09-05T20:54:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -136,21 +143,21 @@
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/c#/</loc>
+    <loc>https://homura0731.github.io/tags/c/</loc>
     <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/css/</loc>
+    <loc>https://homura0731.github.io/categories/css/</loc>
     <lastmod>2017-06-01T21:37:20+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/categories/css/</loc>
+    <loc>https://homura0731.github.io/tags/css/</loc>
     <lastmod>2017-06-01T21:37:20+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -164,13 +171,6 @@
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/cordova/</loc>
-    <lastmod>2017-05-08T20:14:58+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://homura0731.github.io/categories/cordova/</loc>
     <lastmod>2017-05-08T20:14:58+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -178,21 +178,21 @@
   </url>
   
   <url>
+    <loc>https://homura0731.github.io/tags/cordova/</loc>
+    <lastmod>2017-05-08T20:14:58+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://homura0731.github.io/tags/debounce/</loc>
-    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
+    <lastmod>2018-09-08T21:12:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://homura0731.github.io/tags/entity/</loc>
-    <lastmod>2017-06-10T14:47:35+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://homura0731.github.io/tags/entity-framework/</loc>
     <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -206,15 +206,15 @@
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/google-api/</loc>
-    <lastmod>2017-04-18T20:34:16+00:00</lastmod>
+    <loc>https://homura0731.github.io/tags/entity-framework/</loc>
+    <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/hexo/</loc>
-    <lastmod>2017-04-16T14:40:48+00:00</lastmod>
+    <loc>https://homura0731.github.io/tags/google-api/</loc>
+    <lastmod>2017-04-18T20:34:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -227,15 +227,22 @@
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/</loc>
-    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
+    <loc>https://homura0731.github.io/tags/hexo/</loc>
+    <lastmod>2017-04-16T14:40:48+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/hugo/</loc>
-    <lastmod>2018-08-15T00:01:09+08:00</lastmod>
+    <loc>https://homura0731.github.io/tags/history-recoder/</loc>
+    <lastmod>2018-09-08T21:12:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://homura0731.github.io/</loc>
+    <lastmod>2018-09-08T21:12:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -248,8 +255,8 @@
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/it%E6%97%A5%E5%B8%B8/</loc>
-    <lastmod>2017-04-13T19:37:42+00:00</lastmod>
+    <loc>https://homura0731.github.io/tags/hugo/</loc>
+    <lastmod>2018-08-15T00:01:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -262,15 +269,22 @@
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/javascript/</loc>
-    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
+    <loc>https://homura0731.github.io/tags/it%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2017-04-13T19:37:42+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://homura0731.github.io/categories/javascript/</loc>
-    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
+    <lastmod>2018-09-08T21:12:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://homura0731.github.io/tags/javascript/</loc>
+    <lastmod>2018-09-08T21:12:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -284,7 +298,7 @@
   
   <url>
     <loc>https://homura0731.github.io/post/</loc>
-    <lastmod>2018-09-05T20:54:53+08:00</lastmod>
+    <lastmod>2018-09-08T21:12:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -304,14 +318,14 @@
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/vue.js/</loc>
+    <loc>https://homura0731.github.io/categories/vue.js/</loc>
     <lastmod>2018-05-14T21:20:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/categories/vue.js/</loc>
+    <loc>https://homura0731.github.io/tags/vue.js/</loc>
     <lastmod>2018-05-14T21:20:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

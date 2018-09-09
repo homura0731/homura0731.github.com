@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.46" />
+<meta name="generator" content="Hugo 0.48" />
 
 
 <link rel="canonical" href="https://homura0731.github.io/post/2018/09/lodash-debounce/" />
@@ -36,7 +36,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
+<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Seaweed+Script" rel="stylesheet">  
 
 
 
@@ -52,31 +53,15 @@
 <meta property="og:title" content="Lodash - 使用debounce做事件延遲" />
 <meta property="og:description" content="前言 這篇也是在IT邦幫忙解決的題目，最初問法是說做一個計時器，結果搞半天不是， 他是想做一個事件延遲3秒再執行才對，而且如果按鈕連續點擊，會以" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/2018/09/lodash-debounce/" />
-
-
-
-<meta property="article:published_time" content="2018-09-05T20:54:53&#43;08:00"/>
-
+<meta property="og:url" content="https://homura0731.github.io/post/2018/09/lodash-debounce/" /><meta property="article:published_time" content="2018-09-05T20:54:53&#43;08:00"/>
 <meta property="article:modified_time" content="2018-09-05T20:54:53&#43;08:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <meta itemprop="name" content="Lodash - 使用debounce做事件延遲">
 <meta itemprop="description" content="前言 這篇也是在IT邦幫忙解決的題目，最初問法是說做一個計時器，結果搞半天不是， 他是想做一個事件延遲3秒再執行才對，而且如果按鈕連續點擊，會以">
 
 
 <meta itemprop="datePublished" content="2018-09-05T20:54:53&#43;08:00" />
 <meta itemprop="dateModified" content="2018-09-05T20:54:53&#43;08:00" />
-<meta itemprop="wordCount" content="587">
+<meta itemprop="wordCount" content="586">
 
 
 
@@ -159,7 +144,7 @@
               <a href="/categories/javascript/"> JavaScript </a>
             
           </div>
-        <span class="more-meta"> 约 587 字 </span>
+        <span class="more-meta"> 約 586 字 </span>
         <span class="more-meta"> 預計閱讀 2 分鐘 </span>
         
       </div>
@@ -219,7 +204,7 @@
 
 <p>NPM安裝</p>
 
-<pre><code class="language-bash">$ npm i --save lodash
+<pre><code class="language-shell">$ npm i --save lodash
 </code></pre>
 
 <pre><code class="language-js">var _ = require('lodash');
@@ -274,7 +259,7 @@ showBtn.onclick = function(){
     
     var debounce = _.debounce(hideMsg, 2000);
     showBtn.onclick = function(){
-        msg.innerHTML = '點擊成功';
+        msg.innerHTML = '<blockquote><p>點擊成功</p></blockquote>';
         debounce();
     };
 </script>
@@ -303,7 +288,10 @@ showBtn.onclick = function(){
     <span class="item-content">2018-09-05</span>
   </p>
   
-  
+  <p class="copyright-item">
+    <span class="item-title">許可協議</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
 </div>
 
     
@@ -312,17 +300,28 @@ showBtn.onclick = function(){
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/javascript/">JavaScript</a>
+            <span class="tags">
+              <a href="/tags/javascript/">JavaScript</a>
+            </span>
           
-          <a href="/tags/lodash/">Lodash</a>
+            <span class="tags">
+              <a href="/tags/lodash/">Lodash</a>
+            </span>
           
-          <a href="/tags/debounce/">debounce</a>
+            <span class="tags">
+              <a href="/tags/debounce/">debounce</a>
+            </span>
           
         </div>
 
       
       <nav class="post-nav">
         
+          <a class="prev" href="/post/2018/09/js-history-recoder/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">JS - 步驟紀錄器實作</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         
           <a class="next" href="/post/2018/08/hugo-note/">
             <span class="next-text nav-default">Hugo - Hugo使用筆記</span>
@@ -339,7 +338,7 @@ showBtn.onclick = function(){
     (function() {
       
       
-      
+      if (window.location.hostname === 'localhost') return;
 
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       var disqus_shortname = 'homura0731';
@@ -359,6 +358,7 @@ showBtn.onclick = function(){
       <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
       <a href="https://stackoverflow.com/users/10272735/homura-lin?tab=profile" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
       <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/kun-han-lin-227676170/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
   <a href="https://homura0731.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
@@ -369,7 +369,7 @@ showBtn.onclick = function(){
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主題 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 

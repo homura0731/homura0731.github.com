@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.46" />
+<meta name="generator" content="Hugo 0.48" />
 
 
 <link rel="canonical" href="https://homura0731.github.io/post/2018/08/move-to-hugo/" />
@@ -36,7 +36,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
+<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Seaweed+Script" rel="stylesheet">  
 
 
 
@@ -52,31 +53,15 @@
 <meta property="og:title" content="Blog - 更換成Hugo" />
 <meta property="og:description" content="換用Hugo的契機 最近看到微軟某位MVP把Blogger搬到Hugo上了，然後我去Google了一下跟Hexo的差別，發現幾乎都是說Hexo" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/2018/08/move-to-hugo/" />
-
-
-
-<meta property="article:published_time" content="2018-08-10T21:52:23&#43;08:00"/>
-
+<meta property="og:url" content="https://homura0731.github.io/post/2018/08/move-to-hugo/" /><meta property="article:published_time" content="2018-08-10T21:52:23&#43;08:00"/>
 <meta property="article:modified_time" content="2018-08-10T21:52:23&#43;08:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <meta itemprop="name" content="Blog - 更換成Hugo">
 <meta itemprop="description" content="換用Hugo的契機 最近看到微軟某位MVP把Blogger搬到Hugo上了，然後我去Google了一下跟Hexo的差別，發現幾乎都是說Hexo">
 
 
 <meta itemprop="datePublished" content="2018-08-10T21:52:23&#43;08:00" />
 <meta itemprop="dateModified" content="2018-08-10T21:52:23&#43;08:00" />
-<meta itemprop="wordCount" content="533">
+<meta itemprop="wordCount" content="417">
 
 
 
@@ -159,8 +144,8 @@
               <a href="/categories/hugo/"> Hugo </a>
             
           </div>
-        <span class="more-meta"> 约 533 字 </span>
-        <span class="more-meta"> 預計閱讀 2 分鐘 </span>
+        <span class="more-meta"> 約 417 字 </span>
+        <span class="more-meta"> 預計閱讀 1 分鐘 </span>
         
       </div>
     </header>
@@ -225,42 +210,19 @@
 所以不能直接傳上去
 要先拉下來</p>
 
-<pre><code class="language-bash">$ git pull https://github.com/帳號/帳號.github.com
+<pre><code class="language-shell">$ git pull https://github.com/帳號/帳號.github.com
 </code></pre>
 
 <p>然後資料夾改名成public丟到hugo專案底下
 hugo 產生發行檔</p>
 
-<pre><code class="language-bash">$ hugo -t 主題名稱
+<pre><code class="language-shell">$ hugo -t 主題名稱
 </code></pre>
 
-<p>先建立public資料夾
-路徑指到public裡,</p>
+<p>路徑指到public裡,推上Gitpage</p>
 
-<pre><code class="language-bash">$ mkdir public
-$ cd public
-</code></pre>
-
-<p>初始化git，指向原本的專案</p>
-
-<pre><code class="language-bash">$ git init
-$ git remote add origin https://github.com/帳號/帳號.github.com.git
-</code></pre>
-
-<p>拉下原本的專案</p>
-
-<pre><code class="language-bash">$ git pull origin master
-</code></pre>
-
-<p>先回hugo專案，再發行hugo專案</p>
-
-<pre><code class="language-bash">$ cd ../
-$ hugo -t 主題名稱
-</code></pre>
-
-<p>推上Gitpage</p>
-
-<pre><code class="language-bash">$ git add .
+<pre><code class="language-shell">$ cd public
+$ git add .
 $ git commit -m &quot;隨便打&quot;
 $ git push origin master
 </code></pre>
@@ -278,7 +240,10 @@ $ git push origin master
     <span class="item-content">2018-08-10</span>
   </p>
   
-  
+  <p class="copyright-item">
+    <span class="item-title">許可協議</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
 </div>
 
     
@@ -287,7 +252,9 @@ $ git push origin master
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/hugo/">Hugo</a>
+            <span class="tags">
+              <a href="/tags/hugo/">Hugo</a>
+            </span>
           
         </div>
 
@@ -315,7 +282,7 @@ $ git push origin master
     (function() {
       
       
-      
+      if (window.location.hostname === 'localhost') return;
 
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       var disqus_shortname = 'homura0731';
@@ -335,6 +302,7 @@ $ git push origin master
       <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
       <a href="https://stackoverflow.com/users/10272735/homura-lin?tab=profile" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
       <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/kun-han-lin-227676170/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
   <a href="https://homura0731.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
@@ -345,7 +313,7 @@ $ git push origin master
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主題 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
