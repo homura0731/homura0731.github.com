@@ -61,7 +61,7 @@
 
 <meta itemprop="datePublished" content="2018-08-10T21:52:23&#43;08:00" />
 <meta itemprop="dateModified" content="2018-08-10T21:52:23&#43;08:00" />
-<meta itemprop="wordCount" content="417">
+<meta itemprop="wordCount" content="492">
 
 
 
@@ -144,7 +144,7 @@
               <a href="/categories/hugo/"> Hugo </a>
             
           </div>
-        <span class="more-meta"> 約 417 字 </span>
+        <span class="more-meta"> 約 492 字 </span>
         <span class="more-meta"> 預計閱讀 1 分鐘 </span>
         
       </div>
@@ -205,23 +205,34 @@
 
 <h1 id="gitpage從hexo更換到hugo">Gitpage從Hexo更換到Hugo</h1>
 
-<p>其實很簡單只要把發行的檔案更換成Hugo的就行了
-不過因為我們Gitpage上面已經有檔案
-所以不能直接傳上去
-要先拉下來</p>
+<p>其實很簡單只要把發行的檔案更換成Hugo的就行了，不過因為我們Gitpage上面已經有檔案，所以不能直接傳上去。</p>
 
-<pre><code class="language-shell">$ git pull https://github.com/帳號/帳號.github.com
+<p>首先先在hugo專案底下建立pulic資料夾</p>
+
+<pre><code class="language-shell">$ mkdir public
 </code></pre>
 
-<p>然後資料夾改名成public丟到hugo專案底下
-hugo 產生發行檔</p>
-
-<pre><code class="language-shell">$ hugo -t 主題名稱
-</code></pre>
-
-<p>路徑指到public裡,推上Gitpage</p>
+<p>進入資料夾，並初始化</p>
 
 <pre><code class="language-shell">$ cd public
+$ git init
+</code></pre>
+
+<p>再<code>git pull</code>下來</p>
+
+<pre><code class="language-shell">$ git pull https://github.com/帳號/帳號.github.com.git
+</code></pre>
+
+<p>hugo 產生發行檔</p>
+
+<pre><code class="language-shell">cd ../
+$ hugo -t 主題名稱
+</code></pre>
+
+<p>路徑指到public裡，推上Gitpage</p>
+
+<pre><code class="language-shell">$ cd public
+$ git remote add origin https://github.com/帳號/帳號.github.com.git
 $ git add .
 $ git commit -m &quot;隨便打&quot;
 $ git push origin master

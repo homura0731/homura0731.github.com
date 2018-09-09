@@ -61,7 +61,7 @@
 
 <meta itemprop="datePublished" content="2017-05-08T20:14:58&#43;00:00" />
 <meta itemprop="dateModified" content="2017-05-08T20:14:58&#43;00:00" />
-<meta itemprop="wordCount" content="1028">
+<meta itemprop="wordCount" content="992">
 
 
 
@@ -144,8 +144,8 @@
               <a href="/categories/cordova/"> Cordova </a>
             
           </div>
-        <span class="more-meta"> 約 1028 字 </span>
-        <span class="more-meta"> 預計閱讀 3 分鐘 </span>
+        <span class="more-meta"> 約 992 字 </span>
+        <span class="more-meta"> 預計閱讀 2 分鐘 </span>
         
       </div>
     </header>
@@ -192,7 +192,7 @@
 
 <p>使用以下指令</p>
 
-<pre><code class="language-bash">$ cordova platform add android
+<pre><code class="language-shell">$ cordova platform add android
 </code></pre>
 
 <p><img src="1.png" alt="添加android platform" />
@@ -203,7 +203,7 @@
 
 <p>使用以下指令</p>
 
-<pre><code class="language-bash">$ cordova run android
+<pre><code class="language-shell">$ cordova run android
 </code></pre>
 
 <p>然後應該會看到以下錯誤訊息，因為還沒設置android sdk的path
@@ -222,7 +222,7 @@
 <p>設置完成後記得關掉命令提示字元(終端機)，因為他不會自己重讀path一定要重開，我第一次就笨笨的設好了為啥還抓不到&hellip;
 然後在執行一次剛剛的指令</p>
 
-<pre><code class="language-bash">$ cordova run android
+<pre><code class="language-shell">$ cordova run android
 </code></pre>
 
 <p>應該會有抓不完jdk，然後又丟新錯誤給我
@@ -232,7 +232,7 @@
 
 <p>這步我記得在win7是沒這問題，不知道是不是新版sdk有什麼問題，google了一下用這2行指令解決</p>
 
-<pre><code class="language-bash">$ mkdir &quot;%ANDROID_HOME%\licenses&quot;
+<pre><code class="language-shell">$ mkdir &quot;%ANDROID_HOME%\licenses&quot;
 $ echo |set /p=&quot;8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;%ANDROID_HOME%\licenses\android-sdk-license&quot;
 </code></pre>
 
@@ -241,26 +241,21 @@ $ echo |set /p=&quot;8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;%
 
 <h2 id="打開sdk資料夾權限">打開sdk資料夾權限</h2>
 
-<p>這邊先用系統管理員權限打開cmd，然後指向android-sdk根目錄，輸入以下指令</p>
-
-<pre><code class="language-bash">$ chmod 777 Android
-</code></pre>
-
-<p>輸入完後就能修改資料夾權限了</p>
+<p>修改Windows資料夾權限給Cordova使用</p>
 
 <h2 id="執行及編譯成apk">執行及編譯成apk</h2>
 
 <p>到這步我是沒問題了，如果還有問題可能是sdk的platform設定有問題，個人公司的win7碰到的，有問題去目錄底下的AVD Manager.exe設定一下目標平台
 然後再執行一次</p>
 
-<pre><code class="language-bash">$ cordova run android
+<pre><code class="language-shell">$ cordova run android
 </code></pre>
 
 <p>成功後如下圖結果
 <img src="9.png" alt="模擬成功" />
 然後編譯apk指令</p>
 
-<pre><code class="language-bash">$ cordova build android
+<pre><code class="language-shell">$ cordova build android
 </code></pre>
 
 <p>編譯後可以再專案目錄底下找到apk

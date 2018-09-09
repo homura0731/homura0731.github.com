@@ -309,7 +309,7 @@ next.onclick = function(){
 
 <p>這個就要使用我的<a href="../lodash-debounce/">上一篇文章</a>，使用Lodash的<code>_.debounce</code>就能實現了。</p>
 
-<pre><code class="language-js">var debounce = _.debounce(textWrite, 300);// 延遲500毫秒紀錄
+<pre><code class="language-js">var debounce = _.debounce(textWrite, 500);// 延遲500毫秒紀錄
 text.addEventListener('input', debounce);// 改成監聽延遲函數
 </code></pre>
 

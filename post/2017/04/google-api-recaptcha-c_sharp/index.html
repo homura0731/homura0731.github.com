@@ -246,7 +246,7 @@
 我們需要POST三個值到<a href="https://www.google.com/recaptcha/api/siteverify">https://www.google.com/recaptcha/api/siteverify</a>這位置上，然後官方丟回驗證是否成功的JSON字串回來。
 然後就來開始實作吧!</p>
 
-<pre><code class="language-csharp">// 確認是否有Token回傳回來
+<pre><code class="language-cs">// 確認是否有Token回傳回來
 if (Request.Form[&quot;captchaToken&quot;] == &quot;&quot;)
 {
     Msg.Text = &quot;請確認是否為機器人&quot;;
