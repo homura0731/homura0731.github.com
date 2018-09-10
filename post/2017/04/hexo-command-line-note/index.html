@@ -23,7 +23,7 @@
 
 
 
-
+<meta name="google-site-verification" content="IS8PZiCNvYqouPO8vCB_i4giUUllqRseOoU2S7vXTfM" />
 
 
 <meta name="generator" content="Hugo 0.46" />
@@ -36,7 +36,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
+<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Seaweed+Script" rel="stylesheet">  
 
 
 
@@ -159,7 +160,7 @@
               <a href="/categories/hexo/"> Hexo </a>
             
           </div>
-        <span class="more-meta"> 约 402 字 </span>
+        <span class="more-meta"> 約 402 字 </span>
         <span class="more-meta"> 預計閱讀 1 分鐘 </span>
         
       </div>
@@ -201,27 +202,27 @@
 
 <p>啟動伺服器</p>
 
-<pre><code class="language-bash">$ hexo server 
+<pre><code class="language-shell">$ hexo server 
 </code></pre>
 
 <p>建立新文章</p>
 
-<pre><code class="language-bash">$ hexo new &quot;文章名&quot;
+<pre><code class="language-shell">$ hexo new &quot;文章名&quot;
 </code></pre>
 
 <p>產生後並佈署到github(第一次用時一直只有產生，結果因為檔案沒更新一直傳不上去..)</p>
 
-<pre><code class="language-bash">$ hexo deploy --generate
+<pre><code class="language-shell">$ hexo deploy --generate
 </code></pre>
 
 <p>hexo套件安裝(例如我的themes需要hexo-until)</p>
 
-<pre><code class="language-bash">$ npm install --save hexo-util
+<pre><code class="language-shell">$ npm install --save hexo-util
 </code></pre>
 
 <p>複製themes</p>
 
-<pre><code class="language-bash">$ git clone github位置 themes/主題資料夾名稱
+<pre><code class="language-shell">$ git clone github位置 themes/主題資料夾名稱
 </code></pre>
 
 <h1 id="設定相關">設定相關</h1>
@@ -230,7 +231,7 @@
 
 <p>1.新增一個頁面</p>
 
-<pre><code class="language-bash">$ hexo new page categories
+<pre><code class="language-shell">$ hexo new page categories
 </code></pre>
 
 <p>2.設定頁面屬性</p>
@@ -273,7 +274,10 @@
     <span class="item-content">2017-04-15</span>
   </p>
   
-  
+  <p class="copyright-item">
+    <span class="item-title">許可協議</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
 </div>
 
     
@@ -282,9 +286,13 @@
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/hexo/">Hexo</a>
+            <span class="tags">
+              <a href="/tags/hexo/">Hexo</a>
+            </span>
           
-          <a href="/tags/bash/">bash</a>
+            <span class="tags">
+              <a href="/tags/bash/">bash</a>
+            </span>
           
         </div>
 
@@ -312,7 +320,7 @@
     (function() {
       
       
-      
+      if (window.location.hostname === 'localhost') return;
 
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       var disqus_shortname = 'homura0731';
@@ -332,6 +340,7 @@
       <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
       <a href="https://stackoverflow.com/users/10272735/homura-lin?tab=profile" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
       <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/kun-han-lin-227676170/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
   <a href="https://homura0731.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
@@ -342,7 +351,7 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主題 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
