@@ -6,10 +6,19 @@
     <description>Recent content on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Mon, 10 Sep 2018 20:52:41 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 15 Sep 2018 20:19:23 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo - 文件路徑問題</title>
+      <link>https://homura0731.github.io/post/2018/09/hugo-path/</link>
+      <pubDate>Sat, 15 Sep 2018 20:19:23 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/2018/09/hugo-path/</guid>
+      <description>前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，</description>
+    </item>
     
     <item>
       <title>IT日常 - IT邦升級研究生和報名鐵人賽</title>
