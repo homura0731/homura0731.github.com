@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Hugo - 文件路徑問題 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day1] ASP.Net Core SignalR 導讀 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，" />
+  <meta name="description" content="今天第一天來點輕鬆的，我們來說說SignalR是什麼? ASP.NET Core SignalR是什麼？ SignalR是一個能輕鬆架構即時互動(real-time" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/2018/09/hugo-path/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-1/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,25 +51,25 @@
 
 
 
-<meta property="og:title" content="Hugo - 文件路徑問題" />
-<meta property="og:description" content="前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，" />
+<meta property="og:title" content="[鐵人賽Day1] ASP.Net Core SignalR 導讀" />
+<meta property="og:description" content="今天第一天來點輕鬆的，我們來說說SignalR是什麼? ASP.NET Core SignalR是什麼？ SignalR是一個能輕鬆架構即時互動(real-time" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/2018/09/hugo-path/" /><meta property="article:published_time" content="2018-09-15T20:19:23&#43;08:00"/>
-<meta property="article:modified_time" content="2018-09-15T20:19:23&#43;08:00"/>
-<meta itemprop="name" content="Hugo - 文件路徑問題">
-<meta itemprop="description" content="前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，">
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-1/" /><meta property="article:published_time" content="2018-10-14T19:39:50&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-14T19:39:50&#43;08:00"/>
+<meta itemprop="name" content="[鐵人賽Day1] ASP.Net Core SignalR 導讀">
+<meta itemprop="description" content="今天第一天來點輕鬆的，我們來說說SignalR是什麼? ASP.NET Core SignalR是什麼？ SignalR是一個能輕鬆架構即時互動(real-time">
 
 
-<meta itemprop="datePublished" content="2018-09-15T20:19:23&#43;08:00" />
-<meta itemprop="dateModified" content="2018-09-15T20:19:23&#43;08:00" />
-<meta itemprop="wordCount" content="230">
+<meta itemprop="datePublished" content="2018-10-14T19:39:50&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-14T19:39:50&#43;08:00" />
+<meta itemprop="wordCount" content="879">
 
 
 
-<meta itemprop="keywords" content="Hugo,Git," />
+<meta itemprop="keywords" content="2019鐵人賽,SignalR," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hugo - 文件路徑問題"/>
-<meta name="twitter:description" content="前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，"/>
+<meta name="twitter:title" content="[鐵人賽Day1] ASP.Net Core SignalR 導讀"/>
+<meta name="twitter:description" content="今天第一天來點輕鬆的，我們來說說SignalR是什麼? ASP.NET Core SignalR是什麼？ SignalR是一個能輕鬆架構即時互動(real-time"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,26 +136,26 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Hugo - 文件路徑問題</h1>
+      <h1 class="post-title">[鐵人賽Day1] ASP.Net Core SignalR 導讀</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-09-15 
+          2018-10-14 
         </span>
         <div class="post-category">
             
               <i class="far fa-folder-open" aria-hidden="true"></i>
-              <a href="/categories/hugo/"> Hugo </a>
+              <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/"> 2019鐵人賽 </a>
             
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 230 字
+          約 879 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
-          預計閱讀 1 分鐘 
+          預計閱讀 2 分鐘 
         </span>
         
       </div>
@@ -169,12 +169,11 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#hugo文件產生路徑">Hugo文件產生路徑</a>
-<ul>
-<li><a href="#github-大小寫不同的同名資料">GitHub 大小寫不同的同名資料</a></li>
-</ul></li>
-<li><a href="#參考">參考</a></li>
+<li><a href="#asp-net-core-signalr是什麼">ASP.NET Core SignalR是什麼？</a></li>
+<li><a href="#為什麼要選asp-net-core版本">為什麼要選ASP.NET Core版本？</a></li>
+<li><a href="#使用signalr的好處">使用SignalR的好處</a></li>
+<li><a href="#什麼是real-time-web-app">什麼是Real-time Web App</a></li>
+<li><a href="#鐵人賽的文章方向">鐵人賽的文章方向</a></li>
 </ul>
 </nav>
   </div>
@@ -187,33 +186,39 @@
     <div class="post-content">
       
 
-<h1 id="前言">前言</h1>
+<p>今天第一天來點輕鬆的，我們來說說SignalR是什麼?</p>
 
-<p>最近發現Hugo有些路徑問題，這篇記錄一下解決方法</p>
+<h1 id="asp-net-core-signalr是什麼">ASP.NET Core SignalR是什麼？</h1>
 
-<h1 id="hugo文件產生路徑">Hugo文件產生路徑</h1>
+<p>SignalR是一個能輕鬆架構即時互動(real-time)Web App的Library，微軟在2013年推出這套Library，相信應該很多人玩過，但我這次要介紹的是ASP.NET Core 的版本，今年大概6月才正式第一版，所以算是很新的Library。</p>
 
-<p>發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，分類及Tags則是沒關係還是能打大寫。</p>
-
-<h2 id="github-大小寫不同的同名資料">GitHub 大小寫不同的同名資料</h2>
-
-<p>這邊我也是最近才發現，原來以前Hexo沒這問題，所以push會變成2種名字依樣同時存在的問題，例如<code>Hexo</code>和<code>hexo</code>。
-解決方法</p>
-
-<pre><code class="language-shell">$ git mv -f Hexo ../hexo
-</code></pre>
-
-<p>此時hexo會被移動到外層，在手動拖回去就行了。</p>
-
-<blockquote>
-<p>註：不曉得為啥Rename同層路徑會一直失敗，所以目標才會設在前一層</p>
-</blockquote>
-
-<h1 id="參考">參考</h1>
+<h1 id="為什麼要選asp-net-core版本">為什麼要選ASP.NET Core版本？</h1>
 
 <ul>
-<li><a href="https://www.peterdavehello.org/2014/05/change-filename-case-int-git-repository/">https://www.peterdavehello.org/2014/05/change-filename-case-int-git-repository/</a></li>
+<li>比較新還沒有什麼人分享</li>
+<li>.NET Core的跨平台特性，這樣不管在哪個平台都能實作，後來新增的WPF是例外，因為只支援Windows</li>
+<li>ASP.NET Core框架彈性比起ASP.NET高很多</li>
 </ul>
+
+<h1 id="使用signalr的好處">使用SignalR的好處</h1>
+
+<p>SignalR有分前端和後端，前端提高的大量的方法簡化的WebSocket的用法，相信如果有在玩Websocket的應該知道有不少Websocket的前端框架出現，例如<code>Socket.io</code>
+當然這邊想要自己用Websoket寫也是可以，後端則是<code>SigalR Hub API</code>幫忙控制Server和User之間的通訊和連接的控管，而且內建大量的控制方法，我們不需要自己再從頭撰寫。</p>
+
+<h1 id="什麼是real-time-web-app">什麼是Real-time Web App</h1>
+
+<p>一般的網頁如果想做聊天室，會寫個ajax的程式定時去跟Server確定有無新資料，這個動作叫作輪詢，但是時間過太久Server端的記憶體會釋放掉，導致你你要資料時，程式要整個重啟，
+這時候就出現長輪詢，差別在於他會短時間送訊息給Server，讓Server保持執行的狀態，就不會因為太久沒連線而導致釋放掉。</p>
+
+<p>但是這些方法都不是很好，所以在HTML5時出現新API <code>WebSocket</code>，可以達成真正的跟Server保持連線，一有用戶傳送訊息到Server，Server馬上會再把訊息送給所有的連接用戶。</p>
+
+<p>流程大概像下面這幫圖</p>
+
+<p><img src="SignalRHub.PNG" alt="SignalRHub" /></p>
+
+<h1 id="鐵人賽的文章方向">鐵人賽的文章方向</h1>
+
+<p>主要會講SignalR比較重要的概念，其他太細的可能不會提，例如ASP.NET Core或是一些前端的概念，其實SignalR概念也不多就是了XD，再來會帶大家寫一些好玩的實作，目前大概預定好了幾個，有<code>塗鴉板</code>、<code>投票系統</code>、<code>遠端操作系統</code>、<code>共用文件編輯</code>，大概這些，今天就輕鬆些先這樣囉!</p>
 
     </div>
 
@@ -225,7 +230,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-09-15</span>
+    <span class="item-content">2018-10-14</span>
   </p>
   
   <p class="copyright-item">
@@ -234,7 +239,7 @@
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/2018/09/hugo-path/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-1/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -246,11 +251,11 @@
       <div class="post-tags">
           
             <span class="tags">
-              <a href="/tags/hugo/">Hugo</a>
+              <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
             </span>
           
             <span class="tags">
-              <a href="/tags/git/">Git</a>
+              <a href="/tags/signalr/">SignalR</a>
             </span>
           
         </div>
@@ -258,14 +263,9 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-10/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day10] 使用SignalR Hub(2)</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/2018/09/it-daily-ithelp/">
-            <span class="next-text nav-default">IT日常 - IT邦升級研究生和報名鐵人賽</span>
+          <a class="next" href="/post/ironman2019/ironman-day-10/">
+            <span class="next-text nav-default">[鐵人賽Day10] 使用SignalR Hub(2)</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

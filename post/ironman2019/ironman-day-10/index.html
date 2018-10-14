@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Hugo - 文件路徑問題 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day10] 使用SignalR Hub(2) - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，" />
+  <meta name="description" content="今天來點輕鬆的吧！來寫寫強型別的Hub和把HubContext注入Controller 強型別Hub SignalR的Hub介面只規定我們要實作" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/2018/09/hugo-path/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-10/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,25 +51,25 @@
 
 
 
-<meta property="og:title" content="Hugo - 文件路徑問題" />
-<meta property="og:description" content="前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，" />
+<meta property="og:title" content="[鐵人賽Day10] 使用SignalR Hub(2)" />
+<meta property="og:description" content="今天來點輕鬆的吧！來寫寫強型別的Hub和把HubContext注入Controller 強型別Hub SignalR的Hub介面只規定我們要實作" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/2018/09/hugo-path/" /><meta property="article:published_time" content="2018-09-15T20:19:23&#43;08:00"/>
-<meta property="article:modified_time" content="2018-09-15T20:19:23&#43;08:00"/>
-<meta itemprop="name" content="Hugo - 文件路徑問題">
-<meta itemprop="description" content="前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，">
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-10/" /><meta property="article:published_time" content="2018-10-02T23:19:52&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-02T23:19:52&#43;08:00"/>
+<meta itemprop="name" content="[鐵人賽Day10] 使用SignalR Hub(2)">
+<meta itemprop="description" content="今天來點輕鬆的吧！來寫寫強型別的Hub和把HubContext注入Controller 強型別Hub SignalR的Hub介面只規定我們要實作">
 
 
-<meta itemprop="datePublished" content="2018-09-15T20:19:23&#43;08:00" />
-<meta itemprop="dateModified" content="2018-09-15T20:19:23&#43;08:00" />
-<meta itemprop="wordCount" content="230">
+<meta itemprop="datePublished" content="2018-10-02T23:19:52&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-02T23:19:52&#43;08:00" />
+<meta itemprop="wordCount" content="854">
 
 
 
-<meta itemprop="keywords" content="Hugo,Git," />
+<meta itemprop="keywords" content="2019鐵人賽," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hugo - 文件路徑問題"/>
-<meta name="twitter:description" content="前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，"/>
+<meta name="twitter:title" content="[鐵人賽Day10] 使用SignalR Hub(2)"/>
+<meta name="twitter:description" content="今天來點輕鬆的吧！來寫寫強型別的Hub和把HubContext注入Controller 強型別Hub SignalR的Hub介面只規定我們要實作"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,26 +136,26 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Hugo - 文件路徑問題</h1>
+      <h1 class="post-title">[鐵人賽Day10] 使用SignalR Hub(2)</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-09-15 
+          2018-10-02 
         </span>
         <div class="post-category">
             
               <i class="far fa-folder-open" aria-hidden="true"></i>
-              <a href="/categories/hugo/"> Hugo </a>
+              <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/"> 2019鐵人賽 </a>
             
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 230 字
+          約 854 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
-          預計閱讀 1 分鐘 
+          預計閱讀 2 分鐘 
         </span>
         
       </div>
@@ -169,12 +169,14 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#hugo文件產生路徑">Hugo文件產生路徑</a>
+<li><a href="#強型別hub">強型別Hub</a>
 <ul>
-<li><a href="#github-大小寫不同的同名資料">GitHub 大小寫不同的同名資料</a></li>
+<li><a href="#實作強行別hub">實作強行別Hub</a></li>
 </ul></li>
-<li><a href="#參考">參考</a></li>
+<li><a href="#hubcontext注入controller">HubContext注入Controller</a>
+<ul>
+<li><a href="#建立一個controller">建立一個Controller</a></li>
+</ul></li>
 </ul>
 </nav>
   </div>
@@ -187,33 +189,125 @@
     <div class="post-content">
       
 
-<h1 id="前言">前言</h1>
+<p>今天來點輕鬆的吧！來寫寫強型別的Hub和把HubContext注入Controller</p>
 
-<p>最近發現Hugo有些路徑問題，這篇記錄一下解決方法</p>
+<h1 id="強型別hub">強型別Hub</h1>
 
-<h1 id="hugo文件產生路徑">Hugo文件產生路徑</h1>
+<p>SignalR的<code>Hub</code>介面只規定我們要實作<code>OnConnectedAsync</code>和<code>OnDisconnectedAsync</code>兩個事件而已，其他的事件全都是自定義的<code>magic string</code>，
+這樣會可能會照成大小寫拼錯，或是拼錯了不知道，也能幫助我們在開發偵錯時就先找到錯誤。</p>
 
-<p>發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，分類及Tags則是沒關係還是能打大寫。</p>
+<h2 id="實作強行別hub">實作強行別Hub</h2>
 
-<h2 id="github-大小寫不同的同名資料">GitHub 大小寫不同的同名資料</h2>
+<p>其實就是也就是定義一個介面而已，我們來簡單設計一個介面，大概像下面這樣</p>
 
-<p>這邊我也是最近才發現，原來以前Hexo沒這問題，所以push會變成2種名字依樣同時存在的問題，例如<code>Hexo</code>和<code>hexo</code>。
-解決方法</p>
-
-<pre><code class="language-shell">$ git mv -f Hexo ../hexo
+<pre><code class="language-cs">public interface IChatClient
+{
+    Task AddGroup(string groupName, string user);
+    Task ReceiveMsgGroup(string groupName, string user, string message);
+}
 </code></pre>
 
-<p>此時hexo會被移動到外層，在手動拖回去就行了。</p>
+<p>套用到自己寫的Hub上</p>
 
-<blockquote>
-<p>註：不曉得為啥Rename同層路徑會一直失敗，所以目標才會設在前一層</p>
-</blockquote>
+<pre><code class="language-cs">public class ChatHub : Hub&lt;IChatClient&gt;
+{
+    public async Task AddGroup(string user, string message)
+    {
+        await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
+        await Clients.Group(groupName).SendAsync(&quot;RecGroupMsg&quot;, $&quot;{user} 已加入 群組：{groupName}。&quot;);
+    }
 
-<h1 id="參考">參考</h1>
+    public Task ReceiveMsgGroup(tring groupName, string user, string message)
+    {
+        return Clients.Group(groupName).SendAsync(&quot;ReceiveMessageGroup&quot;, groupName , username, message);
+    }
+}
+</code></pre>
 
-<ul>
-<li><a href="https://www.peterdavehello.org/2014/05/change-filename-case-int-git-repository/">https://www.peterdavehello.org/2014/05/change-filename-case-int-git-repository/</a></li>
-</ul>
+<h1 id="hubcontext注入controller">HubContext注入Controller</h1>
+
+<p>這樣的好處是能把方法寫道Controller裡面，缺點則是我們呼叫不到<code>Context</code>物件，這樣就沒辦法知道是哪個ClientID傳過來的，其實我不知道這樣寫的好處是在哪邊，不過官方文件有介紹，所以今天就來看看怎麼把<code>HubContext注入Controller</code>注入Controller吧！</p>
+
+<h2 id="建立一個controller">建立一個Controller</h2>
+
+<p>我們還是用Day3同一個專案，建立一個Controller資料夾，在裡面建立一個<code>ChatController.cs</code></p>
+
+<pre><code class="language-cs">using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using CoreWeb.Hubs;
+
+namespace CoreWeb.Controllers
+{
+    public class ChatController : Controller
+    {
+
+    }
+}
+</code></pre>
+
+<p>建立一個變數，在建構子注入<code>HubContext&lt;T&gt;</code>，<code>&lt;T&gt;</code>為自己建立的任意<code>Hub</code></p>
+
+<pre><code class="language-cs">private readonly IHubContext&lt;ChatHub&gt; _hubContext;
+public ChatController(IHubContext&lt;ChatHub&gt; hubContext)
+{
+    _hubContext = hubContext;
+}
+</code></pre>
+
+<p>傳送訊息改成從Controller進入，所以我們要在Controller建立傳送訊息的方法，方法基本上跟在Hub裡面時一模一樣</p>
+
+<pre><code class="language-cs">public async Task SendMessage(string user, string message)
+{
+    await _hubContext.Clients.All.SendAsync(&quot;ReceiveMessage&quot;,user, message);
+}
+</code></pre>
+
+<p>在<code>Starup.cs</code>註冊<code>MVC</code>方法</p>
+
+<pre><code class="language-cs">public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSignalR().AddMessagePackProtocol();
+    services.AddMvc();
+}
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseSignalR(routes =&gt;
+    {
+        routes.MapHub&lt;ChatHub&gt;(&quot;/chatHub&quot;);
+    });
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+    app.UseMvc(routes =&gt;
+    {
+        routes.MapRoute(
+            name: &quot;default&quot;,
+            template: &quot;{controller=Chat}/{action=Index}/{id?}&quot;);
+    });
+
+}
+</code></pre>
+
+<p>前端的呼叫方法有點不一樣，得換用ajax</p>
+
+<pre><code class="language-js">document.getElementById(&quot;submitBtn&quot;).addEventListener(&quot;click&quot;, function (event) {
+    var user = document.getElementById(&quot;name&quot;).value;
+    var message = document.getElementById(&quot;msg&quot;).value;
+    fetch(`Chat/SendMessage?user=${user}&amp;message=${message}`,{
+        method:&quot;GET&quot;
+    })
+    event.preventDefault();
+});
+</code></pre>
+
+<p>前端接收則還是保持原本的狀況，大概這樣就完成了，下一篇實作，我們會應用到這個寫法，今天大概就這樣囉!</p>
 
     </div>
 
@@ -225,7 +319,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-09-15</span>
+    <span class="item-content">2018-10-02</span>
   </p>
   
   <p class="copyright-item">
@@ -234,7 +328,7 @@
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/2018/09/hugo-path/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-10/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -246,11 +340,7 @@
       <div class="post-tags">
           
             <span class="tags">
-              <a href="/tags/hugo/">Hugo</a>
-            </span>
-          
-            <span class="tags">
-              <a href="/tags/git/">Git</a>
+              <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
             </span>
           
         </div>
@@ -258,14 +348,14 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-10/">
+          <a class="prev" href="/post/ironman2019/ironman-day-1/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day10] 使用SignalR Hub(2)</span>
+            <span class="prev-text nav-default">[鐵人賽Day1] ASP.Net Core SignalR 導讀</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
-          <a class="next" href="/post/2018/09/it-daily-ithelp/">
-            <span class="next-text nav-default">IT日常 - IT邦升級研究生和報名鐵人賽</span>
+          <a class="next" href="/post/2018/09/hugo-path/">
+            <span class="next-text nav-default">Hugo - 文件路徑問題</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
