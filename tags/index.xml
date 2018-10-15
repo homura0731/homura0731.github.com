@@ -6,15 +6,24 @@
     <description>Recent content in Tags on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Sun, 14 Oct 2018 19:39:50 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 15 Oct 2018 19:28:52 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>.Net Core</title>
+      <link>https://homura0731.github.io/tags/.net-core/</link>
+      <pubDate>Mon, 15 Oct 2018 19:28:52 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/tags/.net-core/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>2019鐵人賽</title>
       <link>https://homura0731.github.io/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</link>
-      <pubDate>Sun, 14 Oct 2018 19:39:50 +0800</pubDate>
+      <pubDate>Mon, 15 Oct 2018 19:28:52 +0800</pubDate>
       
       <guid>https://homura0731.github.io/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</guid>
       <description></description>
@@ -40,10 +49,10 @@
     
     <item>
       <title>C#</title>
-      <link>https://homura0731.github.io/tags/c/</link>
+      <link>https://homura0731.github.io/tags/c#/</link>
       <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
       
-      <guid>https://homura0731.github.io/tags/c/</guid>
+      <guid>https://homura0731.github.io/tags/c#/</guid>
       <description></description>
     </item>
     
@@ -176,7 +185,7 @@
     <item>
       <title>SignalR</title>
       <link>https://homura0731.github.io/tags/signalr/</link>
-      <pubDate>Sun, 14 Oct 2018 19:39:50 +0800</pubDate>
+      <pubDate>Mon, 15 Oct 2018 19:28:52 +0800</pubDate>
       
       <guid>https://homura0731.github.io/tags/signalr/</guid>
       <description></description>

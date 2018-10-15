@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Google API - 圖形驗證reCAPTCHA使用C# - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day2] 架設SignalR環境 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="前言 由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新" />
+  <meta name="description" content="需要的OS環境 OS環境Windows、Linux、Mac OS任一都行，主要操作是用dotNet CLI和VS Code不用擔心會有不一樣的操作流" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/2017/04/google-api-recaptcha-c_sharp/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-2/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,20 +51,16 @@
 
 
 
-<meta property="og:title" content="Google API - 圖形驗證reCAPTCHA使用C#" />
-<meta property="og:description" content="前言 由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新" />
+<meta property="og:title" content="[鐵人賽Day2] 架設SignalR環境" />
+<meta property="og:description" content="需要的OS環境 OS環境Windows、Linux、Mac OS任一都行，主要操作是用dotNet CLI和VS Code不用擔心會有不一樣的操作流" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/2017/04/google-api-recaptcha-c_sharp/" />
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-2/" />
 
 
 
-<meta property="article:published_time" content="2017-04-18T20:34:16&#43;00:00"/>
+<meta property="article:published_time" content="2018-10-15T19:28:52&#43;08:00"/>
 
-<meta property="article:modified_time" content="2017-04-18T20:34:16&#43;00:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-10-15T19:28:52&#43;08:00"/>
 
 
 
@@ -72,20 +68,24 @@
 
 
 
-<meta itemprop="name" content="Google API - 圖形驗證reCAPTCHA使用C#">
-<meta itemprop="description" content="前言 由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新">
-
-
-<meta itemprop="datePublished" content="2017-04-18T20:34:16&#43;00:00" />
-<meta itemprop="dateModified" content="2017-04-18T20:34:16&#43;00:00" />
-<meta itemprop="wordCount" content="1177">
 
 
 
-<meta itemprop="keywords" content="C#,Google-API,JavaScript,reCAPTCHA," />
+
+<meta itemprop="name" content="[鐵人賽Day2] 架設SignalR環境">
+<meta itemprop="description" content="需要的OS環境 OS環境Windows、Linux、Mac OS任一都行，主要操作是用dotNet CLI和VS Code不用擔心會有不一樣的操作流">
+
+
+<meta itemprop="datePublished" content="2018-10-15T19:28:52&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-15T19:28:52&#43;08:00" />
+<meta itemprop="wordCount" content="870">
+
+
+
+<meta itemprop="keywords" content="2019鐵人賽,SignalR,.Net Core," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Google API - 圖形驗證reCAPTCHA使用C#"/>
-<meta name="twitter:description" content="前言 由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新"/>
+<meta name="twitter:title" content="[鐵人賽Day2] 架設SignalR環境"/>
+<meta name="twitter:description" content="需要的OS環境 OS環境Windows、Linux、Mac OS任一都行，主要操作是用dotNet CLI和VS Code不用擔心會有不一樣的操作流"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -152,26 +152,26 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Google API - 圖形驗證reCAPTCHA使用C#</h1>
+      <h1 class="post-title">[鐵人賽Day2] 架設SignalR環境</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2017-04-18 
+          2018-10-15 
         </span>
         <div class="post-category">
             
               <i class="far fa-folder-open" aria-hidden="true"></i>
-              <a href="/categories/asp.net/"> ASP.NET </a>
+              <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/"> 2019鐵人賽 </a>
             
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 1177 字
+          約 870 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
-          預計閱讀 3 分鐘 
+          預計閱讀 2 分鐘 
         </span>
         
       </div>
@@ -185,19 +185,16 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#開始實作recaptcha">開始實作reCAPTCHA</a>
+<li><a href="#需要的os環境">需要的OS環境</a></li>
+<li><a href="#安裝-net-core-sdk">安裝.Net Core SDK</a></li>
+<li><a href="#visual-studio-code-安裝">Visual Studio Code 安裝</a>
 <ul>
-<li><a href="#註冊">註冊</a></li>
-<li><a href="#recaptcha的驗證流程">reCAPTCHA的驗證流程</a></li>
-<li><a href="#程式實作">程式實作</a>
+<li><a href="#c-套件安裝">C#套件安裝</a></li>
+</ul></li>
+<li><a href="#npm套件管理工具">NPM套件管理工具</a>
 <ul>
-<li><a href="#前端部分">前端部分</a></li>
-<li><a href="#後端部分">後端部分</a></li>
+<li><a href="#常用的dotnet-cli">常用的dotnet CLI</a></li>
 </ul></li>
-</ul></li>
-<li><a href="#補充">補充</a></li>
-<li><a href="#後記">後記</a></li>
 </ul>
 </nav>
   </div>
@@ -210,115 +207,66 @@
     <div class="post-content">
       
 
-<h1 id="前言">前言</h1>
+<h1 id="需要的os環境">需要的OS環境</h1>
 
-<p>由於最近遇到有學生暴力破解公司寫的校園平台，至於為什麼會被破解，因為當初的人沒有寫驗證類的機制(汗)，於是只好馬上開始幫忙把登入頁面重新寫一遍，要擋暴力破解的方法第一個想到的就是驗證碼，稍微google了一下發現普通的驗證碼還不少都被破解，找了半天覺得Google的reCAPTCHA還不錯，於是就決定使用這個了，然後就開始說明吧!</p>
+<p>OS環境Windows、Linux、Mac OS任一都行，主要操作是用<code>dotNet CLI</code>和<code>VS Code</code>不用擔心會有不一樣的操作流程，如果你使用Visual Studio使用UI操作也是可以，但是這邊還是讓大家學學<code>dotNet CLI</code>和<code>VS Code</code>怎麼用比較好，畢竟是3個環境都能統一用的方法，學一下對自己沒壞處。</p>
 
-<h1 id="開始實作recaptcha">開始實作reCAPTCHA</h1>
+<h1 id="安裝-net-core-sdk">安裝.Net Core SDK</h1>
 
-<h2 id="註冊">註冊</h2>
+<p><a href="https://www.microsoft.com/net/download">SDK下載</a>
+打開後一直下一步安裝就行了
+裝完後打開終端機輸入，看看有沒有顯示版本，有代表安裝成功</p>
 
-<p>首先要去官方註冊 <a href="https://www.google.com/recaptcha/admin#list">註冊連結點這邊</a>
-因為我們要在自己的機子測試所以label和Domains都填localhost
-<img src="1.JPG" alt="註冊" /></p>
-
-<p>註冊完會得到一組Site key和一組Secret key
-<img src="2.JPG" alt="註冊成功" /></p>
-
-<h2 id="recaptcha的驗證流程">reCAPTCHA的驗證流程</h2>
-
-<p><img src="3.JPG" alt="驗證流程圖" />
-驗證流程我用小畫家隨便畫了一下，大概是像上面那樣</p>
-
-<h2 id="程式實作">程式實作</h2>
-
-<h3 id="前端部分">前端部分</h3>
-
-<p>先來看看 <a href="https://developers.google.com/recaptcha/docs/invisible">官方文件解釋</a>
-文件寫了很多，但是我覺得不是很重要，我們直接實作第二個範例</p>
-
-<pre><code class="language-html">&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;reCAPTCHA&lt;/title&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        // 驗證成功後執行
-        var onSubmit = function(token) {
-            $('#captchaToken').val() = token;
-        };
-        var onloadCallback = function() {
-            grecaptcha.render('reCAPTCHA', {
-            'sitekey': '自己的site_key', // 這邊填寫自己的site_key
-            'callback': onSubmit // 執行成功後onSubmit變數接收
-            });
-        };
-    &lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;form method=&quot;POST&quot;&gt;
-        &lt;div id=&quot;reCAPTCHA&quot;&gt;&lt;/div&gt;
-        &lt;input id=&quot;captchaToken&quot; name=&quot;captchaToken&quot; type=&quot;hidden&quot; /&gt;
-        &lt;input name=&quot;submit&quot; type=&quot;submit&quot; /&gt;
-    &lt;/form&gt;
-    &lt;script src=&quot;https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit&quot; async defer&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<pre><code class="language-shell">$ dotnet --version
 </code></pre>
 
-<p>範例我有稍微改寫了一下，然後開始解說，我有在裡面加一個hidden的input，驗證成功後剛剛建立的input會接收回傳的token，然後使用者登入後就會把token傳回到後端</p>
+<h1 id="visual-studio-code-安裝">Visual Studio Code 安裝</h1>
 
-<h3 id="後端部分">後端部分</h3>
+<p><a href="https://code.visualstudio.com/">VS Code安裝包</a>
+一樣一直下一步
+然後VS Code的CLI建議也裝一下
+Ｗindows安裝時會詢問
+Mac OS用裝完後<code>Command + Shift + P</code>然後輸入<code>shell Command</code>會有Path中安裝&rsquo;Code&rsquo;指令
+然後Linux安裝方法有點不一樣
+<a href="https://code.visualstudio.com/docs/setup/linux">參考官網教學</a></p>
 
-<p>再來看看官方的後端文件 <a href="https://developers.google.com/recaptcha/docs/verify">官方文件解釋2</a>
-前面一堆廢話就不用看了，直接看API Request和API Response的部分
-我們需要POST三個值到<a href="https://www.google.com/recaptcha/api/siteverify">https://www.google.com/recaptcha/api/siteverify</a>這位置上，然後官方丟回驗證是否成功的JSON字串回來。
-然後就來開始實作吧!</p>
+<h2 id="c-套件安裝">C#套件安裝</h2>
 
-<pre><code class="language-cs">// 確認是否有Token回傳回來
-if (Request.Form[&quot;captchaToken&quot;] == &quot;&quot;)
-{
-    Msg.Text = &quot;請確認是否為機器人&quot;;
-}
-else
-{
-    // 建立一個HttpWebRequest網址指向Google的驗證API
-    var req = (HttpWebRequest)HttpWebRequest.Create(&quot;https://www.google.com/recaptcha/api/siteverify&quot;);
-    // Post的資料
-    // secret:secret_key
-    // response:回傳的Token
-    // remoteip:設定的Domain Name
-    string posStr = &quot;secret=自己的secret_key&amp;response=&quot; + Request.Form[&quot;captchaToken&quot;] + &quot;&amp;remoteip=&quot; + Request.Url.Host;
-    byte[] byteStr = Encoding.UTF8.GetBytes(posStr);
-    req.Method = &quot;POST&quot;;
-    req.ContentType = &quot;application/x-www-form-urlencoded&quot;;
-    // 把要Post資料寫進HttpWebRequest
-    using (Stream streamArr = req.GetRequestStream())
-    {
-        streamArr.Write(byteStr, 0, byteStr.Length);
-    }
-    // 取得回傳資料
-    using (var res = (HttpWebResponse)req.GetResponse())
-    {
-        using (StreamReader getJson = new StreamReader(res.GetResponseStream()))
-        {
-            string json = getJson.ReadToEnd();
-            Msg.Text = json;
-        }
-    }
-}
+<p>VS Code還要安裝一下微軟的C#的套件，裝完之後重開VS Code會發現他在裝Debug套件，這樣就能使用Debug模式了。</p>
+
+<p><img src="1.png" alt="C#套件截圖" /></p>
+
+<h1 id="npm套件管理工具">NPM套件管理工具</h1>
+
+<p><a href="https://nodejs.org/en/">Node.js安裝包</a>一樣一直下一步就行。
+裝完後一樣打開終端機檢查</p>
+
+<pre><code class="language-shell">$ npm -v
 </code></pre>
 
-<p>我們用C#模擬HTML的form POST給google API認證，Msg物件則是是用來存放訊息用的，如果成功就會變跟下圖一樣
-<img src="4.JPG" alt="驗證成功圖" />
-如果錯誤的話success會是false。</p>
+<h2 id="常用的dotnet-cli">常用的dotnet CLI</h2>
 
-<h1 id="補充">補充</h1>
+<p>講幾個常用的指令
+<code>dotnet new</code>可以建立專案，type為專案種類，<code>-o</code>為要不要建立資料夾，沒打則會在當前位置建立專案，<code>projectname</code>不用說是專案名</p>
 
-<p>reCAPTCHA申請完後再進去設定裡會多一個Advanced Settings，可以用來調整驗證通過的難度
-<img src="5.JPG" alt="驗證難度設定" /></p>
+<pre><code class="language-shell">$ dotnet new &lt;type&gt; -o &lt;projectname&gt;
+</code></pre>
 
-<h1 id="後記">後記</h1>
+<blockquote>
+<p>註: 輸入dotnet new &ndash;help可以看到所以的專案種類</p>
+</blockquote>
 
-<p>其實這個API算簡單才花1天就做好了，Google登入這個還比較難，官方文件寫得亂七八糟，還好這個寫得很清楚流程又簡單，就當是又學到一個好東西(完)。</p>
+<p><code>dotnet run</code>就是執行專案，如果你有學過.NET Core 1.X的指令的話，應該還會知道一個<code>dotnet restore</code>還原套件，這個在2.x版已經沒了，<code>dotnet run</code>會幫你檢查是否有還原過，不過之後我們會在<code>VS Code</code>使用中斷點，這時候就要改用<code>VS Code</code>的Debug模式，所以之後可能也不會常用。</p>
+
+<pre><code class="language-shell">$ dotnet run
+</code></pre>
+
+<p><code>dotnet add package</code>會使用<code>Nuget</code>安裝套件，跟<code>.NET</code>不太一樣的地方是他並不會裝進你的專案，所以如果是以前要裝<code>Bootstrap</code>這種前端套件的話，請改用<code>NPM</code>或是微軟新的<code>libman</code>。</p>
+
+<pre><code class="language-shell">$ dotnet add package &lt;packagename&gt;
+</code></pre>
+
+<p>無聊的安裝環境終於結束了，下一篇就要開始玩SignalR了，會先來個基本的範例。</p>
 
     </div>
 
@@ -330,7 +278,7 @@ else
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2017-04-18</span>
+    <span class="item-content">2018-10-15</span>
   </p>
   
   <p class="copyright-item">
@@ -339,7 +287,7 @@ else
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/2017/04/google-api-recaptcha-c_sharp/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-2/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -351,19 +299,15 @@ else
       <div class="post-tags">
           
             <span class="tags">
-              <a href="/tags/c/">C#</a>
+              <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
             </span>
           
             <span class="tags">
-              <a href="/tags/google-api/">Google-API</a>
+              <a href="/tags/signalr/">SignalR</a>
             </span>
           
             <span class="tags">
-              <a href="/tags/javascript/">JavaScript</a>
-            </span>
-          
-            <span class="tags">
-              <a href="/tags/recaptcha/">reCAPTCHA</a>
+              <a href="/tags/.net-core/">.Net Core</a>
             </span>
           
         </div>
@@ -371,14 +315,9 @@ else
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/2017/04/cordova-set_up/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Cordova - 環境安裝</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/2017/04/hexo-folder-category/">
-            <span class="next-text nav-default">Hexo - 文章分類方法</span>
+          <a class="next" href="/post/ironman2019/ironman-day-1/">
+            <span class="next-text nav-default">[鐵人賽Day1] ASP.Net Core SignalR 導讀</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
