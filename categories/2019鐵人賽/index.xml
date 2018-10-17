@@ -6,10 +6,19 @@
     <description>Recent content in 2019鐵人賽 on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Tue, 16 Oct 2018 19:44:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Oct 2018 19:11:15 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day4] 使用SignalR Hub(1)</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-4/</link>
+      <pubDate>Wed, 17 Oct 2018 19:11:15 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-4/</guid>
+      <description>SignalR Hub是什麼? 其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是Browser和Server溝通的</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day3] 第一個SingalR專案</title>
@@ -35,7 +44,7 @@
       <pubDate>Sun, 14 Oct 2018 19:39:50 +0800</pubDate>
       
       <guid>https://homura0731.github.io/post/ironman2019/ironman-day-1/</guid>
-      <description>今天第一天來點輕鬆的，我們來說說SignalR是什麼? ASP.NET Core SignalR是什麼？ SignalR是一個能輕鬆架構即時互動(real-time</description>
+      <description>今天第一天來點輕鬆的，我們來說說SignalR是什麼? ASP.NET Core SignalR是什麼？ SignalR是一個能輕鬆架構即時互動(real-time)</description>
     </item>
     
   </channel>
