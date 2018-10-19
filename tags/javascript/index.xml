@@ -6,10 +6,19 @@
     <description>Recent content in JavaScript on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Sat, 08 Sep 2018 21:12:17 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 19 Oct 2018 14:43:05 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day6] SigalR 前端API運用</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-6/</link>
+      <pubDate>Fri, 19 Oct 2018 14:43:05 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-6/</guid>
+      <description>連接事件 建立連線，我們需要建立一個連線物件，withUrl(Hub)裡的參數放入要連接的Hub名稱，再用build()建立連線物件。 var connection = new</description>
+    </item>
     
     <item>
       <title>JS - 步驟紀錄器實作</title>
