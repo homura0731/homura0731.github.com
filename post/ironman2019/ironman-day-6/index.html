@@ -62,7 +62,7 @@
 
 <meta itemprop="datePublished" content="2018-10-19T14:43:05&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-19T14:43:05&#43;08:00" />
-<meta itemprop="wordCount" content="708">
+<meta itemprop="wordCount" content="765">
 
 
 
@@ -151,7 +151,7 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 708 字
+          約 765 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
@@ -176,7 +176,8 @@
 </ul></li>
 <li><a href="#自訂事件">自訂事件</a>
 <ul>
-<li><a href="#後記">後記</a></li>
+<li><a href="#建立自訂事件">建立自訂事件</a></li>
+<li><a href="#流程圖">流程圖</a></li>
 </ul></li>
 <li><a href="#參考">參考</a></li>
 </ul>
@@ -233,7 +234,9 @@
 
 <h1 id="自訂事件">自訂事件</h1>
 
-<p>除了連接和關閉事件比較特別之外，其他事件都是自己自訂的事件，當然大部分的動作都能叫<code>SignalR API</code>不需要全部自己實作。</p>
+<p>除了連接和關閉事件比較特別之外，其他事件都是自己自訂的事件，當然大部分的基本動作都能呼叫<code>SignalR API</code>不需要全部自己實作。</p>
+
+<h2 id="建立自訂事件">建立自訂事件</h2>
 
 <p>大致流程像這樣，首先使用<code>Connection.invoke()</code>呼叫<code>Hub</code>的方法，這時<code>Hub</code>會依照<code>SendAsync()</code>寫的對象傳回去給<code>connection.on()</code>接收，我們以<code>SendMessage</code>為例，JS像下面這樣寫</p>
 
@@ -242,16 +245,15 @@
 });
 </code></pre>
 
-<p>invoke的第一個變數會呼應到<code>Hub</code>的方法名稱，所以上面那樣會呼叫到下面這個<code>Hub</code>方法</p>
+<p>invoke的第一個變數會呼應到<code>Hub</code>的方法名稱，所以上面那樣會呼叫到下面這個<code>Hub</code>裡的方法</p>
 
 <pre><code class="language-cs">public async Task SendMessage(string user, string message)
 {
     await Clients.All.SendAsync(&quot;ReceiveMessage&quot;, user, message);
 }
-
 </code></pre>
 
-<p>然後<code>SendAsync()</code>第一個變數會丟回<code>conection.on()</code>事件裡。</p>
+<p>然後<code>Clients.All.SendAsync.SendAsync()</code>第一個變數會丟回<code>conection.on()</code>事件裡。</p>
 
 <pre><code class="language-js">connection.on(&quot;ReceiveMessage&quot;, function (user, message) {
     // 接收後要做的事
@@ -259,13 +261,13 @@
 </code></pre>
 
 <blockquote>
-<p>註：這3個方法除了第一個變數是對象外，其他都是能自訂的</p>
+<p>註：這3個方法除了第一個變數是對象外，其他變數都是能自訂的資料，數量也沒有限制</p>
 </blockquote>
 
-<p>看不懂沒關係，我還多畫了流程圖
-<img src="operation.png" alt="流程圖" /></p>
+<h2 id="流程圖">流程圖</h2>
 
-<h2 id="後記">後記</h2>
+<p>看不懂沒關係，我還多畫了流程圖，這樣應該會比較好了解
+<img src="operation.png" alt="流程圖" /></p>
 
 <p>到這邊已經把<code>SignalR</code>的基礎運作都說完了，下一篇我們來講講群組的運作。</p>
 
