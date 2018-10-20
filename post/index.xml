@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Fri, 19 Oct 2018 14:43:05 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 20 Oct 2018 12:03:55 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day7] SignalR 群組概念與使用</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-7/</link>
+      <pubDate>Sat, 20 Oct 2018 12:03:55 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-7/</guid>
+      <description>今天來介紹群組的運作，不知道會不會有人問為什麼要群組？？總不能每次訊息都傳給所有人吧!XD 所以今天就讓我們好好來介紹一下SignalR群組運</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day6] SignalR 前端API運用</title>

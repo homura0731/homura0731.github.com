@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day6] SignalR 前端API運用 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day7] SignalR 群組概念與使用 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="連接事件 建立連線，我們需要建立一個連線物件，withUrl(Hub)裡的參數放入要連接的Hub名稱，再用build()建立連線物件。 var connection = new" />
+  <meta name="description" content="今天來介紹群組的運作，不知道會不會有人問為什麼要群組？？總不能每次訊息都傳給所有人吧!XD 所以今天就讓我們好好來介紹一下SignalR群組運" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-6/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-7/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,25 +51,25 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day6] SignalR 前端API運用" />
-<meta property="og:description" content="連接事件 建立連線，我們需要建立一個連線物件，withUrl(Hub)裡的參數放入要連接的Hub名稱，再用build()建立連線物件。 var connection = new" />
+<meta property="og:title" content="[鐵人賽Day7] SignalR 群組概念與使用" />
+<meta property="og:description" content="今天來介紹群組的運作，不知道會不會有人問為什麼要群組？？總不能每次訊息都傳給所有人吧!XD 所以今天就讓我們好好來介紹一下SignalR群組運" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-6/" /><meta property="article:published_time" content="2018-10-19T14:43:05&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-19T14:43:05&#43;08:00"/>
-<meta itemprop="name" content="[鐵人賽Day6] SignalR 前端API運用">
-<meta itemprop="description" content="連接事件 建立連線，我們需要建立一個連線物件，withUrl(Hub)裡的參數放入要連接的Hub名稱，再用build()建立連線物件。 var connection = new">
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-7/" /><meta property="article:published_time" content="2018-10-20T12:03:55&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-20T12:03:55&#43;08:00"/>
+<meta itemprop="name" content="[鐵人賽Day7] SignalR 群組概念與使用">
+<meta itemprop="description" content="今天來介紹群組的運作，不知道會不會有人問為什麼要群組？？總不能每次訊息都傳給所有人吧!XD 所以今天就讓我們好好來介紹一下SignalR群組運">
 
 
-<meta itemprop="datePublished" content="2018-10-19T14:43:05&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-19T14:43:05&#43;08:00" />
-<meta itemprop="wordCount" content="765">
+<meta itemprop="datePublished" content="2018-10-20T12:03:55&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-20T12:03:55&#43;08:00" />
+<meta itemprop="wordCount" content="1264">
 
 
 
-<meta itemprop="keywords" content="2019鐵人賽,SignalR,JavaScript," />
+<meta itemprop="keywords" content="2019鐵人賽,SignalR,JavaScript,ASP.NET Core," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day6] SignalR 前端API運用"/>
-<meta name="twitter:description" content="連接事件 建立連線，我們需要建立一個連線物件，withUrl(Hub)裡的參數放入要連接的Hub名稱，再用build()建立連線物件。 var connection = new"/>
+<meta name="twitter:title" content="[鐵人賽Day7] SignalR 群組概念與使用"/>
+<meta name="twitter:description" content="今天來介紹群組的運作，不知道會不會有人問為什麼要群組？？總不能每次訊息都傳給所有人吧!XD 所以今天就讓我們好好來介紹一下SignalR群組運"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,12 +136,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day6] SignalR 前端API運用</h1>
+      <h1 class="post-title">[鐵人賽Day7] SignalR 群組概念與使用</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-10-19 
+          2018-10-20 
         </span>
         <div class="post-category">
             
@@ -151,11 +151,11 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 765 字
+          約 1264 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
-          預計閱讀 2 分鐘 
+          預計閱讀 3 分鐘 
         </span>
         
       </div>
@@ -169,17 +169,14 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#連接事件">連接事件</a>
+<li><a href="#使用方法">使用方法</a></li>
+<li><a href="#群組實作">群組實作</a>
 <ul>
-<li><a href="#開始連接">開始連接</a></li>
-<li><a href="#關閉連接">關閉連接</a></li>
+<li><a href="#後端部分">後端部分</a></li>
+<li><a href="#前端部分">前端部分</a></li>
 </ul></li>
-<li><a href="#自訂事件">自訂事件</a>
-<ul>
-<li><a href="#建立自訂事件">建立自訂事件</a></li>
-<li><a href="#流程圖">流程圖</a></li>
-</ul></li>
-<li><a href="#參考">參考</a></li>
+<li><a href="#demo">DEMO</a></li>
+<li><a href="#參考-範例下載">參考 &amp; 範例下載</a></li>
 </ul>
 </nav>
   </div>
@@ -192,88 +189,153 @@
     <div class="post-content">
       
 
-<h1 id="連接事件">連接事件</h1>
+<p>今天來介紹群組的運作，不知道會不會有人問為什麼要群組？？總不能每次訊息都傳給所有人吧!XD</p>
 
-<p>建立連線，我們需要建立一個連線物件，<code>withUrl(Hub)</code>裡的參數放入要連接的Hub名稱，再用<code>build()</code>建立連線物件。</p>
+<p>所以今天就讓我們好好來介紹一下SignalR群組運作的方式。</p>
 
-<pre><code class="language-js">var connection = new signalR.HubConnectionBuilder().withUrl(&quot;/Hub名稱&quot;).build();
+<h1 id="使用方法">使用方法</h1>
+
+<p>主要就使用3個方法，<code>Groups.AddToGroupAsync()</code>、<code>RemoveFromGroupAsync()</code>、<code>Clients.Group()</code>3種。</p>
+
+<p>加入群組使用</p>
+
+<pre><code class="language-cs">Groups.AddToGroupAsync(Context.ConnectionId, groupName);
 </code></pre>
 
-<blockquote>
-<p>註：Hub名稱不分大小寫</p>
-</blockquote>
+<p>退出群組使用</p>
 
-<h2 id="開始連接">開始連接</h2>
-
-<p>使用<code>connection.start()</code>方法開始連接Server，連接錯誤時可用<code>catch()</code>捕捉錯誤</p>
-
-<pre><code class="language-js">connection.start()
-.then(function(){
-    // 連接成功後要做的事情
-})
-.catch(function(err){
-    // 錯誤處理
-});
+<pre><code class="language-cs">Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
 </code></pre>
 
-<h2 id="關閉連接">關閉連接</h2>
+<ul>
+<li><code>Context.ConnectionId</code>為前端<code>SignalR</code>產生的ID</li>
+<li><code>groupName</code>為要加入的群組</li>
+</ul>
 
-<p>使用<code>connection.stop()</code>方法開始連接Server，一樣錯誤時可用<code>catch()</code>捕捉錯誤</p>
+<p>群組傳送訊息使用<code>Clients.Group()</code></p>
 
-<pre><code class="language-js">connection.stop().catch(function(err){
-    // 錯誤處理
-});
+<pre><code class="language-cs">Clients.Group(groupName).SendAsync(&quot;SendGroupMethod&quot;, &quot;GroupMessage&quot;);
 </code></pre>
 
-<p><code>connection.onclose()</code>可以監聽連接關閉瞬間</p>
+<p><code>groupName</code>是要傳送得群組
+<code>SendAsync()</code>第一個參數為回傳要呼叫的前端方法，可任意修改名稱，第二個參數為回傳的訊息。</p>
 
-<pre><code class="language-js">connection.onclose(function(e){
-    // 關閉時想做的事
-});
-</code></pre>
+<p>大概就這樣，感覺好像沒講什麼&hellip;..
+那帶大家來實做一下吧!!</p>
 
-<h1 id="自訂事件">自訂事件</h1>
+<h1 id="群組實作">群組實作</h1>
 
-<p>除了連接和關閉事件比較特別之外，其他事件都是自己自訂的事件，當然大部分的基本動作都能呼叫<code>SignalR API</code>不需要全部自己實作。</p>
+<p>我們用Day3得實作為基礎繼續做下去，如果沒做到的可以往回看Day3。</p>
 
-<h2 id="建立自訂事件">建立自訂事件</h2>
+<h2 id="後端部分">後端部分</h2>
 
-<p>大致流程像這樣，首先使用<code>Connection.invoke()</code>呼叫<code>Hub</code>的方法，這時<code>Hub</code>會依照<code>SendAsync()</code>寫的對象傳回去給<code>connection.on()</code>接收，我們以<code>SendMessage</code>為例，JS像下面這樣寫</p>
+<p>首先我們在Hub新增方法<code>AddGroup()</code>，用來加入群組使用，內容大概像下面這樣</p>
 
-<pre><code class="language-js">connection.invoke(&quot;SendMessage&quot;, user, message).catch(function (err) {
-    return console.error(err.toString());
-});
-</code></pre>
-
-<p>invoke的第一個變數會呼應到<code>Hub</code>的方法名稱，所以上面那樣會呼叫到下面這個<code>Hub</code>裡的方法</p>
-
-<pre><code class="language-cs">public async Task SendMessage(string user, string message)
+<pre><code class="language-cs">public async Task AddGroup(string groupName, string username)
 {
-    await Clients.All.SendAsync(&quot;ReceiveMessage&quot;, user, message);
+    await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
+    await Clients.Group(groupName).SendAsync(&quot;RecAddGroupMsg&quot;, $&quot;{username} 已加入 群組：{groupName}。&quot;);
 }
 </code></pre>
 
-<p>然後<code>Clients.All.SendAsync.SendAsync()</code>第一個變數會丟回<code>conection.on()</code>事件裡。</p>
+<p><code>AddToGroupAsync()</code>加入群組後，再回傳一個群組訊息告知大家誰加入了群組。</p>
 
-<pre><code class="language-js">connection.on(&quot;ReceiveMessage&quot;, function (user, message) {
-    // 接收後要做的事
+<p>在建立一個群組傳送訊息的方法<code>SendMessageToGroup()</code></p>
+
+<pre><code class="language-cs">public Task SendMessageToGroup(string groupName, string username, string message)
+{
+    return Clients.Group(groupName).SendAsync(&quot;ReceiveGroupMessage&quot;, groupName, username, message);
+}
+</code></pre>
+
+<p>跟上面的方法大同小異，只是多個訊息變數，還有傳回去時要多傳一個使用者，讓大家知道是誰傳的。</p>
+
+<h2 id="前端部分">前端部分</h2>
+
+<p>首先我們要創建一個群組列表和加入群組按鈕，讓大家選擇要加入哪一個群組，群組就用很多人喜歡的<code>貓派</code>和<code>狗派</code>來當示範。</p>
+
+<pre><code class="language-html">&lt;select id=&quot;group&quot;&gt;
+    &lt;option&gt;貓派&lt;/option&gt;
+    &lt;option&gt;狗派&lt;/option&gt;
+&lt;/select&gt;
+&lt;button type=&quot;button&quot; id=&quot;addGroupBtn&quot;&gt;加入群組&lt;/button&gt;
+&lt;br&gt;
+姓名：&lt;input id=&quot;name&quot; type=&quot;text&quot;&gt;&lt;br&gt;
+訊息&lt;input id=&quot;msg&quot; type=&quot;text&quot;&gt;
+&lt;br&gt;
+&lt;button type=&quot;Button&quot; id=&quot;submitGroupBtn&quot;&gt;送出給群組&lt;/button&gt;
+&lt;button type=&quot;Button&quot; id=&quot;submitAllBtn&quot;&gt;送出給所有人&lt;/button&gt;    
+&lt;br&gt;
+&lt;div id=&quot;msgDiv&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<p>建立加入群組的事件到<code>ButtonClick</code>裡，然後傳回給<code>AddGroup</code></p>
+
+<pre><code class="language-js">document.getElementById(&quot;addGroupBtn&quot;).addEventListener(&quot;click&quot;, function (event) {
+    var user = document.getElementById(&quot;name&quot;).value;
+    var group = document.getElementById(&quot;group&quot;).value;
+    connection.invoke(&quot;AddGroup&quot;,group, user ).catch(function (err) {
+        return console.error(err.toString());
+    });
+    event.preventDefault();
 });
 </code></pre>
 
-<blockquote>
-<p>註：這3個方法除了第一個變數是對象外，其他變數都是能自訂的資料，數量也沒有限制</p>
-</blockquote>
+<p>建立接收的事件，用來接收群組是否加入成功</p>
 
-<h2 id="流程圖">流程圖</h2>
+<pre><code class="language-js">connection.on(&quot;RecAddGroupMsg&quot;, function (message) {
+    var msg = message;
+    var li = document.createElement(&quot;li&quot;);
+    li.textContent = msg;
+    document.getElementById(&quot;msgDiv&quot;).appendChild(li);
+});
+</code></pre>
 
-<p>看不懂沒關係，我還多畫了流程圖，這樣應該會比較好了解
-<img src="operation.png" alt="流程圖" /></p>
+<p>再來建立群組訊息事件和接收事件，顯示的訊息我們可以顯示是群組還是所有人，所以我們連原本的訊息格式也改一下吧！</p>
 
-<p>到這邊已經把<code>SignalR</code>的基礎運作都說完了，下一篇我們來講講群組的運作。</p>
+<pre><code class="language-js">// 群組訊息Button事件
+document.getElementById(&quot;submitGroupBtn&quot;).addEventListener(&quot;click&quot;, function (e) {
+    var user = document.getElementById(&quot;name&quot;).value;
+    var group = document.getElementById(&quot;group&quot;).value;
+    var message = document.getElementById(&quot;msg&quot;).value;
 
-<h1 id="參考">參考</h1>
+    connection.invoke(&quot;SendMessageToGroup&quot;,group, user, message ).catch(function (err) {
+        return console.error(err.toString());
+    });
+});
 
-<p><a href="https://docs.microsoft.com/zh-tw/aspnet/core/signalr/javascript-client?view=aspnetcore-2.1">MSDN文件</a></p>
+// 群組訊息接收事件
+connection.on(&quot;ReceiveGroupMessage&quot;, function (groupName, user, message) {
+    var msg = `[群組訊息(${groupName})]${user}：${msg}`;
+    var li = document.createElement(&quot;li&quot;);
+    li.textContent = msg;
+    document.getElementById(&quot;msgDiv&quot;).appendChild(li);
+});
+
+// 全頻道訊息訊息事件
+connection.on(&quot;ReceiveMessage&quot;, function (user, message) {
+    var msg = `[全頻道訊息(${groupName})]${user}：${msg}`;
+    var li = document.createElement(&quot;li&quot;);
+    li.textContent = msg;
+    document.getElementById(&quot;msgDiv&quot;).appendChild(li);
+});
+
+</code></pre>
+
+<p>這樣就大功告成了！</p>
+
+<h1 id="demo">DEMO</h1>
+
+<video width="528" controls>
+    <source src="signalRGroup.mp4" type="video/mp4">
+</video>
+
+<h1 id="參考-範例下載">參考 &amp; 範例下載</h1>
+
+<ul>
+<li><a href="https://docs.microsoft.com/zh-tw/aspnet/core/signalr/groups?view=aspnetcore-2.1">https://docs.microsoft.com/zh-tw/aspnet/core/signalr/groups?view=aspnetcore-2.1</a></li>
+<li><a href="https://drive.google.com/file/d/1VejOpETHyP95C5RK8ASLhEras1ROIvMf/view?usp=sharing">範例下載</a></li>
+</ul>
 
     </div>
 
@@ -285,7 +347,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-10-19</span>
+    <span class="item-content">2018-10-20</span>
   </p>
   
   <p class="copyright-item">
@@ -294,7 +356,7 @@
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-6/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-7/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -317,19 +379,18 @@
               <a href="/tags/javascript/">JavaScript</a>
             </span>
           
+            <span class="tags">
+              <a href="/tags/asp.net-core/">ASP.NET Core</a>
+            </span>
+          
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-7/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day7] SignalR 群組概念與使用</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-5/">
-            <span class="next-text nav-default">[鐵人賽Day5] 使用SignalR Hub (2)</span>
+          <a class="next" href="/post/ironman2019/ironman-day-6/">
+            <span class="next-text nav-default">[鐵人賽Day6] SignalR 前端API運用</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

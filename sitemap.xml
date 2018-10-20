@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://homura0731.github.io/post/ironman2019/ironman-day-7/</loc>
+    <lastmod>2018-10-20T12:03:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://homura0731.github.io/post/ironman2019/ironman-day-6/</loc>
     <lastmod>2018-10-19T14:43:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -179,14 +186,14 @@
   
   <url>
     <loc>https://homura0731.github.io/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</loc>
-    <lastmod>2018-10-19T14:43:05+08:00</lastmod>
+    <lastmod>2018-10-20T12:03:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://homura0731.github.io/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</loc>
-    <lastmod>2018-10-19T14:43:05+08:00</lastmod>
+    <lastmod>2018-10-20T12:03:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -194,6 +201,13 @@
   <url>
     <loc>https://homura0731.github.io/categories/asp.net/</loc>
     <lastmod>2017-04-18T20:34:16+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://homura0731.github.io/tags/asp.net-core/</loc>
+    <lastmod>2018-10-20T12:03:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -242,7 +256,7 @@
   
   <url>
     <loc>https://homura0731.github.io/categories/</loc>
-    <lastmod>2018-10-19T14:43:05+08:00</lastmod>
+    <lastmod>2018-10-20T12:03:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -326,7 +340,7 @@
   
   <url>
     <loc>https://homura0731.github.io/</loc>
-    <lastmod>2018-10-19T14:43:05+08:00</lastmod>
+    <lastmod>2018-10-20T12:03:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -361,7 +375,7 @@
   
   <url>
     <loc>https://homura0731.github.io/tags/javascript/</loc>
-    <lastmod>2018-10-19T14:43:05+08:00</lastmod>
+    <lastmod>2018-10-20T12:03:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -382,7 +396,7 @@
   
   <url>
     <loc>https://homura0731.github.io/post/</loc>
-    <lastmod>2018-10-19T14:43:05+08:00</lastmod>
+    <lastmod>2018-10-20T12:03:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -396,7 +410,7 @@
   
   <url>
     <loc>https://homura0731.github.io/tags/signalr/</loc>
-    <lastmod>2018-10-19T14:43:05+08:00</lastmod>
+    <lastmod>2018-10-20T12:03:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
