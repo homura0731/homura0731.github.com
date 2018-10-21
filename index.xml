@@ -6,10 +6,19 @@
     <description>Recent content on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Sat, 20 Oct 2018 12:03:55 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 21 Oct 2018 09:42:05 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day8] 使用Json傳遞訊息和跨網域驗證</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-8/</link>
+      <pubDate>Sun, 21 Oct 2018 09:42:05 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-8/</guid>
+      <description>今天要來講講怎麼使用JSON傳遞訊息及跨網域訊息。 使用JSON格式 在Service註冊 其實這步是可以跳過，因為SignalR預設會開啟Add</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day7] SignalR 群組概念與使用</title>
