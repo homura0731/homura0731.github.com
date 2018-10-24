@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ASP.Net Core on Homura&#39;s Blog</title>
+    <title>ASP.NET Core on Homura&#39;s Blog</title>
     <link>https://homura0731.github.io/tags/asp.net-core/</link>
-    <description>Recent content in ASP.Net Core on Homura&#39;s Blog</description>
+    <description>Recent content in ASP.NET Core on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 18 Oct 2018 20:38:52 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Oct 2018 19:30:46 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>[鐵人賽Day5] 使用SignalR Hub (2)</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-5/</link>
-      <pubDate>Thu, 18 Oct 2018 20:38:52 +0800</pubDate>
+      <title>[鐵人賽Day11] 實作一個連線名單</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-11/</link>
+      <pubDate>Wed, 24 Oct 2018 19:30:46 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-5/</guid>
-      <description>今天來點輕鬆的吧！來寫寫強型別的Hub和把HubContext注入Controller 強型別Hub的好處 SignalR的Hub介面只規定我們</description>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-11/</guid>
+      <description>今天要來個小型的實作一個連線名單，連線名單可以讓你知道目前在線的人有誰(廢話)，之前的範例都是在進入時傳送訊息給所有人，如果是中途進來的人，</description>
     </item>
     
     <item>
-      <title>[鐵人賽Day4] 使用SignalR Hub (1)</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-4/</link>
-      <pubDate>Wed, 17 Oct 2018 19:11:15 +0800</pubDate>
+      <title>[鐵人賽Day10] SignalR 組態設定</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-10/</link>
+      <pubDate>Tue, 23 Oct 2018 19:06:44 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-4/</guid>
-      <description>SignalR Hub是什麼? 其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是Browser和Server溝通的</description>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-10/</guid>
+      <description>先來碎碎念一下，昨天gitpage一直有問題，害我git push好幾次，後來發現repo裡的文件是新的沒錯，今天一看又好了，真是的浪費我快3</description>
     </item>
     
     <item>
-      <title>[鐵人賽Day3] 第一個SingalR專案</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-3/</link>
-      <pubDate>Tue, 16 Oct 2018 19:44:57 +0800</pubDate>
+      <title>[鐵人賽Day9] 使用MessagePack傳輸更小的資料</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-9/</link>
+      <pubDate>Mon, 22 Oct 2018 19:22:04 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-3/</guid>
-      <description>前言 我想先帶大家做一遍，之後再開始講觀念，因為我覺得這樣會比較好玩一點XD。 建立Web專案 首先先開啟終端機(命令提示字元)，輸入下面指令建立</description>
-    </item>
-    
-  </channel>
-</rss>n>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-9/</guid>
+      <description>MessagePack是一個類似Json格式但是比Json速度更快、檔案更小，不過似乎還沒很流行就是了，既然ASP.Net Core SignalR文</description>
     </item>
     
     <item>
