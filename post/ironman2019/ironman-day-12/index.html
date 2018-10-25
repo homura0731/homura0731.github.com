@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>IT日常 - IT邦升級研究生和報名鐵人賽 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day12] 實作一個共用塗鴉牆(1) - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="以往都是看著IT邦各位大大的文章，就在某次看到了Vue.js的問題讓我也 辦了IT邦會員於是開始了玩論壇不歸路，然後解開了一題之後讓我一直覺得" />
+  <meta name="description" content="今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD 這次實" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/2018/09/it-daily-ithelp/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-12/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,25 +51,25 @@
 
 
 
-<meta property="og:title" content="IT日常 - IT邦升級研究生和報名鐵人賽" />
-<meta property="og:description" content="以往都是看著IT邦各位大大的文章，就在某次看到了Vue.js的問題讓我也 辦了IT邦會員於是開始了玩論壇不歸路，然後解開了一題之後讓我一直覺得" />
+<meta property="og:title" content="[鐵人賽Day12] 實作一個共用塗鴉牆(1)" />
+<meta property="og:description" content="今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD 這次實" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/2018/09/it-daily-ithelp/" /><meta property="article:published_time" content="2018-09-10T20:52:41&#43;08:00"/>
-<meta property="article:modified_time" content="2018-09-10T20:52:41&#43;08:00"/>
-<meta itemprop="name" content="IT日常 - IT邦升級研究生和報名鐵人賽">
-<meta itemprop="description" content="以往都是看著IT邦各位大大的文章，就在某次看到了Vue.js的問題讓我也 辦了IT邦會員於是開始了玩論壇不歸路，然後解開了一題之後讓我一直覺得">
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-12/" /><meta property="article:published_time" content="2018-10-25T20:05:47&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-25T20:05:47&#43;08:00"/>
+<meta itemprop="name" content="[鐵人賽Day12] 實作一個共用塗鴉牆(1)">
+<meta itemprop="description" content="今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD 這次實">
 
 
-<meta itemprop="datePublished" content="2018-09-10T20:52:41&#43;08:00" />
-<meta itemprop="dateModified" content="2018-09-10T20:52:41&#43;08:00" />
-<meta itemprop="wordCount" content="536">
+<meta itemprop="datePublished" content="2018-10-25T20:05:47&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-25T20:05:47&#43;08:00" />
+<meta itemprop="wordCount" content="791">
 
 
 
-<meta itemprop="keywords" content="IT日常," />
+<meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="IT日常 - IT邦升級研究生和報名鐵人賽"/>
-<meta name="twitter:description" content="以往都是看著IT邦各位大大的文章，就在某次看到了Vue.js的問題讓我也 辦了IT邦會員於是開始了玩論壇不歸路，然後解開了一題之後讓我一直覺得"/>
+<meta name="twitter:title" content="[鐵人賽Day12] 實作一個共用塗鴉牆(1)"/>
+<meta name="twitter:description" content="今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD 這次實"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,22 +136,22 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">IT日常 - IT邦升級研究生和報名鐵人賽</h1>
+      <h1 class="post-title">[鐵人賽Day12] 實作一個共用塗鴉牆(1)</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-09-10 
+          2018-10-25 
         </span>
         <div class="post-category">
             
               <i class="far fa-folder-open" aria-hidden="true"></i>
-              <a href="/categories/it%E6%97%A5%E5%B8%B8/"> IT日常 </a>
+              <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/"> 2019鐵人賽 </a>
             
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 536 字
+          約 791 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
@@ -167,7 +167,16 @@
   <h2 class="post-toc-title">文章目錄</h2>
   
   <div class="post-toc-content always-active">
-    
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#塗鴉牆實作">塗鴉牆實作</a>
+<ul>
+<li><a href="#畫圖事件">畫圖事件</a></li>
+<li><a href="#畫筆設定">畫筆設定</a></li>
+</ul></li>
+<li><a href="#參考">參考</a></li>
+</ul>
+</nav>
   </div>
 </div>
 
@@ -176,16 +185,114 @@
 
     
     <div class="post-content">
-      <p>以往都是看著IT邦各位大大的文章，就在某次看到了<code>Vue.js</code>的<a href="https://ithelp.ithome.com.tw/questions/10189197">問題</a>讓我也
-辦了IT邦會員<del>於是開始了玩論壇不歸路</del>，然後解開了一題之後讓我一直覺得躍躍欲試，還順便辦了MSDN，MSDN排名還曾經超越MVP過&hellip;.。</p>
+      
 
-<p>還有大大推薦我stackovflow，這邊真得是挫敗連連，一來是英文不好，一來是你講錯話很容易被糾正及扣分（覺得壓力很大，而且搶答速度實在太
-快了，競爭非常的激烈，另外就是問的問題難度比起很多中文論壇還來得要有深度，回答也是更式各樣，可以學到不少東西。</p>
+<p>今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD
+這次實作拆成2部分，一部分是塗鴉的實作，第二天在做SignalR的部分。</p>
 
-<p>IT邦不知為啥限制一天的發言次數，所以我剛辦完第一個目標就是先成為研究生，發言量新手的2倍，這樣就很夠用了，直到昨天剛好達成了<del>努力發廢文的結果</del>，仔細看看辦帳號的時間是今年5/8，昨天是9/9，大概只花了5個月，升級倒是挺快，把Email升級通知截張圖當紀念吧！
-<img src="1.png" alt="升級研究生截圖" /></p>
+<h1 id="塗鴉牆實作">塗鴉牆實作</h1>
 
-<p>然後就在今天，我也報名了鐵人賽，主題是我想很久找到的<code>ASP.NET Core SigalR</code>，為什麼會不挑<code>.NET</code>而挑<code>.NET Core</code>呢？因為<code>.NET SigalR</code>已經出了好一段時間，<code>.NET Core SignalR</code>今年才正式1.0版，剛好在文章很少可以參考的狀況寫出來，這樣不僅自己學的比較多，文章也會比較精彩，不會有感覺都像抄來的，總之希望我能夠完賽30天囉！</p>
+<p>首先我們先在<code>index.html</code>建立一個<code>Canvas</code>元素，style給個外框，不然搞不清楚範圍在哪！</p>
+
+<pre><code class="language-html">&lt;canvas id=&quot;draw&quot; width=&quot;800&quot; height=&quot;600&quot; style=&quot;border:2px solid gray&quot;&gt;&lt;/canvas&gt;
+</code></pre>
+
+<p>建立使用的變數</p>
+
+<pre><code class="language-js">var canvas = document.getElementById('draw'); // 取得畫布元素
+var ctx = canvas.getContext('2d'); // 使用2D繪圖
+var draw = false; // 是否要繪圖
+var tempPos = [0, 0]; // 繪圖起始位置
+</code></pre>
+
+<h2 id="畫圖事件">畫圖事件</h2>
+
+<p>畫圖的流程就是在模擬畫圖的動作，建立3個監聽事件，<code>mousedown</code>代表畫筆畫下去，<code>mousemove</code>代表畫筆移動，<code>mouseup</code>畫筆拿起來(停止繪圖的意思)，建立一個<code>draw</code>變數就是用來來偵測畫筆是否再紙上。</p>
+
+<pre><code class="language-js">canvas.addEventListener('mousedown', function(e){
+    draw = true;
+});
+
+canvas.addEventListener('mousemove', function(e){
+    if(draw){
+
+    }
+});
+
+canvas.addEventListener('mouseup', function(){
+    draw = false;
+});
+</code></pre>
+
+<p><code>mousedown</code>開始時，我們要把開始的位置用nowPos記錄下來</p>
+
+<pre><code class="language-js">canvas.addEventListener('mousedown', function(e){
+    draw = true;
+    tempPos = [e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop];
+});
+</code></pre>
+
+<p><code>mousemove</code>發現draw為true，代表畫筆在紙上，所以就開始繪畫</p>
+
+<pre><code class="language-js">canvas.addEventListener('mousemove', function(e){
+    if(draw){
+        var tempPos = [e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop]; // 取得結束的位置
+        ctx.beginPath(); // 開始繪畫取得路徑
+        ctx.moveTo(tempPos[0], tempPos[1]); // 移動到起始位置
+        ctx.lineTo(newPos[0], newPos[1]); // 畫線到結束的位置
+        ctx.closePath(); // 關閉繪畫的路徑
+        ctx.stroke(); // 畫線
+        tempPos = newPos; // 記錄下最後的位置為目前的位置
+    }
+});
+</code></pre>
+
+<h2 id="畫筆設定">畫筆設定</h2>
+
+<p>只有這樣感覺好像太單調，所以我們在加入顏色和線條粗細，在Canvas上面加入2項設定html element</p>
+
+<pre><code class="language-html">&lt;div&gt;
+    顏色：&lt;input id=&quot;color&quot; type=&quot;color&quot;&gt;
+    粗細：
+    &lt;select id=&quot;lineWidth&quot;&gt;
+        &lt;option&gt;1&lt;/option&gt;
+        &lt;option&gt;2&lt;/option&gt;
+        &lt;option&gt;3&lt;/option&gt;
+        &lt;option&gt;4&lt;/option&gt;
+        &lt;option&gt;5&lt;/option&gt;
+        &lt;option&gt;6&lt;/option&gt;
+        &lt;option&gt;7&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>開始畫時讓Canvas載入選擇的設定，<code>strokeStyle</code>為畫筆顏色，<code>lineWidth</code>為線條粗細。</p>
+
+<pre><code class="language-js">var color = document.getElementById('color');
+var lineWidth = document.getElementById('lineWidth');
+ctx.strokeStyle = color.value;
+ctx.lineWidth = lineWidth.value;
+</code></pre>
+
+<p>設定2個設定選項的監聽事件，讓選項改變時讓Canvas從新載入設定</p>
+
+<pre><code class="language-js">color.addEventListener('input', function(){
+    ctx.strokeStyle = color.value;
+})
+
+lineWidth.addEventListener('input', function(){
+    ctx.lineWidth = lineWidth.value;
+})
+</code></pre>
+
+<p>這樣就成功做成一個簡單的塗鴉牆了，明天再來繼續做剩下的SignalR的部分。</p>
+
+<h1 id="參考">參考</h1>
+
+<ul>
+<li><a href="https://blog.darkthread.net/blog/html5-canvas-sktechpad/">黑暗執行序-用100行實現HTML5可存檔塗鴉版</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10105497">fillano - 且戰且走HTML5(11) Canvas基本繪圖-塗鴉</a></li>
+</ul>
 
     </div>
 
@@ -197,7 +304,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-09-10</span>
+    <span class="item-content">2018-10-25</span>
   </p>
   
   <p class="copyright-item">
@@ -206,7 +313,7 @@
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/2018/09/it-daily-ithelp/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-12/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -218,7 +325,19 @@
       <div class="post-tags">
           
             <span class="tags">
-              <a href="/tags/it%E6%97%A5%E5%B8%B8/">IT日常</a>
+              <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/signalr/">SignalR</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/asp.net-core/">ASP.NET Core</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/javascript/">JavaScript</a>
             </span>
           
         </div>
@@ -226,14 +345,9 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/2018/09/hugo-path/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Hugo - 文件路徑問題</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/2018/09/js-history-recoder/">
-            <span class="next-text nav-default">JS - 步驟紀錄器實作</span>
+          <a class="next" href="/post/ironman2019/ironman-day-11/">
+            <span class="next-text nav-default">[鐵人賽Day11] 實作一個連線名單</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
