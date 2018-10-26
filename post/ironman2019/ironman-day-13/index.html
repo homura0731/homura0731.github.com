@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day12] 實作一個共用塗鴉牆(1) - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day13] 實作一個共用塗鴉牆(2) - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD 這次實" />
+  <meta name="description" content="今天要來做塗鴉牆第2部分，首先我們得想想該回傳些什麼，制定一個Json格式回傳回去。 前端部分 連接部分程式碼先寫好 var connection = new signalR.HubConnectionBuilder().withUrl(&amp;quot;/drawHub&amp;quot;).build(); // 連接事件 connection.start().catch(function (err) { return" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-12/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-13/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,25 +51,25 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day12] 實作一個共用塗鴉牆(1)" />
-<meta property="og:description" content="今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD 這次實" />
+<meta property="og:title" content="[鐵人賽Day13] 實作一個共用塗鴉牆(2)" />
+<meta property="og:description" content="今天要來做塗鴉牆第2部分，首先我們得想想該回傳些什麼，制定一個Json格式回傳回去。 前端部分 連接部分程式碼先寫好 var connection = new signalR.HubConnectionBuilder().withUrl(&quot;/drawHub&quot;).build(); // 連接事件 connection.start().catch(function (err) { return" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-12/" /><meta property="article:published_time" content="2018-10-25T20:05:47&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-25T20:05:47&#43;08:00"/>
-<meta itemprop="name" content="[鐵人賽Day12] 實作一個共用塗鴉牆(1)">
-<meta itemprop="description" content="今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD 這次實">
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-13/" /><meta property="article:published_time" content="2018-10-26T10:52:26&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-26T10:52:26&#43;08:00"/>
+<meta itemprop="name" content="[鐵人賽Day13] 實作一個共用塗鴉牆(2)">
+<meta itemprop="description" content="今天要來做塗鴉牆第2部分，首先我們得想想該回傳些什麼，制定一個Json格式回傳回去。 前端部分 連接部分程式碼先寫好 var connection = new signalR.HubConnectionBuilder().withUrl(&quot;/drawHub&quot;).build(); // 連接事件 connection.start().catch(function (err) { return">
 
 
-<meta itemprop="datePublished" content="2018-10-25T20:05:47&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-25T20:05:47&#43;08:00" />
-<meta itemprop="wordCount" content="801">
+<meta itemprop="datePublished" content="2018-10-26T10:52:26&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-26T10:52:26&#43;08:00" />
+<meta itemprop="wordCount" content="655">
 
 
 
 <meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day12] 實作一個共用塗鴉牆(1)"/>
-<meta name="twitter:description" content="今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD 這次實"/>
+<meta name="twitter:title" content="[鐵人賽Day13] 實作一個共用塗鴉牆(2)"/>
+<meta name="twitter:description" content="今天要來做塗鴉牆第2部分，首先我們得想想該回傳些什麼，制定一個Json格式回傳回去。 前端部分 連接部分程式碼先寫好 var connection = new signalR.HubConnectionBuilder().withUrl(&quot;/drawHub&quot;).build(); // 連接事件 connection.start().catch(function (err) { return"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,12 +136,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day12] 實作一個共用塗鴉牆(1)</h1>
+      <h1 class="post-title">[鐵人賽Day13] 實作一個共用塗鴉牆(2)</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-10-25 
+          2018-10-26 
         </span>
         <div class="post-category">
             
@@ -151,7 +151,7 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 801 字
+          約 655 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
@@ -169,13 +169,18 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#塗鴉牆實作">塗鴉牆實作</a>
+<li><a href="#前端部分">前端部分</a>
 <ul>
-<li><a href="#畫圖事件">畫圖事件</a></li>
-<li><a href="#畫筆設定">畫筆設定</a></li>
+<li><a href="#制定回傳json格式">制定回傳Json格式</a></li>
+<li><a href="#在mousermove時回傳資料給server">在mousermove時回傳資料給Server</a></li>
 </ul></li>
-<li><a href="#demo">DEMO</a></li>
-<li><a href="#參考-範例下載">參考 &amp; 範例下載</a></li>
+<li><a href="#後端部分">後端部分</a>
+<ul>
+<li><a href="#建立drawmodel容器">建立DrawModel容器</a></li>
+<li><a href="#建立drawhub">建立DrawHub</a></li>
+</ul></li>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#範例下載">範例下載</a></li>
 </ul>
 </nav>
   </div>
@@ -188,116 +193,144 @@
     <div class="post-content">
       
 
-<p>今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD
-這次實作拆成2部分，一部分是塗鴉的實作，第二天在做SignalR的部分。</p>
+<p>今天要來做塗鴉牆第2部分，首先我們得想想該回傳些什麼，制定一個Json格式回傳回去。</p>
 
-<h1 id="塗鴉牆實作">塗鴉牆實作</h1>
+<h1 id="前端部分">前端部分</h1>
 
-<p>首先我們先在<code>index.html</code>建立一個<code>Canvas</code>元素，style給個外框，不然搞不清楚範圍在哪！</p>
+<p>連接部分程式碼先寫好</p>
 
-<pre><code class="language-html">&lt;canvas id=&quot;draw&quot; width=&quot;800&quot; height=&quot;600&quot; style=&quot;border:2px solid gray&quot;&gt;&lt;/canvas&gt;
-</code></pre>
-
-<p>建立使用的變數</p>
-
-<pre><code class="language-js">var canvas = document.getElementById('draw'); // 取得畫布元素
-var ctx = canvas.getContext('2d'); // 使用2D繪圖
-var draw = false; // 是否要繪圖
-var tempPos = [0, 0]; // 繪圖起始位置
-</code></pre>
-
-<h2 id="畫圖事件">畫圖事件</h2>
-
-<p>畫圖的流程就是在模擬畫圖的動作，建立3個監聽事件，<code>mousedown</code>代表畫筆畫下去，<code>mousemove</code>代表畫筆移動，<code>mouseup</code>畫筆拿起來(停止繪圖的意思)，建立一個<code>draw</code>變數就是用來來偵測畫筆是否再紙上。</p>
-
-<pre><code class="language-js">canvas.addEventListener('mousedown', function(e){
-    draw = true;
+<pre><code class="language-js">var connection = new signalR.HubConnectionBuilder().withUrl(&quot;/drawHub&quot;).build();
+// 連接事件
+connection.start().catch(function (err) {
+    return console.error(err.toString());
 });
+</code></pre>
 
-canvas.addEventListener('mousemove', function(e){
-    if(draw){
+<p>再來我們要制定一下回傳的Json格式</p>
 
+<h2 id="制定回傳json格式">制定回傳Json格式</h2>
+
+<p>從昨天的程式碼來看，我們需要<code>起始位置</code>、<code>結束位置</code>、<code>顏色</code>、<code>線條粗細</code>，大概像下面這樣。</p>
+
+<pre><code class="language-json">{
+    &quot;startPos&quot;: [10, 20],
+    &quot;endPos&quot;: [40, 50]],
+    &quot;color&quot;: &quot;orange&quot;,
+    &quot;lineWidth&quot;: 10       
+}
+</code></pre>
+
+<h2 id="在mousermove時回傳資料給server">在mousermove時回傳資料給Server</h2>
+
+<p>每次畫線時都要回傳給Sever，所以要寫在<code>mousermove</code>裡面，回傳格式使用上面的Json格式</p>
+
+<pre><code class="language-js">connection.invoke(&quot;SendDraw&quot;, {
+    &quot;startPos&quot;: tempPos,
+    &quot;endPos&quot;: newPos,
+    &quot;color&quot;: ctx.strokeStyle,
+    &quot;lineWidth&quot;: ctx.lineWidth
+
+}).catch(function (err) {
+    return console.error(err.toString());
+});
+</code></pre>
+
+<blockquote>
+<p>註：記得要寫在<code>tempPos = newPos;</code>之前，不然更新tempPos之後就不知道前一個位置了</p>
+</blockquote>
+
+<p>接收事件則是接收後直接在Canvas上畫圖，也就是重複了mousemove裡面做的動作</p>
+
+<pre><code class="language-js">connection.on(&quot;ReceiveDraw&quot;, function (json) {
+    ctx.strokeStyle = json.color;
+    ctx.lineWidth = json.lineWidth;
+    ctx.beginPath();
+    ctx.moveTo(json.startPos[0], json.startPos[1]);
+    ctx.lineTo(json.endPos[0], json.endPos[1])
+    ctx.closePath();
+    ctx.stroke();
+});
+</code></pre>
+
+<h1 id="後端部分">後端部分</h1>
+
+<p>我們先建立一個Models資料夾，裡面要用來裝我們建立的Json格式</p>
+
+<h2 id="建立drawmodel容器">建立DrawModel容器</h2>
+
+<p>在Models建立一個檔案<code>DrawModel</code>，用來裝Json格式</p>
+
+<pre><code class="language-cs">using System;
+
+namespace DrawWall.Models
+{
+    public class DrawModel
+    {
+        public int[] startPos { get; set;}
+        public int[] endPos { get; set;}
+        public string color { get; set;}
+        public int lineWidth { get; set;}
     }
-});
-
-canvas.addEventListener('mouseup', function(){
-    draw = false;
-});
+}
 </code></pre>
 
-<p><code>mousedown</code>開始時，我們要把開始的位置用nowPos記錄下來</p>
+<blockquote>
+<p>注意<code>startPos</code>和<code>endPos</code>是數字陣列</p>
+</blockquote>
 
-<pre><code class="language-js">canvas.addEventListener('mousedown', function(e){
-    draw = true;
-    tempPos = [e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop];
-});
-</code></pre>
+<h2 id="建立drawhub">建立DrawHub</h2>
 
-<p><code>mousemove</code>發現draw為true，代表畫筆在紙上，所以就開始繪畫</p>
+<p>在建立一個<code>DrawHub</code>，內容很簡單也只要把接受到的Json資料再傳給所有人就行</p>
 
-<pre><code class="language-js">canvas.addEventListener('mousemove', function(e){
-    if(draw){
-        var newPos = [e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop]; // 取得結束的位置
-        ctx.beginPath(); // 開始繪畫取得路徑
-        ctx.moveTo(tempPos[0], tempPos[1]); // 移動到起始位置
-        ctx.lineTo(newPos[0], newPos[1]); // 畫線到結束的位置
-        ctx.closePath(); // 關閉繪畫的路徑
-        ctx.stroke(); // 畫線
-        tempPos = newPos; // 記錄下最後的位置為目前的位置
+<pre><code class="language-cs">using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
+using DrawWall.Models;
+
+namespace DrawWall.Hubs
+{
+    public class DrawHub : Hub
+    {
+        public async Task SendDraw(DrawModel drawData)
+        {
+            await Clients.All.SendAsync(&quot;ReceiveDraw&quot;, drawData);
+        }
     }
-});
+}
 </code></pre>
 
-<h2 id="畫筆設定">畫筆設定</h2>
+<p>還有Starup.cs記得註冊DrawHub和SignalR</p>
 
-<p>只有這樣感覺好像太單調，所以我們在加入顏色和線條粗細，在Canvas上面加入2項設定html element</p>
+<pre><code class="language-cs">public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSignalR();
+}
 
-<pre><code class="language-html">&lt;div&gt;
-    顏色：&lt;input id=&quot;color&quot; type=&quot;color&quot;&gt;
-    粗細：
-    &lt;select id=&quot;lineWidth&quot;&gt;
-        &lt;option&gt;1&lt;/option&gt;
-        &lt;option&gt;2&lt;/option&gt;
-        &lt;option&gt;3&lt;/option&gt;
-        &lt;option&gt;4&lt;/option&gt;
-        &lt;option&gt;5&lt;/option&gt;
-        &lt;option&gt;6&lt;/option&gt;
-        &lt;option&gt;7&lt;/option&gt;
-    &lt;/select&gt;
-&lt;/div&gt;
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+    app.UseSignalR(routes =&gt;
+    {
+        routes.MapHub&lt;DrawHub&gt;(&quot;/drawHub&quot;);
+    });            
+}
 </code></pre>
 
-<p>開始畫時讓Canvas載入選擇的設定，<code>strokeStyle</code>為畫筆顏色，<code>lineWidth</code>為線條粗細。</p>
+<p>最後記得加入前端的signal套件，這樣就完成了</p>
 
-<pre><code class="language-js">var color = document.getElementById('color');
-var lineWidth = document.getElementById('lineWidth');
-ctx.strokeStyle = color.value;
-ctx.lineWidth = lineWidth.value;
-</code></pre>
+<h1 id="demo">Demo</h1>
 
-<p>設定2個設定選項的監聽事件，讓選項改變時讓Canvas從新載入設定</p>
+<p><img src="Draw2.gif" alt="Draw" /></p>
 
-<pre><code class="language-js">color.addEventListener('input', function(){
-    ctx.strokeStyle = color.value;
-})
-
-lineWidth.addEventListener('input', function(){
-    ctx.lineWidth = lineWidth.value;
-})
-</code></pre>
-
-<h1 id="demo">DEMO</h1>
-
-<p><img src="Draw.gif" alt="Draw" /></p>
-
-<p>這樣就成功做成一個簡單的塗鴉牆了，明天再來繼續做剩下的SignalR的部分。</p>
-
-<h1 id="參考-範例下載">參考 &amp; 範例下載</h1>
+<h1 id="範例下載">範例下載</h1>
 
 <ul>
-<li><a href="https://blog.darkthread.net/blog/html5-canvas-sktechpad/">黑暗執行序-用100行實現HTML5可存檔塗鴉版</a></li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10105497">fillano - 且戰且走HTML5(11) Canvas基本繪圖-塗鴉</a></li>
-<li><a href="https://drive.google.com/file/d/1_Qoc-4pwXHfI0-ZCwiXUDro6n7ps711w/view?usp=sharing">範例下載</a></li>
+<li><a href="https://drive.google.com/file/d/1vWuCLlLCdmOuj6Als5BmkLDf1FMDCrWL/view?usp=sharing">範例下載</a></li>
 </ul>
 
     </div>
@@ -310,7 +343,7 @@ lineWidth.addEventListener('input', function(){
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-10-25</span>
+    <span class="item-content">2018-10-26</span>
   </p>
   
   <p class="copyright-item">
@@ -319,7 +352,7 @@ lineWidth.addEventListener('input', function(){
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-12/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-13/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -351,14 +384,9 @@ lineWidth.addEventListener('input', function(){
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-13/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day13] 實作一個共用塗鴉牆(2)</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-11/">
-            <span class="next-text nav-default">[鐵人賽Day11] 實作一個連線名單</span>
+          <a class="next" href="/post/ironman2019/ironman-day-12/">
+            <span class="next-text nav-default">[鐵人賽Day12] 實作一個共用塗鴉牆(1)</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

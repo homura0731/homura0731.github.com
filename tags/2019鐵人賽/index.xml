@@ -6,10 +6,19 @@
     <description>Recent content in 2019鐵人賽 on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 25 Oct 2018 20:05:47 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Oct 2018 10:52:26 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day13] 實作一個共用塗鴉牆(2)</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-13/</link>
+      <pubDate>Fri, 26 Oct 2018 10:52:26 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-13/</guid>
+      <description>今天要來做塗鴉牆第2部分，首先我們得想想該回傳些什麼，制定一個Json格式回傳回去。 前端部分 連接部分程式碼先寫好 var connection = new signalR.HubConnectionBuilder().withUrl(&amp;quot;/drawHub&amp;quot;).build(); // 連接事件 connection.start().catch(function (err) { return</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day12] 實作一個共用塗鴉牆(1)</title>
