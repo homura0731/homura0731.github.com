@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day4] 使用SignalR Hub (1) - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day14] 實作一個共用塗鴉牆(3) - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="SignalR Hub是什麼? 其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是Browser和Server溝通的" />
+  <meta name="description" content="今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。 橡皮擦功能 這邊我在實作時，一開始是想" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-4/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-14/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,25 +51,25 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day4] 使用SignalR Hub (1)" />
-<meta property="og:description" content="SignalR Hub是什麼? 其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是Browser和Server溝通的" />
+<meta property="og:title" content="[鐵人賽Day14] 實作一個共用塗鴉牆(3)" />
+<meta property="og:description" content="今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。 橡皮擦功能 這邊我在實作時，一開始是想" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-4/" /><meta property="article:published_time" content="2018-10-17T19:11:15&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-17T19:11:15&#43;08:00"/>
-<meta itemprop="name" content="[鐵人賽Day4] 使用SignalR Hub (1)">
-<meta itemprop="description" content="SignalR Hub是什麼? 其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是Browser和Server溝通的">
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-14/" /><meta property="article:published_time" content="2018-10-27T10:31:00&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-27T10:31:00&#43;08:00"/>
+<meta itemprop="name" content="[鐵人賽Day14] 實作一個共用塗鴉牆(3)">
+<meta itemprop="description" content="今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。 橡皮擦功能 這邊我在實作時，一開始是想">
 
 
-<meta itemprop="datePublished" content="2018-10-17T19:11:15&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-17T19:11:15&#43;08:00" />
-<meta itemprop="wordCount" content="790">
+<meta itemprop="datePublished" content="2018-10-27T10:31:00&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-27T10:31:00&#43;08:00" />
+<meta itemprop="wordCount" content="972">
 
 
 
-<meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.Net Core," />
+<meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day4] 使用SignalR Hub (1)"/>
-<meta name="twitter:description" content="SignalR Hub是什麼? 其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是Browser和Server溝通的"/>
+<meta name="twitter:title" content="[鐵人賽Day14] 實作一個共用塗鴉牆(3)"/>
+<meta name="twitter:description" content="今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。 橡皮擦功能 這邊我在實作時，一開始是想"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,12 +136,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day4] 使用SignalR Hub (1)</h1>
+      <h1 class="post-title">[鐵人賽Day14] 實作一個共用塗鴉牆(3)</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-10-17 
+          2018-10-27 
         </span>
         <div class="post-category">
             
@@ -151,7 +151,7 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 790 字
+          約 972 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
@@ -169,14 +169,13 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#signalr-hub是什麼">SignalR Hub是什麼?</a></li>
-<li><a href="#hub-interface">Hub Interface</a></li>
-<li><a href="#使用方法">使用方法</a>
+<li><a href="#橡皮擦功能">橡皮擦功能</a>
 <ul>
-<li><a href="#實作一個hub類別">實作一個Hub類別</a></li>
-<li><a href="#configure中註冊建立的hub">Configure中註冊建立的Hub</a></li>
+<li><a href="#使用clearrect-來做橡皮擦功能">使用clearRect()來做橡皮擦功能</a></li>
+<li><a href="#同步到signalr">同步到SignalR</a></li>
 </ul></li>
-<li><a href="#參考">參考</a></li>
+<li><a href="#demo">DEMO</a></li>
+<li><a href="#範例下載">範例下載</a></li>
 </ul>
 </nav>
   </div>
@@ -189,108 +188,168 @@
     <div class="post-content">
       
 
-<h1 id="signalr-hub是什麼">SignalR Hub是什麼?</h1>
+<p>今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。</p>
 
-<p>其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是<code>Browser</code>和<code>Server</code>溝通的橋樑，簡單來說就是幫你跟瀏覽器溝通的一個組件，有了他我們就能輕鬆撰寫溝通的事件，不用從最簡單連接關閉開始寫。</p>
+<h1 id="橡皮擦功能">橡皮擦功能</h1>
 
-<h1 id="hub-interface">Hub Interface</h1>
+<p>這邊我在實作時，一開始是想到只有用透明色或是白色把畫過的地方重新上色就行，後來發現有Canvas有內建API可以達成。</p>
 
-<p>來看看<code>Hub</code>裡面它幫我實作了什麼</p>
+<h2 id="使用clearrect-來做橡皮擦功能">使用clearRect()來做橡皮擦功能</h2>
 
-<pre><code class="language-cs">public abstract class Hub : IDisposable
-{
-    protected Hub();
+<p><code>clearRact</code>可以設定一個矩形範圍來取消畫過的元素，先來看看定義</p>
 
-    public IHubCallerClients Clients { get; set; }
-
-    public HubCallerContext Context { get; set; }
-
-    public IGroupManager Groups { get; set; }
-
-    public void Dispose();
-
-    public virtual Task OnConnectedAsync();
-
-    public virtual Task OnDisconnectedAsync(Exception exception);
-
-    protected virtual void Dispose(bool disposing);
-}
-
+<pre><code class="language-js">clearRact(x, y , width, height)
 </code></pre>
 
-<p><code>Clients</code>基本上就是跟Client溝通用的物件，溝通的方法有3個</p>
-
 <ul>
-<li><code>All</code> ：所有人</li>
-<li><code>Group</code> ：群組</li>
-<li><code>Caller</code>：單一對象</li>
+<li>x：清除x軸位置</li>
+<li>y：清除y軸位置</li>
+<li>width：清除寬度</li>
+<li>height：清除高度</li>
 </ul>
 
-<p><code>Context</code>則是<code>Browser</code>傳送過來的資訊，這些資訊是由前端的SignalR產生的，內容如下</p>
+<p>先建立使用的Html element，一個checkbox切換畫筆或橡皮擦，一個select控制橡皮擦長寬，這部分加在畫筆粗細後方</p>
 
-<ul>
-<li><code>ConnectionId</code>：連接中的用戶識別碼</li>
-<li><code>UserIdentifier</code>：連接識別碼</li>
-<li><code>ConnectionAborted</code>：可得知連線中的用戶是否中止連接，正常連接時<code>IsCancellationRequested</code>為<code>false</code></li>
-</ul>
-
-<p><code>Groups</code>則是負責管理群組的屬性</p>
-
-<p><code>OnConnectedAsync</code>和<code>OnDisconnectedAsync</code>不用說就是連接和斷線的事件囉</p>
-
-<h1 id="使用方法">使用方法</h1>
-
-<h2 id="實作一個hub類別">實作一個Hub類別</h2>
-
-<p>在上一篇實作中有做過，只要開一個類別繼承<code>Hub</code>，裡面只要用<code>override</code>實作<code>OnConnectedAsync</code>和<code>OnDisconnectedAsync</code>2個方法就行，其他的方法都可以自訂，回傳如果不是傳個單一用戶，建議都使用await 非同步的方式。</p>
-
-<pre><code class="language-cs">public class ChatHub : Hub
-{
-    public async Task SendMessage(string user, string message)
-    {
-        await Clients.All.SendAsync(&quot;ReceiveMessage&quot;, user,message);
-    }
-
-    public Task SendMessageToCaller(string message)
-    {
-        await Clients.Caller.SendAsync(&quot;ReceiveMessage&quot;, message);
-    }
-
-    public Task SendMessageToGroups(string message)
-    {
-        List&lt;string&gt; groups = new List&lt;string&gt;() { &quot;SignalR Users&quot; };
-        await Clients.Groups(groups).SendAsync(&quot;ReceiveMessage&quot;, message);
-    }
-    // 連線
-    public override async Task OnConnectedAsync()
-    {
-        await base.OnConnectedAsync();
-    }
-    // 斷線
-    public override async Task OnDisconnectedAsync(Exception exception)
-    {
-        await base.OnDisconnectedAsync(exception);
-    }
-}
-
+<pre><code class="language-html">橡皮擦：&lt;input id=&quot;eraser&quot; type=&quot;checkbox&quot;&gt;
+橡皮擦範圍：
+&lt;select id=&quot;eraserWidth&quot;&gt;
+    &lt;option&gt;5&lt;/option&gt;
+    &lt;option&gt;10&lt;/option&gt;
+&lt;/select&gt;
 </code></pre>
 
-<h2 id="configure中註冊建立的hub">Configure中註冊建立的Hub</h2>
+<p>JS載入設定要素</p>
 
-<p>在<code>Starup.cs</code>的<code>Configure</code>中註冊，使用UseSignalR的Router裡註冊，可以註冊多個沒有限制</p>
+<pre><code class="language-js">var eraser = document.getElementById('eraser');
+var eraserWidth = document.getElementById('eraserWidth');
+</code></pre>
 
-<pre><code class="language-cs">app.UseSignalR(routes =&gt;
-{
-    routes.MapHub&lt;ChatHub&gt;(&quot;/chatHub&quot;);
+<p>然後我們要修改一下<code>mousermove</code>的設定，在橡皮擦啟動時，是要擦掉而不是畫圖</p>
+
+<pre><code class="language-js">canvas.addEventListener('mousemove', function (e) {
+    if (draw) {
+        var newPos = [e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop];
+        // 判斷橡皮擦是否啟用
+        if (eraser.checked) {
+            var _eraserWidth = eraserWidth.value;
+            ctx.clearRect(tempPos[0] - (_eraserWidth / 2), tempPos[1] - (_eraserWidth / 2), _eraserWidth, _eraserWidth);
+        } else {
+            ctx.beginPath();
+            ctx.moveTo(tempPos[0], tempPos[1]);
+            ctx.lineTo(newPos[0], newPos[1])
+            ctx.closePath();
+            ctx.stroke();
+            connection.invoke(&quot;SendDraw&quot;, {
+                &quot;startPos&quot;: tempPos,
+                &quot;endPos&quot;: newPos,
+                &quot;color&quot;: ctx.strokeStyle,
+                &quot;lineWidth&quot;: ctx.lineWidth
+
+            }).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+        tempPos = newPos;
+    }
 });
 </code></pre>
 
-<p>Hub概念大概就這些，下一篇來講講Hub的延伸用法。</p>
+<p>x和y扣掉寬度除2是為了讓範圍中心對到點擊位置上，因為我覺得這樣會比較抓距離，還有記得跟Draw一樣的動作要拉出來。</p>
 
-<h1 id="參考">參考</h1>
+<h2 id="同步到signalr">同步到SignalR</h2>
+
+<p>首先我們的JSON格式需要更新下，我們多加一個<code>mode</code>和<code>eraserWidth</code>，<code>mode</code>用來辨認到底是畫筆還是橡皮擦，
+其實也能寫成<code>isEraser</code>或<code>isPen</code>也行，但是Canvas其實還有很多其他功能，像是畫矩形、三角形、圓形、貝茲曲線&hellip;..，
+所以我們要讓他可以變化大一點，用<code>Mode</code>來做這變數名會比較適合。</p>
+
+<pre><code class="language-json">{
+    &quot;mode&quot;: &quot;line&quot;,
+    &quot;startPos&quot;: [10, 20],
+    &quot;endPos&quot;: [40, 50]],
+    &quot;color&quot;: &quot;orange&quot;,
+    &quot;lineWidth&quot;: 10,
+    &quot;eraserWidth&quot;: 5       
+}
+</code></pre>
+
+<p>然後一樣在<code>mousemove</code>時傳回Server</p>
+
+<pre><code class="language-js">canvas.addEventListener('mousemove', function (e) {
+    if (draw) {
+        var newPos = [e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop];
+        // 判斷橡皮擦是否啟用
+        if (eraser.checked) {
+            var _eraserWidth = eraserWidth.value;
+            ctx.clearRect(tempPos[0] - (_eraserWidth / 2), tempPos[1] - (_eraserWidth / 2), _eraserWidth, _eraserWidth);
+        } else {
+            ctx.beginPath();
+            ctx.moveTo(tempPos[0], tempPos[1]);
+            ctx.lineTo(newPos[0], newPos[1])
+            ctx.closePath();
+            ctx.stroke();
+        }
+        // 回傳動作
+        connection.invoke(&quot;SendDraw&quot;, {
+                &quot;mode&quot;: eraser.checked?'eraser':'line',
+                &quot;startPos&quot;: tempPos,
+                &quot;endPos&quot;: newPos,
+                &quot;color&quot;: ctx.strokeStyle,
+                &quot;lineWidth&quot;: ctx.lineWidth,
+                &quot;eraserWidth&quot;: eraserWidth.value
+            }).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+        tempPos = newPos;
+    }
+});
+</code></pre>
+
+<p>接收事件<code>ReceiveDraw</code>我們需要加上一個switch來判定<code>mode</code>是什麼，在做不一樣的事情</p>
+
+<pre><code class="language-js">connection.on(&quot;ReceiveDraw&quot;, function (json) {
+    switch (json.mode) {
+        case 'line':
+            ctx.strokeStyle = json.color;
+            ctx.lineWidth = json.lineWidth;
+            ctx.beginPath();
+            ctx.moveTo(json.startPos[0], json.startPos[1]);
+            ctx.lineTo(json.endPos[0], json.endPos[1])
+            ctx.closePath();
+            ctx.stroke();
+            break;
+        case 'eraser':
+            var _eraserWidth = json.eraserWidth;
+            ctx.clearRect(json.startPos[0] - (_eraserWidth / 2), json.startPos[1] - (_eraserWidth / 2), _eraserWidth, _eraserWidth);
+            break;
+    }
+
+});
+</code></pre>
+
+<p>後端部分只需要更新<code>DrawModel.cs</code>的屬性就行了</p>
+
+<pre><code class="language-cs">public class DrawModel
+{
+    public string mode { get; set; }
+    public int[] startPos { get; set; }
+    public int[] endPos { get; set; }
+    public string color { get; set; }
+    public int lineWidth { get; set; }
+    public int eraserWidth { get; set; }
+}
+</code></pre>
+
+<p>到這邊就完成啦！</p>
+
+<h1 id="demo">DEMO</h1>
+
+<p><img src="Eraser.gif" alt="Eraser" /></p>
+
+<h1 id="範例下載">範例下載</h1>
 
 <ul>
-<li><a href="https://docs.microsoft.com/zh-tw/aspnet/core/signalr/hubs?view=aspnetcore-2.1">MSDN文件</a></li>
+<li><a href="https://drive.google.com/file/d/1OTzlihLEyE1a9QBUIr-i0BUdfsF4VRSu/view?usp=sharing">範例下載</a></li>
 </ul>
 
     </div>
@@ -303,7 +362,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-10-17</span>
+    <span class="item-content">2018-10-27</span>
   </p>
   
   <p class="copyright-item">
@@ -312,7 +371,7 @@
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-4/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-14/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -332,7 +391,11 @@
             </span>
           
             <span class="tags">
-              <a href="/tags/asp.net-core/">ASP.Net Core</a>
+              <a href="/tags/asp.net-core/">ASP.NET Core</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/javascript/">JavaScript</a>
             </span>
           
         </div>
@@ -340,14 +403,9 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-5/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day5] 使用SignalR Hub (2)</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-3/">
-            <span class="next-text nav-default">[鐵人賽Day3] 第一個SingalR專案</span>
+          <a class="next" href="/post/ironman2019/ironman-day-13/">
+            <span class="next-text nav-default">[鐵人賽Day13] 實作一個共用塗鴉牆(2)</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
