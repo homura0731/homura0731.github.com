@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day11] 實作一個連線名單 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day15] 實作一個共用塗鴉牆 (4) - 載入時同步 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="今天要來個小型的實作一個連線名單，連線名單可以讓你知道目前在線的人有誰(廢話)，之前的範例都是在進入時傳送訊息給所有人，如果是中途進來的人，" />
+  <meta name="description" content="今天應該最後一篇塗鴉牆了，來講講畫版載入時同步的功能，在載入時必須和前面畫過的畫面同步，避免之後進來的人看到的畫面跟先進來看到會有不一樣的狀" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-11/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-15/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,25 +51,25 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day11] 實作一個連線名單" />
-<meta property="og:description" content="今天要來個小型的實作一個連線名單，連線名單可以讓你知道目前在線的人有誰(廢話)，之前的範例都是在進入時傳送訊息給所有人，如果是中途進來的人，" />
+<meta property="og:title" content="[鐵人賽Day15] 實作一個共用塗鴉牆 (4) - 載入時同步" />
+<meta property="og:description" content="今天應該最後一篇塗鴉牆了，來講講畫版載入時同步的功能，在載入時必須和前面畫過的畫面同步，避免之後進來的人看到的畫面跟先進來看到會有不一樣的狀" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-11/" /><meta property="article:published_time" content="2018-10-24T19:30:46&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-24T19:30:46&#43;08:00"/>
-<meta itemprop="name" content="[鐵人賽Day11] 實作一個連線名單">
-<meta itemprop="description" content="今天要來個小型的實作一個連線名單，連線名單可以讓你知道目前在線的人有誰(廢話)，之前的範例都是在進入時傳送訊息給所有人，如果是中途進來的人，">
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-15/" /><meta property="article:published_time" content="2018-10-28T09:31:57&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-28T09:31:57&#43;08:00"/>
+<meta itemprop="name" content="[鐵人賽Day15] 實作一個共用塗鴉牆 (4) - 載入時同步">
+<meta itemprop="description" content="今天應該最後一篇塗鴉牆了，來講講畫版載入時同步的功能，在載入時必須和前面畫過的畫面同步，避免之後進來的人看到的畫面跟先進來看到會有不一樣的狀">
 
 
-<meta itemprop="datePublished" content="2018-10-24T19:30:46&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-24T19:30:46&#43;08:00" />
-<meta itemprop="wordCount" content="1057">
+<meta itemprop="datePublished" content="2018-10-28T09:31:57&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-28T09:31:57&#43;08:00" />
+<meta itemprop="wordCount" content="873">
 
 
 
 <meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day11] 實作一個連線名單"/>
-<meta name="twitter:description" content="今天要來個小型的實作一個連線名單，連線名單可以讓你知道目前在線的人有誰(廢話)，之前的範例都是在進入時傳送訊息給所有人，如果是中途進來的人，"/>
+<meta name="twitter:title" content="[鐵人賽Day15] 實作一個共用塗鴉牆 (4) - 載入時同步"/>
+<meta name="twitter:description" content="今天應該最後一篇塗鴉牆了，來講講畫版載入時同步的功能，在載入時必須和前面畫過的畫面同步，避免之後進來的人看到的畫面跟先進來看到會有不一樣的狀"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,12 +136,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day11] 實作一個連線名單</h1>
+      <h1 class="post-title">[鐵人賽Day15] 實作一個共用塗鴉牆 (4) - 載入時同步</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-10-24 
+          2018-10-28 
         </span>
         <div class="post-category">
             
@@ -151,11 +151,11 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 1057 字
+          約 873 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
-          預計閱讀 3 分鐘 
+          預計閱讀 2 分鐘 
         </span>
         
       </div>
@@ -169,10 +169,14 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#製作一個名單容器和容器service">製作一個名單容器和容器Service</a></li>
-<li><a href="#後端連線斷線的處理">後端連線斷線的處理</a></li>
-<li><a href="#前端表現處理">前端表現處理</a></li>
+<li><a href="#同步不同時間連線的塗鴉板">同步不同時間連線的塗鴉板</a>
+<ul>
+<li><a href="#建立drawservice-cs">建立DrawService.cs</a></li>
+<li><a href="#修改drawhub內容">修改DrawHub內容</a></li>
+<li><a href="#前端連線時重繪">前端連線時重繪</a></li>
+</ul></li>
 <li><a href="#demo">DEMO</a></li>
+<li><a href="#塗鴉版未完成事項及用途">塗鴉版未完成事項及用途</a></li>
 <li><a href="#範例下載">範例下載</a></li>
 </ul>
 </nav>
@@ -186,162 +190,151 @@
     <div class="post-content">
       
 
-<p>今天要來個小型的實作一個連線名單，連線名單可以讓你知道目前在線的人有誰(廢話)，之前的範例都是在進入時傳送訊息給所有人，如果是中途進來的人，是無從得知目前有哪些人在線上
-，如果要做一個聊天室沒這基本的功能也太爛了吧!XD</p>
+<p>今天應該最後一篇塗鴉牆了，來講講畫版載入時同步的功能，在載入時必須和前面畫過的畫面同步，避免之後進來的人看到的畫面跟先進來看到會有不一樣的狀況
+，所以我們得做一個方法，在載入時就把存起來的動作一次畫完。</p>
 
-<p>一樣使用Day3的範例來做，沒有的點<a href="https://drive.google.com/file/d/1CSiqGkTjQvWL25iiYtUmMNrrL4m_JVrG/view">這裡</a></p>
+<h1 id="同步不同時間連線的塗鴉板">同步不同時間連線的塗鴉板</h1>
 
-<h1 id="製作一個名單容器和容器service">製作一個名單容器和容器Service</h1>
+<p>我們可以回想一下Day11的Service寫法，其實寫法一樣的，比耗工應該是前端部分，需要把一次把大量的動作畫完</p>
 
-<p>我們先要製作一個容器，把目前上線的人資訊都存下來，至於要存哪些呢?我覺得<code>使用者名稱</code>和<code>連接ID</code>是一定需要的，再來就是上線的時間點，大概就這些，先建立一個<code>ConUserModel.cs</code>，
-並建立一個Class當容器。</p>
+<h2 id="建立drawservice-cs">建立DrawService.cs</h2>
+
+<p>這次比上次簡單，我們不需要移除的方法，只要增加就好，但是還要新增一個方法取得list。</p>
 
 <pre><code class="language-cs">using System;
 using System.Collections.Generic;
+using DrawWall.Models;
 
-namespace CoreWeb.Models
+namespace DrawWall.Service
 {
-    public class ConUserModel
+    public class DrawService
     {
-        public string connectID { get; set; }
-        public string username { get; set; }
-        public DateTime onlineTime { get; set; }
-    }
-}
-</code></pre>
-
-<p>再來建立<code>ConUserService</code>，這邊我建立在同一個檔案內，在內部建立一個<code>List</code>泛型內部裝剛剛建立的<code>ConUserModel</code>，建立新增及移除List的方法</p>
-
-<pre><code class="language-cs">public class ConUserService
-{
-    private List&lt;ConUserModel&gt; _list;
-    public ConUserService()
-    {
-        _list = new List&lt;ConUserModel&gt;();
-    }
-    public List&lt;ConUserModel&gt; AddList(ConUserModel user)
-    {
-        _list.Add(user);
-        return _list;
-    }
-    public List&lt;ConUserModel&gt; RemoveList(string connectID)
-    {
-        for (int i = 0; i &lt; _list.Count; i++)
+        private List&lt;DrawModel&gt; _list;
+        public DrawService()
         {
-            if (_list[i].connectID == connectID)
-                _list.Remove(_list[i]);
+            _list = new List&lt;DrawModel&gt;();
         }
-        return _list;
-    }
-}
-</code></pre>
-
-<p>再到<code>Starp.cs</code>註冊Service</p>
-
-<pre><code class="language-cs">public void ConfigureServices(IServiceCollection services)
-{
-    services.AddSingleton&lt;ConUserService&gt;();
-    services.AddSignalR();
-}
-</code></pre>
-
-<p>再來到我們建立一個Hub裡面引用<code>Core.Models</code></p>
-
-<pre><code class="language-cs">using CoreWeb.Models;
-</code></pre>
-
-<p>Hub內宣告<code>List&lt;ConUserMode&gt;</code>，建構子裡面接收從Servie傳過來的<code>List&lt;ConUserMode&gt;</code>，在載入到Hub內的List變數</p>
-
-<pre><code class="language-cs">namespace CoreWeb.Hubs
-{
-    public class ChatHub : Hub
-    {
-        private ConUserService conUserList;
-        public ChatHub(ConUserService conUserService)
+        public void AddList(DrawModel drawModel)
         {
-            conUserList = conUserService;
+            _list.Add(drawModel);
+        }
+        public List&lt;DrawModel&gt; GetList()
+        {
+            return _list;
         }
     }
 }
 </code></pre>
 
-<h1 id="後端連線斷線的處理">後端連線斷線的處理</h1>
+<p>在<code>Starup.cs</code>的Service裡引用和註冊</p>
 
-<p>後端每當有人連線或斷線時，都要重新傳送一份名單給所有使用者，所以得要在<code>OnConnectedAsync</code>和<code>OnDisconnectedAsync</code>處理，但是<code>OnConnectedAsync</code>裡面不能接參數，所以我們改用
-連線後，再加入的群組的方式，首先寫加入群組的方法，群組假設叫<code>TestGroup</code></p>
-
-<pre><code class="language-cs">public async void AddConUserList(string user)
+<pre><code class="language-cs">using DrawWall.Service;
+namespace DrawWall
 {
-    var _user = new ConUserModel();
-    _user.username = user;
-    _user.connectID = Context.ConnectionId;
-    _user.onlineTime = DateTime.Now;
-
-    await Groups.AddToGroupAsync(Context.ConnectionId, &quot;TestGroup&quot;);
-    await Clients.Group(&quot;TestGroup&quot;).SendAsync(&quot;GetConList&quot;, conUserList.AddList(_user));
+    public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSignalR();
+            services.AddSingleton&lt;DrawService&gt;();
+        }
+    }
 }
 </code></pre>
 
-<p>程式碼大概就是建立一個<code>ConUserModel</code>相關資料塞進去，加入群組後再加入上線名單。
-然後切斷連線時，要通知群組所有人更新連線名單</p>
+<h2 id="修改drawhub內容">修改DrawHub內容</h2>
 
-<pre><code class="language-cs">public override async Task OnDisconnectedAsync(Exception exception)
+<p>注入到Hub建構子內，然後我們新增一個方法<code>GetDraw</code>來取得所有的的繪圖過程，還有一個地方要注意，不要傳給所有人，只要傳給呼叫的使用者即可，<code>SendDraw</code>要把Json資料存進<code>drawService</code>中。</p>
+
+<pre><code class="language-cs">using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
+using DrawWall.Models;
+using DrawWall.Service;
+using System.Collections.Generic;
+
+namespace DrawWall.Hubs
 {
-    await base.OnDisconnectedAsync(exception);
-    await Clients.Group(&quot;TestGroup&quot;).SendAsync(&quot;GetConList&quot;, conUserList.RemoveList(Context.ConnectionId));
+    public class DrawHub : Hub
+    {
+        public DrawService _drawService;
+        public DrawHub(DrawService drawService)
+        {
+            _drawService = drawService;
+        }
+        public async Task SendDraw(DrawModel drawModel)
+        {
+            _drawService.AddList(drawModel);
+            await Clients.All.SendAsync(&quot;ReceiveDraw&quot;, drawModel);
+        }
+        public async Task GetDraw()
+        {
+            await Clients.Caller.SendAsync(&quot;ReciveAllDraw&quot;, _drawService.GetList());
+        }
+        
+    }
 }
 </code></pre>
 
-<h1 id="前端表現處理">前端表現處理</h1>
+<h2 id="前端連線時重繪">前端連線時重繪</h2>
 
-<p>我們先建立一個連線名單的<code>select html element</code>，記得加入<code>multiple</code>屬性讓它展開</p>
+<p>前端部分我們連接成功時，呼叫<code>GetDraw</code>方法，並把取得的資料全部重繪一遍</p>
 
-<pre><code class="language-html">&lt;select id=&quot;ConList&quot; multiple&gt;&lt;/select&gt;
-</code></pre>
-
-<p>在連線的方法成功之後加入群組</p>
-
-<pre><code class="language-js">document.getElementById('conOpenBtn').onclick = function () {
-    connection.start().then(function() {
-        console.log('start');
-
-        var user = document.getElementById(&quot;name&quot;).value;
-        // 加入群組
-        connection.invoke(&quot;AddConUserList&quot;, user).catch(function (err) {
-            return console.error(err.toString());
-        });
-
-    }).catch(function (err) {
-        return console.error(err.toString());
+<pre><code class="language-js">connection.start().then(function () {
+    connection.invoke('GetDraw').catch(function (err) {
+        console.log(err);
     });
-}
-</code></pre>
 
-<p>更新名單的方法每次都要清空List，再重新填入Server傳回來的名單</p>
+}).catch(function (err) {
+    return console.error(err.toString());
+});
 
-<pre><code class="language-js">connection.on(&quot;GetConList&quot;, function (ConList) {
-    console.log(ConList);
-    _ConList.innerHTML = '';
-
-    for (var i = 0; i &lt; ConList.length; i++) {
-        var user = document.createElement(&quot;option&quot;);
-        user.text = ConList[i].username;
-        _ConList.appendChild(user);
+connection.on(&quot;ReciveAllDraw&quot;, function (json) {
+    console.log(json);
+    for (var i = 0; i &lt; json.length; i++) {
+        switch (json[i].mode) {
+            case 'line':
+                ctx.strokeStyle = json[i].color;
+                ctx.lineWidth = json[i].lineWidth;
+                ctx.beginPath();
+                ctx.moveTo(json[i].startPos[0], json[i].startPos[1]);
+                ctx.lineTo(json[i].endPos[0], json[i].endPos[1])
+                ctx.closePath();
+                ctx.stroke();
+                break;
+            case 'eraser':
+                var _eraserWidth = json[i].eraserWidth;
+                ctx.clearRect(json[i].startPos[0] - (_eraserWidth / 2), json[i].startPos[1] - (_eraserWidth / 2), _eraserWidth, _eraserWidth);
+                break;
+        }
     }
-})
+});
+
 </code></pre>
+
+<p>這樣就完成囉！</p>
 
 <h1 id="demo">DEMO</h1>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/I0ZC48M9CDQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<p><img src="DrawSync.gif" alt="DrawSync" /></p>
 
-<p>今天大概就這些，雖然它只是一個小組件，但是之後的實作都能套用到它，明天會會來個比較難一點的。</p>
+<h1 id="塗鴉版未完成事項及用途">塗鴉版未完成事項及用途</h1>
+
+<p>不過今天這篇有點短，不過文章開頭說最後一篇了，所以我們來聊聊我們還能做些什麼</p>
+
+<ul>
+<li>UI重新設計，這個很重要，好的UX才會讓使用者想用下去</li>
+<li>把剩下Cavans的繪圖API都做成工具，當然繪圖不能只有普通的直線和橡皮擦囉!</li>
+<li>加入連線名單及畫圖時的使用者名稱，要知道到底是誰在畫</li>
+<li>增加繪圖板轉圖片功能，這樣就不需要刻意使用什麼截圖軟體</li>
+</ul>
+
+<p>至於用途，我覺得可以用在網路會議時，有些東西要打字的不方便理解，這時塗鴉板就派上用場囉！可能是會寫溝通的<code>UML</code>或是流程圖之類，等於會議時常常用到的白板一樣。</p>
+
+<p>今天大概就這些，明天就進入下一個實作了囉~</p>
 
 <h1 id="範例下載">範例下載</h1>
 
-<ul>
-<li><a href="https://drive.google.com/file/d/1CNBCcMhbJuhb8vtmxjBt1Z11iRwfaGKF/view?usp=sharing">今天範例</a></li>
-</ul>
+<p><a href="https://drive.google.com/file/d/1msq6GjHBOMkfYMayVoV8qOvPssndTX87/view?usp=sharing">範例下載</a></p>
 
     </div>
 
@@ -353,7 +346,7 @@ namespace CoreWeb.Models
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-10-24</span>
+    <span class="item-content">2018-10-28</span>
   </p>
   
   <p class="copyright-item">
@@ -362,7 +355,7 @@ namespace CoreWeb.Models
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-11/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-15/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -394,14 +387,9 @@ namespace CoreWeb.Models
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-12/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day12] 實作一個共用塗鴉牆 (1) - 前端塗鴉板製作</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-10/">
-            <span class="next-text nav-default">[鐵人賽Day10] SignalR 組態設定</span>
+          <a class="next" href="/post/ironman2019/ironman-day-14/">
+            <span class="next-text nav-default">[鐵人賽Day14] 實作一個共用塗鴉牆 (3) - 新增橡皮擦功能</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

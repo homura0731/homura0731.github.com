@@ -6,13 +6,22 @@
     <description>Recent content in 2019鐵人賽 on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Sat, 27 Oct 2018 10:31:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Oct 2018 09:31:57 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>[鐵人賽Day14] 實作一個共用塗鴉牆(3)</title>
+      <title>[鐵人賽Day15] 實作一個共用塗鴉牆 (4) - 載入時同步</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-15/</link>
+      <pubDate>Sun, 28 Oct 2018 09:31:57 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-15/</guid>
+      <description>今天應該最後一篇塗鴉牆了，來講講畫版載入時同步的功能，在載入時必須和前面畫過的畫面同步，避免之後進來的人看到的畫面跟先進來看到會有不一樣的狀</description>
+    </item>
+    
+    <item>
+      <title>[鐵人賽Day14] 實作一個共用塗鴉牆 (3) - 新增橡皮擦功能</title>
       <link>https://homura0731.github.io/post/ironman2019/ironman-day-14/</link>
       <pubDate>Sat, 27 Oct 2018 10:31:00 +0800</pubDate>
       
@@ -21,7 +30,7 @@
     </item>
     
     <item>
-      <title>[鐵人賽Day13] 實作一個共用塗鴉牆(2)</title>
+      <title>[鐵人賽Day13] 實作一個共用塗鴉牆 (2) - signal同步畫板</title>
       <link>https://homura0731.github.io/post/ironman2019/ironman-day-13/</link>
       <pubDate>Fri, 26 Oct 2018 10:52:26 +0800</pubDate>
       
@@ -30,7 +39,7 @@
     </item>
     
     <item>
-      <title>[鐵人賽Day12] 實作一個共用塗鴉牆(1)</title>
+      <title>[鐵人賽Day12] 實作一個共用塗鴉牆 (1) - 前端塗鴉板製作</title>
       <link>https://homura0731.github.io/post/ironman2019/ironman-day-12/</link>
       <pubDate>Thu, 25 Oct 2018 20:05:47 +0800</pubDate>
       
