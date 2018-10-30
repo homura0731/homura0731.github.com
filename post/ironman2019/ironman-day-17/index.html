@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[鐵人賽Day17] 實作一個即時投票系統 (2) - Homura&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Homura Lin" />
+  <meta name="description" content="今天要來把即時投票系統跟SignalR連線囉！ 基本上跟塗鴉板也是差不多，但是投票系統應該需要自訂投票的選項和建立投票的種類，這個部份我們需要" />
+
+  <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
+
+
+
+<meta name="google-site-verification" content="IS8PZiCNvYqouPO8vCB_i4giUUllqRseOoU2S7vXTfM" />
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-17/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Seaweed+Script" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">  
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="[鐵人賽Day17] 實作一個即時投票系統 (2)" />
+<meta property="og:description" content="今天要來把即時投票系統跟SignalR連線囉！ 基本上跟塗鴉板也是差不多，但是投票系統應該需要自訂投票的選項和建立投票的種類，這個部份我們需要" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-17/" />
+
+
+
+<meta property="article:published_time" content="2018-10-30T19:43:35&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-10-30T19:43:35&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="[鐵人賽Day17] 實作一個即時投票系統 (2)">
+<meta itemprop="description" content="今天要來把即時投票系統跟SignalR連線囉！ 基本上跟塗鴉板也是差不多，但是投票系統應該需要自訂投票的選項和建立投票的種類，這個部份我們需要">
+
+
+<meta itemprop="datePublished" content="2018-10-30T19:43:35&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-30T19:43:35&#43;08:00" />
+<meta itemprop="wordCount" content="1751">
+
+
+
+<meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,Chart.js,JavaScript," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[鐵人賽Day17] 實作一個即時投票系統 (2)"/>
+<meta name="twitter:description" content="今天要來把即時投票系統跟SignalR連線囉！ 基本上跟塗鴉板也是差不多，但是投票系統應該需要自訂投票的選項和建立投票的種類，這個部份我們需要"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Homura&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首頁</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">歸檔</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Homura&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首頁</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">歸檔</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">標籤</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分類</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">關於我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[鐵人賽Day17] 實作一個即時投票系統 (2)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 
+            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+          2018-10-30 
+        </span>
+        <div class="post-category">
+            
+              <i class="far fa-folder-open" aria-hidden="true"></i>
+              <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/"> 2019鐵人賽 </a>
+            
+          </div>
+        <span class="more-meta"> 
+          <i class="fa fa-book" aria-hidden="true"></i>
+          約 1751 字
+        </span>
+        <span class="more-meta">
+          <i class="far fa-clock" aria-hidden="true"></i>
+          預計閱讀 4 分鐘 
+        </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目錄</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#後端的處理">後端的處理</a>
+<ul>
+<li><a href="#建立votemodel">建立VoteModel</a></li>
+<li><a href="#建立voteservice">建立VoteService</a></li>
+<li><a href="#建立votehub">建立VoteHub</a></li>
+</ul></li>
+<li><a href="#前端的部分">前端的部分</a></li>
+<li><a href="#demo">DEMO</a></li>
+<li><a href="#範例下載">範例下載</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<p>今天要來把即時投票系統跟SignalR連線囉！</p>
+
+<p>基本上跟塗鴉板也是差不多，但是投票系統應該需要自訂投票的選項和建立投票的種類，這個部份我們需要去設計物件來達成，難度會高一些，但今天還不會講就是，先把連線的處理準備好，
+明天再講這個部分。</p>
+
+<h1 id="後端的處理">後端的處理</h1>
+
+<p>後端我們需要建立3個東西<code>VoteHub</code>、<code>VoteService</code>、<code>VoteModel</code></p>
+
+<h2 id="建立votemodel">建立VoteModel</h2>
+
+<p><code>VotwModel</code>用來當作一場投票的容器，大概需要<code>投票編號</code>、<code>投票名稱</code>、<code>建立者</code>、<code>投票選項</code>、<code>投票數</code>、<code>開始時間</code>、<code>結束時間</code>，大概這些，比較要注意的是<code>投票選項</code>和<code>投票數</code>
+，這2個是我們一開始無法確認數量為多少，名稱也不清楚，我想了想使用C# 的 <code>Dictory</code>來處理這部分最適合，因為本身是一個key值對應一個value，不會有重複選項建立的問題，要注意的
+大概就是這個，以下設計出來後大概的樣子。</p>
+
+<pre><code class="language-cs">using System;
+using System.Collections.Generic;
+
+namespace VoteWeb.Models
+{
+    public class VoteModel
+    {
+        public int id { get; set; }
+        public string voteName { get; set; }
+        public string creator { get; set; }
+        public DateTime startDate { get; set; }
+        public DateTime endDate { get; set; }
+        public Dictionary&lt;string, int&gt; voteSelect { get; set; }
+    }
+}
+</code></pre>
+
+<h2 id="建立voteservice">建立VoteService</h2>
+
+<p><code>VoteServie</code>跟上一個實作<code>DrawServie</code>不太一樣的地方是，我們需要多<code>建立投票</code>及<code>新增投票選項</code>的方法還有添加<code>投票</code>的方法，需要注意的是<code>Dictory</code>的泛型物件，他不能直接從直接從
+屬性修改，只能以陣列方式修改，請看下面範例註解的地方，還有我們建立一個Test投票方法<code>CreateTestVote</code>在裡面。</p>
+
+<pre><code class="language-cs">using System;
+using System.Collections.Generic;
+using VoteWeb.Models;
+
+namespace VoteWeb.Services
+{
+    public class VoteService
+    {
+        private List&lt;VoteModel&gt; voteModelList;
+        private int i = 0;
+        public VoteService()
+        {
+            voteModelList = new List&lt;VoteModel&gt;();
+            CreateTestVote();
+        }
+        // 建立測試用投票
+        public void CreateTestVote(){
+            VoteModel voteModel = new VoteModel();
+            voteModel.id = 1;
+            voteModel.voteName = &quot;Test Vote&quot;;
+            voteModel.creator = &quot;me&quot;;
+            voteModel.startDate = DateTime.Now;
+            string[] voteSelect = { &quot;Red&quot;, &quot;Blue&quot;, &quot;Yellow&quot;, &quot;Green&quot;, &quot;Purple&quot;, &quot;Orange&quot; };
+            Dictionary&lt;string, int&gt; _voteSelect = new Dictionary&lt;string, int&gt;();
+            for (int i = 0; i &lt; voteSelect.Length; i++)
+            {
+                _voteSelect.Add(voteSelect[i], 0);
+            }
+            voteModel.voteSelect = _voteSelect;
+            voteModelList.Add(voteModel);
+
+        }
+
+        // 取得投票Model
+        public VoteModel GetVoteModel(string voteName)
+        {
+            for (int i = 0; i &lt; voteModelList.Count; i++)
+            {
+                if (voteModelList[i].voteName == voteName)
+                {
+                    return voteModelList[i];
+                }
+            }
+
+            return new VoteModel();
+        }
+
+        // 建立新的投票
+        public void CreateVote(VoteModel voteModel)
+        {
+            i++;
+            voteModel.id = i;
+            voteModelList.Add(voteModel);
+        }
+
+        // 新增投票選項
+        public void AddVoteSelect(string voteName, string selectName)
+        {
+            for (int i = 0; i &lt; voteModelList.Count; i++)
+            {
+                if (voteModelList[i].voteName == voteName)
+                {
+                    voteModelList[i].voteSelect.Add(selectName, 0);
+                }
+            }
+        }
+        // 投票
+        public void AddVoteSelectCount(string voteName, string selectName)
+        {
+            foreach (var voteModel in voteModelList)
+            {
+                if (voteModel.voteName == voteName)
+                {
+                    foreach (var voteSelect in voteModel.voteSelect)
+                    {
+                        if (voteSelect.Key == selectName)
+                        {
+                            voteModel.voteSelect[selectName] = voteSelect.Value + 1;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 反對票
+        public void SubVoteSelectCount(string voteName, string selectName)
+        {
+            foreach (var voteModel in voteModelList)
+            {
+                if (voteModel.voteName == voteName)
+                {
+                    foreach (var voteSelect in voteModel.voteSelect)
+                    {
+                        if (voteSelect.Key == selectName)
+                        {
+                            voteModel.voteSelect[selectName] = voteSelect.Value - 1;
+                            break;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+
+<h2 id="建立votehub">建立VoteHub</h2>
+
+<p>先建立<code>VoteHub.cs</code>，Hub在建構子先接收<code>VoteService</code>，再建立取得投票內容，這個方法傳給自己就好，然後投票和反對票則是傳給所有人還有這2個接收的事件一樣就行，不需要特別寫2種。</p>
+
+<pre><code class="language-cs">using System;
+using Microsoft.AspNetCore.SignalR;
+using VoteWeb.Models;
+using VoteWeb.Services;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
+namespace VoteWeb.Hubs
+{
+    public class VoteHub : Hub
+    {
+        private VoteService _voteService;
+        public VoteHub(VoteService voteService)
+        {
+            _voteService = voteService;
+        }
+
+        public async Task GetVote(string voteName)
+        {
+            await Clients.Caller.SendAsync(&quot;ReceiveVote&quot;, _voteService.GetVoteModel(voteName));
+        }
+
+        public async Task AddVoteSelectCount(string voteName, string voteSelect)
+        {
+            _voteService.AddVoteSelectCount(voteName, voteSelect);
+
+            var temp =  _voteService.GetVoteModel(voteName);
+            int count = 0;
+            foreach (var _voteSelect in temp.voteSelect)
+            {
+                if (_voteSelect.Key == voteSelect)
+                {
+                    count = _voteSelect.Value;
+                }
+            } 
+
+            await Clients.All.SendAsync(&quot;ReceiveVoteSelectCount&quot;, count, voteSelect);
+        }
+        public async Task SubVoteSelectCount(string voteName, string voteSelect)
+        {
+            _voteService.SubVoteSelectCount(voteName, voteSelect);
+
+            var temp =  _voteService.GetVoteModel(voteName);
+            int count = 0;
+            foreach (var _voteSelect in temp.voteSelect)
+            {
+                if (_voteSelect.Key == voteSelect)
+                {
+                    count = _voteSelect.Value;
+                }
+            } 
+
+            await Clients.All.SendAsync(&quot;ReceiveVoteSelectCount&quot;, count, voteSelect);
+        }
+    }
+}
+</code></pre>
+
+<p>後端最後在<code>Startup.cs</code>引用Hub和Service</p>
+
+<pre><code class="language-cs">using VoteWeb.Hubs;
+using VoteWeb.Services;
+</code></pre>
+
+<p>註冊<code>VoteService</code>和<code>signalR router</code></p>
+
+<pre><code class="language-cs">public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton&lt;VoteService&gt;();
+    services.AddSignalR();
+}
+
+// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseSignalR(routes =&gt;
+    {
+        routes.MapHub&lt;VoteHub&gt;(&quot;/voteHub&quot;);
+    });
+    
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+}
+</code></pre>
+
+<h1 id="前端的部分">前端的部分</h1>
+
+<p>首先報表的Data拉出來做一個變數，所以chartData裡面的data改成這樣</p>
+
+<pre><code class="language-js">var data = [];
+var chartData = {
+    type: 'bar',
+    data: {
+        labels: [&quot;Red&quot;, &quot;Blue&quot;, &quot;Yellow&quot;, &quot;Green&quot;, &quot;Purple&quot;, &quot;Orange&quot;],
+        datasets: [{
+            label: '# of Votes',
+            data: data,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+}
+</code></pre>
+
+<p>再來建立基本的連線，記得SignalR JS函式庫也要引入，連接完成後取得投票資料<code>GetVote</code>，<code>connection.on(&quot;ReceiveVote&quot;)</code>接受到報表資料後，<code>array.push()</code>進變數內，完成後在開始畫出圖表。</p>
+
+<pre><code class="language-js">var connection = new signalR.HubConnectionBuilder().withUrl(&quot;/voteHub&quot;).build();
+var myChart;
+
+// 連接事件
+connection.start()
+.then(function () {
+    connection.invoke(&quot;GetVote&quot;, 'Test Vote').catch(function (err) {
+        return console.error(err.toString());
+    });
+})
+.catch(function (err) {
+    return console.error(err.toString());
+});
+
+connection.on(&quot;ReceiveVote&quot;, function (json) {
+
+    data.push(json.voteSelect.red);
+    data.push(json.voteSelect.blue);
+    data.push(json.voteSelect.yellow);
+    data.push(json.voteSelect.green);
+    data.push(json.voteSelect.purple);
+    data.push(json.voteSelect.orange);
+
+    myChart = new Chart(ctx, chartData);
+
+});
+</code></pre>
+
+<p>建立投票及反對票的函數，接收回來由於data只是一個陣列，這時就要利用label的資料來搜尋是在哪個位置，使用<code>indexOf</code>就行了！</p>
+
+<pre><code class="language-js">function AddVoteSelect(voteSelect) {
+    connection.invoke(&quot;AddVoteSelectCount&quot;, 'Test Vote', voteSelect).catch(function (err) {
+        return console.error(err.toString());
+    });
+}
+
+function SubVoteSelect(voteSelect) {
+    connection.invoke(&quot;SubVoteSelectCount&quot;, 'Test Vote', voteSelect).catch(function (err) {
+        return console.error(err.toString());
+    });
+}
+connection.on(&quot;ReceiveVoteSelectCount&quot;, function (json, voteSelect) {
+    var index = chartData.data.labels.indexOf(voteSelect);
+    chartData.data.datasets[0].data[index] = json;
+    myChart.update();
+
+});
+</code></pre>
+
+<p>最後在修改按鈕事件就大功告成！</p>
+
+<pre><code class="language-js">red.onclick = function () {
+    AddVoteSelect('Red');
+}
+blue.onclick = function () {
+    AddVoteSelect('Blue');
+}
+yellow.onclick = function () {
+    AddVoteSelect('Yellow');
+}
+green.onclick = function () {
+    AddVoteSelect('Green');
+}
+purple.onclick = function () {
+    AddVoteSelect('Purple');
+}
+orange.onclick = function () {
+    AddVoteSelect('Orange');
+}
+
+// 反對票事件
+red2.onclick = function () {
+    SubVoteSelect('Red');
+}
+blue2.onclick = function () {
+    SubVoteSelect('Blue');
+}
+yellow2.onclick = function () {
+    SubVoteSelect('Yellow');
+}
+green2.onclick = function () {
+    SubVoteSelect('Green');
+}
+purple2.onclick = function () {
+    SubVoteSelect('Purple');
+}
+orange2.onclick = function () {
+    SubVoteSelect('Orange');
+}
+</code></pre>
+
+<p>還有記得安裝前端signal套件就完成啦！</p>
+
+<p>忘記的往回看Day3啊！XD</p>
+
+<h1 id="demo">DEMO</h1>
+
+<p><img src="VoteAsync.gif" alt="VoteAsync" /></p>
+
+<h1 id="範例下載">範例下載</h1>
+
+<ul>
+<li><a href="https://drive.google.com/file/d/1W54zO8M3ycghF5LO0v1mWkXk0Srm6U3g/view?usp=sharing">範例下載</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Homura Lin</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-10-30</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">許可協議</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+  <p class="copyright-item" >
+      <span class="item-content">
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-17/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    </span> 
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+            <span class="tags">
+              <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/signalr/">SignalR</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/asp.net-core/">ASP.NET Core</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/chart.js/">Chart.js</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/javascript/">JavaScript</a>
+            </span>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/ironman2019/ironman-day-16/">
+            <span class="next-text nav-default">[鐵人賽Day16] 實作一個即時投票系統 (1) - 投票介面建置</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ba5d55ffb7ee473"></script> 
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'homura0731';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/10272735/homura-lin?tab=profile" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/kun-han-lin-227676170/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
+  <a href="https://homura0731.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主題 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Homura Lin</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.1&appId=252580568480540&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>

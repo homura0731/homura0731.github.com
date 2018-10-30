@@ -6,10 +6,19 @@
     <description>Recent content in SignalR on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Mon, 29 Oct 2018 19:37:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Oct 2018 19:43:35 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/signalr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day17] 實作一個即時投票系統 (2)</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-17/</link>
+      <pubDate>Tue, 30 Oct 2018 19:43:35 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-17/</guid>
+      <description>今天要來把即時投票系統跟SignalR連線囉！ 基本上跟塗鴉板也是差不多，但是投票系統應該需要自訂投票的選項和建立投票的種類，這個部份我們需要</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day16] 實作一個即時投票系統 (1) - 投票介面建置</title>
