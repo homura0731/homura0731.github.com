@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容 - Homura&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Homura Lin" />
+  <meta name="description" content="今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所" />
+
+  <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
+
+
+
+<meta name="google-site-verification" content="IS8PZiCNvYqouPO8vCB_i4giUUllqRseOoU2S7vXTfM" />
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-18/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Seaweed+Script" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">  
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容" />
+<meta property="og:description" content="今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-18/" />
+
+
+
+<meta property="article:published_time" content="2018-10-31T19:22:29&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-10-31T19:22:29&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容">
+<meta itemprop="description" content="今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所">
+
+
+<meta itemprop="datePublished" content="2018-10-31T19:22:29&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-31T19:22:29&#43;08:00" />
+<meta itemprop="wordCount" content="1045">
+
+
+
+<meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,Chart.js,JavaScript," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容"/>
+<meta name="twitter:description" content="今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Homura&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首頁</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">歸檔</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Homura&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首頁</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">歸檔</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">標籤</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分類</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">關於我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 
+            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+          2018-10-31 
+        </span>
+        <div class="post-category">
+            
+              <i class="far fa-folder-open" aria-hidden="true"></i>
+              <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/"> 2019鐵人賽 </a>
+            
+          </div>
+        <span class="more-meta"> 
+          <i class="fa fa-book" aria-hidden="true"></i>
+          約 1045 字
+        </span>
+        <span class="more-meta">
+          <i class="far fa-clock" aria-hidden="true"></i>
+          預計閱讀 3 分鐘 
+        </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目錄</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#建立ui頁面">建立UI頁面</a>
+<ul>
+<li><a href="#建立3個區塊頁面">建立3個區塊頁面</a></li>
+</ul></li>
+<li><a href="#建立新增投票表單">建立新增投票表單</a>
+<ul>
+<li><a href="#建立createvote方法">建立CreateVote方法</a></li>
+<li><a href="#signalr前端呼叫和接收">signalR前端呼叫和接收</a></li>
+</ul></li>
+<li><a href="#範例下載">範例下載</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<p>今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所以也是拆成2偏來講。</p>
+
+<h1 id="建立ui頁面">建立UI頁面</h1>
+
+<p>這邊我們不需要真的建立3個HTML，只要使用<code>&lt;div&gt;</code>元素拆成3個區塊。</p>
+
+<h2 id="建立3個區塊頁面">建立3個區塊頁面</h2>
+
+<p>3個區塊頁面分別是投票選單、新增投票表單、投票區塊，一次只顯示一個區塊，沒用的區塊我們把他的CSS的display屬性設成none</p>
+
+<pre><code class="language-html">&lt;!-- 投票頁面 --&gt;
+&lt;div id=&quot;vote&quot; style=&quot;display:none&quot;&gt;
+    &lt;div class=&quot;canvas&quot;&gt;
+        &lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;!-- 所有投票選單 --&gt;
+&lt;div id=&quot;voteMenu&quot; style=&quot;display:none&quot;&gt;
+
+&lt;/div&gt;
+&lt;!-- 新增投票區 --&gt;
+&lt;div id=&quot;voteForm&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>載入頁面DOM 物件</p>
+
+<pre><code class="language-js">var voteRoom = document.getElementById('voteRoom');
+var voteMenu = document.getElementById('voteMenu');
+var voteForm = document.getElementById('voteForm');
+</code></pre>
+
+<h1 id="建立新增投票表單">建立新增投票表單</h1>
+
+<p>首先我們先來做投票表單部分，一個<code>input</code>做投票名稱，一個<code>select</code>元素用來動態建立選項<code>input</code>，建立一個<code>div</code>裡面放動態建立的投票選項<code>input</code></p>
+
+<pre><code class="language-html">&lt;button id=&quot;cancelCreateVote&quot; type=&quot;button&quot;&gt;取消&lt;/button&gt;
+&lt;button id=&quot;submit&quot; type=&quot;button&quot; &gt;送出&lt;/button&gt;&lt;br&gt;
+投票名稱：&lt;input id=&quot;voteName&quot; type=&quot;text&quot;&gt;&lt;br&gt;
+投票選項數目：
+&lt;select id=&quot;selCount&quot;&gt;
+    &lt;option&gt;0&lt;/option&gt;
+    &lt;option&gt;1&lt;/option&gt;
+    &lt;option&gt;2&lt;/option&gt;
+    &lt;option&gt;3&lt;/option&gt;
+    &lt;option&gt;4&lt;/option&gt;
+    &lt;option&gt;5&lt;/option&gt;
+&lt;/select&gt;
+&lt;div id=&quot;voteSel&quot;&gt;
+
+&lt;/div&gt;
+</code></pre>
+
+<p>建立<code>selCount</code>的<code>change</code>監聽事件，每次變動都會動態建立N個input選項</p>
+
+<pre><code class="language-js">var selCount = document.getElementById('selCount');
+var voteSel = document.getElementById('voteSel');
+var submit = document.getElementById('submit');
+
+selCount.addEventListener('change', function () {
+    voteSel.innerHTML = '';
+    var count = selCount.value;
+    for (var i = 0; i &lt; count; i++) {
+        var input = document.createElement('input');
+        var br = document.createElement('br');
+        input.type = 'text';
+        input.id = `sel${i}`;
+        voteSel.append(`選項${i + 1}：`);
+        voteSel.appendChild(input);
+        voteSel.appendChild(br);
+    }
+})
+</code></pre>
+
+<p>畫面大概像下圖</p>
+
+<p><img src="voteSelCreate.gif" alt="動態建立投票選項" /></p>
+
+<h2 id="建立createvote方法">建立CreateVote方法</h2>
+
+<p>接下來我們要丟資料給<code>ChartHub</code>，<code>ChartService</code>上次已經建立過<code>CreateVote()</code>的方法了，所以不需要了再做一個，我們還需要一個<code>GetVoteList</code>來取得所有的投票資料。</p>
+
+<p><strong>VoteService.cs</strong></p>
+
+<pre><code class="language-cs">public List&lt;VoteModel&gt; GetVoteList()
+{
+    return voteModelList;
+}
+</code></pre>
+
+<p>接下來在<code>ChartHub</code>建立一個新增投票的方法<code>CreateVote()</code>用來建立新的投票，建立完成記得回傳給所有人更新現有的投票列表</p>
+
+<p><strong>ChartHub.cs</strong></p>
+
+<pre><code class="language-cs">public async Task CreateVote(string voteName,string[] voteSelect)
+{
+    VoteModel voteModel = new VoteModel();
+    voteModel.voteName = voteName;
+    voteModel.creator = &quot;Test&quot;;
+    voteModel.startDate = DateTime.Now;
+    Dictionary&lt;string, int&gt; _voteSelect = new Dictionary&lt;string, int&gt;();
+
+    for (int i = 0; i &lt; voteSelect.Length; i++)
+    {
+        _voteSelect.Add(voteSelect[i], 0);
+    }
+
+    voteModel.voteSelect = _voteSelect;
+    _voteService.CreateVote(voteModel);
+
+    await Clients.Caller.SendAsync(&quot;ReceiveVoteList&quot;, _voteService.GetVoteList());
+}
+</code></pre>
+
+<h2 id="signalr前端呼叫和接收">signalR前端呼叫和接收</h2>
+
+<p>接下來只要呼叫方法丟資料及建立接收方法就行，送出的方法記得要放在按鈕裡</p>
+
+<pre><code class="language-js">submit.addEventListener('click', function () {
+    var voteName = document.getElementById('voteName');
+    var voteSelList = new Array();
+    var count = selCount.value;
+    for (var i = 0; i &lt; count; i++) {
+        var sel = document.getElementById(`sel${i}`).value;
+        voteSelList.push(sel);
+    }
+
+    connection.invoke(&quot;CreateVote&quot;, voteName.value, voteSelList).catch(function (err) {
+        return console.error(err.toString());
+    });
+
+})
+</code></pre>
+
+<p>接收的方法我們上一篇有建立過，不過我們這邊要改一下，變數名稱改成<code>ReceiveVoteList</code>，換成下面的</p>
+
+<pre><code class="language-js">connection.on(&quot;ReceiveVoteList&quot;, function (json) {
+    console.log(json);
+});
+</code></pre>
+
+<p>成功後會得到下面結果
+<img src="createVote.jpg" alt="投票成功" /></p>
+
+<p>最後我們做返回鍵的事件，讓它可以返回投票列表頁。</p>
+
+<pre><code class="language-js">document.getElementById('cancelCreateVote').addEventListener('click',function(){
+    voteForm.style.display = 'none';
+    voteMenu.style.display = '';
+})
+</code></pre>
+
+<p>今天先這樣，明天來完成列表頁面，然後再跟建立投票這頁整合。</p>
+
+<h1 id="範例下載">範例下載</h1>
+
+<ul>
+<li><a href="https://drive.google.com/file/d/1HYi0QxOqa32TsuA3orROU0Z2C614c5Xe/view?usp=sharing">範例下載</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Homura Lin</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-10-31</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">許可協議</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+  <p class="copyright-item" >
+      <span class="item-content">
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-18/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    </span> 
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+            <span class="tags">
+              <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/signalr/">SignalR</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/asp.net-core/">ASP.NET Core</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/chart.js/">Chart.js</a>
+            </span>
+          
+            <span class="tags">
+              <a href="/tags/javascript/">JavaScript</a>
+            </span>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/ironman2019/ironman-day-17/">
+            <span class="next-text nav-default">[鐵人賽Day17] 實作一個即時投票系統 (2) - 使用signalR同步投票</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ba5d55ffb7ee473"></script> 
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'homura0731';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:a4252690@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/10272735/homura-lin?tab=profile" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://www.facebook.com/kunhan1" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/kun-han-lin-227676170/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/homura0731" class="iconfont icon-github" title="github"></a>
+  <a href="https://homura0731.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主題 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Homura Lin</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.1&appId=252580568480540&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>
