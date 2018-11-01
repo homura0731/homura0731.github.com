@@ -6,10 +6,19 @@
     <description>Recent content in SignalR on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Wed, 31 Oct 2018 19:22:29 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Nov 2018 19:23:53 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/signalr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-19/</link>
+      <pubDate>Thu, 01 Nov 2018 19:23:53 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-19/</guid>
+      <description>今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容</title>

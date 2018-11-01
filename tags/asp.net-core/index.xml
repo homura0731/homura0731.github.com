@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ASP.NET Core on Homura&#39;s Blog</title>
+    <title>ASP.Net Core on Homura&#39;s Blog</title>
     <link>https://homura0731.github.io/tags/asp.net-core/</link>
-    <description>Recent content in ASP.NET Core on Homura&#39;s Blog</description>
+    <description>Recent content in ASP.Net Core on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Wed, 31 Oct 2018 19:22:29 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Oct 2018 20:38:52 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-18/</link>
-      <pubDate>Wed, 31 Oct 2018 19:22:29 +0800</pubDate>
+      <title>[鐵人賽Day5] 使用SignalR Hub (2)</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-5/</link>
+      <pubDate>Thu, 18 Oct 2018 20:38:52 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-18/</guid>
-      <description>今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所</description>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-5/</guid>
+      <description>今天來點輕鬆的吧！來寫寫強型別的Hub和把HubContext注入Controller 強型別Hub的好處 SignalR的Hub介面只規定我們</description>
     </item>
     
     <item>
-      <title>[鐵人賽Day17] 實作一個即時投票系統 (2) - 使用signalR同步投票</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-17/</link>
-      <pubDate>Tue, 30 Oct 2018 19:43:35 +0800</pubDate>
+      <title>[鐵人賽Day4] 使用SignalR Hub (1)</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-4/</link>
+      <pubDate>Wed, 17 Oct 2018 19:11:15 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-17/</guid>
-      <description>今天要來把即時投票系統跟SignalR連線囉！ 基本上跟塗鴉板也是差不多，但是投票系統應該需要自訂投票的選項和建立投票的種類，這個部份我們需要</description>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-4/</guid>
+      <description>SignalR Hub是什麼? 其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是Browser和Server溝通的</description>
+    </item>
+    
+    <item>
+      <title>[鐵人賽Day3] 第一個SingalR專案</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-3/</link>
+      <pubDate>Tue, 16 Oct 2018 19:44:57 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-3/</guid>
+      <description>前言 我想先帶大家做一遍，之後再開始講觀念，因為我覺得這樣會比較好玩一點XD。 建立Web專案 首先先開啟終端機(命令提示字元)，輸入下面指令建立</description>
+    </item>
+    
+  </channel>
+</rss>�� 基本上跟塗鴉板也是差不多，但是投票系統應該需要自訂投票的選項和建立投票的種類，這個部份我們需要</description>
     </item>
     
     <item>

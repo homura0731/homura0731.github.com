@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所" />
+  <meta name="description" content="今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-18/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-19/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,20 +51,16 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容" />
-<meta property="og:description" content="今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所" />
+<meta property="og:title" content="[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表" />
+<meta property="og:description" content="今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-18/" />
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-19/" />
 
 
 
-<meta property="article:published_time" content="2018-10-31T19:22:29&#43;08:00"/>
+<meta property="article:published_time" content="2018-11-01T19:23:53&#43;08:00"/>
 
-<meta property="article:modified_time" content="2018-10-31T19:22:29&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-11-01T19:23:53&#43;08:00"/>
 
 
 
@@ -72,20 +68,24 @@
 
 
 
-<meta itemprop="name" content="[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容">
-<meta itemprop="description" content="今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所">
 
 
-<meta itemprop="datePublished" content="2018-10-31T19:22:29&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-31T19:22:29&#43;08:00" />
-<meta itemprop="wordCount" content="1045">
+
+
+<meta itemprop="name" content="[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表">
+<meta itemprop="description" content="今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe">
+
+
+<meta itemprop="datePublished" content="2018-11-01T19:23:53&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-01T19:23:53&#43;08:00" />
+<meta itemprop="wordCount" content="779">
 
 
 
 <meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,Chart.js,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容"/>
-<meta name="twitter:description" content="今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所"/>
+<meta name="twitter:title" content="[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表"/>
+<meta name="twitter:description" content="今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -152,12 +152,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容</h1>
+      <h1 class="post-title">[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-10-31 
+          2018-11-01 
         </span>
         <div class="post-category">
             
@@ -167,11 +167,11 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 1045 字
+          約 779 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
-          預計閱讀 3 分鐘 
+          預計閱讀 2 分鐘 
         </span>
         
       </div>
@@ -185,15 +185,9 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#建立ui頁面">建立UI頁面</a>
-<ul>
-<li><a href="#建立3個區塊頁面">建立3個區塊頁面</a></li>
-</ul></li>
-<li><a href="#建立新增投票表單">建立新增投票表單</a>
-<ul>
-<li><a href="#建立createvote方法">建立CreateVote方法</a></li>
-<li><a href="#signalr前端呼叫和接收">signalR前端呼叫和接收</a></li>
-</ul></li>
+<li><a href="#建立列表html元素">建立列表HTML元素</a></li>
+<li><a href="#建立後端取得投票資料方法">建立後端取得投票資料方法</a></li>
+<li><a href="#當連線成功時取得資料">當連線成功時取得資料</a></li>
 <li><a href="#範例下載">範例下載</a></li>
 </ul>
 </nav>
@@ -207,165 +201,94 @@
     <div class="post-content">
       
 
-<p>今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所以也是拆成2偏來講。</p>
+<p>今天我們要來做投票列表，概念跟<a href="/post/ironman2019/ironman-day-11">Day11</a>的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！</p>
 
-<h1 id="建立ui頁面">建立UI頁面</h1>
+<h1 id="建立列表html元素">建立列表HTML元素</h1>
 
-<p>這邊我們不需要真的建立3個HTML，只要使用<code>&lt;div&gt;</code>元素拆成3個區塊。</p>
+<p>我們先把<code>voteMenu</code>區塊設成顯示，改成voteFrom區塊隱藏</p>
 
-<h2 id="建立3個區塊頁面">建立3個區塊頁面</h2>
-
-<p>3個區塊頁面分別是投票選單、新增投票表單、投票區塊，一次只顯示一個區塊，沒用的區塊我們把他的CSS的display屬性設成none</p>
-
-<pre><code class="language-html">&lt;!-- 投票頁面 --&gt;
-&lt;div id=&quot;voteRoom&quot; style=&quot;display:none&quot;&gt;
-    &lt;div class=&quot;canvas&quot;&gt;
-        &lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;
-    &lt;/div&gt;
+<pre><code class="language-html">&lt;div id=&quot;voteRoom&quot; style=&quot;display:none&quot;&gt;
 
 &lt;/div&gt;
 &lt;!-- 所有投票選單 --&gt;
-&lt;div id=&quot;voteMenu&quot; style=&quot;display:none&quot;&gt;
+&lt;div id=&quot;voteMenu&quot;&gt;
 
 &lt;/div&gt;
 &lt;!-- 新增投票區 --&gt;
-&lt;div id=&quot;voteForm&quot;&gt;
+&lt;div id=&quot;voteForm&quot; style=&quot;display:none&quot;&gt;
+
 &lt;/div&gt;
 </code></pre>
 
-<p>載入頁面DOM 物件</p>
+<p>建立一個select 元素當作列表，記得加入<code>multiple</code>讓它展開，寬和高有訂一下，再來是2顆Button，一顆進入建立投票的頁面，一顆進入選擇的投票房間頁面。</p>
 
-<pre><code class="language-js">var voteRoom = document.getElementById('voteRoom');
-var voteMenu = document.getElementById('voteMenu');
-var voteForm = document.getElementById('voteForm');
-</code></pre>
-
-<h1 id="建立新增投票表單">建立新增投票表單</h1>
-
-<p>首先我們先來做投票表單部分，一個<code>input</code>做投票名稱，一個<code>select</code>元素用來動態建立選項<code>input</code>，建立一個<code>div</code>裡面放動態建立的投票選項<code>input</code></p>
-
-<pre><code class="language-html">&lt;button id=&quot;cancelCreateVote&quot; type=&quot;button&quot;&gt;取消&lt;/button&gt;
-&lt;button id=&quot;submit&quot; type=&quot;button&quot; &gt;送出&lt;/button&gt;&lt;br&gt;
-投票名稱：&lt;input id=&quot;voteName&quot; type=&quot;text&quot;&gt;&lt;br&gt;
-投票選項數目：
-&lt;select id=&quot;selCount&quot;&gt;
-    &lt;option&gt;0&lt;/option&gt;
-    &lt;option&gt;1&lt;/option&gt;
-    &lt;option&gt;2&lt;/option&gt;
-    &lt;option&gt;3&lt;/option&gt;
-    &lt;option&gt;4&lt;/option&gt;
-    &lt;option&gt;5&lt;/option&gt;
+<pre><code class="language-html">&lt;button id=&quot;creatVote&quot; type=&quot;button&quot;&gt;建立投票&lt;/button&gt;
+&lt;br&gt;
+&lt;select id=&quot;selVote&quot; multiple style=&quot;height:200px;width:100px&quot;&gt;
 &lt;/select&gt;
-&lt;div id=&quot;voteSel&quot;&gt;
-
-&lt;/div&gt;
+&lt;br&gt;
+&lt;button id=&quot;goVote&quot; type=&quot;button&quot;&gt;進入投票&lt;/button&gt;
 </code></pre>
 
-<p>建立<code>selCount</code>的<code>change</code>監聽事件，每次變動都會動態建立N個input選項</p>
+<p>建立頁面切換事件</p>
 
-<pre><code class="language-js">var selCount = document.getElementById('selCount');
-var voteSel = document.getElementById('voteSel');
-var submit = document.getElementById('submit');
-
-selCount.addEventListener('change', function () {
-    voteSel.innerHTML = '';
-    var count = selCount.value;
-    for (var i = 0; i &lt; count; i++) {
-        var input = document.createElement('input');
-        var br = document.createElement('br');
-        input.type = 'text';
-        input.id = `sel${i}`;
-        voteSel.append(`選項${i + 1}：`);
-        voteSel.appendChild(input);
-        voteSel.appendChild(br);
-    }
-})
+<pre><code class="language-js">var creatVote = document.getElementById('creatVote');
+var goVote = document.getElementById('goVote');
 </code></pre>
 
-<p>畫面大概像下圖</p>
+<h1 id="建立後端取得投票資料方法">建立後端取得投票資料方法</h1>
 
-<p><img src="voteSelCreate.gif" alt="動態建立投票選項" /></p>
+<p>先到Hub建立取得方法，注意這邊取得時只要回傳給要求的用戶就好，不要全部都傳，不然會造成一個新的使用著上線想取得所有投票方法，每個人都全部丟一次資料，但是資料並無更新，所以這邊沒有這種必要。</p>
 
-<h2 id="建立createvote方法">建立CreateVote方法</h2>
-
-<p>接下來我們要丟資料給<code>ChartHub</code>，<code>ChartService</code>上次已經建立過<code>CreateVote()</code>的方法了，所以不需要了再做一個，我們還需要一個<code>GetVoteList</code>來取得所有的投票資料。</p>
-
-<p><strong>VoteService.cs</strong></p>
-
-<pre><code class="language-cs">public List&lt;VoteModel&gt; GetVoteList()
+<pre><code class="language-cs">public async Task GetVoteList()
 {
-    return voteModelList;
-}
-</code></pre>
-
-<p>接下來在<code>ChartHub</code>建立一個新增投票的方法<code>CreateVote()</code>用來建立新的投票，建立完成記得回傳給所有人更新現有的投票列表</p>
-
-<p><strong>ChartHub.cs</strong></p>
-
-<pre><code class="language-cs">public async Task CreateVote(string voteName,string[] voteSelect)
-{
-    VoteModel voteModel = new VoteModel();
-    voteModel.voteName = voteName;
-    voteModel.creator = &quot;Test&quot;;
-    voteModel.startDate = DateTime.Now;
-    Dictionary&lt;string, int&gt; _voteSelect = new Dictionary&lt;string, int&gt;();
-
-    for (int i = 0; i &lt; voteSelect.Length; i++)
-    {
-        _voteSelect.Add(voteSelect[i], 0);
-    }
-
-    voteModel.voteSelect = _voteSelect;
-    _voteService.CreateVote(voteModel);
-
     await Clients.Caller.SendAsync(&quot;ReceiveVoteList&quot;, _voteService.GetVoteList());
 }
 </code></pre>
 
-<h2 id="signalr前端呼叫和接收">signalR前端呼叫和接收</h2>
+<h1 id="當連線成功時取得資料">當連線成功時取得資料</h1>
 
-<p>接下來只要呼叫方法丟資料及建立接收方法就行，送出的方法記得要放在按鈕裡</p>
+<p>連線時取得資料，當然要寫在連接成功後的事件，也就是<code>connection.start().then()</code>裡面，其實day17已經寫過了，但是那天寫的是只取得該筆投票，這次是全部投票所以要改用上面新寫的方法，之前的<code>GetVote</code>記得移除。</p>
 
-<pre><code class="language-js">submit.addEventListener('click', function () {
-    var voteName = document.getElementById('voteName');
-    var voteSelList = new Array();
-    var count = selCount.value;
-    for (var i = 0; i &lt; count; i++) {
-        var sel = document.getElementById(`sel${i}`).value;
-        voteSelList.push(sel);
-    }
-
-    connection.invoke(&quot;CreateVote&quot;, voteName.value, voteSelList).catch(function (err) {
+<pre><code class="language-js">connection.start()
+.then(function () {
+    connection.invoke(&quot;GetVoteList&quot;).catch(function (err) {
         return console.error(err.toString());
     });
-
 })
-</code></pre>
-
-<p>接收的方法我們上一篇有建立過，不過我們這邊要改一下，變數名稱改成<code>ReceiveVoteList</code>，換成下面的</p>
-
-<pre><code class="language-js">connection.on(&quot;ReceiveVoteList&quot;, function (json) {
-    console.log(json);
+.catch(function (err) {
+    return console.error(err.toString());
 });
 </code></pre>
 
-<p>成功後會得到下面結果
-<img src="createVote.jpg" alt="投票成功" /></p>
+<p>取得成功後先清空頭票選單，再binding到我們建立的<code>select</code>元素中，完成後返回投票選單，返回投票選單這邊是因為跟建立投票一樣的事件，如果你在建立投票表單的話則會切換回頭票選單。</p>
 
-<p>最後我們做返回鍵的事件，讓它可以返回投票列表頁。</p>
-
-<pre><code class="language-js">document.getElementById('cancelCreateVote').addEventListener('click',function(){
-    voteForm.style.display = 'none';
-    voteMenu.style.display = '';
-})
+<pre><code class="language-js">connection.on(&quot;ReceiveVoteList&quot;, function (json) {
+    selVote.innerHTML = '';
+    for (var i = 0; i &lt; json.length; i++) {
+        var sel = document.createElement('option');
+        sel.innerHTML = json[i].voteName;
+        sel.value = json[i].voteName;
+        selVote.appendChild(sel);
+    }
+    // 如果在建立投票頁面，則切換回投票選單
+    if (voteMenu.style.display === 'none'){
+        voteForm.style.display = 'none';
+        voteMenu.style.display = '';
+    }
+});
 </code></pre>
 
-<p>今天先這樣，明天來完成列表頁面，然後再跟建立投票這頁整合。</p>
+<p>成功後結果，你會再選單內看到之前建立的測試投票</p>
+
+<p><img src="voteList.png" alt="voteList" /></p>
+
+<p>今天就大概這樣，下一篇就是最後的頁面了。</p>
 
 <h1 id="範例下載">範例下載</h1>
 
 <ul>
-<li><a href="https://drive.google.com/file/d/1HYi0QxOqa32TsuA3orROU0Z2C614c5Xe/view?usp=sharing">範例下載</a></li>
+<li><a href="https://drive.google.com/file/d/1VuzRy8Md-zluY0lAdKzY-hq9l6Vp3qye/view?usp=sharing">範例下載</a></li>
 </ul>
 
     </div>
@@ -378,7 +301,7 @@ selCount.addEventListener('change', function () {
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-10-31</span>
+    <span class="item-content">2018-11-01</span>
   </p>
   
   <p class="copyright-item">
@@ -387,7 +310,7 @@ selCount.addEventListener('change', function () {
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-18/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-19/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -423,14 +346,9 @@ selCount.addEventListener('change', function () {
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-19/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-17/">
-            <span class="next-text nav-default">[鐵人賽Day17] 實作一個即時投票系統 (2) - 使用signalR同步投票</span>
+          <a class="next" href="/post/ironman2019/ironman-day-18/">
+            <span class="next-text nav-default">[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
