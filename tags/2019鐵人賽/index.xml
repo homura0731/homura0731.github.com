@@ -6,10 +6,19 @@
     <description>Recent content in 2019鐵人賽 on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 01 Nov 2018 19:23:53 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Nov 2018 20:50:53 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day20] 實作一個即時投票系統 (5) - 讀取建立的投票</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-20/</link>
+      <pubDate>Fri, 02 Nov 2018 20:50:53 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-20/</guid>
+      <description>今天就是即時投票系統最後一篇了，讓我們努力把它完成吧！ 讀取投票資料 首先我們要把畫面改一下，一堆按鈕投票感覺很笨 投票畫面修改 我們這次不要一堆按</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表</title>
