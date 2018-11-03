@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day20] 實作一個即時投票系統 (5) - 讀取建立的投票 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day21] 實作Web即時共同編輯文件 (1) - 建立文件編輯介面 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="今天就是即時投票系統最後一篇了，讓我們努力把它完成吧！ 讀取投票資料 首先我們要把畫面改一下，一堆按鈕投票感覺很笨 投票畫面修改 我們這次不要一堆按" />
+  <meta name="description" content="有沒有覺得第一次看到Google共用編輯文件很好玩，它把類似Excel功能搬到Web上，然後又能共同編輯，我們這次就是要來模仿做一個類似GO" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-20/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-21/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,25 +51,25 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day20] 實作一個即時投票系統 (5) - 讀取建立的投票" />
-<meta property="og:description" content="今天就是即時投票系統最後一篇了，讓我們努力把它完成吧！ 讀取投票資料 首先我們要把畫面改一下，一堆按鈕投票感覺很笨 投票畫面修改 我們這次不要一堆按" />
+<meta property="og:title" content="[鐵人賽Day21] 實作Web即時共同編輯文件 (1) - 建立文件編輯介面" />
+<meta property="og:description" content="有沒有覺得第一次看到Google共用編輯文件很好玩，它把類似Excel功能搬到Web上，然後又能共同編輯，我們這次就是要來模仿做一個類似GO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-20/" /><meta property="article:published_time" content="2018-11-02T20:50:53&#43;08:00"/>
-<meta property="article:modified_time" content="2018-11-02T20:50:53&#43;08:00"/>
-<meta itemprop="name" content="[鐵人賽Day20] 實作一個即時投票系統 (5) - 讀取建立的投票">
-<meta itemprop="description" content="今天就是即時投票系統最後一篇了，讓我們努力把它完成吧！ 讀取投票資料 首先我們要把畫面改一下，一堆按鈕投票感覺很笨 投票畫面修改 我們這次不要一堆按">
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-21/" /><meta property="article:published_time" content="2018-11-03T09:37:24&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-03T09:37:24&#43;08:00"/>
+<meta itemprop="name" content="[鐵人賽Day21] 實作Web即時共同編輯文件 (1) - 建立文件編輯介面">
+<meta itemprop="description" content="有沒有覺得第一次看到Google共用編輯文件很好玩，它把類似Excel功能搬到Web上，然後又能共同編輯，我們這次就是要來模仿做一個類似GO">
 
 
-<meta itemprop="datePublished" content="2018-11-02T20:50:53&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-02T20:50:53&#43;08:00" />
-<meta itemprop="wordCount" content="1010">
+<meta itemprop="datePublished" content="2018-11-03T09:37:24&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-03T09:37:24&#43;08:00" />
+<meta itemprop="wordCount" content="1251">
 
 
 
-<meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,Chart.js,JavaScript," />
+<meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,ShareFile,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day20] 實作一個即時投票系統 (5) - 讀取建立的投票"/>
-<meta name="twitter:description" content="今天就是即時投票系統最後一篇了，讓我們努力把它完成吧！ 讀取投票資料 首先我們要把畫面改一下，一堆按鈕投票感覺很笨 投票畫面修改 我們這次不要一堆按"/>
+<meta name="twitter:title" content="[鐵人賽Day21] 實作Web即時共同編輯文件 (1) - 建立文件編輯介面"/>
+<meta name="twitter:description" content="有沒有覺得第一次看到Google共用編輯文件很好玩，它把類似Excel功能搬到Web上，然後又能共同編輯，我們這次就是要來模仿做一個類似GO"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,12 +136,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day20] 實作一個即時投票系統 (5) - 讀取建立的投票</h1>
+      <h1 class="post-title">[鐵人賽Day21] 實作Web即時共同編輯文件 (1) - 建立文件編輯介面</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-11-02 
+          2018-11-03 
         </span>
         <div class="post-category">
             
@@ -151,7 +151,7 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 1010 字
+          約 1251 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
@@ -169,14 +169,13 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#讀取投票資料">讀取投票資料</a>
+<li><a href="#頁面的建立">頁面的建立</a>
 <ul>
-<li><a href="#投票畫面修改">投票畫面修改</a></li>
-<li><a href="#修改votemodel">修改VoteModel</a></li>
-<li><a href="#進入投票頁面並獲得資料">進入投票頁面並獲得資料</a></li>
+<li><a href="#制定css樣式">制定CSS樣式</a></li>
+<li><a href="#建立表格">建立表格</a></li>
+<li><a href="#編輯事件">編輯事件</a></li>
 </ul></li>
-<li><a href="#demo">DEMO</a></li>
-<li><a href="#範例下載">範例下載</a></li>
+<li><a href="#參考-範例下載">參考 &amp; 範例下載</a></li>
 </ul>
 </nav>
   </div>
@@ -189,163 +188,143 @@
     <div class="post-content">
       
 
-<p>今天就是即時投票系統最後一篇了，讓我們努力把它完成吧！</p>
+<p>有沒有覺得第一次看到Google共用編輯文件很好玩，它把類似Excel功能搬到Web上，然後又能共同編輯，我們這次就是要來模仿做一個類似GOOGLE文件共同編輯的功能。</p>
 
-<h1 id="讀取投票資料">讀取投票資料</h1>
+<h1 id="頁面的建立">頁面的建立</h1>
 
-<p>首先我們要把畫面改一下，一堆按鈕投票感覺很笨</p>
+<p>我們要先建立一個可編輯的<code>table</code>，其實只要建立一個<code>table</code>元素然後裡面塞<code>input</code>元素就行，但是這樣會很醜長的一點都不像excel表格，所以我們要先來制定一下樣式</p>
 
-<h2 id="投票畫面修改">投票畫面修改</h2>
+<h2 id="制定css樣式">制定CSS樣式</h2>
 
-<p>我們這次不要一堆按鈕，改成把選項全塞進一個select元素中，在加2顆按鈕，一個投票一個反對票</p>
+<p>首先先把input的框線和背景色去掉，背景色改成透明，然後選擇時的顏色我們改成橘色，<code>height</code>則是為了吃滿整個表格，<code>outline-offset</code>是為了讓選擇的框不會吃到空間。</p>
 
-<pre><code class="language-html">&lt;div id=&quot;voteRoom&quot; style=&quot;display:none&quot;&gt;
-    &lt;div class=&quot;canvas&quot;&gt;
-        &lt;canvas id=&quot;myChart&quot;&gt;&lt;/canvas&gt;
-    &lt;/div&gt;
-    &lt;select id=&quot;voteSelList&quot;&gt;
-        
-    &lt;/select&gt;
-    &lt;br /&gt;
-    &lt;button id=&quot;votePlus&quot;&gt;投票&lt;/button&gt;
-    &lt;button id=&quot;voteMinus&quot;&gt;反對票&lt;/button&gt;
+<pre><code class="language-css">input {
+    background: transparent;
+    border: 0;
+    height: 100%;
+    padding: 5px;
+}
 
-&lt;/div&gt;
-</code></pre>
-
-<h2 id="修改votemodel">修改VoteModel</h2>
-
-<p>在Day17時，我們是把已經訂好的資料一個一個push進陣列裡，但是現在選項都是使用者自訂出來的，所以我們要修改成更好的方法才行，基本上原本的都不需要變動，我們只需要在Mode增加2個get用的屬性就行，屬性內容一個傳回<code>List&lt;string&gt;</code>，也就是所有選項的名稱List，另一個則是票數List，這樣就剛好符合<code>Chart.js</code>名稱和data各一個陣列，那要怎麼回傳一個List呢？我們只需<code>foreach</code>迴圈把它讀出來就行了。</p>
-
-<pre><code class="language-cs">public class VoteModel
-{
-    public int id { get; set; }
-    public string voteName { get; set; }
-    public string creator { get; set; }
-    public DateTime startDate { get; set; }
-    public DateTime endDate { get; set; }
-    public Dictionary&lt;string, int&gt; voteSelect { get; set; }
-
-    public List&lt;string&gt; voteSelectNameList
-    {
-        get
-        {
-            List&lt;string&gt; list = new List&lt;string&gt;();
-            foreach (var item in voteSelect)
-            {
-                list.Add(item.Key);
-            }
-            return list;
-        }
-    }
-    public List&lt;int&gt; voteSelectCountList
-    {
-        get
-        {
-            List&lt;int&gt; list = new List&lt;int&gt;();
-            foreach (var item in voteSelect)
-            {
-                list.Add(item.Value);
-            }
-            return list;
-        }
-    }
+input:focus {
+    outline-offset: 0px;
+    outline-color: rgb(240, 142, 15);
+    outline-width: 3px;
+    outline-style: solid;
 }
 </code></pre>
 
-<h2 id="進入投票頁面並獲得資料">進入投票頁面並獲得資料</h2>
+<p>再來修改table樣式，<code>border-collapse</code>改成<code>collapse</code>可以讓表格線和table外框繪製在一起，tr和th框線統一成灰色，高為20px。</p>
 
-<p>這邊要寫在進入入投票房間時，所以要寫在進入投票這顆按鈕上，首先我們先把Chart.js的資料來原JSON清空</p>
+<pre><code class="language-css">table {
+    border-collapse: collapse;
+}
 
-<pre><code class="language-js">var chartData = {
-    type: 'bar',
-    data: {
-        labels: [] ,
-        datasets: [{
-            label: '',
-            data: [],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
+th, td {
+    border: 2px solid #dee2e6;
+    height: 20px;
 }
 </code></pre>
 
-<p>進入投票頁面，先做切換頁面的動作，再取得投票資料，記得要把選擇的投票名稱也傳到<code>GetVote</code>裡</p>
+<h2 id="建立表格">建立表格</h2>
 
-<pre><code class="language-js">// 進入投票頁面
-goVote.addEventListener('click', function () {
-    // 頁面切換
-    voteMenu.style.display = 'none';
-    voteRoom.style.display = '';
+<p>表格我們要使用JS動態建立的方式，先建立一個空的table元素，</p>
 
-    // 取得資料
-    connection.invoke(&quot;GetVote&quot;, selVote.value).catch(function (err) {
-        return console.error(err.toString());
-    });
-})
+<pre><code class="language-html">&lt;table id=&quot;table&quot;&gt;
+
+&lt;/table&gt;
 </code></pre>
 
-<p>修改原本的<code>ReceiveVote</code>，接到資料後，開始塞進資料來源<code>chartData</code>物件裡，再把選項填入<code>voteSelList</code>裡面</p>
+<p>再建立<code>rowCount</code>和<code>cellCount</code>2個變數來設定行和列，使用<code>document.create()</code>來建立元素，<code>createCell</code>用來建立cell，<code>createTable</code>用來建立<code>row</code>。</p>
 
-<pre><code class="language-js">// 進入投票選單
-connection.on(&quot;ReceiveVote&quot;, function (json) {
-    // 資料填入
-    chartData.data.datasets[0].label = json.voteName;
-    chartData.data.labels = json.voteSelectNameList;
-    chartData.data.datasets[0].data = json.voteSelectCountList;
-    
-    // 清空選項
-    voteSelList.innerHTML = '';
-    // 填充選項
-    for (var i = 0; i &lt; json.voteSelectNameList.length; i++) {
-        var voteSel = document.createElement('option');
-        voteSel.innerHTML = json.voteSelectNameList[i];
-        voteSel.value = json.voteSelectNameList[i];
-        voteSelList.appendChild(voteSel);
+<pre><code class="language-js">var rowCount = 5;
+var cellCount = 5;
+var table = document.getElementById('table');
+
+
+function createCell() {
+    var input = document.createElement('input');
+    input.type = 'text';
+
+    return input;
+}
+
+function createTable() {
+    for (var i = 0; i &lt; cellCount; i++) {
+        var row = document.createElement('tr');
+        for (var j = 0; j &lt; rowCount; j++) {
+            var cell = document.createElement('td');
+            cell.appendChild(createCell());
+            row.appendChild(cell);
+        }
+        table.append(row)
     }
+}
 
-    // 開始畫圖表
-    myChart = new Chart(ctx, chartData);
-});
+createTable();
 </code></pre>
 
-<p>最後是投票事件，只要把投票名稱改成<code>selVote</code>的值還有選項改成<code>voteSelList</code>的值，還有圖表重繪的事件Day17已經寫好了，改都不用改XD</p>
+<p>完成後得到的結果
+<img src="Table.gif" alt="動態表格" /></p>
 
-<pre><code class="language-js">// 投票事件
-votePlus.addEventListener('click', function(){
-    connection.invoke(&quot;AddVoteSelectCount&quot;, selVote.value, voteSelList.value).catch(function (err) {
-        return console.error(err.toString());
-    });
-})
-// 反對票事件
-voteMinus.addEventListener('click', function(){
-    connection.invoke(&quot;SubVoteSelectCount&quot;, selVote.value, voteSelList.value).catch(function (err) {
-        return console.error(err.toString());
-    });
-})
+<h2 id="編輯事件">編輯事件</h2>
+
+<p>這邊我們要先做最基本的編輯處理，再我們沒編輯的Cell時，我們應該要把它給鎖上，為什麼要這樣做呢？因為再多人編輯時，你不應該同時讓超過1個人共同編輯同一<code>Cell</code>，因為這樣會非常混亂，所以我們要建立2個事件，一個是編輯時解鎖，一個是未編輯時鎖上，上鎖的方式原本我是用<code>disable</code>來達成，但是發現有些瀏覽器會造成無法觸發<code>click</code>事件，所以改用<code>readonly</code>是更好的選擇。</p>
+
+<pre><code class="language-js">// 未編輯鎖上Cell
+function cellLock() {
+    this.readOnly = true;
+}
+// 編輯時解鎖Cell
+function cellEdit() {
+    this.childNodes[0].readOnly = false;
+    // 焦點移至input
+    this.childNodes[0].focus();
+}
 </code></pre>
 
-<p>這樣就完成啦！！！</p>
+<blockquote>
+<p>註：這邊的<code>this</code>應該有人不知道是什麼，如果直接執行的話<code>this</code>會是<code>window</code>，但是我們塞在<code>td</code>和<code>input</code>裡，所以會變成<code>td</code>和<code>input</code>的DOM</p>
+</blockquote>
 
-<h1 id="demo">DEMO</h1>
+<p>我們要把用監聽2個事件，一個是<code>onblur</code>焦點離開元素時，一個是<code>onclick</code>焦點移動到元素上時，有點要特別注意的地方是<code>onclick</code>必須寫再<code>td</code>元素上，不然事件不會被觸發，所以上面的CellEdit才會往裡面的元素找，使用<code>childNodes</code>的方式，所以我們得修改一下建立的方式<code>createTable</code>和<code>createCell</code>。</p>
 
-<p><img src="VoteFinall.gif" alt="VoteFinall" /></p>
+<pre><code class="language-js">function createTable() {
+    for (var i = 0; i &lt; cellCount; i++) {
+        var row = document.createElement('tr');
+        for (var j = 0; j &lt; rowCount; j++) {
+            var cell = document.createElement('td');
+            cell.addEventListener('click', cellEdit,true);
+            cell.appendChild(createCell());
+            row.appendChild(cell);
+        }
+        table.append(row)
+    }
+}
 
-<p>投票系統就到這邊告一段落啦！明天又是新的實作，敬請期待XD</p>
+function createCell() {
+    var input = document.createElement('input');
+    input.addEventListener('blur', cellLock);
+    input.type = 'text';
+    input.readOnly = true;
 
-<h1 id="範例下載">範例下載</h1>
+    return input;
+}
+</code></pre>
+
+<p>完成結果
+<img src="CellLock.gif" alt="動態表格" /></p>
+
+<blockquote>
+<p>註：原本鎖定的方式我是用Disable，後來發現Firefox和Edge只能點擊表格框觸發，大概瀏覽器解釋方法不一樣，所以我們還是以Chrome為主，雖然可以改用DIV的方式，但是難度大增，所以還是先用table吧！</p>
+</blockquote>
+
+<p>今天就先做到這樣吧！</p>
+
+<h1 id="參考-範例下載">參考 &amp; 範例下載</h1>
 
 <ul>
-<li><a href="https://drive.google.com/file/d/1TtcxhgtX0xWOPhG5g5LOqYh6nLcqzcUH/view?usp=sharing">範例下載</a></li>
+<li><a href="https://stackoverflow.com/questions/6012823/how-to-make-html-table-cell-editable">StackOverflow</a></li>
+<li><a href="https://drive.google.com/file/d/1cPWHScDhs16DLxiIevOjzX3E5h5MPl4E/view?usp=sharing">範例下載</a></li>
 </ul>
 
     </div>
@@ -358,7 +337,7 @@ voteMinus.addEventListener('click', function(){
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-11-02</span>
+    <span class="item-content">2018-11-03</span>
   </p>
   
   <p class="copyright-item">
@@ -367,7 +346,7 @@ voteMinus.addEventListener('click', function(){
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-20/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-21/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -391,7 +370,7 @@ voteMinus.addEventListener('click', function(){
             </span>
           
             <span class="tags">
-              <a href="/tags/chart.js/">Chart.js</a>
+              <a href="/tags/sharefile/">ShareFile</a>
             </span>
           
             <span class="tags">
@@ -403,14 +382,9 @@ voteMinus.addEventListener('click', function(){
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-21/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day21] 實作Web即時共同編輯文件 (1) - 建立文件編輯介面</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-19/">
-            <span class="next-text nav-default">[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表</span>
+          <a class="next" href="/post/ironman2019/ironman-day-20/">
+            <span class="next-text nav-default">[鐵人賽Day20] 實作一個即時投票系統 (5) - 讀取建立的投票</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
