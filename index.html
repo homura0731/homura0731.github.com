@@ -25,7 +25,7 @@
 <meta name="google-site-verification" content="IS8PZiCNvYqouPO8vCB_i4giUUllqRseOoU2S7vXTfM" />
 
 
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.46" />
 
 
 <link rel="canonical" href="https://homura0731.github.io/" />
@@ -56,7 +56,20 @@
 <meta property="og:description" content="Homura&#39;s Blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://homura0731.github.io/" />
-<meta property="og:updated_time" content="2018-11-04T09:14:44&#43;08:00"/>
+
+
+
+<meta property="og:updated_time" content="2018-11-05T20:02:42&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
 <meta itemprop="name" content="Homura&#39;s Blog">
 <meta itemprop="description" content="Homura&#39;s Blog.">
 
@@ -133,6 +146,42 @@
     
       <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/ironman2019/ironman-day-23/">[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線清單</a></h1>
+    <div class="post-meta">
+      <span class="post-time">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        2018-11-05
+      </span>
+      <div class="post-category">
+          
+            <i class="far fa-folder-open" aria-hidden="true"></i>
+            <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/"> 2019鐵人賽 </a>
+          
+        </div>
+      <span class="more-meta">
+        <i class="fa fa-book" aria-hidden="true"></i>
+        約 1107 字
+      </span>
+      <span class="more-meta">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        預計閱讀 3 分鐘
+      </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去
+    </div>
+    <div class="read-more">
+      <a href="/post/ironman2019/ironman-day-23/" class="read-more-link">閱讀更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/ironman2019/ironman-day-22/">[鐵人賽Day22] 實作Web即時共同編輯文件 (2) - 使用signalR同步文件內容</a></h1>
     <div class="post-meta">
       <span class="post-time">
@@ -147,7 +196,7 @@
         </div>
       <span class="more-meta">
         <i class="fa fa-book" aria-hidden="true"></i>
-        約 1694 字
+        約 1795 字
       </span>
       <span class="more-meta">
         <i class="far fa-clock" aria-hidden="true"></i>
@@ -158,7 +207,7 @@
   
   <div class="post-content">
     <div class="post-summary">
-      沒想到昨天光完成前端的部分就花那麼多時間，看來這次實作比上次難了不少，大概是因為沒使用套件的關係吧！ＸＤ 資料Binding 我們要來想想再修改
+      沒想到昨天光完成前端的部分就花那麼多時間，看來這次實作比上次難了不少，大概是因為沒使用套件的關係吧！ＸＤ 那麼今天就來做signalR同步的部
     </div>
     <div class="read-more">
       <a href="/post/ironman2019/ironman-day-22/" class="read-more-link">閱讀更多</a>
@@ -450,42 +499,6 @@
     </div>
     <div class="read-more">
       <a href="/post/ironman2019/ironman-day-14/" class="read-more-link">閱讀更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/ironman2019/ironman-day-13/">[鐵人賽Day13] 實作一個共用塗鴉牆 (2) - signal同步畫板</a></h1>
-    <div class="post-meta">
-      <span class="post-time">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        2018-10-26
-      </span>
-      <div class="post-category">
-          
-            <i class="far fa-folder-open" aria-hidden="true"></i>
-            <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/"> 2019鐵人賽 </a>
-          
-        </div>
-      <span class="more-meta">
-        <i class="fa fa-book" aria-hidden="true"></i>
-        約 655 字
-      </span>
-      <span class="more-meta">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        預計閱讀 2 分鐘
-      </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      今天要來做塗鴉牆第2部分，首先我們得想想該回傳些什麼，制定一個Json格式回傳回去。 前端部分 連接部分程式碼先寫好 var connection = new signalR.HubConnectionBuilder().withUrl(&quot;/drawHub&quot;).build(); // 連接事件 connection.start().catch(function (err) { return
-    </div>
-    <div class="read-more">
-      <a href="/post/ironman2019/ironman-day-13/" class="read-more-link">閱讀更多</a>
     </div>
   </div>
 </article>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線清單 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe" />
+  <meta name="description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-19/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-23/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,20 +51,16 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表" />
-<meta property="og:description" content="今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe" />
+<meta property="og:title" content="[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線清單" />
+<meta property="og:description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-19/" />
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-23/" />
 
 
 
-<meta property="article:published_time" content="2018-11-01T19:23:53&#43;08:00"/>
+<meta property="article:published_time" content="2018-11-05T20:02:42&#43;08:00"/>
 
-<meta property="article:modified_time" content="2018-11-01T19:23:53&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-11-05T20:02:42&#43;08:00"/>
 
 
 
@@ -72,20 +68,24 @@
 
 
 
-<meta itemprop="name" content="[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表">
-<meta itemprop="description" content="今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe">
-
-
-<meta itemprop="datePublished" content="2018-11-01T19:23:53&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-01T19:23:53&#43;08:00" />
-<meta itemprop="wordCount" content="779">
 
 
 
-<meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,Chart.js,JavaScript," />
+
+<meta itemprop="name" content="[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線清單">
+<meta itemprop="description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去">
+
+
+<meta itemprop="datePublished" content="2018-11-05T20:02:42&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-05T20:02:42&#43;08:00" />
+<meta itemprop="wordCount" content="1107">
+
+
+
+<meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,ShareFile,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表"/>
-<meta name="twitter:description" content="今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe"/>
+<meta name="twitter:title" content="[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線清單"/>
+<meta name="twitter:description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -152,12 +152,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表</h1>
+      <h1 class="post-title">[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線清單</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-11-01 
+          2018-11-05 
         </span>
         <div class="post-category">
             
@@ -167,11 +167,11 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 779 字
+          約 1107 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
-          預計閱讀 2 分鐘 
+          預計閱讀 3 分鐘 
         </span>
         
       </div>
@@ -185,10 +185,15 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#建立列表html元素">建立列表HTML元素</a></li>
-<li><a href="#建立後端取得投票資料方法">建立後端取得投票資料方法</a></li>
-<li><a href="#當連線成功時取得資料">當連線成功時取得資料</a></li>
-<li><a href="#範例下載">範例下載</a></li>
+<li><a href="#建立上線名單">建立上線名單</a></li>
+<li><a href="#後端部分">後端部分</a>
+<ul>
+<li><a href="#修改fileservice">修改FileService</a></li>
+<li><a href="#修改filehub">修改FileHub</a></li>
+</ul></li>
+<li><a href="#更新上線名單">更新上線名單</a></li>
+<li><a href="#demo">DEMO</a></li>
+<li><a href="#參考-範例下載">參考 &amp; 範例下載</a></li>
 </ul>
 </nav>
   </div>
@@ -201,94 +206,165 @@
     <div class="post-content">
       
 
-<p>今天我們要來做投票列表，概念跟<a href="/post/ironman2019/ironman-day-11">Day11</a>的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！</p>
+<p>昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單</p>
 
-<h1 id="建立列表html元素">建立列表HTML元素</h1>
+<h1 id="建立上線名單">建立上線名單</h1>
 
-<p>我們先把<code>voteMenu</code>區塊設成顯示，改成voteFrom區塊隱藏</p>
+<p>首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去太醜了，這次我做成跟google一樣用橫的，放在表格的正上方，我要定義3個區塊的CSS，一個是上線列表、一個是代表的顏色區塊、一個是使用者。</p>
 
-<pre><code class="language-html">&lt;div id=&quot;voteRoom&quot; style=&quot;display:none&quot;&gt;
+<pre><code class="language-css">.onlineList {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
 
-&lt;/div&gt;
-&lt;!-- 所有投票選單 --&gt;
-&lt;div id=&quot;voteMenu&quot;&gt;
+.userColor {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    display: inline-block;
+}
 
-&lt;/div&gt;
-&lt;!-- 新增投票區 --&gt;
-&lt;div id=&quot;voteForm&quot; style=&quot;display:none&quot;&gt;
-
-&lt;/div&gt;
-</code></pre>
-
-<p>建立一個select 元素當作列表，記得加入<code>multiple</code>讓它展開，寬和高有訂一下，再來是2顆Button，一顆進入建立投票的頁面，一顆進入選擇的投票房間頁面。</p>
-
-<pre><code class="language-html">&lt;button id=&quot;creatVote&quot; type=&quot;button&quot;&gt;建立投票&lt;/button&gt;
-&lt;br&gt;
-&lt;select id=&quot;selVote&quot; multiple style=&quot;height:200px;width:100px&quot;&gt;
-&lt;/select&gt;
-&lt;br&gt;
-&lt;button id=&quot;goVote&quot; type=&quot;button&quot;&gt;進入投票&lt;/button&gt;
-</code></pre>
-
-<p>建立頁面切換事件</p>
-
-<pre><code class="language-js">var creatVote = document.getElementById('creatVote');
-var goVote = document.getElementById('goVote');
-</code></pre>
-
-<h1 id="建立後端取得投票資料方法">建立後端取得投票資料方法</h1>
-
-<p>先到Hub建立取得方法，注意這邊取得時只要回傳給要求的用戶就好，不要全部都傳，不然會造成一個新的使用著上線想取得所有投票方法，每個人都全部丟一次資料，但是資料並無更新，所以這邊沒有這種必要。</p>
-
-<pre><code class="language-cs">public async Task GetVoteList()
-{
-    await Clients.Caller.SendAsync(&quot;ReceiveVoteList&quot;, _voteService.GetVoteList());
+.user {
+    display: inline-block;
+    margin-right: 3px;
+    padding-right: 5px;
+    /* 分隔線 */
+    border-right: 2px gray solid;
 }
 </code></pre>
 
-<h1 id="當連線成功時取得資料">當連線成功時取得資料</h1>
+<p>html部分記得放在表格上面</p>
 
-<p>連線時取得資料，當然要寫在連接成功後的事件，也就是<code>connection.start().then()</code>裡面，其實day17已經寫過了，但是那天寫的是只取得該筆投票，這次是全部投票所以要改用上面新寫的方法，之前的<code>GetVote</code>記得移除。</p>
+<pre><code class="language-html">&lt;div  id=&quot;userList&quot; class=&quot;onlineList&quot;&gt;&lt;/div&gt;
+&lt;hr&gt;
+</code></pre>
 
-<pre><code class="language-js">connection.start()
-.then(function () {
-    connection.invoke(&quot;GetVoteList&quot;).catch(function (err) {
-        return console.error(err.toString());
-    });
-})
-.catch(function (err) {
-    return console.error(err.toString());
+<p>載入DOM</p>
+
+<pre><code class="language-js">var userList = document.getElementById('userList');
+</code></pre>
+
+<h1 id="後端部分">後端部分</h1>
+
+<p>我們需要在後端控制加入和退出的動作，然後再把連線列表傳給所有人</p>
+
+<h2 id="修改fileservice">修改FileService</h2>
+
+<p>首先先在FileService增加取得所有使用者、加入、移除使用者的功能，加入使用者<code>AddUser</code>在加入時，我們需要隨機產生一個代表色給他，主要注意的是這次的<code>RemoveUser</code>，不要使用<code>LINQ</code>的方式，改用foreach找出來<code>user id</code>，再移除他，移除後記得傳回名單，因為<code>GetUserList</code>是使用<code>fileName</code>的方式找出來，使用者離線時無法得知他用哪個文件。</p>
+
+<pre><code class="language-cs">public List&lt;UserModel&gt; GetUserList(string fileName)
+{
+    var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
+
+    return file.editor;
+}
+
+// 加入使用者
+public bool AddUser(string fileName, string id)
+{
+    // 找出哪個file
+    var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
+    var userModel = new UserModel();
+    var rnd = new Random();
+    userModel.id = id;
+    // 顏色隨機產生
+    userModel.color = $&quot;rgb({rnd.Next(0, 255)}, {rnd.Next(0, 255)}, {rnd.Next(0, 255)})&quot;;
+    file.editor.Add(userModel);
+    return true;
+}
+
+// 移除使用者
+public List&lt;UserModel&gt; RemoveUser(string id)
+{
+    List&lt;UserModel&gt; userList = new List&lt;UserModel&gt;();
+
+    foreach (var file in list)
+    {
+        // 找出哪個file
+        var editor = (from f in file.editor where f.id == id select f).FirstOrDefault();
+        if (editor != null)
+        {
+            file.editor.Remove(editor);
+            userList = file.editor;
+        }
+    }
+
+    return userList;
+}
+</code></pre>
+
+<h2 id="修改filehub">修改FileHub</h2>
+
+<p>Hub不需要建立新的方法，但我們要修改2個方法，一個是取得使用者列表的<code>GetFile()</code>，一個是斷線時的<code>OnDisconnectedAsync()</code></p>
+
+<pre><code class="language-cs">public async Task GetFile(string fileName)
+{
+    // 取得文件
+    var file = _service.GetFile(fileName);
+    // 加入使用者
+    _service.AddUser(fileName, Context.ConnectionId);
+
+    await Clients.Caller.SendAsync(&quot;ReceiveFile&quot;, file);
+    await Clients.All.SendAsync(&quot;ReceiveUserList&quot;, _service.GetUserList(fileName));
+}
+
+public override async Task OnDisconnectedAsync(Exception exception)
+{ 
+    await base.OnDisconnectedAsync(exception);
+
+    // 移除使用者並重新傳回使用者的表單
+    await Clients.All.SendAsync(&quot;ReceiveUserList&quot;,  _service.RemoveUser(Context.ConnectionId));
+}
+</code></pre>
+
+<p>後端到這邊完成！！</p>
+
+<h1 id="更新上線名單">更新上線名單</h1>
+
+<p>首先我們需要知道自己的<code>connectionid</code>是多少，但是signalR好像沒提供這方法，但是物件裡有找到，但是是完整的連線<code>URL</code>，我們需要抓內部的<code>queryString</code>，先建立抓<code>queryString</code>的方法，我們用正則的方法過濾</p>
+
+<pre><code class="language-js">function getQueryStringByName(name) {
+    var result = connection.connection.transport.webSocket.url.match(new RegExp(&quot;[\?\&amp;]&quot; + name + &quot;=([^\&amp;]+)&quot;, &quot;i&quot;));
+    if (result == null || result.length &lt; 1) {
+        return &quot;&quot;;
+    }
+    return result[1];
+}
+</code></pre>
+
+<p>建立更新上線名單的事件，先清空<code>userList</code>，再把元素塞進去，然後再填入名單時只要叫上方的函數驗證倒是自己的<code>connectionid</code>的話，名稱就改成顯示自己，由於我們沒有作相關的會員制度，所以這邊還沒有名字，所以改由<code>connectionid</code>來顯示。</p>
+
+<pre><code class="language-js">connection.on(&quot;ReceiveUserList&quot;, function (userListData) {
+    userList.innerHTML = '';
+    for (var i = 0; i &lt; userListData.length; i++) {
+        var user = document.createElement('span');
+        user.id = userListData[i].id;
+        user.className = 'user';
+        var userColor = document.createElement('div');
+        userColor.className = 'userColor';
+        userColor.style.backgroundColor = userListData[i].color;
+        user.appendChild(userColor);
+        if (getQueryStringByName('id') == userListData[i].id)
+            user.append('自己');
+        else
+            user.append(userListData[i].id);
+        userList.appendChild(user);
+    }
 });
 </code></pre>
 
-<p>取得成功後先清空頭票選單，再binding到我們建立的<code>select</code>元素中，完成後返回投票選單，返回投票選單這邊是因為跟建立投票一樣的事件，如果你在建立投票表單的話則會切換回頭票選單。</p>
+<p>這樣就完成啦！</p>
 
-<pre><code class="language-js">connection.on(&quot;ReceiveVoteList&quot;, function (json) {
-    selVote.innerHTML = '';
-    for (var i = 0; i &lt; json.length; i++) {
-        var sel = document.createElement('option');
-        sel.innerHTML = json[i].voteName;
-        sel.value = json[i].voteName;
-        selVote.appendChild(sel);
-    }
-    // 如果在建立投票頁面，則切換回投票選單
-    if (voteMenu.style.display === 'none'){
-        voteForm.style.display = 'none';
-        voteMenu.style.display = '';
-    }
-});
-</code></pre>
+<h1 id="demo">DEMO</h1>
 
-<p>成功後結果，你會再選單內看到之前建立的測試投票</p>
+<p><img src="OnlineList.gif" alt="OnlineList" /></p>
 
-<p><img src="voteList.png" alt="voteList" /></p>
-
-<p>今天就大概這樣，下一篇就是最後的頁面了。</p>
-
-<h1 id="範例下載">範例下載</h1>
+<h1 id="參考-範例下載">參考 &amp; 範例下載</h1>
 
 <ul>
-<li><a href="https://drive.google.com/file/d/1VuzRy8Md-zluY0lAdKzY-hq9l6Vp3qye/view?usp=sharing">範例下載</a></li>
+<li><a href="https://www.cnblogs.com/sunnycoder/archive/2010/02/28/1674998.html">JS取得queryString</a></li>
+<li><a href="https://drive.google.com/file/d/1TZSUJQtxCqOHJDIJCVdf3gyOaRq2BVL4/view?usp=sharing">範例下載</a></li>
 </ul>
 
     </div>
@@ -301,7 +377,7 @@ var goVote = document.getElementById('goVote');
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-11-01</span>
+    <span class="item-content">2018-11-05</span>
   </p>
   
   <p class="copyright-item">
@@ -310,7 +386,7 @@ var goVote = document.getElementById('goVote');
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-19/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-23/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -334,7 +410,7 @@ var goVote = document.getElementById('goVote');
             </span>
           
             <span class="tags">
-              <a href="/tags/chart.js/">Chart.js</a>
+              <a href="/tags/sharefile/">ShareFile</a>
             </span>
           
             <span class="tags">
@@ -346,14 +422,9 @@ var goVote = document.getElementById('goVote');
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-20/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day20] 實作一個即時投票系統 (5) - 讀取建立的投票</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-18/">
-            <span class="next-text nav-default">[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容</span>
+          <a class="next" href="/post/ironman2019/ironman-day-22/">
+            <span class="next-text nav-default">[鐵人賽Day22] 實作Web即時共同編輯文件 (2) - 使用signalR同步文件內容</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

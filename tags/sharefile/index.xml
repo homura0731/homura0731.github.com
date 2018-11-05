@@ -6,10 +6,19 @@
     <description>Recent content in ShareFile on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Sun, 04 Nov 2018 09:14:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Nov 2018 20:02:42 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/sharefile/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線清單</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-23/</link>
+      <pubDate>Mon, 05 Nov 2018 20:02:42 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-23/</guid>
+      <description>昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day22] 實作Web即時共同編輯文件 (2) - 使用signalR同步文件內容</title>
@@ -17,7 +26,7 @@
       <pubDate>Sun, 04 Nov 2018 09:14:44 +0800</pubDate>
       
       <guid>https://homura0731.github.io/post/ironman2019/ironman-day-22/</guid>
-      <description>沒想到昨天光完成前端的部分就花那麼多時間，看來這次實作比上次難了不少，大概是因為沒使用套件的關係吧！ＸＤ 資料Binding 我們要來想想再修改</description>
+      <description>沒想到昨天光完成前端的部分就花那麼多時間，看來這次實作比上次難了不少，大概是因為沒使用套件的關係吧！ＸＤ 那麼今天就來做signalR同步的部</description>
     </item>
     
     <item>
