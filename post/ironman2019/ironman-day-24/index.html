@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝" />
+  <meta name="description" content="今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我們" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-23/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-24/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,20 +51,16 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單" />
-<meta property="og:description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝" />
+<meta property="og:title" content="[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色" />
+<meta property="og:description" content="今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我們" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-23/" />
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-24/" />
 
 
 
-<meta property="article:published_time" content="2018-11-05T20:02:42&#43;08:00"/>
+<meta property="article:published_time" content="2018-11-06T19:32:39&#43;08:00"/>
 
-<meta property="article:modified_time" content="2018-11-05T20:02:42&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-11-06T19:32:39&#43;08:00"/>
 
 
 
@@ -72,20 +68,24 @@
 
 
 
-<meta itemprop="name" content="[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單">
-<meta itemprop="description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝">
 
 
-<meta itemprop="datePublished" content="2018-11-05T20:02:42&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-05T20:02:42&#43;08:00" />
-<meta itemprop="wordCount" content="1109">
+
+
+<meta itemprop="name" content="[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色">
+<meta itemprop="description" content="今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我們">
+
+
+<meta itemprop="datePublished" content="2018-11-06T19:32:39&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-06T19:32:39&#43;08:00" />
+<meta itemprop="wordCount" content="865">
 
 
 
 <meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,ShareFile,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單"/>
-<meta name="twitter:description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝"/>
+<meta name="twitter:title" content="[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色"/>
+<meta name="twitter:description" content="今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我們"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -152,12 +152,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單</h1>
+      <h1 class="post-title">[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-11-05 
+          2018-11-06 
         </span>
         <div class="post-category">
             
@@ -167,11 +167,11 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 1109 字
+          約 865 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
-          預計閱讀 3 分鐘 
+          預計閱讀 2 分鐘 
         </span>
         
       </div>
@@ -185,15 +185,18 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#建立上線名單">建立上線名單</a></li>
-<li><a href="#後端部分">後端部分</a>
+<li><a href="#幫編輯中的表格著色">幫編輯中的表格著色</a>
 <ul>
-<li><a href="#修改fileservice">修改FileService</a></li>
-<li><a href="#修改filehub">修改FileHub</a></li>
+<li><a href="#後端部分">後端部分</a></li>
+<li><a href="#前端部分">前端部分</a></li>
 </ul></li>
-<li><a href="#更新上線名單">更新上線名單</a></li>
+<li><a href="#取消未編輯的表格顏色">取消未編輯的表格顏色</a>
+<ul>
+<li><a href="#後端部分-1">後端部分</a></li>
+<li><a href="#前端部分-1">前端部分</a></li>
+</ul></li>
 <li><a href="#demo">DEMO</a></li>
-<li><a href="#參考-範例下載">參考 &amp; 範例下載</a></li>
+<li><a href="#範例下載">範例下載</a></li>
 </ul>
 </nav>
   </div>
@@ -206,165 +209,119 @@
     <div class="post-content">
       
 
-<p>昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！</p>
+<p>今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的<code>cell</code>內，並且鎖住不讓其他人同時編輯。</p>
 
-<h1 id="建立上線名單">建立上線名單</h1>
+<h1 id="幫編輯中的表格著色">幫編輯中的表格著色</h1>
 
-<p>首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去太醜了，這次我做成跟google一樣用橫的，放在表格的正上方，我要定義3個區塊的CSS，一個是上線列表、一個是代表的顏色區塊、一個是使用者。</p>
+<p>我們前後端拆開來做</p>
 
-<pre><code class="language-css">.onlineList {
-    display: inline;
-    margin: 0px;
-    padding: 0px;
-}
+<h2 id="後端部分">後端部分</h2>
 
-.userColor {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    display: inline-block;
-}
+<p>首先要來得先在後端的編輯動作中加入使用者，先來修改<code>FileServie</code>的<code>EditFileCell</code>的動作，加入修改使用者及表格預設鎖上的狀態，記得接收參數在多個<code>user</code>用來辨識目前修改人是誰。</p>
 
-.user {
-    display: inline-block;
-    margin-right: 3px;
-    padding-right: 5px;
-    /* 分隔線 */
-    border-right: 2px gray solid;
-}
-</code></pre>
-
-<p>html部分記得放在表格上面</p>
-
-<pre><code class="language-html">&lt;div  id=&quot;userList&quot; class=&quot;onlineList&quot;&gt;&lt;/div&gt;
-&lt;hr&gt;
-</code></pre>
-
-<p>載入DOM</p>
-
-<pre><code class="language-js">var userList = document.getElementById('userList');
-</code></pre>
-
-<h1 id="後端部分">後端部分</h1>
-
-<p>我們需要在後端控制加入和退出的動作，然後再把連線列表傳給所有人</p>
-
-<h2 id="修改fileservice">修改FileService</h2>
-
-<p>首先先在FileService增加取得所有使用者、加入、移除使用者的功能，加入使用者<code>AddUser</code>在加入時，我們需要隨機產生一個代表色給他，主要注意的是這次的<code>RemoveUser</code>，不要使用<code>LINQ</code>的方式，改用foreach找出來<code>user id</code>，再移除他，移除後記得傳回名單，因為<code>GetUserList</code>是使用<code>fileName</code>的方式找出來，使用者離線時無法得知他用哪個文件。</p>
-
-<pre><code class="language-cs">public List&lt;UserModel&gt; GetUserList(string fileName)
-{
-    var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
-
-    return file.editor;
-}
-
-// 加入使用者
-public bool AddUser(string fileName, string id)
+<pre><code class="language-cs">public CellModel EditFileCell(string fileName, string cellName, string text,string user)
 {
     // 找出哪個file
     var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
-    var userModel = new UserModel();
-    var rnd = new Random();
-    userModel.id = id;
-    // 顏色隨機產生
-    userModel.color = $&quot;rgb({rnd.Next(0, 255)}, {rnd.Next(0, 255)}, {rnd.Next(0, 255)})&quot;;
-    file.editor.Add(userModel);
-    return true;
-}
-
-// 移除使用者
-public List&lt;UserModel&gt; RemoveUser(string id)
-{
-    List&lt;UserModel&gt; userList = new List&lt;UserModel&gt;();
-
-    foreach (var file in list)
-    {
-        // 找出哪個file
-        var editor = (from f in file.editor where f.id == id select f).FirstOrDefault();
-        if (editor != null)
-        {
-            file.editor.Remove(editor);
-            userList = file.editor;
-        }
-    }
-
-    return userList;
-}
-</code></pre>
-
-<h2 id="修改filehub">修改FileHub</h2>
-
-<p>Hub不需要建立新的方法，但我們要修改2個方法，一個是取得使用者列表的<code>GetFile()</code>，一個是斷線時的<code>OnDisconnectedAsync()</code></p>
-
-<pre><code class="language-cs">public async Task GetFile(string fileName)
-{
-    // 取得文件
-    var file = _service.GetFile(fileName);
+    // 找出哪個cell
+    var cell = (from c in file.textList where c.cellName == cellName select c).FirstOrDefault();
+    // 修改內容
+    cell.text = text;
     // 加入使用者
-    _service.AddUser(fileName, Context.ConnectionId);
+    cell.editor = user;
+    // 鎖住cell
+    cell.lockState = true;
 
-    await Clients.Caller.SendAsync(&quot;ReceiveFile&quot;, file);
-    await Clients.All.SendAsync(&quot;ReceiveUserList&quot;, _service.GetUserList(fileName));
-}
-
-public override async Task OnDisconnectedAsync(Exception exception)
-{ 
-    await base.OnDisconnectedAsync(exception);
-
-    // 移除使用者並重新傳回使用者的表單
-    await Clients.All.SendAsync(&quot;ReceiveUserList&quot;,  _service.RemoveUser(Context.ConnectionId));
+    return cell;
 }
 </code></pre>
 
-<p>後端到這邊完成！！</p>
+<p>修改<code>FileHub</code>的<code>EditText</code>動作，只要把<code>ConnectionId</code>使用<code>EditFileCell</code>方法丟進<code>Service</code>裡，再多加個回傳使用者就行</p>
 
-<h1 id="更新上線名單">更新上線名單</h1>
-
-<p>首先我們需要知道自己的<code>connectionid</code>是多少，但是signalR好像沒提供這方法，但是物件裡有找到，但是是完整的連線<code>URL</code>，我們需要抓內部的<code>queryString</code>，先建立抓<code>queryString</code>的方法，我們用正則的方法過濾</p>
-
-<pre><code class="language-js">function getQueryStringByName(name) {
-    var result = connection.connection.transport.webSocket.url.match(new RegExp(&quot;[\?\&amp;]&quot; + name + &quot;=([^\&amp;]+)&quot;, &quot;i&quot;));
-    if (result == null || result.length &lt; 1) {
-        return &quot;&quot;;
-    }
-    return result[1];
+<pre><code class="language-cs">public async Task EditText(string fileName, string cellName, string text)
+{
+    var editText = _service.EditFileCell(fileName, cellName, text, Context.ConnectionId);
+    await Clients.All.SendAsync(&quot;ReceiveEditText&quot;, cellName, editText.text, editText.editor);
 }
 </code></pre>
 
-<p>建立更新上線名單的事件，先清空<code>userList</code>，再把元素塞進去，然後再填入名單時只要叫上方的函數驗證倒是自己的<code>connectionid</code>的話，名稱就改成顯示自己，由於我們沒有作相關的會員制度，所以這邊還沒有名字，所以改由<code>connectionid</code>來顯示。</p>
+<h2 id="前端部分">前端部分</h2>
 
-<pre><code class="language-js">connection.on(&quot;ReceiveUserList&quot;, function (userListData) {
-    userList.innerHTML = '';
-    for (var i = 0; i &lt; userListData.length; i++) {
-        var user = document.createElement('span');
-        user.id = userListData[i].id;
-        user.className = 'user';
-        var userColor = document.createElement('div');
-        userColor.className = 'userColor';
-        userColor.style.backgroundColor = userListData[i].color;
-        user.appendChild(userColor);
-        if (getQueryStringByName('id') == userListData[i].id)
-            user.append('自己');
-        else
-            user.append(userListData[i].id);
-        userList.appendChild(user);
+<p>我們只需要幫<code>ReceiveEditText</code>加些料就行，首先先判斷這個修改表格的是否為自己，不是的話就修改表格顏色及接收修改過的內容</p>
+
+<pre><code class="language-js">connection.on(&quot;ReceiveEditText&quot;, function (cellName, text, user) {
+    var cell = document.getElementById(cellName);
+    // 判斷是否為自己
+    if (getQueryStringByName('id') != user){
+        cell.childNodes[0].value = text;
+        cell.childNodes[0].style.backgroundColor = document.getElementById(user).childNodes[0].style.backgroundColor;
     }
 });
 </code></pre>
 
-<p>這樣就完成啦！</p>
+<p>這樣就完成一半了!!!再來就是解開顏色的事件</p>
+
+<h1 id="取消未編輯的表格顏色">取消未編輯的表格顏色</h1>
+
+<p>這邊一樣前後端拆開來做</p>
+
+<h2 id="後端部分-1">後端部分</h2>
+
+<p>一樣要先在<code>FileServie</code>新增方法<code>CancelEditFileCell</code>，內容是刪除編輯的使用者，並解鎖</p>
+
+<pre><code class="language-cs">public CellModel CancelEditFileCell(string fileName, string cellName)
+{
+    // 找出哪個file
+    var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
+    // 找出哪個cell
+    var cell = (from c in file.textList where c.cellName == cellName select c).FirstOrDefault();
+    // 加入使用者
+    cell.editor = null;
+    // 解鎖cell
+    cell.lockState = false;
+
+    return cell;
+}
+</code></pre>
+
+<p>在來再<code>FileHub</code>新增<code>CancelEditFileCell</code>方法，裡面的動作比較簡單只是要取消編輯</p>
+
+<pre><code class="language-cs">public async Task CancelEditText(string fileName, string cellName)
+{
+    var editText = _service.CancelEditFileCell(fileName, cellName);
+    await Clients.All.SendAsync(&quot;ReceiveCancelEditText&quot;, fileName, cellName);
+}
+</code></pre>
+
+<h2 id="前端部分-1">前端部分</h2>
+
+<p>我們要再更換編輯表格時取消編輯的狀態，所以就是在<code>cellLock</code>裡面回傳取消編輯，比較要注意的是我們ID是放在<code>td</code>元素內，所以要像上一層元素取<code>ID</code></p>
+
+<pre><code class="language-js">connection.invoke('CancelEditText', 'TestFile', this.parentNode.id).catch(function (err) {
+    return console.error(err.toString());
+});
+</code></pre>
+
+<p>其他人接收到後則把顏色恢復為透明</p>
+
+<pre><code class="language-js">connection.on(&quot;ReceiveCancelEditText&quot;, function (fileName,cellName) {
+    var cell = document.getElementById(cellName);
+    cell.childNodes[0].style.background = 'transparent';
+});
+</code></pre>
+
+<p>這樣就完成啦</p>
 
 <h1 id="demo">DEMO</h1>
 
-<p><img src="OnlineList.gif" alt="OnlineList" /></p>
+<p><img src="EditColor.gif" alt="EditColor" /></p>
 
-<h1 id="參考-範例下載">參考 &amp; 範例下載</h1>
+<p>其實做到這邊還有很多地方需要修正，明天我們就把一些小問題一次做完，今天就這樣啦！！</p>
+
+<h1 id="範例下載">範例下載</h1>
 
 <ul>
-<li><a href="https://www.cnblogs.com/sunnycoder/archive/2010/02/28/1674998.html">JS取得queryString</a></li>
-<li><a href="https://drive.google.com/file/d/1TZSUJQtxCqOHJDIJCVdf3gyOaRq2BVL4/view?usp=sharing">範例下載</a></li>
+<li><a href="https://drive.google.com/file/d/1mbxe9grmpog-IvoZZck3uqv7VUp6dFIy/view?usp=sharing">範例下載</a></li>
 </ul>
 
     </div>
@@ -377,7 +334,7 @@ public override async Task OnDisconnectedAsync(Exception exception)
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-11-05</span>
+    <span class="item-content">2018-11-06</span>
   </p>
   
   <p class="copyright-item">
@@ -386,7 +343,7 @@ public override async Task OnDisconnectedAsync(Exception exception)
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-23/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-24/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -422,14 +379,9 @@ public override async Task OnDisconnectedAsync(Exception exception)
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-24/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-22/">
-            <span class="next-text nav-default">[鐵人賽Day22] 實作Web即時共同編輯文件 (2) - 使用signalR同步文件內容</span>
+          <a class="next" href="/post/ironman2019/ironman-day-23/">
+            <span class="next-text nav-default">[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

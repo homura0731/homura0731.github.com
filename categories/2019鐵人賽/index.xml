@@ -6,18 +6,27 @@
     <description>Recent content in 2019鐵人賽 on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Mon, 05 Nov 2018 20:02:42 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Nov 2018 19:32:39 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線清單</title>
+      <title>[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-24/</link>
+      <pubDate>Tue, 06 Nov 2018 19:32:39 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-24/</guid>
+      <description>今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我們</description>
+    </item>
+    
+    <item>
+      <title>[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單</title>
       <link>https://homura0731.github.io/post/ironman2019/ironman-day-23/</link>
       <pubDate>Mon, 05 Nov 2018 20:02:42 +0800</pubDate>
       
       <guid>https://homura0731.github.io/post/ironman2019/ironman-day-23/</guid>
-      <description>昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去</description>
+      <description>昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝</description>
     </item>
     
     <item>
