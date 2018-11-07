@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我發" />
+  <meta name="description" content="今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-24/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-25/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,20 +51,16 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色" />
-<meta property="og:description" content="今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我發" />
+<meta property="og:title" content="[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正" />
+<meta property="og:description" content="今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-24/" />
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-25/" />
 
 
 
-<meta property="article:published_time" content="2018-11-06T19:32:39&#43;08:00"/>
+<meta property="article:published_time" content="2018-11-07T19:27:26&#43;08:00"/>
 
-<meta property="article:modified_time" content="2018-11-06T19:32:39&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-11-07T19:27:26&#43;08:00"/>
 
 
 
@@ -72,20 +68,24 @@
 
 
 
-<meta itemprop="name" content="[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色">
-<meta itemprop="description" content="今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我發">
 
 
-<meta itemprop="datePublished" content="2018-11-06T19:32:39&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-06T19:32:39&#43;08:00" />
-<meta itemprop="wordCount" content="907">
+
+
+<meta itemprop="name" content="[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正">
+<meta itemprop="description" content="今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編">
+
+
+<meta itemprop="datePublished" content="2018-11-07T19:27:26&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-07T19:27:26&#43;08:00" />
+<meta itemprop="wordCount" content="996">
 
 
 
 <meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,ShareFile,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色"/>
-<meta name="twitter:description" content="今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我發"/>
+<meta name="twitter:title" content="[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正"/>
+<meta name="twitter:description" content="今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -152,12 +152,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</h1>
+      <h1 class="post-title">[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-11-06 
+          2018-11-07 
         </span>
         <div class="post-category">
             
@@ -167,7 +167,7 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 907 字
+          約 996 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
@@ -185,17 +185,19 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#幫編輯中的表格著色">幫編輯中的表格著色</a>
+<li><a href="#重整後重新讀取顏色">重整後重新讀取顏色</a>
 <ul>
-<li><a href="#後端部分">後端部分</a></li>
-<li><a href="#前端部分">前端部分</a></li>
-</ul></li>
-<li><a href="#取消未編輯的表格顏色">取消未編輯的表格顏色</a>
-<ul>
-<li><a href="#後端部分-1">後端部分</a></li>
-<li><a href="#前端部分-1">前端部分</a></li>
-</ul></li>
 <li><a href="#demo">DEMO</a></li>
+</ul></li>
+<li><a href="#避免編輯中關閉視窗">避免編輯中關閉視窗</a>
+<ul>
+<li><a href="#demo-1">DEMO</a></li>
+</ul></li>
+<li><a href="#延遲回傳編輯的資訊">延遲回傳編輯的資訊</a>
+<ul>
+<li><a href="#demo-2">DEMO</a></li>
+</ul></li>
+<li><a href="#讀取文件換成變數">讀取文件換成變數</a></li>
 <li><a href="#範例下載">範例下載</a></li>
 </ul>
 </nav>
@@ -209,119 +211,108 @@
     <div class="post-content">
       
 
-<p>今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的<code>cell</code>內，並且鎖住不讓其他人同時編輯。</p>
+<p>今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編輯的人沒移開編輯中的<code>cell</code>，會造成沒回傳取消編輯的狀態，今天就來修正一下這些問題吧！</p>
 
-<h1 id="幫編輯中的表格著色">幫編輯中的表格著色</h1>
+<h1 id="重整後重新讀取顏色">重整後重新讀取顏色</h1>
 
-<p>我發現直接對表格誆著色會怪怪，所以改成表格背景著色，那麼就開始時做吧，我們前後端拆開來做，首先做後端。</p>
+<p>首先修改一下<code>FileHub</code>，傳回資料的順序修改一下，改成<code>ReceiveUserList</code>先傳在傳送<code>ReceiveFile</code></p>
 
-<h2 id="後端部分">後端部分</h2>
-
-<p>首先要來得先在後端的編輯動作中加入使用者，先來修改<code>FileServie</code>的<code>EditFileCell</code>的動作，加入修改使用者及表格預設鎖上的狀態，記得接收參數在多個<code>user</code>用來辨識目前修改人是誰。</p>
-
-<pre><code class="language-cs">public CellModel EditFileCell(string fileName, string cellName, string text,string user)
+<pre><code class="language-cs">public async Task GetFile(string fileName)
 {
-    // 找出哪個file
-    var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
-    // 找出哪個cell
-    var cell = (from c in file.textList where c.cellName == cellName select c).FirstOrDefault();
-    // 修改內容
-    cell.text = text;
+    // 取得文件
+    var file = _service.GetFile(fileName);
     // 加入使用者
-    cell.editor = user;
-    // 鎖住cell
-    cell.lockState = true;
-
-    return cell;
+    _service.AddUser(fileName, Context.ConnectionId);
+    
+    await Clients.All.SendAsync(&quot;ReceiveUserList&quot;, _service.GetUserList(fileName));
+    await Clients.Caller.SendAsync(&quot;ReceiveFile&quot;, file);
 }
 </code></pre>
 
-<p>修改<code>FileHub</code>的<code>EditText</code>動作，只要把<code>ConnectionId</code>使用<code>EditFileCell</code>方法丟進<code>Service</code>裡，再多加個回傳使用者就行</p>
+<p>在來是前端建立表格時加入判斷，如果是就著色</p>
 
-<pre><code class="language-cs">public async Task EditText(string fileName, string cellName, string text)
-{
-    var editText = _service.EditFileCell(fileName, cellName, text, Context.ConnectionId);
-    await Clients.All.SendAsync(&quot;ReceiveEditText&quot;, cellName, editText.text, editText.editor);
-}
-</code></pre>
+<pre><code class="language-js">connection.on(&quot;ReceiveFile&quot;, function (file) {
+    var count = 0;
+    for (var i = 0; i &lt; file.row; i++) {
+        var row = document.createElement('tr');
+        for (var j = 0; j &lt; file.column; j++) {
+            var cell = document.createElement('td');
+            cell.id = file.textList[count].cellName;
 
-<h2 id="前端部分">前端部分</h2>
-
-<p>我們只需要幫<code>ReceiveEditText</code>加些料就行，首先先判斷這個修改表格的是否為自己，不是的話就修改表格顏色及接收修改過的內容</p>
-
-<pre><code class="language-js">connection.on(&quot;ReceiveEditText&quot;, function (cellName, text, user) {
-    var cell = document.getElementById(cellName);
-    // 判斷是否為自己
-    if (getQueryStringByName('id') != user){
-        cell.childNodes[0].value = text;
-        cell.childNodes[0].style.backgroundColor = document.getElementById(user).childNodes[0].style.backgroundColor;
+            cell.addEventListener('click', cellEdit);
+            cell.addEventListener('input', change);
+            cell.appendChild(createCell(file.textList[count].text));
+            // 判斷是否為編輯中的表格
+            if (file.textList[count].editor != null)
+                cell.childNodes[0].style.background = document.getElementById(file.textList[count].editor).childNodes[0].style.backgroundColor
+            row.appendChild(cell);
+            count++;
+        }
+        table.append(row);
     }
 });
 </code></pre>
 
-<p>這樣就完成一半了!!!再來就是解開顏色的事件</p>
+<h2 id="demo">DEMO</h2>
 
-<h1 id="取消未編輯的表格顏色">取消未編輯的表格顏色</h1>
+<p>因為換視窗時會取消編輯，所以我沒辦法用2個瀏覽器視窗DEMO，改架在IIS上，尤其他裝置連上內網一起操作，這邊我使用的裝置是<code>ipad</code>，<code>ipad</code>由於readonly會叫不出虛擬鍵盤，所以我有先拿掉，以下DEMO
+<img src="LoadEditColor.gif" alt="LoadEditColor" /></p>
 
-<p>這邊一樣前後端拆開來做</p>
+<h1 id="避免編輯中關閉視窗">避免編輯中關閉視窗</h1>
 
-<h2 id="後端部分-1">後端部分</h2>
+<p>這邊可以依靠<code>window</code>的<code>onbeforeunload</code>事件來避免這問題，先創一個暫存編輯中cell id的變數<code>editCell</code>，然後再編輯時<code>cellEdit</code>丟入，最後呼叫<code>onbeforeunload</code>事件丟回取消事件。</p>
 
-<p>一樣要先在<code>FileServie</code>新增方法<code>CancelEditFileCell</code>，內容是刪除編輯的使用者，並解鎖</p>
+<pre><code class="language-js">var editCell;
 
-<pre><code class="language-cs">public CellModel CancelEditFileCell(string fileName, string cellName)
-{
-    // 找出哪個file
-    var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
-    // 找出哪個cell
-    var cell = (from c in file.textList where c.cellName == cellName select c).FirstOrDefault();
-    // 加入使用者
-    cell.editor = null;
-    // 解鎖cell
-    cell.lockState = false;
+function cellEdit() {
+    this.childNodes[0].readOnly = false;
+    this.childNodes[0].focus();
+    editCell = this.id;
+}
 
-    return cell;
+window.onbeforeunload = function(){
+    connection.invoke('CancelEditText', 'TestFile', editCell).catch(function (err) {
+        return console.error(err.toString());
+    });
 }
 </code></pre>
 
-<p>在來再<code>FileHub</code>新增<code>CancelEditFileCell</code>方法，裡面的動作比較簡單只是要取消編輯</p>
+<h2 id="demo-1">DEMO</h2>
 
-<pre><code class="language-cs">public async Task CancelEditText(string fileName, string cellName)
-{
-    var editText = _service.CancelEditFileCell(fileName, cellName);
-    await Clients.All.SendAsync(&quot;ReceiveCancelEditText&quot;, fileName, cellName);
-}
+<p><img src="CloseEditColor.gif" alt="CloseEditColor" /></p>
+
+<h1 id="延遲回傳編輯的資訊">延遲回傳編輯的資訊</h1>
+
+<p>正常來說每打一個字或是刪除一個字都在回傳，這樣實在太消耗Server資源，所以我們應該要延遲一小段時間在回傳，最簡單的方法就是使用<code>lodash</code>的<code>debounce</code>來完成這項工作
+安裝<code>lodash</code></p>
+
+<p>首先引用CDN</p>
+
+<pre><code class="language-js">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 
-<h2 id="前端部分-1">前端部分</h2>
+<p>使用<code>debounce()</code>方法來延遲傳回去的時間，<code>lodash</code>預設變數是<code>_</code>，所以我們要這樣呼叫<code>_.debounce()</code>，debounce還能設定延遲幾毫秒，我們設定延遲300毫秒傳回，然後寫在cell的input事件裡就行，在<code>connection.on(&quot;ReceiveFile&quot;)</code>裡面，第一個參數塞進要執行的function，第二個則是延遲的時間</p>
 
-<p>我們要再更換編輯表格時取消編輯的狀態，所以就是在<code>cellLock</code>裡面回傳取消編輯，比較要注意的是我們ID是放在<code>td</code>元素內，所以要像上一層元素取<code>ID</code></p>
-
-<pre><code class="language-js">connection.invoke('CancelEditText', 'TestFile', this.parentNode.id).catch(function (err) {
-    return console.error(err.toString());
-});
+<pre><code class="language-js">cell.addEventListener('input', _.debounce(change, 300));
 </code></pre>
 
-<p>其他人接收到後則把顏色恢復為透明</p>
+<h2 id="demo-2">DEMO</h2>
 
-<pre><code class="language-js">connection.on(&quot;ReceiveCancelEditText&quot;, function (fileName,cellName) {
-    var cell = document.getElementById(cellName);
-    cell.childNodes[0].style.background = 'transparent';
-});
+<p><img src="Debounce.gif" alt="Debounce" /></p>
+
+<h1 id="讀取文件換成變數">讀取文件換成變數</h1>
+
+<p>因為我們下一篇要來做自訂的文件，不一定都是讀取測試文件，所以要把文件名稱換成變數拉出來，使用取代的方式就行<code>Ctrl+F</code>左側箭頭按下去，把<code>'TestFile'</code>取代成<code>LoadFile</code>，然後新增一個<code>LoadFile</code>變數</p>
+
+<pre><code class="language-js">var LoadFile = 'TestFile';
 </code></pre>
 
-<p>這樣就完成啦</p>
-
-<h1 id="demo">DEMO</h1>
-
-<p><img src="EditColor.gif" alt="EditColor" /></p>
-
-<p>其實做到這邊還有很多地方需要修正，明天我們就把一些小問題一次做完，今天就這樣啦！！</p>
+<p>今天就這樣，明天來做多文件選擇和建立文件吧！</p>
 
 <h1 id="範例下載">範例下載</h1>
 
 <ul>
-<li><a href="https://drive.google.com/file/d/1mbxe9grmpog-IvoZZck3uqv7VUp6dFIy/view?usp=sharing">範例下載</a></li>
+<li><a href="https://drive.google.com/file/d/1mvQuzZeHd98l3vzEV9ZxZeFEoW9Rd8Kb/view?usp=sharing">範例下載</a></li>
 </ul>
 
     </div>
@@ -334,7 +325,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-11-06</span>
+    <span class="item-content">2018-11-07</span>
   </p>
   
   <p class="copyright-item">
@@ -343,7 +334,7 @@
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-24/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-25/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -379,14 +370,9 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-25/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-23/">
-            <span class="next-text nav-default">[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單</span>
+          <a class="next" href="/post/ironman2019/ironman-day-24/">
+            <span class="next-text nav-default">[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

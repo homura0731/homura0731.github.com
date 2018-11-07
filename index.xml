@@ -6,10 +6,19 @@
     <description>Recent content on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Tue, 06 Nov 2018 19:32:39 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Nov 2018 19:27:26 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-25/</link>
+      <pubDate>Wed, 07 Nov 2018 19:27:26 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-25/</guid>
+      <description>今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</title>
@@ -17,7 +26,7 @@
       <pubDate>Tue, 06 Nov 2018 19:32:39 +0800</pubDate>
       
       <guid>https://homura0731.github.io/post/ironman2019/ironman-day-24/</guid>
-      <description>今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我們</description>
+      <description>今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我發</description>
     </item>
     
     <item>
