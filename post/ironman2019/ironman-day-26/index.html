@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編" />
+  <meta name="description" content="今天我們要來做自訂表格內容和連線列表，既然建立表格的方法都訂好了，當然要能從前端建立啊!XD 各畫面區塊建立 這次我想做4個畫面登入畫面、文件選" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-25/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-26/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,20 +51,16 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正" />
-<meta property="og:description" content="今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編" />
+<meta property="og:title" content="[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表" />
+<meta property="og:description" content="今天我們要來做自訂表格內容和連線列表，既然建立表格的方法都訂好了，當然要能從前端建立啊!XD 各畫面區塊建立 這次我想做4個畫面登入畫面、文件選" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-25/" />
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-26/" />
 
 
 
-<meta property="article:published_time" content="2018-11-07T19:27:26&#43;08:00"/>
+<meta property="article:published_time" content="2018-11-08T16:14:18&#43;08:00"/>
 
-<meta property="article:modified_time" content="2018-11-07T19:27:26&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-11-08T16:14:18&#43;08:00"/>
 
 
 
@@ -72,20 +68,24 @@
 
 
 
-<meta itemprop="name" content="[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正">
-<meta itemprop="description" content="今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編">
 
 
-<meta itemprop="datePublished" content="2018-11-07T19:27:26&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-07T19:27:26&#43;08:00" />
-<meta itemprop="wordCount" content="996">
+
+
+<meta itemprop="name" content="[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表">
+<meta itemprop="description" content="今天我們要來做自訂表格內容和連線列表，既然建立表格的方法都訂好了，當然要能從前端建立啊!XD 各畫面區塊建立 這次我想做4個畫面登入畫面、文件選">
+
+
+<meta itemprop="datePublished" content="2018-11-08T16:14:18&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-08T16:14:18&#43;08:00" />
+<meta itemprop="wordCount" content="985">
 
 
 
 <meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,ShareFile,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正"/>
-<meta name="twitter:description" content="今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編"/>
+<meta name="twitter:title" content="[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表"/>
+<meta name="twitter:description" content="今天我們要來做自訂表格內容和連線列表，既然建立表格的方法都訂好了，當然要能從前端建立啊!XD 各畫面區塊建立 這次我想做4個畫面登入畫面、文件選"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -152,12 +152,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</h1>
+      <h1 class="post-title">[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-11-07 
+          2018-11-08 
         </span>
         <div class="post-category">
             
@@ -167,7 +167,7 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 996 字
+          約 985 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
@@ -185,20 +185,10 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#重整後重新讀取顏色">重整後重新讀取顏色</a>
-<ul>
+<li><a href="#各畫面區塊建立">各畫面區塊建立</a></li>
+<li><a href="#登入畫面建立">登入畫面建立</a></li>
+<li><a href="#連線文件列表建立">連線文件列表建立</a></li>
 <li><a href="#demo">DEMO</a></li>
-</ul></li>
-<li><a href="#避免編輯中關閉視窗">避免編輯中關閉視窗</a>
-<ul>
-<li><a href="#demo-1">DEMO</a></li>
-</ul></li>
-<li><a href="#延遲回傳編輯的資訊">延遲回傳編輯的資訊</a>
-<ul>
-<li><a href="#demo-2">DEMO</a></li>
-</ul></li>
-<li><a href="#讀取文件換成變數">讀取文件換成變數</a></li>
-<li><a href="#範例下載">範例下載</a></li>
 </ul>
 </nav>
   </div>
@@ -211,109 +201,162 @@
     <div class="post-content">
       
 
-<p>今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編輯的人沒移開編輯中的<code>cell</code>，會造成沒回傳取消編輯的狀態，今天就來修正一下這些問題吧！</p>
+<p>今天我們要來做自訂表格內容和連線列表，既然建立表格的方法都訂好了，當然要能從前端建立啊!XD</p>
 
-<h1 id="重整後重新讀取顏色">重整後重新讀取顏色</h1>
+<h1 id="各畫面區塊建立">各畫面區塊建立</h1>
 
-<p>首先修改一下<code>FileHub</code>，傳回資料的順序修改一下，改成<code>ReceiveUserList</code>先傳在傳送<code>ReceiveFile</code></p>
+<p>這次我想做4個畫面<code>登入畫面</code>、<code>文件選擇畫面</code>、<code>文件建立表單</code>、<code>文件編輯畫面</code>，首先把<code>div</code>區塊做出來</p>
 
-<pre><code class="language-cs">public async Task GetFile(string fileName)
-{
-    // 取得文件
-    var file = _service.GetFile(fileName);
-    // 加入使用者
-    _service.AddUser(fileName, Context.ConnectionId);
-    
-    await Clients.All.SendAsync(&quot;ReceiveUserList&quot;, _service.GetUserList(fileName));
-    await Clients.Caller.SendAsync(&quot;ReceiveFile&quot;, file);
+<pre><code class="language-html">&lt;!-- 登入畫面 --&gt;
+&lt;div id=&quot;loginDiv&quot;&gt;
+&lt;/div&gt;
+
+&lt;!-- 文件選擇畫面 --&gt;
+&lt;div id=&quot;fileListDiv&quot; style=&quot;display:none&quot;&gt;
+
+&lt;/div&gt;
+
+&lt;!-- 文件編輯畫面 --&gt;
+&lt;div id=&quot;fileDiv&quot; style=&quot;display:none&quot;&gt;
+    &lt;div class=&quot;onlineList&quot; id=&quot;onlineList&quot;&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;table id=&quot;table&quot;&gt;
+
+    &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- 文件建立表單 --&gt;
+&lt;div id=&quot;createFileDiv&quot; style=&quot;display:none&quot;&gt;
+
+&lt;/div&gt;
+</code></pre>
+
+<p>然後先建立個區塊DOM物件變數</p>
+
+<pre><code class="language-js">var loginDiv = document.getElementById('loginDiv');
+var fileListDiv = document.getElementById('fileListDiv');
+var fileDiv = document.getElementById('fileDiv');
+var createFileDiv = document.getElementById('createFileDiv');
+</code></pre>
+
+<h1 id="登入畫面建立">登入畫面建立</h1>
+
+<p>首先我們先做登錄畫面，登入畫面只需要輸入名稱就行，因為我們沒做資料庫，不需要帳號密碼XD</p>
+
+<pre><code class="language-html">Name:
+&lt;input id=&quot;name&quot; type=&quot;text&quot; class=&quot;input&quot;&gt;
+&lt;br&gt;
+&lt;button id=&quot;connectBtn&quot; type=&quot;button&quot;&gt;連線&lt;/button&gt;
+</code></pre>
+
+<p>還有因為把<code>input</code>改成透明了，所以名稱這邊要給他樣式，不然看不到</p>
+
+<pre><code class="language-css">.input{
+    background: white;
+    border: 1px solid;
 }
 </code></pre>
 
-<p>在來是前端建立表格時加入判斷，如果是就著色</p>
+<p>取得button物件和名稱變數<code>name</code>，<code>name</code>用來儲存名字使用</p>
 
-<pre><code class="language-js">connection.on(&quot;ReceiveFile&quot;, function (file) {
-    var count = 0;
-    for (var i = 0; i &lt; file.row; i++) {
-        var row = document.createElement('tr');
-        for (var j = 0; j &lt; file.column; j++) {
-            var cell = document.createElement('td');
-            cell.id = file.textList[count].cellName;
+<pre><code class="language-js">var connectBtn = document.getElementById('connectBtn');
+var name = '';
+</code></pre>
 
-            cell.addEventListener('click', cellEdit);
-            cell.addEventListener('input', change);
-            cell.appendChild(createCell(file.textList[count].text));
-            // 判斷是否為編輯中的表格
-            if (file.textList[count].editor != null)
-                cell.childNodes[0].style.background = document.getElementById(file.textList[count].editor).childNodes[0].style.backgroundColor
-            row.appendChild(cell);
-            count++;
-        }
-        table.append(row);
+<p>登入後跟Serve開始連線，也就是說之前的連線事件要放進button的onclick事件裡面，然後先切換區塊及儲存名字，在開始連線</p>
+
+<pre><code class="language-js">connectBtn.addEventListener('click', function () {
+    // 切換成文件選擇畫面
+    loginDiv.style.display = 'none';
+    fileListDiv.style.display = '';
+    // 儲存名字
+    name = document.getElementById('name').value;
+    // 連接事件
+    connection.start()
+    .then(function () {
+        connection.invoke('GetFile', LoadFile).catch(function (err) {
+            return console.error(err.toString());
+        });
+    })
+    .catch(function (err) {
+        return console.error(err.toString());
+    });
+});
+</code></pre>
+
+<blockquote>
+<p>註：原本的<code>connection.start()</code>記得刪除</p>
+</blockquote>
+
+<h1 id="連線文件列表建立">連線文件列表建立</h1>
+
+<p>我們一樣建立一個<code>select</code>元素當列表，一樣記得給他<code>multiple</code>屬性，上面放建立文件的<code>button</code>，下面放選擇文件的<code>button</code></p>
+
+<pre><code class="language-html">&lt;button id=&quot;goCreateFileBtn&quot; type=&quot;button&quot;&gt;建立新文件&lt;/button&gt;
+&lt;br&gt;
+&lt;select id=&quot;fileList&quot; multiple&gt;
+    
+&lt;/select&gt;
+&lt;br&gt;
+&lt;button id=&quot;getFileBtn&quot; type=&quot;button&quot;&gt;選擇文件&lt;/button&gt;
+</code></pre>
+
+<p>載入DOM</p>
+
+<pre><code class="language-js">var getFileBtn = document.getElementById('getFileBtn');
+var fileList = document.getElementById('fileList');
+var goCreateFileBtn = document.getElementById('goCreateFileBtn');
+</code></pre>
+
+<p>再來到<code>FileService</code>建立取得所有文件的方法<code>GetFileList</code></p>
+
+<pre><code class="language-cs">public List&lt;FileModel&gt; GetFileList()
+{
+    return list;
+}
+</code></pre>
+
+<p>然後到<code>FileHub</code>也新增取得所有文件的方法<code>GetFileList</code>，注意回傳給呼叫的User就好，傳送回去的方法叫做<code>ReceiveFileList</code></p>
+
+<pre><code class="language-cs">public async Task GetFileList()
+{            
+    await Clients.Caller.SendAsync(&quot;ReceiveFileList&quot;, _service.GetFileList());
+}
+</code></pre>
+
+<p>回前端的連線<code>connectBtn</code>的<code>click</code>事件從<code>GetFile</code>改成<code>GetFileList</code>，然後傳回的變數<code>LoadFile</code>刪除。</p>
+
+<pre><code class="language-js">connection.start()
+.then(function () {
+    connection.invoke('GetFileList').catch(function (err) {
+        return console.error(err.toString());
+    });
+})
+.catch(function (err) {
+    return console.error(err.toString());
+}
+</code></pre>
+
+<p>最後得到資料後，把資料填入<code>select</code>列表內</p>
+
+<pre><code class="language-js">connection.on(&quot;ReceiveFileList&quot;, function (fileListDate) {
+    // 清空列表
+    fileList.innerHTML = '';
+    // 建立列表
+    for (var i = 0; i &lt; fileListDate.length; i++) {
+        var option = document.createElement('option');
+        option.innerHTML = fileListDate[i].filename;
+        fileList.appendChild(option);
     }
 });
 </code></pre>
 
-<h2 id="demo">DEMO</h2>
+<h1 id="demo">DEMO</h1>
 
-<p>因為換視窗時會取消編輯，所以我沒辦法用2個瀏覽器視窗DEMO，改架在IIS上，尤其他裝置連上內網一起操作，這邊我使用的裝置是<code>ipad</code>，<code>ipad</code>由於readonly會叫不出虛擬鍵盤，所以我有先拿掉，以下DEMO
-<img src="LoadEditColor.gif" alt="LoadEditColor" /></p>
+<p><img src="Login.gif" alt="Login" /></p>
 
-<h1 id="避免編輯中關閉視窗">避免編輯中關閉視窗</h1>
-
-<p>這邊可以依靠<code>window</code>的<code>onbeforeunload</code>事件來避免這問題，先創一個暫存編輯中cell id的變數<code>editCell</code>，然後再編輯時<code>cellEdit</code>丟入，最後呼叫<code>onbeforeunload</code>事件丟回取消事件。</p>
-
-<pre><code class="language-js">var editCell;
-
-function cellEdit() {
-    this.childNodes[0].readOnly = false;
-    this.childNodes[0].focus();
-    editCell = this.id;
-}
-
-window.onbeforeunload = function(){
-    connection.invoke('CancelEditText', 'TestFile', editCell).catch(function (err) {
-        return console.error(err.toString());
-    });
-}
-</code></pre>
-
-<h2 id="demo-1">DEMO</h2>
-
-<p><img src="CloseEditColor.gif" alt="CloseEditColor" /></p>
-
-<h1 id="延遲回傳編輯的資訊">延遲回傳編輯的資訊</h1>
-
-<p>正常來說每打一個字或是刪除一個字都在回傳，這樣實在太消耗Server資源，所以我們應該要延遲一小段時間在回傳，最簡單的方法就是使用<code>lodash</code>的<code>debounce</code>來完成這項工作
-安裝<code>lodash</code></p>
-
-<p>首先引用CDN</p>
-
-<pre><code class="language-js">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-
-<p>使用<code>debounce()</code>方法來延遲傳回去的時間，<code>lodash</code>預設變數是<code>_</code>，所以我們要這樣呼叫<code>_.debounce()</code>，debounce還能設定延遲幾毫秒，我們設定延遲300毫秒傳回，然後寫在cell的input事件裡就行，在<code>connection.on(&quot;ReceiveFile&quot;)</code>裡面，第一個參數塞進要執行的function，第二個則是延遲的時間</p>
-
-<pre><code class="language-js">cell.addEventListener('input', _.debounce(change, 300));
-</code></pre>
-
-<h2 id="demo-2">DEMO</h2>
-
-<p><img src="Debounce.gif" alt="Debounce" /></p>
-
-<h1 id="讀取文件換成變數">讀取文件換成變數</h1>
-
-<p>因為我們下一篇要來做自訂的文件，不一定都是讀取測試文件，所以要把文件名稱換成變數拉出來，使用取代的方式就行<code>Ctrl+F</code>左側箭頭按下去，把<code>'TestFile'</code>取代成<code>LoadFile</code>，然後新增一個<code>LoadFile</code>變數</p>
-
-<pre><code class="language-js">var LoadFile = 'TestFile';
-</code></pre>
-
-<p>今天就這樣，明天來做多文件選擇和建立文件吧！</p>
-
-<h1 id="範例下載">範例下載</h1>
-
-<ul>
-<li><a href="https://drive.google.com/file/d/1mvQuzZeHd98l3vzEV9ZxZeFEoW9Rd8Kb/view?usp=sharing">範例下載</a></li>
-</ul>
+<p>今天就這些，明天來完成最後的部分</p>
 
     </div>
 
@@ -325,7 +368,7 @@ window.onbeforeunload = function(){
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-11-07</span>
+    <span class="item-content">2018-11-08</span>
   </p>
   
   <p class="copyright-item">
@@ -334,7 +377,7 @@ window.onbeforeunload = function(){
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-25/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-26/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -370,14 +413,9 @@ window.onbeforeunload = function(){
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-26/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-24/">
-            <span class="next-text nav-default">[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</span>
+          <a class="next" href="/post/ironman2019/ironman-day-25/">
+            <span class="next-text nav-default">[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

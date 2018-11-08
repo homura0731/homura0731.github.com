@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Wed, 07 Nov 2018 19:27:26 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Nov 2018 16:14:18 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-26/</link>
+      <pubDate>Thu, 08 Nov 2018 16:14:18 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-26/</guid>
+      <description>今天我們要來做自訂表格內容和連線列表，既然建立表格的方法都訂好了，當然要能從前端建立啊!XD 各畫面區塊建立 這次我想做4個畫面登入畫面、文件選</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</title>
