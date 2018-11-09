@@ -1,185 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ASP.NET Core on Homura&#39;s Blog</title>
+    <title>ASP.Net Core on Homura&#39;s Blog</title>
     <link>https://homura0731.github.io/tags/asp.net-core/</link>
-    <description>Recent content in ASP.NET Core on Homura&#39;s Blog</description>
+    <description>Recent content in ASP.Net Core on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 08 Nov 2018 16:14:18 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Oct 2018 20:38:52 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/asp.net-core/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-26/</link>
-      <pubDate>Thu, 08 Nov 2018 16:14:18 +0800</pubDate>
+      <title>[鐵人賽Day5] 使用SignalR Hub (2)</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-5/</link>
+      <pubDate>Thu, 18 Oct 2018 20:38:52 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-26/</guid>
-      <description>今天我們要來做自訂表格內容和連線列表，既然建立表格的方法都訂好了，當然要能從前端建立啊!XD 各畫面區塊建立 這次我想做4個畫面登入畫面、文件選</description>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-5/</guid>
+      <description>今天來點輕鬆的吧！來寫寫強型別的Hub和把HubContext注入Controller 強型別Hub的好處 SignalR的Hub介面只規定我們</description>
     </item>
     
     <item>
-      <title>[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-25/</link>
-      <pubDate>Wed, 07 Nov 2018 19:27:26 +0800</pubDate>
+      <title>[鐵人賽Day4] 使用SignalR Hub (1)</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-4/</link>
+      <pubDate>Wed, 17 Oct 2018 19:11:15 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-25/</guid>
-      <description>今天是一些小地方的修正，其實做到這邊還有很多需要修正的地方，一個是重整後編輯中的顏色不會重新讀取，一個是編輯中關閉不會回船取消編輯，就是在編</description>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-4/</guid>
+      <description>SignalR Hub是什麼? 其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是Browser和Server溝通的</description>
     </item>
     
     <item>
-      <title>[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-24/</link>
-      <pubDate>Tue, 06 Nov 2018 19:32:39 +0800</pubDate>
+      <title>[鐵人賽Day3] 第一個SingalR專案</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-3/</link>
+      <pubDate>Tue, 16 Oct 2018 19:44:57 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-24/</guid>
-      <description>今天要來幫編輯中的表格更換顏色，顏色就是昨天做的使用者顏色，這次是要放到編輯的cell內，並且鎖住不讓其他人同時編輯。 幫編輯中的表格著色 我發</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-23/</link>
-      <pubDate>Mon, 05 Nov 2018 20:02:42 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-23/</guid>
-      <description>昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day22] 實作Web即時共同編輯文件 (2) - 使用signalR同步文件內容</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-22/</link>
-      <pubDate>Sun, 04 Nov 2018 09:14:44 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-22/</guid>
-      <description>沒想到昨天光完成前端的部分就花那麼多時間，看來這次實作比上次難了不少，大概是因為沒使用套件的關係吧！ＸＤ 那麼今天就來做signalR同步的部</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day21] 實作Web即時共同編輯文件 (1) - 建立文件編輯介面</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-21/</link>
-      <pubDate>Sat, 03 Nov 2018 09:37:24 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-21/</guid>
-      <description>有沒有覺得第一次看到Google共用編輯文件很好玩，它把類似Excel功能搬到Web上，然後又能共同編輯，我們這次就是要來模仿做一個類似GO</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day20] 實作一個即時投票系統 (5) - 讀取建立的投票</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-20/</link>
-      <pubDate>Fri, 02 Nov 2018 20:50:53 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-20/</guid>
-      <description>今天就是即時投票系統最後一篇了，讓我們努力把它完成吧！ 讀取投票資料 首先我們要把畫面改一下，一堆按鈕投票感覺很笨 投票畫面修改 我們這次不要一堆按</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day19] 實作一個即時投票系統 (4) - 建立投票列表</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-19/</link>
-      <pubDate>Thu, 01 Nov 2018 19:23:53 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-19/</guid>
-      <description>今天我們要來做投票列表，概念跟Day11的上線名單一模一樣，忘記的可以去回顧一下，那麼我們就開始吧！ 建立列表HTML元素 我們先把voteMe</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day18] 實作一個即時投票系統 (3) - 自訂投票內容</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-18/</link>
-      <pubDate>Wed, 31 Oct 2018 19:22:29 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-18/</guid>
-      <description>今天繼續把投票系統沒做完的做完吧，上一篇我們是從後端建立一個新的投票，今天我們要做成改成前端建立投票，然後讓大家進去投票，這個部分有點長，所</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day17] 實作一個即時投票系統 (2) - 使用signalR同步投票</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-17/</link>
-      <pubDate>Tue, 30 Oct 2018 19:43:35 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-17/</guid>
-      <description>今天要來把即時投票系統跟SignalR連線囉！ 基本上跟塗鴉板也是差不多，但是投票系統應該需要自訂投票的選項和建立投票的種類，這個部份我們需要</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day15] 實作一個共用塗鴉牆 (4) - 載入時同步</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-15/</link>
-      <pubDate>Sun, 28 Oct 2018 09:31:57 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-15/</guid>
-      <description>今天應該最後一篇塗鴉牆了，來講講畫版載入時同步的功能，在載入時必須和前面畫過的畫面同步，避免之後進來的人看到的畫面跟先進來看到會有不一樣的狀</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day14] 實作一個共用塗鴉牆 (3) - 新增橡皮擦功能</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-14/</link>
-      <pubDate>Sat, 27 Oct 2018 10:31:00 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-14/</guid>
-      <description>今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。 橡皮擦功能 這邊我在實作時，一開始是想</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day13] 實作一個共用塗鴉牆 (2) - signal同步畫板</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-13/</link>
-      <pubDate>Fri, 26 Oct 2018 10:52:26 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-13/</guid>
-      <description>今天要來做塗鴉牆第2部分，首先我們得想想該回傳些什麼，制定一個Json格式回傳回去。 前端部分 連接部分程式碼先寫好 var connection = new signalR.HubConnectionBuilder().withUrl(&amp;quot;/drawHub&amp;quot;).build(); // 連接事件 connection.start().catch(function (err) { return</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day12] 實作一個共用塗鴉牆 (1) - 前端塗鴉板製作</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-12/</link>
-      <pubDate>Thu, 25 Oct 2018 20:05:47 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-12/</guid>
-      <description>今天我們來實作一個共用塗鴉牆，其實之前看到Canvas的應用一直想玩玩看，但是一直都沒時間玩，剛好這次SignalR實作可以用到!XD 這次實</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day11] 實作一個連線名單</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-11/</link>
-      <pubDate>Wed, 24 Oct 2018 19:30:46 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-11/</guid>
-      <description>今天要來個小型的實作一個連線名單，連線名單可以讓你知道目前在線的人有誰(廢話)，之前的範例都是在進入時傳送訊息給所有人，如果是中途進來的人，</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day10] SignalR 組態設定</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-10/</link>
-      <pubDate>Tue, 23 Oct 2018 19:06:44 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-10/</guid>
-      <description>先來碎碎念一下，昨天gitpage一直有問題，害我git push好幾次，後來發現repo裡的文件是新的沒錯，今天一看又好了，真是的浪費我快3</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day9] 使用MessagePack傳輸更小的資料</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-9/</link>
-      <pubDate>Mon, 22 Oct 2018 19:22:04 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-9/</guid>
-      <description>MessagePack是一個類似Json格式但是比Json速度更快、檔案更小，不過似乎還沒很流行就是了，既然ASP.Net Core SignalR文</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day8] 使用Json傳遞訊息和跨網域驗證</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-8/</link>
-      <pubDate>Sun, 21 Oct 2018 09:42:05 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-8/</guid>
-      <description>今天要來講講怎麼使用JSON傳遞訊息及跨網域訊息。 使用JSON格式 在Service註冊 其實這步是可以跳過，因為SignalR預設會開啟Add</description>
-    </item>
-    
-    <item>
-      <title>[鐵人賽Day7] SignalR 群組概念與使用</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-7/</link>
-      <pubDate>Sat, 20 Oct 2018 12:03:55 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-7/</guid>
-      <description>今天來介紹群組的運作，不知道會不會有人問為什麼要群組？？總不能每次訊息都傳給所有人吧!XD 所以今天就讓我們好好來介紹一下SignalR群組運</description>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-3/</guid>
+      <description>前言 我想先帶大家做一遍，之後再開始講觀念，因為我覺得這樣會比較好玩一點XD。 建立Web專案 首先先開啟終端機(命令提示字元)，輸入下面指令建立</description>
     </item>
     
   </channel>

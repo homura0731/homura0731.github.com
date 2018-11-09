@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單 - Homura&#39;s Blog</title>
+  <title>[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件 - Homura&#39;s Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Homura Lin" />
-  <meta name="description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝" />
+  <meta name="description" content="今天就來完成最後的部分吧！最後要載入和建立自訂的文件，首先來先來做建立的部分 建立自訂文件 首先先建立切換畫面事件，讓建立文件的Button能切" />
 
   <meta name="keywords" content="Homura&#39;s Blog, IT, blog, C#, .Net, Vue.js" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-23/" />
+<link rel="canonical" href="https://homura0731.github.io/post/ironman2019/ironman-day-27/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,25 +51,25 @@
 
 
 
-<meta property="og:title" content="[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單" />
-<meta property="og:description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝" />
+<meta property="og:title" content="[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件" />
+<meta property="og:description" content="今天就來完成最後的部分吧！最後要載入和建立自訂的文件，首先來先來做建立的部分 建立自訂文件 首先先建立切換畫面事件，讓建立文件的Button能切" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-23/" /><meta property="article:published_time" content="2018-11-05T20:02:42&#43;08:00"/>
-<meta property="article:modified_time" content="2018-11-05T20:02:42&#43;08:00"/>
-<meta itemprop="name" content="[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單">
-<meta itemprop="description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝">
+<meta property="og:url" content="https://homura0731.github.io/post/ironman2019/ironman-day-27/" /><meta property="article:published_time" content="2018-11-09T20:26:31&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-09T20:26:31&#43;08:00"/>
+<meta itemprop="name" content="[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件">
+<meta itemprop="description" content="今天就來完成最後的部分吧！最後要載入和建立自訂的文件，首先來先來做建立的部分 建立自訂文件 首先先建立切換畫面事件，讓建立文件的Button能切">
 
 
-<meta itemprop="datePublished" content="2018-11-05T20:02:42&#43;08:00" />
-<meta itemprop="dateModified" content="2018-11-05T20:02:42&#43;08:00" />
-<meta itemprop="wordCount" content="1109">
+<meta itemprop="datePublished" content="2018-11-09T20:26:31&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-09T20:26:31&#43;08:00" />
+<meta itemprop="wordCount" content="1334">
 
 
 
 <meta itemprop="keywords" content="2019鐵人賽,SignalR,ASP.NET Core,ShareFile,JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單"/>
-<meta name="twitter:description" content="昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！ 建立上線名單 首先我們來做一下上線名單的樣式，Day11一個Select元素裝"/>
+<meta name="twitter:title" content="[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件"/>
+<meta name="twitter:description" content="今天就來完成最後的部分吧！最後要載入和建立自訂的文件，首先來先來做建立的部分 建立自訂文件 首先先建立切換畫面事件，讓建立文件的Button能切"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,12 +136,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單</h1>
+      <h1 class="post-title">[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件</h1>
 
       <div class="post-meta">
         <span class="post-time"> 
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-          2018-11-05 
+          2018-11-09 
         </span>
         <div class="post-category">
             
@@ -151,7 +151,7 @@
           </div>
         <span class="more-meta"> 
           <i class="fa fa-book" aria-hidden="true"></i>
-          約 1109 字
+          約 1334 字
         </span>
         <span class="more-meta">
           <i class="far fa-clock" aria-hidden="true"></i>
@@ -169,15 +169,17 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#建立上線名單">建立上線名單</a></li>
-<li><a href="#後端部分">後端部分</a>
+<li><a href="#建立自訂文件">建立自訂文件</a>
 <ul>
-<li><a href="#修改fileservice">修改FileService</a></li>
-<li><a href="#修改filehub">修改FileHub</a></li>
+<li><a href="#建立文件畫面">建立文件畫面</a></li>
+<li><a href="#建立新增文件事件">建立新增文件事件</a></li>
 </ul></li>
-<li><a href="#更新上線名單">更新上線名單</a></li>
+<li><a href="#讀取文件部分修改">讀取文件部分修改</a>
+<ul>
+<li><a href="#使用者清單改用名稱顯示">使用者清單改用名稱顯示</a></li>
+</ul></li>
 <li><a href="#demo">DEMO</a></li>
-<li><a href="#參考-範例下載">參考 &amp; 範例下載</a></li>
+<li><a href="#範例下載">範例下載</a></li>
 </ul>
 </nav>
   </div>
@@ -190,134 +192,132 @@
     <div class="post-content">
       
 
-<p>昨天我們做到能互相傳遞編輯的文字，今天我們要來實現上線的名單吧！</p>
+<p>今天就來完成最後的部分吧！最後要載入和建立自訂的文件，首先來先來做建立的部分</p>
 
-<h1 id="建立上線名單">建立上線名單</h1>
+<h1 id="建立自訂文件">建立自訂文件</h1>
 
-<p>首先我們來做一下上線名單的樣式，Day11一個Select元素裝進去太醜了，這次我做成跟google一樣用橫的，放在表格的正上方，我要定義3個區塊的CSS，一個是上線列表、一個是代表的顏色區塊、一個是使用者。</p>
+<p>首先先建立切換畫面事件，讓建立文件的Button能切換頁面</p>
 
-<pre><code class="language-css">.onlineList {
-    display: inline;
-    margin: 0px;
-    padding: 0px;
-}
-
-.userColor {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    display: inline-block;
-}
-
-.user {
-    display: inline-block;
-    margin-right: 3px;
-    padding-right: 5px;
-    /* 分隔線 */
-    border-right: 2px gray solid;
-}
+<pre><code class="language-js">goCreateFileBtn.addEventListener('click',function(){
+    // 切換成建立文件選擇畫面
+    fileListDiv.style.display = 'none';
+    createFileDiv.style.display = '';
+});
 </code></pre>
 
-<p>html部分記得放在表格上面</p>
+<h2 id="建立文件畫面">建立文件畫面</h2>
 
-<pre><code class="language-html">&lt;div  id=&quot;userList&quot; class=&quot;onlineList&quot;&gt;&lt;/div&gt;
-&lt;hr&gt;
+<p>再來是建立文件的畫面</p>
+
+<pre><code class="language-html">&lt;button id=&quot;cancelCreateFile&quot; type=&quot;button&quot; &gt;取消&lt;/button&gt;&lt;br&gt;&lt;br&gt;
+文件名稱：&lt;input id=&quot;newFileName&quot; type=&quot;text&quot;  class=&quot;input&quot;&gt;&lt;br&gt;&lt;br&gt;
+欄位數：&lt;input id=&quot;newCol&quot; type=&quot;text&quot;  class=&quot;input&quot;&gt;&lt;br&gt;&lt;br&gt;
+列位數：&lt;input id=&quot;newRow&quot; type=&quot;text&quot;  class=&quot;input&quot;&gt;&lt;br&gt;&lt;br&gt;
+&lt;button id=&quot;createFileBtn&quot; type=&quot;button&quot;&gt;建立文件&lt;/button&gt;&lt;br&gt;
 </code></pre>
 
-<p>載入DOM</p>
+<p>讀取DOM</p>
 
-<pre><code class="language-js">var userList = document.getElementById('userList');
+<pre><code class="language-js">var cancelCreateFile = document.getElementById('cancelCreateFile');
+var createFileBtn = document.getElementById('createFileBtn');
 </code></pre>
 
-<h1 id="後端部分">後端部分</h1>
+<h2 id="建立新增文件事件">建立新增文件事件</h2>
 
-<p>我們需要在後端控制加入和退出的動作，然後再把連線列表傳給所有人</p>
+<p>新增取消建立文件按鈕事件，讓他返回文件選擇畫面</p>
 
-<h2 id="修改fileservice">修改FileService</h2>
+<pre><code class="language-js">cancelCreateFile.addEventListener('click',function(){
+    // 切換成文件選擇畫面
+    createFileDiv.style.display = 'none';
+    fileListDiv.style.display = '';
+});
+</code></pre>
 
-<p>首先先在FileService增加取得所有使用者、加入、移除使用者的功能，加入使用者<code>AddUser</code>在加入時，我們需要隨機產生一個代表色給他，主要注意的是這次的<code>RemoveUser</code>，不要使用<code>LINQ</code>的方式，改用foreach找出來<code>user id</code>，再移除他，移除後記得傳回名單，因為<code>GetUserList</code>是使用<code>fileName</code>的方式找出來，使用者離線時無法得知他用哪個文件。</p>
+<p>新增建立按鈕事件，把Form的資料都丟回去就行，接收部分一樣是<code>connection.on(&quot;ReceiveUserList&quot;)</code>，昨天已經建立了，所以就不需要接收事件了，成功後用<code>.then()</code>切換畫面，因為<code>connection.on(&quot;ReceiveUserList&quot;)</code>不只有建立文件時接收，所以改成<code>.then()</code>裡面。</p>
 
-<pre><code class="language-cs">public List&lt;UserModel&gt; GetUserList(string fileName)
+<pre><code class="language-js">createFileBtn.addEventListener('click', function () {
+    var newFileName = document.getElementById('newFileName').value;
+    var newRow = document.getElementById('newRow').value;
+    var newCol = document.getElementById('newCol').value;
+
+    connection.invoke(&quot;CreateFile&quot;, newFileName, newCol, newRow).then(function(){
+        // 切換成文件列表畫面
+        createFileDiv.style.display = 'none';
+        fileListDiv.style.display = '';
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+});
+</code></pre>
+
+<p>再來到後端的<code>FileHub</code>引用泛型和<code>Models</code></p>
+
+<pre><code class="language-cs">using System.Collections.Generic;
+using EditFileWeb.Models;
+</code></pre>
+
+<p>然後到建立一個方法<code>CreateFile</code>，內容跟之前建立測試文件一樣，只要把內容換成前端Form傳回的值就行</p>
+
+<pre><code class="language-cs">public async Task CreateFile(string fileName, int col, int row)
 {
-    var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
-
-    return file.editor;
-}
-
-// 加入使用者
-public bool AddUser(string fileName, string id)
-{
-    // 找出哪個file
-    var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
-    var userModel = new UserModel();
-    var rnd = new Random();
-    userModel.id = id;
-    // 顏色隨機產生
-    userModel.color = $&quot;rgb({rnd.Next(0, 255)}, {rnd.Next(0, 255)}, {rnd.Next(0, 255)})&quot;;
-    file.editor.Add(userModel);
-    return true;
-}
-
-// 移除使用者
-public List&lt;UserModel&gt; RemoveUser(string id)
-{
-    List&lt;UserModel&gt; userList = new List&lt;UserModel&gt;();
-
-    foreach (var file in list)
+    var fileModel = new FileModel();
+    fileModel.creator = Context.ConnectionId;
+    fileModel.filename = fileName;
+    fileModel.row = row;
+    fileModel.column = col;
+    fileModel.editor = new List&lt;UserModel&gt;();
+    List&lt;CellModel&gt; textList = new List&lt;CellModel&gt;();
+    for (int i = 0; i &lt; col; i++)
     {
-        // 找出哪個file
-        var editor = (from f in file.editor where f.id == id select f).FirstOrDefault();
-        if (editor != null)
+        for (int j = 0; j &lt; row; j++)
         {
-            file.editor.Remove(editor);
-            userList = file.editor;
+            var cellModel = new CellModel();
+            cellModel.lockState = true;
+            cellModel.text = &quot;&quot;;
+            cellModel.cellName = $&quot;{i}{j}&quot;;
+            textList.Add(cellModel);
         }
     }
+    fileModel.textList = textList;
+    _service.AddFile(fileModel);
 
-    return userList;
+    await Clients.All.SendAsync(&quot;ReceiveFileList&quot;, _service.GetFileList());
 }
 </code></pre>
 
-<h2 id="修改filehub">修改FileHub</h2>
+<h1 id="讀取文件部分修改">讀取文件部分修改</h1>
 
-<p>Hub不需要建立新的方法，但我們要修改2個方法，一個是取得使用者列表的<code>GetFile()</code>，一個是斷線時的<code>OnDisconnectedAsync()</code></p>
+<p>回到前端部分，讀取文件的按鈕事件，先把讀取中的<code>LoadFile</code>對象換成選擇的文件<code>fileName</code>，再來因為我們已經多了名稱的機制，所以讀取文件時多傳一個<code>name</code>回去</p>
 
-<pre><code class="language-cs">public async Task GetFile(string fileName)
-{
-    // 取得文件
-    var file = _service.GetFile(fileName);
-    // 加入使用者
-    _service.AddUser(fileName, Context.ConnectionId);
+<pre><code class="language-js">// 取得文件按鈕事件
+getFileBtn.addEventListener('click', function () {
+    // 去得選擇文件的名稱
+    var fileName = document.getElementById('fileList').value;
+    // 使用中的文件變數
+    LoadFile = fileName;
 
-    await Clients.Caller.SendAsync(&quot;ReceiveFile&quot;, file);
-    await Clients.All.SendAsync(&quot;ReceiveUserList&quot;, _service.GetUserList(fileName));
-}
-
-public override async Task OnDisconnectedAsync(Exception exception)
-{ 
-    await base.OnDisconnectedAsync(exception);
-
-    // 移除使用者並重新傳回使用者的表單
-    await Clients.All.SendAsync(&quot;ReceiveUserList&quot;,  _service.RemoveUser(Context.ConnectionId));
-}
+    connection.invoke(&quot;GetFile&quot;, fileName, name).catch(function (err) {
+        return console.error(err.toString());
+    });
+});
 </code></pre>
 
-<p>後端到這邊完成！！</p>
+<p>建立表格的方式我們不需要改，只需加入切換畫面就好</p>
 
-<h1 id="更新上線名單">更新上線名單</h1>
+<pre><code class="language-js">connection.on(&quot;ReceiveFile&quot;, function (file) {
+    // 切換成文件編輯畫面
+    fileListDiv.style.display = 'none';
+    fileDiv.style.display = '';
 
-<p>首先我們需要知道自己的<code>connectionid</code>是多少，但是signalR好像沒提供這方法，但是物件裡有找到，但是是完整的連線<code>URL</code>，我們需要抓內部的<code>queryString</code>，先建立抓<code>queryString</code>的方法，我們用正則的方法過濾</p>
+    // 建立文件
+    // 略....
 
-<pre><code class="language-js">function getQueryStringByName(name) {
-    var result = connection.connection.transport.webSocket.url.match(new RegExp(&quot;[\?\&amp;]&quot; + name + &quot;=([^\&amp;]+)&quot;, &quot;i&quot;));
-    if (result == null || result.length &lt; 1) {
-        return &quot;&quot;;
-    }
-    return result[1];
-}
+});
 </code></pre>
 
-<p>建立更新上線名單的事件，先清空<code>userList</code>，再把元素塞進去，然後再填入名單時只要叫上方的函數驗證倒是自己的<code>connectionid</code>的話，名稱就改成顯示自己，由於我們沒有作相關的會員制度，所以這邊還沒有名字，所以改由<code>connectionid</code>來顯示。</p>
+<h2 id="使用者清單改用名稱顯示">使用者清單改用名稱顯示</h2>
+
+<p><code>connection.on(&quot;ReceiveUserList&quot;)</code>改成使用<code>name</code>來判斷是不是自己，塞進去的名稱也改成<code>name</code></p>
 
 <pre><code class="language-js">connection.on(&quot;ReceiveUserList&quot;, function (userListData) {
     userList.innerHTML = '';
@@ -329,26 +329,62 @@ public override async Task OnDisconnectedAsync(Exception exception)
         userColor.className = 'userColor';
         userColor.style.backgroundColor = userListData[i].color;
         user.appendChild(userColor);
-        if (getQueryStringByName('id') == userListData[i].id)
+        // 判斷對象改成名稱
+        if (name == userListData[i].name)
             user.append('自己');
         else
-            user.append(userListData[i].id);
+            user.append(userListData[i].name); // 改成塞進名稱
         userList.appendChild(user);
     }
 });
 </code></pre>
 
-<p>這樣就完成啦！</p>
+<p>後端也需要修改，首先是<code>FileService</code>的<code>AddUser</code>，需要增加接收一個使用者名稱變數<code>name</code>，然後塞進<code>UserModel</code>容器內。</p>
+
+<pre><code class="language-cs">public bool AddUser(string fileName, string id, string name)
+{
+    // 找出哪個file
+    var file = (from f in list where f.filename == fileName select f).FirstOrDefault();
+    var userModel = new UserModel();
+    var rnd = new Random();
+    userModel.id = id;
+    userModel.name = name;
+    // 顏色隨機產生
+    userModel.color = $&quot;rgb({rnd.Next(0, 255)}, {rnd.Next(0, 255)}, {rnd.Next(0, 255)})&quot;;
+    file.editor.Add(userModel);
+    return true;
+}
+</code></pre>
+
+<p>再來<code>FileHub</code>部分，也是多一個名稱變數，使用<code>AddUser</code>新增進去就行。</p>
+
+<pre><code class="language-cs">public async Task GetFile(string fileName, string name)
+{
+    // 取得文件
+    var file = _service.GetFile(fileName);
+    // 加入使用者
+    _service.AddUser(fileName, Context.ConnectionId, name);
+
+    await Clients.All.SendAsync(&quot;ReceiveUserList&quot;, _service.GetUserList(fileName));
+    await Clients.Caller.SendAsync(&quot;ReceiveFile&quot;, file);
+}
+</code></pre>
+
+<p>這樣就大功告成啦！！！</p>
 
 <h1 id="demo">DEMO</h1>
 
-<p><img src="OnlineList.gif" alt="OnlineList" /></p>
+<p><img src="FileEditFinal.gif" alt="FileEditFinal" />
+發現時間有點長，多個影片版</p>
 
-<h1 id="參考-範例下載">參考 &amp; 範例下載</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fXFrCN7lH7M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>做完這邊發現有不少BUG，明天再來把這些小BUG慢慢地修正完成！</p>
+
+<h1 id="範例下載">範例下載</h1>
 
 <ul>
-<li><a href="https://www.cnblogs.com/sunnycoder/archive/2010/02/28/1674998.html">JS取得queryString</a></li>
-<li><a href="https://drive.google.com/file/d/1TZSUJQtxCqOHJDIJCVdf3gyOaRq2BVL4/view?usp=sharing">範例下載</a></li>
+<li><a href="https://drive.google.com/file/d/1Lrq5kkinHoa3Zpd7FYdM0rZ4jUw8LBpQ/view?usp=sharing">範例下載</a></li>
 </ul>
 
     </div>
@@ -361,7 +397,7 @@ public override async Task OnDisconnectedAsync(Exception exception)
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-11-05</span>
+    <span class="item-content">2018-11-09</span>
   </p>
   
   <p class="copyright-item">
@@ -370,7 +406,7 @@ public override async Task OnDisconnectedAsync(Exception exception)
   </p>
   <p class="copyright-item" >
       <span class="item-content">
-    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-23/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="fb-like" style="margin-left:10px" data-href="https://homura0731.github.io/post/ironman2019/ironman-day-27/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     </span> 
   </p>
 </div>
@@ -406,14 +442,9 @@ public override async Task OnDisconnectedAsync(Exception exception)
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ironman2019/ironman-day-24/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/ironman2019/ironman-day-22/">
-            <span class="next-text nav-default">[鐵人賽Day22] 實作Web即時共同編輯文件 (2) - 使用signalR同步文件內容</span>
+          <a class="next" href="/post/ironman2019/ironman-day-26/">
+            <span class="next-text nav-default">[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

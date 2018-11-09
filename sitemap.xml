@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://homura0731.github.io/post/ironman2019/ironman-day-27/</loc>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://homura0731.github.io/post/ironman2019/ironman-day-26/</loc>
     <lastmod>2018-11-08T16:14:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -319,14 +326,14 @@
   
   <url>
     <loc>https://homura0731.github.io/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</loc>
-    <lastmod>2018-11-08T16:14:18+08:00</lastmod>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://homura0731.github.io/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</loc>
-    <lastmod>2018-11-08T16:14:18+08:00</lastmod>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -340,7 +347,7 @@
   
   <url>
     <loc>https://homura0731.github.io/tags/asp.net-core/</loc>
-    <lastmod>2018-11-08T16:14:18+08:00</lastmod>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -367,7 +374,7 @@
   </url>
   
   <url>
-    <loc>https://homura0731.github.io/tags/c#/</loc>
+    <loc>https://homura0731.github.io/tags/c/</loc>
     <lastmod>2017-06-10T14:47:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -389,7 +396,7 @@
   
   <url>
     <loc>https://homura0731.github.io/categories/</loc>
-    <lastmod>2018-11-08T16:14:18+08:00</lastmod>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -480,7 +487,7 @@
   
   <url>
     <loc>https://homura0731.github.io/</loc>
-    <lastmod>2018-11-08T16:14:18+08:00</lastmod>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -515,7 +522,7 @@
   
   <url>
     <loc>https://homura0731.github.io/tags/javascript/</loc>
-    <lastmod>2018-11-08T16:14:18+08:00</lastmod>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -543,7 +550,7 @@
   
   <url>
     <loc>https://homura0731.github.io/post/</loc>
-    <lastmod>2018-11-08T16:14:18+08:00</lastmod>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -557,14 +564,14 @@
   
   <url>
     <loc>https://homura0731.github.io/tags/sharefile/</loc>
-    <lastmod>2018-11-08T16:14:18+08:00</lastmod>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://homura0731.github.io/tags/signalr/</loc>
-    <lastmod>2018-11-08T16:14:18+08:00</lastmod>
+    <lastmod>2018-11-09T20:26:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
