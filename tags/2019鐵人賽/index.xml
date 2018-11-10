@@ -6,10 +6,19 @@
     <description>Recent content in 2019鐵人賽 on Homura&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Sat, 10 Nov 2018 10:23:05 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 11 Nov 2018 07:32:33 +0800</lastBuildDate>
     
 	<atom:link href="https://homura0731.github.io/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[鐵人賽Day29] 部屬Signal到Server上</title>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-29/</link>
+      <pubDate>Sun, 11 Nov 2018 07:32:33 +0800</pubDate>
+      
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-29/</guid>
+      <description>既然實作都做完了，卻只能單機自己使用好像怪怪的，至少要能開放自己的內網使用才對，所以今天要來教大家怎麼把自己的signalR部署到Apac</description>
+    </item>
     
     <item>
       <title>[鐵人賽Day28] 實作Web即時共同編輯文件 (8) - 最後的BUG修正&#43;小功能添加</title>
@@ -184,82 +193,82 @@
     
     <item>
       <title>[鐵人賽Day9] 使用MessagePack傳輸更小的資料</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-9/</link>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-09/</link>
       <pubDate>Mon, 22 Oct 2018 19:22:04 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-9/</guid>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-09/</guid>
       <description>MessagePack是一個類似Json格式但是比Json速度更快、檔案更小，不過似乎還沒很流行就是了，既然ASP.Net Core SignalR文</description>
     </item>
     
     <item>
       <title>[鐵人賽Day8] 使用Json傳遞訊息和跨網域驗證</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-8/</link>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-08/</link>
       <pubDate>Sun, 21 Oct 2018 09:42:05 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-8/</guid>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-08/</guid>
       <description>今天要來講講怎麼使用JSON傳遞訊息及跨網域訊息。 使用JSON格式 在Service註冊 其實這步是可以跳過，因為SignalR預設會開啟Add</description>
     </item>
     
     <item>
       <title>[鐵人賽Day7] SignalR 群組概念與使用</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-7/</link>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-07/</link>
       <pubDate>Sat, 20 Oct 2018 12:03:55 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-7/</guid>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-07/</guid>
       <description>今天來介紹群組的運作，不知道會不會有人問為什麼要群組？？總不能每次訊息都傳給所有人吧!XD 所以今天就讓我們好好來介紹一下SignalR群組運</description>
     </item>
     
     <item>
       <title>[鐵人賽Day6] SignalR 前端API運用</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-6/</link>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-06/</link>
       <pubDate>Fri, 19 Oct 2018 14:43:05 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-6/</guid>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-06/</guid>
       <description>連接事件 建立連線，我們需要建立一個連線物件，withUrl(Hub)裡的參數放入要連接的Hub名稱，再用build()建立連線物件。 var connection = new</description>
     </item>
     
     <item>
       <title>[鐵人賽Day5] 使用SignalR Hub (2)</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-5/</link>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-05/</link>
       <pubDate>Thu, 18 Oct 2018 20:38:52 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-5/</guid>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-05/</guid>
       <description>今天來點輕鬆的吧！來寫寫強型別的Hub和把HubContext注入Controller 強型別Hub的好處 SignalR的Hub介面只規定我們</description>
     </item>
     
     <item>
       <title>[鐵人賽Day4] 使用SignalR Hub (1)</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-4/</link>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-04/</link>
       <pubDate>Wed, 17 Oct 2018 19:11:15 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-4/</guid>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-04/</guid>
       <description>SignalR Hub是什麼? 其實你從它的名字也看得出來是什麼，Hub不就是集線器的意思XD，不過這邊的線不是網路線而是Browser和Server溝通的</description>
     </item>
     
     <item>
       <title>[鐵人賽Day3] 第一個SingalR專案</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-3/</link>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-03/</link>
       <pubDate>Tue, 16 Oct 2018 19:44:57 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-3/</guid>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-03/</guid>
       <description>前言 我想先帶大家做一遍，之後再開始講觀念，因為我覺得這樣會比較好玩一點XD。 建立Web專案 首先先開啟終端機(命令提示字元)，輸入下面指令建立</description>
     </item>
     
     <item>
       <title>[鐵人賽Day2] 架設SignalR環境</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-2/</link>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-02/</link>
       <pubDate>Mon, 15 Oct 2018 19:28:52 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-2/</guid>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-02/</guid>
       <description>今天來先來裝需要的環境 需要的OS環境 OS環境Windows、Linux、Mac OS任一都行，主要操作是用dotNet CLI和VS Code不用</description>
     </item>
     
     <item>
       <title>[鐵人賽Day1] ASP.Net Core SignalR 導讀</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-1/</link>
+      <link>https://homura0731.github.io/post/ironman2019/ironman-day-01/</link>
       <pubDate>Sun, 14 Oct 2018 19:39:50 +0800</pubDate>
       
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-1/</guid>
+      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-01/</guid>
       <description>今天第一天來點輕鬆的，我們來說說SignalR是什麼? ASP.NET Core SignalR是什麼？ SignalR是一個能輕鬆架構即時互動(real-time)</description>
     </item>
     
