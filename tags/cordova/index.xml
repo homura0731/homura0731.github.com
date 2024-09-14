@@ -1,33 +1,333 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Cordova on Homura&#39;s Blog</title>
-    <link>https://homura0731.github.io/tags/cordova/</link>
-    <description>Recent content in Cordova on Homura&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-TW</language>
-    <lastBuildDate>Mon, 08 May 2017 20:14:58 +0000</lastBuildDate>
-    
-	<atom:link href="https://homura0731.github.io/tags/cordova/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Cordova - 環境安裝2 - Android篇</title>
-      <link>https://homura0731.github.io/post/2017/05/cordova-set_up-android/</link>
-      <pubDate>Mon, 08 May 2017 20:14:58 +0000</pubDate>
-      
-      <guid>https://homura0731.github.io/post/2017/05/cordova-set_up-android/</guid>
-      <description>前言 繼上篇Cordova安裝之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的</description>
-    </item>
-    
-    <item>
-      <title>Cordova - 環境安裝</title>
-      <link>https://homura0731.github.io/post/2017/04/cordova-set_up/</link>
-      <pubDate>Sun, 23 Apr 2017 19:19:59 +0000</pubDate>
-      
-      <guid>https://homura0731.github.io/post/2017/04/cordova-set_up/</guid>
-      <description>前言 什麼是Cordova? Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機Ap</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Cordova on Homura&#39;s Blog</title>
+        <link>http://localhost:1313/tags/cordova/</link>
+        <description>Recent content in Cordova on Homura&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <copyright>Homura Lin</copyright>
+        <lastBuildDate>Mon, 08 May 2017 20:14:58 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/cordova/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cordova - 環境安裝2 - Android篇</title>
+        <link>http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/</link>
+        <pubDate>Mon, 08 May 2017 20:14:58 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/</guid>
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言
+&lt;/h1&gt;&lt;p&gt;繼上篇&lt;a class=&#34;link&#34; href=&#34;https://homura0731.github.io/2017/04/Cordova-Set_up/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cordova安裝&lt;/a&gt;之後，接下來要說一下怎麼編譯成apk和使用android模擬器運行，其實我在學會使用Apache Cordova的編譯器之前，都是用Adobe Phonegap的線上編譯器，其實用久真的不是很好用，還是能在自己的PC編譯比較好，那就廢話不多說進入實作吧。&lt;/p&gt;
+&lt;h1 id=&#34;實作&#34;&gt;實作
+&lt;/h1&gt;&lt;h2 id=&#34;幫專案添加android-platform&#34;&gt;幫專案添加android platform
+&lt;/h2&gt;&lt;p&gt;使用以下指令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cordova platform add android
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/1.png&#34;
+	width=&#34;967&#34;
+	height=&#34;272&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/1_hu3641861286168543295.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/1_hu545239598635358917.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;添加android platform&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;355&#34;
+		data-flex-basis=&#34;853px&#34;
+	
+&gt;
+成功的話專案下的platforms資料夾底下會多出一個android資料夾
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/2.png&#34;
+	width=&#34;195&#34;
+	height=&#34;96&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/2_hu16245095986404154370.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/2_hu889845444310217917.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;添加android platform 成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;487px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;使用android-模擬器模擬&#34;&gt;使用android 模擬器模擬
+&lt;/h2&gt;&lt;p&gt;使用以下指令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cordova run android
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然後應該會看到以下錯誤訊息，因為還沒設置android sdk的path
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/3.png&#34;
+	width=&#34;923&#34;
+	height=&#34;89&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/3_hu7648006772727838424.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/3_hu14873208032570301579.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;執行android模擬器失敗&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1037&#34;
+		data-flex-basis=&#34;2488px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;設置android_home和android的path&#34;&gt;設置Android_Home和Android的path
+&lt;/h2&gt;&lt;p&gt;對我的電腦右鍵內容-&amp;gt;進階系統設定-&amp;gt;進階-&amp;gt;環境變數
+環境變數在windows上分2種一種是指對使用者(上面)，一種是對全部使用者(下面)，這邊編輯使用者就好了!
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/4.png&#34;
+	width=&#34;618&#34;
+	height=&#34;585&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/4_hu5712083229178308919.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/4_hu2484667523970968835.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;path設定1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;253px&#34;
+	
+&gt;
+然後找出自己sdk的安裝位置，然後新增的2個值，指向platform-tools和tools這2個位置，如果是win7的話記得都要在後面加上;，我這邊是win10比較高級有UI可以用..
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/5.png&#34;
+	width=&#34;527&#34;
+	height=&#34;501&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/5_hu17848923967496653365.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/5_hu4545094048520686589.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;path設定2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;252px&#34;
+	
+&gt;
+再新增一個ANDROID_HOME變數指向android-sdk根目錄
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/6.png&#34;
+	width=&#34;653&#34;
+	height=&#34;165&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/6_hu8668272470896984697.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/6_hu7670870401591663368.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;path設定2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;395&#34;
+		data-flex-basis=&#34;949px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;設置完成後記得關掉命令提示字元(終端機)，因為他不會自己重讀path一定要重開，我第一次就笨笨的設好了為啥還抓不到&amp;hellip;
+然後在執行一次剛剛的指令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cordova run android
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;應該會有抓不完jdk，然後又丟新錯誤給我
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/7.png&#34;
+	width=&#34;978&#34;
+	height=&#34;553&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/7_hu3110791082358607462.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/7_hu5555439377143621815.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;path設定3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;424px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;添加licenses&#34;&gt;添加licenses
+&lt;/h2&gt;&lt;p&gt;這步我記得在win7是沒這問題，不知道是不是新版sdk有什麼問題，google了一下用這2行指令解決&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ mkdir &lt;span class=&#34;s2&#34;&gt;&amp;#34;%ANDROID_HOME%\licenses&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; /p&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;8933bad161af4178b1185d1a37fbf41ea5269c55&amp;#34;&lt;/span&gt; &amp;gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%ANDROID_HOME%\licenses\android-sdk-license&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然後正常來說應該就行了，但是win10很討厭把資料夾的權限鎖住了，造成以下錯誤訊息
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/8.png&#34;
+	width=&#34;978&#34;
+	height=&#34;553&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/8_hu13506681710992789186.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/8_hu10191560801025789966.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;系統權限&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;424px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;打開sdk資料夾權限&#34;&gt;打開sdk資料夾權限
+&lt;/h2&gt;&lt;p&gt;修改Windows資料夾權限給Cordova使用&lt;/p&gt;
+&lt;h2 id=&#34;執行及編譯成apk&#34;&gt;執行及編譯成apk
+&lt;/h2&gt;&lt;p&gt;到這步我是沒問題了，如果還有問題可能是sdk的platform設定有問題，個人公司的win7碰到的，有問題去目錄底下的AVD Manager.exe設定一下目標平台
+然後再執行一次&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cordova run android
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;成功後如下圖結果
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/9.png&#34;
+	width=&#34;533&#34;
+	height=&#34;866&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/9_hu11601841756588485255.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/9_hu18444211861939626827.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;模擬成功&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;61&#34;
+		data-flex-basis=&#34;147px&#34;
+	
+&gt;
+然後編譯apk指令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cordova build android
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;編譯後可以再專案目錄底下找到apk
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/10.png&#34;
+	width=&#34;293&#34;
+	height=&#34;228&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/10_hu4083828881730459899.png 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D2-android%E7%AF%87/post/2017/05/cordova-set_up-android/10_hu9879165108016208489.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;apk編譯&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;後記&#34;&gt;後記
+&lt;/h1&gt;&lt;p&gt;其實工作時我並沒有成功過使用模擬器，只有編譯成apk，工作的電腦好像沒有Hype-V的功能連模擬器都不能用，在家用win10果然可以用，搞了好久終於設定完成!(累癱)&lt;/p&gt;
+&lt;h1 id=&#34;參考文獻&#34;&gt;參考文獻
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Apach Cordova官網文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://stackoverflow.com/questions/40383323/cant-accept-license-agreement-android-sdk-platform-24&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;stackoverflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Cordova - 環境安裝</title>
+        <link>http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/</link>
+        <pubDate>Sun, 23 Apr 2017 19:19:59 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/</guid>
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言
+&lt;/h1&gt;&lt;h2 id=&#34;什麼是cordova&#34;&gt;什麼是Cordova?
+&lt;/h2&gt;&lt;p&gt;Cordova是一種讓網頁工程師不需要學會手機程式原生語言(例如Java和objecive-C)，也能寫出手機App的一種網頁前端框架，不管是iOS或是Android平台，只要你會HTML、CSS、Javasript就OK了。&lt;/p&gt;
+&lt;h2 id=&#34;cordova的演變&#34;&gt;Cordova的演變
+&lt;/h2&gt;&lt;p&gt;來簡單說說Cordova的演變Cordova的前身叫PhoneGap，原本是Nitobi開發的，後來被Adobe收購後改名叫做Adobe PhoneGap，Adobe又把代碼捐給Apache基金會，但保留商標所有權，Apache這邊則是改叫另一個名稱叫Apache Cordova。
+基本上Adobe PhoneGap和Apache Cordova的基底都是Cordova，所以兩邊的寫的程式碼可以共通是沒問題，不過platform建議是用同一邊寫的，然後兩邊環境有什麼不同也大概說一下Adobe PhoneGap這邊是要付費的而且編譯器是在雲端上編輯，沒付費的話還是能用，只是線上的專案只能創建一個，可以拿到的軟體部分只有模擬器的部分，Apache Cordova這邊則是編譯和模擬器全都有，這邊以Apache Cordova為主。&lt;/p&gt;
+&lt;h1 id=&#34;實作&#34;&gt;實作
+&lt;/h1&gt;&lt;h2 id=&#34;事前準備工具&#34;&gt;事前準備工具
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://nodejs.org/en/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Node.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.android.com/studio/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Android SDK&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安裝cordova&#34;&gt;安裝Cordova
+&lt;/h2&gt;&lt;p&gt;首先開啟自己的cmd安裝，Mac OS可能會有權限問題 npm前面記得加sudo&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npm install -g cordova
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;裝好之後就能使用以下指令創建專案了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cordova create 專案名稱
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;再來我們要幫專案加入使用平台，我們一般會先用瀏覽器看，所以我們先裝browser這個platform，還有不要忘記指向自己的專案資料夾底下&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cordova platform add browser
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然後就能用我們的瀏覽器來跑了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cordova run browser
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;執行成功會自動開啟瀏覽器，然後按F12開啟開發人員模式，切成手機模式瀏覽，如下圖
+&lt;img src=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/post/2017/04/cordova-set_up/1.jpg&#34;
+	width=&#34;1920&#34;
+	height=&#34;1040&#34;
+	srcset=&#34;http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/post/2017/04/cordova-set_up/1_hu8336575639378490298.jpg 480w, http://localhost:1313/p/cordova-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D/post/2017/04/cordova-set_up/1_hu9746129240729210255.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;執行browser&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;後記&#34;&gt;後記
+&lt;/h1&gt;&lt;p&gt;其實Cordova這框架是老闆想寫App但是沒人會，所以找來老師上了幾堂簡單的App課程，當時教得是Adobe PhoneGap，其實不知道為什麼不是教Apache Cordva，這個能做的事情明明比較多，後來想想好像是因為Adobe PhoneGap有圖形介面，大概是考慮了這問題，反正就因為這樣就莫名其妙開始使用了這框架，編譯成Android之前會在另外寫一篇，就先這樣啦!&lt;/p&gt;
+&lt;h1 id=&#34;參考文獻&#34;&gt;參考文獻
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/wiki/Adobe_PhoneGap&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;維基百科&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://phonegap.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Adobe PhoneGap官網&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://cordova.apache.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Apach Cordova官網&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

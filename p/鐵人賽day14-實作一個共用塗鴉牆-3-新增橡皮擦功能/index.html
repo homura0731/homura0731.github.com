@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。 橡皮擦功能\r這邊我在實作時，一開始是想到只有用透明色或是白色把畫過的地方重新上色就行，後來發現有Canvas有內建API可以達成。 使用clearRect()來做橡皮擦功能\rclearRact可以設定一個矩形範圍來取消畫過的元素，先來看看定義 1 clearRact(x, y , width, height) x：清除x軸位置 y：清除y軸位置 width：清除寬度 height：清除高度 先建立使用的Html element，一個checkbox切換畫筆或橡皮擦，一個select控制橡皮擦長寬，這部分加在畫筆粗細後方 1 2 3 4 5 6 橡皮擦：&lt;input id=&#34;eraser&#34; type=&#34;checkbox&#34;&gt; 橡皮擦範圍： &lt;select id=&#34;eraserWidth&#34;&gt; &lt;option&gt;5&lt;/option&gt; &lt;option&gt;10&lt;/option&gt; &lt;/select&gt; JS載入設定要素 1 2 var eraser = document.getElementById(&#39;eraser&#39;); var eraserWidth = document.getElementById(&#39;eraserWidth&#39;); 然後我們要修改一下mousermove的設定，在橡皮擦啟動時，是要擦掉而不是畫圖 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 canvas.">
+<title>[鐵人賽Day14] 實作一個共用塗鴉牆 (3) - 新增橡皮擦功能</title>
+
+<link rel='canonical' href='http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday14-%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E5%85%B1%E7%94%A8%E5%A1%97%E9%B4%89%E7%89%86-3-%E6%96%B0%E5%A2%9E%E6%A9%A1%E7%9A%AE%E6%93%A6%E5%8A%9F%E8%83%BD/'>
+
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="[鐵人賽Day14] 實作一個共用塗鴉牆 (3) - 新增橡皮擦功能">
+<meta property='og:description' content="今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。 橡皮擦功能\r這邊我在實作時，一開始是想到只有用透明色或是白色把畫過的地方重新上色就行，後來發現有Canvas有內建API可以達成。 使用clearRect()來做橡皮擦功能\rclearRact可以設定一個矩形範圍來取消畫過的元素，先來看看定義 1 clearRact(x, y , width, height) x：清除x軸位置 y：清除y軸位置 width：清除寬度 height：清除高度 先建立使用的Html element，一個checkbox切換畫筆或橡皮擦，一個select控制橡皮擦長寬，這部分加在畫筆粗細後方 1 2 3 4 5 6 橡皮擦：&lt;input id=&#34;eraser&#34; type=&#34;checkbox&#34;&gt; 橡皮擦範圍： &lt;select id=&#34;eraserWidth&#34;&gt; &lt;option&gt;5&lt;/option&gt; &lt;option&gt;10&lt;/option&gt; &lt;/select&gt; JS載入設定要素 1 2 var eraser = document.getElementById(&#39;eraser&#39;); var eraserWidth = document.getElementById(&#39;eraserWidth&#39;); 然後我們要修改一下mousermove的設定，在橡皮擦啟動時，是要擦掉而不是畫圖 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 canvas.">
+<meta property='og:url' content='http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday14-%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E5%85%B1%E7%94%A8%E5%A1%97%E9%B4%89%E7%89%86-3-%E6%96%B0%E5%A2%9E%E6%A9%A1%E7%9A%AE%E6%93%A6%E5%8A%9F%E8%83%BD/'>
+<meta property='og:site_name' content='Homura&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='2019鐵人賽' /><meta property='article:tag' content='SignalR' /><meta property='article:tag' content='ASP.NET Core' /><meta property='article:tag' content='JavaScript' /><meta property='article:published_time' content='2018-10-27T10:31:00&#43;08:00'/><meta property='article:modified_time' content='2018-10-27T10:31:00&#43;08:00'/>
+<meta name="twitter:title" content="[鐵人賽Day14] 實作一個共用塗鴉牆 (3) - 新增橡皮擦功能">
+<meta name="twitter:description" content="今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。 橡皮擦功能\r這邊我在實作時，一開始是想到只有用透明色或是白色把畫過的地方重新上色就行，後來發現有Canvas有內建API可以達成。 使用clearRect()來做橡皮擦功能\rclearRact可以設定一個矩形範圍來取消畫過的元素，先來看看定義 1 clearRact(x, y , width, height) x：清除x軸位置 y：清除y軸位置 width：清除寬度 height：清除高度 先建立使用的Html element，一個checkbox切換畫筆或橡皮擦，一個select控制橡皮擦長寬，這部分加在畫筆粗細後方 1 2 3 4 5 6 橡皮擦：&lt;input id=&#34;eraser&#34; type=&#34;checkbox&#34;&gt; 橡皮擦範圍： &lt;select id=&#34;eraserWidth&#34;&gt; &lt;option&gt;5&lt;/option&gt; &lt;option&gt;10&lt;/option&gt; &lt;/select&gt; JS載入設定要素 1 2 var eraser = document.getElementById(&#39;eraser&#39;); var eraserWidth = document.getElementById(&#39;eraserWidth&#39;); 然後我們要修改一下mousermove的設定，在橡皮擦啟動時，是要擦掉而不是畫圖 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 canvas.">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu9840778618514022233.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Homura&#39;s Blog</a></h1>
+            <h2 class="site-description">IT技術學習記錄</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/homura0731'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/haru-lin-227676170/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/10272735/homura-lin?tab=profile'
+                        target="_blank"
+                        title="stackoverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-stackoverflow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" /><path d="M8 16h8" /><path d="M8.322 12.582l7.956 .836" /><path d="M8.787 9.168l7.826 1.664" /><path d="M10.096 5.764l7.608 2.472" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                                    <option value="http://localhost:1313/" selected>中文</option>
+                                
+                                    <option value="http://localhost:1313/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#使用clearrect來做橡皮擦功能">使用clearRect()來做橡皮擦功能</a></li>
+    <li><a href="#同步到signalr">同步到SignalR</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/" >
+                2019鐵人賽
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday14-%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E5%85%B1%E7%94%A8%E5%A1%97%E9%B4%89%E7%89%86-3-%E6%96%B0%E5%A2%9E%E6%A9%A1%E7%9A%AE%E6%93%A6%E5%8A%9F%E8%83%BD/">[鐵人賽Day14] 實作一個共用塗鴉牆 (3) - 新增橡皮擦功能</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 27, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 2 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>今天我們要幫塗鴉牆加上橡皮擦的功能，只能畫不能擦掉感覺真的是蠻奇怪的，當然擦的時候也要同時擦全部的畫版。</p>
+<h1 id="橡皮擦功能">橡皮擦功能
+</h1><p>這邊我在實作時，一開始是想到只有用透明色或是白色把畫過的地方重新上色就行，後來發現有Canvas有內建API可以達成。</p>
+<h2 id="使用clearrect來做橡皮擦功能">使用clearRect()來做橡皮擦功能
+</h2><p><code>clearRact</code>可以設定一個矩形範圍來取消畫過的元素，先來看看定義</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">clearRact</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>x：清除x軸位置</li>
+<li>y：清除y軸位置</li>
+<li>width：清除寬度</li>
+<li>height：清除高度</li>
+</ul>
+<p>先建立使用的Html element，一個checkbox切換畫筆或橡皮擦，一個select控制橡皮擦長寬，這部分加在畫筆粗細後方</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">橡皮擦：<span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;eraser&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">橡皮擦範圍：
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;eraserWidth&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>5<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">option</span><span class="p">&gt;</span>10<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>JS載入設定要素</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">eraser</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;eraser&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">eraserWidth</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;eraserWidth&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後我們要修改一下<code>mousermove</code>的設定，在橡皮擦啟動時，是要擦掉而不是畫圖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">canvas</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;mousemove&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">draw</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">newPos</span> <span class="o">=</span> <span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">pageX</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">pageY</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 判斷橡皮擦是否啟用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="nx">eraser</span><span class="p">.</span><span class="nx">checked</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nx">_eraserWidth</span> <span class="o">=</span> <span class="nx">eraserWidth</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="nx">tempPos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="nx">_eraserWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">tempPos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="nx">_eraserWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">_eraserWidth</span><span class="p">,</span> <span class="nx">_eraserWidth</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">tempPos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">tempPos</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">newPos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">newPos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">connection</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;SendDraw&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;startPos&#34;</span><span class="o">:</span> <span class="nx">tempPos</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;endPos&#34;</span><span class="o">:</span> <span class="nx">newPos</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;color&#34;</span><span class="o">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;lineWidth&#34;</span><span class="o">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineWidth</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">tempPos</span> <span class="o">=</span> <span class="nx">newPos</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>x和y扣掉寬度除2是為了讓範圍中心對到點擊位置上，因為我覺得這樣會比較抓距離，還有記得跟Draw一樣的動作要拉出來。</p>
+<h2 id="同步到signalr">同步到SignalR
+</h2><p>首先我們的JSON格式需要更新下，我們多加一個<code>mode</code>和<code>eraserWidth</code>，<code>mode</code>用來辨認到底是畫筆還是橡皮擦，
+其實也能寫成<code>isEraser</code>或<code>isPen</code>也行，但是Canvas其實還有很多其他功能，像是畫矩形、三角形、圓形、貝茲曲線&hellip;..，
+所以我們要讓他可以變化大一點，用<code>Mode</code>來做這變數名會比較適合。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;mode&#34;</span><span class="p">:</span> <span class="s2">&#34;line&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;startPos&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;endPos&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span><span class="err">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;color&#34;</span><span class="p">:</span> <span class="s2">&#34;orange&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;lineWidth&#34;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;eraserWidth&#34;</span><span class="p">:</span> <span class="mi">5</span>       
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後一樣在<code>mousemove</code>時傳回Server</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">canvas</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;mousemove&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">draw</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">newPos</span> <span class="o">=</span> <span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">pageX</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">pageY</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 判斷橡皮擦是否啟用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="nx">eraser</span><span class="p">.</span><span class="nx">checked</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nx">_eraserWidth</span> <span class="o">=</span> <span class="nx">eraserWidth</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="nx">tempPos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="nx">_eraserWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">tempPos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="nx">_eraserWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">_eraserWidth</span><span class="p">,</span> <span class="nx">_eraserWidth</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">tempPos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">tempPos</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">newPos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">newPos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 回傳動作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">connection</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;SendDraw&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;mode&#34;</span><span class="o">:</span> <span class="nx">eraser</span><span class="p">.</span><span class="nx">checked</span><span class="o">?</span><span class="s1">&#39;eraser&#39;</span><span class="o">:</span><span class="s1">&#39;line&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;startPos&#34;</span><span class="o">:</span> <span class="nx">tempPos</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;endPos&#34;</span><span class="o">:</span> <span class="nx">newPos</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;color&#34;</span><span class="o">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;lineWidth&#34;</span><span class="o">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;eraserWidth&#34;</span><span class="o">:</span> <span class="nx">eraserWidth</span><span class="p">.</span><span class="nx">value</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">tempPos</span> <span class="o">=</span> <span class="nx">newPos</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接收事件<code>ReceiveDraw</code>我們需要加上一個switch來判定<code>mode</code>是什麼，在做不一樣的事情</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;ReceiveDraw&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">switch</span> <span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">mode</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s1">&#39;line&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineWidth</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">lineWidth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">startPos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">json</span><span class="p">.</span><span class="nx">startPos</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">endPos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">json</span><span class="p">.</span><span class="nx">endPos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s1">&#39;eraser&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nx">_eraserWidth</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">eraserWidth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">startPos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="nx">_eraserWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">json</span><span class="p">.</span><span class="nx">startPos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="nx">_eraserWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">_eraserWidth</span><span class="p">,</span> <span class="nx">_eraserWidth</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>後端部分只需要更新<code>DrawModel.cs</code>的屬性就行了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">DrawModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">mode</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span><span class="p">[]</span> <span class="n">startPos</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span><span class="p">[]</span> <span class="n">endPos</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">color</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">lineWidth</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">eraserWidth</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>到這邊就完成啦！</p>
+<h1 id="demo">DEMO
+</h1><p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday14-%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E5%85%B1%E7%94%A8%E5%A1%97%E9%B4%89%E7%89%86-3-%E6%96%B0%E5%A2%9E%E6%A9%A1%E7%9A%AE%E6%93%A6%E5%8A%9F%E8%83%BD/Eraser.gif"
+	width="1266"
+	height="551"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday14-%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E5%85%B1%E7%94%A8%E5%A1%97%E9%B4%89%E7%89%86-3-%E6%96%B0%E5%A2%9E%E6%A9%A1%E7%9A%AE%E6%93%A6%E5%8A%9F%E8%83%BD/Eraser_hu2216612758041557785.gif 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday14-%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E5%85%B1%E7%94%A8%E5%A1%97%E9%B4%89%E7%89%86-3-%E6%96%B0%E5%A2%9E%E6%A9%A1%E7%9A%AE%E6%93%A6%E5%8A%9F%E8%83%BD/Eraser_hu16217514354000695808.gif 1024w"
+	loading="lazy"
+	
+		alt="Eraser"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="229"
+		data-flex-basis="551px"
+	
+></p>
+<h1 id="範例下載">範例下載
+</h1><ul>
+<li><a class="link" href="https://drive.google.com/file/d/1OTzlihLEyE1a9QBUIr-i0BUdfsF4VRSu/view?usp=sharing"  target="_blank" rel="noopener"
+    >範例下載</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
+        
+            <a href="/tags/signalr/">SignalR</a>
+        
+            <a href="/tags/asp.net-core/">ASP.NET Core</a>
+        
+            <a href="/tags/javascript/">JavaScript</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday28-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-8-%E6%9C%80%E5%BE%8C%E7%9A%84bug%E4%BF%AE%E6%AD%A3-%E5%B0%8F%E5%8A%9F%E8%83%BD%E6%B7%BB%E5%8A%A0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day28] 實作Web即時共同編輯文件 (8) - 最後的BUG修正&#43;小功能添加</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday27-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-7-%E6%96%B0%E5%A2%9E%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6%E5%8F%8A%E8%BC%89%E5%85%A5%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday26-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-6-%E6%96%B0%E5%A2%9E%E7%99%BB%E9%8C%84%E7%95%AB%E9%9D%A2%E5%8F%8A%E9%81%B8%E6%93%87%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/ironman-day-25/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday24-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-4-%E5%B9%AB%E7%B7%A8%E8%BC%AF%E4%B8%AD%E7%9A%84%E8%A1%A8%E6%A0%BC%E6%B7%BB%E5%8A%A0%E9%A1%8F%E8%89%B2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "homura0731" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Homura Lin
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="既然實作都做完了，卻只能單機自己使用好像怪怪的，至少要能開放自己的內網使用才對，所以今天要來教大家怎麼把自己的signalR部署到Apache和IIS 安裝.Net Core RunTime\r首先先到官網下載Runtime 只有macOS不需要裝，因為Runtime根本沒macOS版&hellip;. Publish自己的ASP.NET Core程式\r發行非常簡單，使用指令donet publish就行，參數設定我們使用release，體積比較小 1 $ dotnet publish -c Release 這邊的-c等於-configure可以簡化成-c 之後成功後在你的專案裡面的路徑Bin\\Release\\netcore版本資料夾，會有個publish資料夾就是發行後的網站檔案，體積非常的小，這時就看出.NET Core的好處 由於官網文件只教了幾個平台範本，所以在架設之前我來說一下我試過的平台及Server軟體，MSDN文件就只介紹Windows IIS和Linux Nginx和Linux Apache三個，我就偏偏要用macOS來架設哈哈 作業系統 Server軟體 是否成功 成功狀況 Windows 10 IIS O 完美執行 Windows 10 Apache O 可以執行，但是websocket啟用不了，SignalR會改成SSE的方式 macOS Apache X macOS Nginx O 可以執行，版本太舊，websocket似乎不支援，SignalR會改成SSE的方式 結果macOS在結論上都是失敗的，Nginx雖然有成功代理上，但是卻版本太舊好像不支援WebSocket，連Long Polling都無法，真是怪了 架設到 Nginx\rNginx的部分我用macOS示範，首先先用Homebrew安裝Nginx，如果沒裝過Homebrew到這邊安裝 1 $ brew install nginx 安裝可能會遇到權限問題裝不了，這時候使用sudo chown -R $(whoami) /usr/local/share/man/man3就OK了 裝完後使用指令看看有沒有版本好，有就代表安裝成功 1 $ nginx -v 然後我們要來把發行後的檔案Run起來，先開終端機再到上面說的publish資料夾底下，跑以下指令 1 $ dotnet &lt;專案名&gt;.dll 然後去https://localhost:5001底下看是不是有在跑">
+<title>[鐵人賽Day29] 部署SignalR到Server上</title>
+
+<link rel='canonical' href='http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/'>
+
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="[鐵人賽Day29] 部署SignalR到Server上">
+<meta property='og:description' content="既然實作都做完了，卻只能單機自己使用好像怪怪的，至少要能開放自己的內網使用才對，所以今天要來教大家怎麼把自己的signalR部署到Apache和IIS 安裝.Net Core RunTime\r首先先到官網下載Runtime 只有macOS不需要裝，因為Runtime根本沒macOS版&hellip;. Publish自己的ASP.NET Core程式\r發行非常簡單，使用指令donet publish就行，參數設定我們使用release，體積比較小 1 $ dotnet publish -c Release 這邊的-c等於-configure可以簡化成-c 之後成功後在你的專案裡面的路徑Bin\\Release\\netcore版本資料夾，會有個publish資料夾就是發行後的網站檔案，體積非常的小，這時就看出.NET Core的好處 由於官網文件只教了幾個平台範本，所以在架設之前我來說一下我試過的平台及Server軟體，MSDN文件就只介紹Windows IIS和Linux Nginx和Linux Apache三個，我就偏偏要用macOS來架設哈哈 作業系統 Server軟體 是否成功 成功狀況 Windows 10 IIS O 完美執行 Windows 10 Apache O 可以執行，但是websocket啟用不了，SignalR會改成SSE的方式 macOS Apache X macOS Nginx O 可以執行，版本太舊，websocket似乎不支援，SignalR會改成SSE的方式 結果macOS在結論上都是失敗的，Nginx雖然有成功代理上，但是卻版本太舊好像不支援WebSocket，連Long Polling都無法，真是怪了 架設到 Nginx\rNginx的部分我用macOS示範，首先先用Homebrew安裝Nginx，如果沒裝過Homebrew到這邊安裝 1 $ brew install nginx 安裝可能會遇到權限問題裝不了，這時候使用sudo chown -R $(whoami) /usr/local/share/man/man3就OK了 裝完後使用指令看看有沒有版本好，有就代表安裝成功 1 $ nginx -v 然後我們要來把發行後的檔案Run起來，先開終端機再到上面說的publish資料夾底下，跑以下指令 1 $ dotnet &lt;專案名&gt;.dll 然後去https://localhost:5001底下看是不是有在跑">
+<meta property='og:url' content='http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/'>
+<meta property='og:site_name' content='Homura&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='2019鐵人賽' /><meta property='article:tag' content='SignalR' /><meta property='article:tag' content='ASP.NET Core' /><meta property='article:published_time' content='2018-11-11T07:32:33&#43;08:00'/><meta property='article:modified_time' content='2018-11-11T07:32:33&#43;08:00'/>
+<meta name="twitter:title" content="[鐵人賽Day29] 部署SignalR到Server上">
+<meta name="twitter:description" content="既然實作都做完了，卻只能單機自己使用好像怪怪的，至少要能開放自己的內網使用才對，所以今天要來教大家怎麼把自己的signalR部署到Apache和IIS 安裝.Net Core RunTime\r首先先到官網下載Runtime 只有macOS不需要裝，因為Runtime根本沒macOS版&hellip;. Publish自己的ASP.NET Core程式\r發行非常簡單，使用指令donet publish就行，參數設定我們使用release，體積比較小 1 $ dotnet publish -c Release 這邊的-c等於-configure可以簡化成-c 之後成功後在你的專案裡面的路徑Bin\\Release\\netcore版本資料夾，會有個publish資料夾就是發行後的網站檔案，體積非常的小，這時就看出.NET Core的好處 由於官網文件只教了幾個平台範本，所以在架設之前我來說一下我試過的平台及Server軟體，MSDN文件就只介紹Windows IIS和Linux Nginx和Linux Apache三個，我就偏偏要用macOS來架設哈哈 作業系統 Server軟體 是否成功 成功狀況 Windows 10 IIS O 完美執行 Windows 10 Apache O 可以執行，但是websocket啟用不了，SignalR會改成SSE的方式 macOS Apache X macOS Nginx O 可以執行，版本太舊，websocket似乎不支援，SignalR會改成SSE的方式 結果macOS在結論上都是失敗的，Nginx雖然有成功代理上，但是卻版本太舊好像不支援WebSocket，連Long Polling都無法，真是怪了 架設到 Nginx\rNginx的部分我用macOS示範，首先先用Homebrew安裝Nginx，如果沒裝過Homebrew到這邊安裝 1 $ brew install nginx 安裝可能會遇到權限問題裝不了，這時候使用sudo chown -R $(whoami) /usr/local/share/man/man3就OK了 裝完後使用指令看看有沒有版本好，有就代表安裝成功 1 $ nginx -v 然後我們要來把發行後的檔案Run起來，先開終端機再到上面說的publish資料夾底下，跑以下指令 1 $ dotnet &lt;專案名&gt;.dll 然後去https://localhost:5001底下看是不是有在跑">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu9840778618514022233.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Homura&#39;s Blog</a></h1>
+            <h2 class="site-description">IT技術學習記錄</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/homura0731'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/haru-lin-227676170/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/10272735/homura-lin?tab=profile'
+                        target="_blank"
+                        title="stackoverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-stackoverflow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" /><path d="M8 16h8" /><path d="M8.322 12.582l7.956 .836" /><path d="M8.787 9.168l7.826 1.664" /><path d="M10.096 5.764l7.608 2.472" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                                    <option value="http://localhost:1313/" selected>中文</option>
+                                
+                                    <option value="http://localhost:1313/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#設置nginx代理配置">設置nginx代理配置</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#設置apache代理">設置Apache代理</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/" >
+                2019鐵人賽
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/">[鐵人賽Day29] 部署SignalR到Server上</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 11, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 2 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>既然實作都做完了，卻只能單機自己使用好像怪怪的，至少要能開放自己的內網使用才對，所以今天要來教大家怎麼把自己的<code>signalR</code>部署到<code>Apache</code>和<code>IIS</code></p>
+<h1 id="安裝net-core-runtime">安裝.Net Core RunTime
+</h1><p>首先先到<a class="link" href="https://www.microsoft.com/net/download"  target="_blank" rel="noopener"
+    >官網下載</a><code>Runtime</code></p>
+<blockquote>
+<p>只有macOS不需要裝，因為Runtime根本沒macOS版&hellip;.</p>
+</blockquote>
+<h1 id="publish自己的aspnet-core程式">Publish自己的ASP.NET Core程式
+</h1><p>發行非常簡單，使用指令<code>donet publish</code>就行，參數設定我們使用release，體積比較小</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dotnet publish -c Release
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>這邊的<code>-c</code>等於<code>-configure</code>可以簡化成<code>-c</code></p>
+</blockquote>
+<p>之後成功後在你的專案裡面的路徑<code>Bin\Release\netcore版本</code>資料夾，會有個<code>publish</code>資料夾就是發行後的網站檔案，體積非常的小，這時就看出<code>.NET Core</code>的好處</p>
+<p>由於官網文件只教了幾個平台範本，所以在架設之前我來說一下我試過的平台及Server軟體，MSDN文件就只介紹<code>Windows IIS</code>和<code>Linux Nginx</code>和<code>Linux Apache</code>三個，我就偏偏要用<code>macOS</code>來架設哈哈</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>作業系統</th>
+<th>Server軟體</th>
+<th>是否成功</th>
+<th>成功狀況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows 10</td>
+<td>IIS</td>
+<td>O</td>
+<td>完美執行</td>
+</tr>
+<tr>
+<td>Windows 10</td>
+<td>Apache</td>
+<td>O</td>
+<td>可以執行，但是websocket啟用不了，<code>SignalR</code>會改成SSE的方式</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>Apache</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>Nginx</td>
+<td>O</td>
+<td>可以執行，版本太舊，websocket似乎不支援，<code>SignalR</code>會改成SSE的方式</td>
+</tr>
+</tbody>
+</table></div>
+<p>結果<code>macOS</code>在結論上都是失敗的，<code>Nginx</code>雖然有成功代理上，但是卻版本太舊好像不支援<code>WebSocket</code>，連<code>Long Polling</code>都無法，真是怪了</p>
+<h1 id="架設到-nginx">架設到 Nginx
+</h1><p>Nginx的部分我用<code>macOS</code>示範，首先先用<code>Homebrew</code>安裝Nginx，如果沒裝過<code>Homebrew</code>到<a class="link" href="https://brew.sh/index_zh-tw"  target="_blank" rel="noopener"
+    >這邊安裝</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ brew install nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>安裝可能會遇到權限問題裝不了，這時候使用<code>sudo chown -R $(whoami) /usr/local/share/man/man3</code>就OK了</p>
+</blockquote>
+<p>裝完後使用指令看看有沒有版本好，有就代表安裝成功</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ nginx -v
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後我們要來把發行後的檔案Run起來，先開終端機再到上面說的publish資料夾底下，跑以下指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dotnet &lt;專案名&gt;.dll
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後去<code>https://localhost:5001</code>底下看是不是有在跑</p>
+<h2 id="設置nginx代理配置">設置nginx代理配置
+</h2><p>這邊到<code>/usr/local/etc/nginx</code>底下，找不到的話可以用Finder的功能，前往然後選前往檔案夾，之後輸入路徑前往</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/GoPath.png"
+	width="1496"
+	height="950"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/GoPath_hu16707554987475657578.png 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/GoPath_hu3504170380326092458.png 1024w"
+	loading="lazy"
+	
+		alt="GoPath"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="377px"
+	
+></p>
+<p>然後找到<code>nginx.conf</code>，找到Server節點，裡面有<code>listen 8080</code>，然後改成以下這樣</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen       80;
+</span></span><span class="line"><span class="cl">    server_name  localhost;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    #charset koi8-r;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    #access_log  logs/host.access.log  main;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        proxy_pass         http://localhost:5000;
+</span></span><span class="line"><span class="cl">        proxy_http_version 1.1;
+</span></span><span class="line"><span class="cl">        proxy_set_header   Upgrade $http_upgrade;
+</span></span><span class="line"><span class="cl">        proxy_set_header   Connection keep-alive;
+</span></span><span class="line"><span class="cl">        proxy_set_header   Host $host;
+</span></span><span class="line"><span class="cl">        proxy_cache_bypass $http_upgrade;
+</span></span><span class="line"><span class="cl">        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span class="line"><span class="cl">        proxy_set_header   X-Forwarded-Proto $scheme;
+</span></span><span class="line"><span class="cl">    }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後再執行以下指令就成功了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo nginx -s reload
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我這邊遇到<code>nginx: [error] invalid PID number &quot;&quot; in &quot;/usr/local/var/run/nginx/nginx.pid&quot;</code>這個錯誤訊息
+查了一下只要多跑個指令就OK，然後再跑一次reload</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo nginx -c /usr/local/etc/nginx/nginx.conf
+</span></span><span class="line"><span class="cl">$ sudo nginx -s reload
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>成功後就能開起瀏覽器輸入<code>localhost</code>就能看到自己的<code>ASP.NET Core</code>程式</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/nginxStart.png"
+	width="1222"
+	height="822"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/nginxStart_hu9216214610655038895.png 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/nginxStart_hu7207866400572213981.png 1024w"
+	loading="lazy"
+	
+		alt="nginxStart"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="356px"
+	
+></p>
+<blockquote>
+<p>註：建議改塗鴉牆範例，因為文件分享有用到websocket的一部分，導致無法同步</p>
+</blockquote>
+<p>但是要讓內網連近來還需要多個步驟，先使用停止指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo nginx -s stop
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用以下指令啟用，讓外部連結進來，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo brew services start nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後會問你接受傳入的網路連線嗎？選接受</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/NginxServiceStart.png"
+	width="846"
+	height="346"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/NginxServiceStart_hu2137850913178351960.png 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/NginxServiceStart_hu17247045256546477032.png 1024w"
+	loading="lazy"
+	
+		alt="NginxServiceStart"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="244"
+		data-flex-basis="586px"
+	
+></p>
+<p>然後就能讓內網連線了，不過<code>brew</code>安裝的<code>nginx</code>似乎沒支援<code>websocket</code>，所以<code>SignalR</code>會改幫你使用<code>SSE(Server Sent Events)</code>的方式，看來還是得要<code>Linux</code>比較好XD。</p>
+<h1 id="架設到apache">架設到Apache
+</h1><p>Apache我們使用<code>Win10</code>示範，首先下載<a class="link" href="https://www.apachefriends.org/zh_tw/index.html"  target="_blank" rel="noopener"
+    >Xampp</a>，開始安裝，他會附加一堆其他東西，我們只有<code>Apache</code>就好，<code>php</code>不能取消就讓它安裝吧!</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/xampp.png"
+	width="502"
+	height="425"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/xampp_hu6734048467411279002.png 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/xampp_hu17222238158562210561.png 1024w"
+	loading="lazy"
+	
+		alt="xampp"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="283px"
+	
+></p>
+<p>然後會問要不要安裝<code>Bitnami</code>請把勾勾取消</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/xampp2.png"
+	width="502"
+	height="427"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/xampp2_hu4237311861064748593.png 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/xampp2_hu13246875957065140351.png 1024w"
+	loading="lazy"
+	
+		alt="xampp2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="117"
+		data-flex-basis="282px"
+	
+></p>
+<p>安裝完打開，會問防火牆要不要允許通過，選是，然後打開<code>localhost</code>就能看到xampp的簡介畫面</p>
+<h2 id="設置apache代理">設置Apache代理
+</h2><p>然後我們要來修改一下設置的文件，先到路徑<code>C:\xampp\apache\conf</code>底下，使用<code>VS Code</code>打開<code>httpd.conf</code>，然後把下面的模組前面的<code>#</code>字註解拿掉，請用搜尋的方式找出來</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LoadModule proxy_http_module modules/mod_proxy_http.so
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後到<code>C:\xampp\apache\conf\extra</code>底下，開啟<code>httpd-vhosts.conf</code>，在最下方加入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;VirtualHost *:*&gt;
+</span></span><span class="line"><span class="cl">    RequestHeader set &#34;X-Forwarded-Proto&#34; expr=%{REQUEST_SCHEME}
+</span></span><span class="line"><span class="cl">&lt;/VirtualHost&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;VirtualHost *:80&gt;
+</span></span><span class="line"><span class="cl">    ProxyPreserveHost On
+</span></span><span class="line"><span class="cl">    ProxyPass / http://127.0.0.1:5000/
+</span></span><span class="line"><span class="cl">    ProxyPassReverse / http://127.0.0.1:5000/
+</span></span><span class="line"><span class="cl">    ServerName www.example.com
+</span></span><span class="line"><span class="cl">    ServerAlias *.example.com
+</span></span><span class="line"><span class="cl">    ErrorLog ${APACHE_LOG_DIR}helloapp-error.log
+</span></span><span class="line"><span class="cl">    CustomLog ${APACHE_LOG_DIR}helloapp-access.log common
+</span></span><span class="line"><span class="cl">&lt;/VirtualHost&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在終端機目錄移動到<code>publish</code>底下，然後使用<code>dotnet</code>啟用他</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">cd</span> bin/Release/netcoreapp2.1/publish
+</span></span><span class="line"><span class="cl">$ dotnet &lt;專案名&gt;.dll
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最後<code>Apache</code>重啟，這樣就成功啦！</p>
+<p>測試結果是<code>Websockt</code>握手失敗，改成使用<code>SSE</code>的方式，還是能夠同步動作就是&hellip;.</p>
+<blockquote>
+<p>註：其實網路上很多設定我都使用過，包括<code>mod_proxy_wstunnel</code>模組啟用，設定ws協定通過，都試過沒有用，可能真的要<code>Linux</code>的<code>Apache</code>的才行。</p>
+</blockquote>
+<h1 id="架設到iis">架設到IIS
+</h1><p>我使用<code>Win10</code>來邦範例，首先開啟以下位置 控制台 &gt; 程式和功能 &gt; 開啟或關閉Windows功能 ，然後把以下紅框功能打勾</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_Setup.png"
+	width="587"
+	height="586"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_Setup_hu12973528418069592761.png 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_Setup_hu6551636951320792873.png 1024w"
+	loading="lazy"
+	
+		alt="IIS_Setup"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<p>然後把發行的的檔案丟進以下路徑<code>C:\inetpub\wwwroot</code>，整包publish丟過去，然後改名<code>TestWeb</code></p>
+<p>然後你應該就能找到你的IIS管理員了，然後把IIS管理員開啟，選左方的應用程式集區，再右邊新增應用程式集區，名稱可以隨便訂，我使用<code>.NET Core</code>當名稱，然後<code>.NET CLR版本</code>選擇<code>沒有 Managed程式碼</code>，<code>立即啟用應用程式集區</code>打勾後確定。</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_NewAppSet.png"
+	width="302"
+	height="279"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_NewAppSet_hu10045997954324293642.png 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_NewAppSet_hu18408691673174048588.png 1024w"
+	loading="lazy"
+	
+		alt="IIS_NewAppSet"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="108"
+		data-flex-basis="259px"
+	
+></p>
+<p>再來左邊的站台右鍵，新增網站，站台名稱隨便，應用程式集區選鋼鋼你新增的，路徑選鋼鋼丟進去的<code>C:\inetpub\wwwroot\TestWeb</code>，剩下都不用調整</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_NewWeb.png"
+	width="585"
+	height="569"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_NewWeb_hu10922815261503504670.png 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_NewWeb_hu8415368954899204066.png 1024w"
+	loading="lazy"
+	
+		alt="IIS_NewWeb"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="102"
+		data-flex-basis="246px"
+	
+></p>
+<p>確定之後會跳出提示，因為有預設的站台是用<code>80port</code>，我發現內網涉其他port會連不到，應該是要調特別設定，所以這邊我們選是</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_Warning.png"
+	width="482"
+	height="160"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_Warning_hu17726995925107642184.png 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/IIS_Warning_hu11784123633570183648.png 1024w"
+	loading="lazy"
+	
+		alt="IIS_Warning"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="301"
+		data-flex-basis="723px"
+	
+></p>
+<p>然後把左邊<code>Defalut Web Site</code>右鍵 &gt; 管理網站 &gt; 停止，再把剛新開的網站啟動，這樣就完成啦!</p>
+<p>這樣就可以使用其他機器從內網<code>IP</code>連進你的網站了!</p>
+<p>做完這篇的感想是<code>.NET Core</code>能跨平台真棒，今天大概就這樣啦!~~</p>
+<h1 id="參考">參考
+</h1><ul>
+<li><a class="link" href="https://www.cnblogs.com/savorboard/p/dotnet-core-publish-nginx.html"  target="_blank" rel="noopener"
+    >Savorboard的CNBlog</a></li>
+<li><a class="link" href="https://blog.csdn.net/github_33644920/article/details/51733436"  target="_blank" rel="noopener"
+    >极客世杰的CSDN Blog</a></li>
+<li><a class="link" href="https://blog.csdn.net/y505772146/article/details/80219690"  target="_blank" rel="noopener"
+    >Yusan的CSDN Blog</a></li>
+<li><a class="link" href="https://docs.microsoft.com/zh-tw/aspnet/core/host-and-deploy/linux-apache?view=aspnetcore-2.1"  target="_blank" rel="noopener"
+    >官方文件</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
+        
+            <a href="/tags/signalr/">SignalR</a>
+        
+            <a href="/tags/asp.net-core/">ASP.NET Core</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday30-%E4%BE%86%E7%8E%A9%E7%8E%A9%E5%8D%B3%E6%99%82%E4%BA%92%E5%8B%95app%E5%90%A7-asp.net-core-signalr-%E7%B8%BD%E7%B5%90-%E5%AE%8C%E8%B3%BD%E5%BF%83%E5%BE%97/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day30] 來玩玩即時互動App吧! ASP.NET Core SignalR 總結 &amp; 完賽心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday28-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-8-%E6%9C%80%E5%BE%8C%E7%9A%84bug%E4%BF%AE%E6%AD%A3-%E5%B0%8F%E5%8A%9F%E8%83%BD%E6%B7%BB%E5%8A%A0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day28] 實作Web即時共同編輯文件 (8) - 最後的BUG修正&#43;小功能添加</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday27-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-7-%E6%96%B0%E5%A2%9E%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6%E5%8F%8A%E8%BC%89%E5%85%A5%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday26-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-6-%E6%96%B0%E5%A2%9E%E7%99%BB%E9%8C%84%E7%95%AB%E9%9D%A2%E5%8F%8A%E9%81%B8%E6%93%87%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/ironman-day-25/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "homura0731" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Homura Lin
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

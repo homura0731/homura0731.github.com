@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="今天就來完成最後的部分吧！最後要載入和建立自訂的文件，首先來先來做建立文件的部分 建立自訂文件\r首先先建立切換畫面事件，讓建立文件的Button能切換頁面 1 2 3 4 5 goCreateFileBtn.addEventListener(&#39;click&#39;,function(){ // 切換成建立文件選擇畫面 fileListDiv.style.display = &#39;none&#39;; createFileDiv.style.display = &#39;&#39;; }); 建立文件畫面\r再來是建立文件的畫面 1 2 3 4 5 &lt;button id=&#34;cancelCreateFile&#34; type=&#34;button&#34; &gt;取消&lt;/button&gt;&lt;br&gt;&lt;br&gt; 文件名稱：&lt;input id=&#34;newFileName&#34; type=&#34;text&#34; class=&#34;input&#34;&gt;&lt;br&gt;&lt;br&gt; 欄位數：&lt;input id=&#34;newCol&#34; type=&#34;text&#34; class=&#34;input&#34;&gt;&lt;br&gt;&lt;br&gt; 列位數：&lt;input id=&#34;newRow&#34; type=&#34;text&#34; class=&#34;input&#34;&gt;&lt;br&gt;&lt;br&gt; &lt;button id=&#34;createFileBtn&#34; type=&#34;button&#34;&gt;建立文件&lt;/button&gt;&lt;br&gt; 讀取DOM 1 2 var cancelCreateFile = document.getElementById(&#39;cancelCreateFile&#39;); var createFileBtn = document.getElementById(&#39;createFileBtn&#39;); 建立新增文件事件\r新增取消建立文件按鈕事件，讓他返回文件選擇畫面 1 2 3 4 5 cancelCreateFile.addEventListener(&#39;click&#39;,function(){ // 切換成文件選擇畫面 createFileDiv.style.display = &#39;none&#39;; fileListDiv.style.display = &#39;&#39;; }); 新增建立按鈕事件，把Form的資料都丟回去就行，接收部分一樣是connection.">
+<title>[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件</title>
+
+<link rel='canonical' href='http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday27-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-7-%E6%96%B0%E5%A2%9E%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6%E5%8F%8A%E8%BC%89%E5%85%A5%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6/'>
+
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件">
+<meta property='og:description' content="今天就來完成最後的部分吧！最後要載入和建立自訂的文件，首先來先來做建立文件的部分 建立自訂文件\r首先先建立切換畫面事件，讓建立文件的Button能切換頁面 1 2 3 4 5 goCreateFileBtn.addEventListener(&#39;click&#39;,function(){ // 切換成建立文件選擇畫面 fileListDiv.style.display = &#39;none&#39;; createFileDiv.style.display = &#39;&#39;; }); 建立文件畫面\r再來是建立文件的畫面 1 2 3 4 5 &lt;button id=&#34;cancelCreateFile&#34; type=&#34;button&#34; &gt;取消&lt;/button&gt;&lt;br&gt;&lt;br&gt; 文件名稱：&lt;input id=&#34;newFileName&#34; type=&#34;text&#34; class=&#34;input&#34;&gt;&lt;br&gt;&lt;br&gt; 欄位數：&lt;input id=&#34;newCol&#34; type=&#34;text&#34; class=&#34;input&#34;&gt;&lt;br&gt;&lt;br&gt; 列位數：&lt;input id=&#34;newRow&#34; type=&#34;text&#34; class=&#34;input&#34;&gt;&lt;br&gt;&lt;br&gt; &lt;button id=&#34;createFileBtn&#34; type=&#34;button&#34;&gt;建立文件&lt;/button&gt;&lt;br&gt; 讀取DOM 1 2 var cancelCreateFile = document.getElementById(&#39;cancelCreateFile&#39;); var createFileBtn = document.getElementById(&#39;createFileBtn&#39;); 建立新增文件事件\r新增取消建立文件按鈕事件，讓他返回文件選擇畫面 1 2 3 4 5 cancelCreateFile.addEventListener(&#39;click&#39;,function(){ // 切換成文件選擇畫面 createFileDiv.style.display = &#39;none&#39;; fileListDiv.style.display = &#39;&#39;; }); 新增建立按鈕事件，把Form的資料都丟回去就行，接收部分一樣是connection.">
+<meta property='og:url' content='http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday27-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-7-%E6%96%B0%E5%A2%9E%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6%E5%8F%8A%E8%BC%89%E5%85%A5%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6/'>
+<meta property='og:site_name' content='Homura&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='2019鐵人賽' /><meta property='article:tag' content='SignalR' /><meta property='article:tag' content='ASP.NET Core' /><meta property='article:tag' content='ShareFile' /><meta property='article:tag' content='JavaScript' /><meta property='article:published_time' content='2018-11-09T20:26:31&#43;08:00'/><meta property='article:modified_time' content='2018-11-09T20:26:31&#43;08:00'/>
+<meta name="twitter:title" content="[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件">
+<meta name="twitter:description" content="今天就來完成最後的部分吧！最後要載入和建立自訂的文件，首先來先來做建立文件的部分 建立自訂文件\r首先先建立切換畫面事件，讓建立文件的Button能切換頁面 1 2 3 4 5 goCreateFileBtn.addEventListener(&#39;click&#39;,function(){ // 切換成建立文件選擇畫面 fileListDiv.style.display = &#39;none&#39;; createFileDiv.style.display = &#39;&#39;; }); 建立文件畫面\r再來是建立文件的畫面 1 2 3 4 5 &lt;button id=&#34;cancelCreateFile&#34; type=&#34;button&#34; &gt;取消&lt;/button&gt;&lt;br&gt;&lt;br&gt; 文件名稱：&lt;input id=&#34;newFileName&#34; type=&#34;text&#34; class=&#34;input&#34;&gt;&lt;br&gt;&lt;br&gt; 欄位數：&lt;input id=&#34;newCol&#34; type=&#34;text&#34; class=&#34;input&#34;&gt;&lt;br&gt;&lt;br&gt; 列位數：&lt;input id=&#34;newRow&#34; type=&#34;text&#34; class=&#34;input&#34;&gt;&lt;br&gt;&lt;br&gt; &lt;button id=&#34;createFileBtn&#34; type=&#34;button&#34;&gt;建立文件&lt;/button&gt;&lt;br&gt; 讀取DOM 1 2 var cancelCreateFile = document.getElementById(&#39;cancelCreateFile&#39;); var createFileBtn = document.getElementById(&#39;createFileBtn&#39;); 建立新增文件事件\r新增取消建立文件按鈕事件，讓他返回文件選擇畫面 1 2 3 4 5 cancelCreateFile.addEventListener(&#39;click&#39;,function(){ // 切換成文件選擇畫面 createFileDiv.style.display = &#39;none&#39;; fileListDiv.style.display = &#39;&#39;; }); 新增建立按鈕事件，把Form的資料都丟回去就行，接收部分一樣是connection.">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu9840778618514022233.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Homura&#39;s Blog</a></h1>
+            <h2 class="site-description">IT技術學習記錄</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/homura0731'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/haru-lin-227676170/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/10272735/homura-lin?tab=profile'
+                        target="_blank"
+                        title="stackoverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-stackoverflow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" /><path d="M8 16h8" /><path d="M8.322 12.582l7.956 .836" /><path d="M8.787 9.168l7.826 1.664" /><path d="M10.096 5.764l7.608 2.472" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                                    <option value="http://localhost:1313/" selected>中文</option>
+                                
+                                    <option value="http://localhost:1313/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#建立文件畫面">建立文件畫面</a></li>
+    <li><a href="#建立新增文件事件">建立新增文件事件</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#使用者清單改用名稱顯示">使用者清單改用名稱顯示</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/" >
+                2019鐵人賽
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday27-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-7-%E6%96%B0%E5%A2%9E%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6%E5%8F%8A%E8%BC%89%E5%85%A5%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6/">[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 09, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 3 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>今天就來完成最後的部分吧！最後要載入和建立自訂的文件，首先來先來做建立文件的部分</p>
+<h1 id="建立自訂文件">建立自訂文件
+</h1><p>首先先建立切換畫面事件，讓建立文件的Button能切換頁面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">goCreateFileBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 切換成建立文件選擇畫面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">fileListDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">createFileDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="建立文件畫面">建立文件畫面
+</h2><p>再來是建立文件的畫面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;cancelCreateFile&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="p">&gt;</span>取消<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">文件名稱：<span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;newFileName&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>  <span class="na">class</span><span class="o">=</span><span class="s">&#34;input&#34;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">欄位數：<span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;newCol&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>  <span class="na">class</span><span class="o">=</span><span class="s">&#34;input&#34;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">列位數：<span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;newRow&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>  <span class="na">class</span><span class="o">=</span><span class="s">&#34;input&#34;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;createFileBtn&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span><span class="p">&gt;</span>建立文件<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>讀取DOM</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">cancelCreateFile</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;cancelCreateFile&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">createFileBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;createFileBtn&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="建立新增文件事件">建立新增文件事件
+</h2><p>新增取消建立文件按鈕事件，讓他返回文件選擇畫面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">cancelCreateFile</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 切換成文件選擇畫面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">createFileDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fileListDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>新增建立按鈕事件，把Form的資料都丟回去就行，接收部分一樣是<code>connection.on(&quot;ReceiveUserList&quot;)</code>，昨天已經建立了，所以就不需要接收事件了，成功後用<code>.then()</code>切換畫面，因為<code>connection.on(&quot;ReceiveUserList&quot;)</code>不只有建立文件時接收，所以改成<code>.then()</code>裡面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">createFileBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">newFileName</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;newFileName&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">newRow</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;newRow&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">newCol</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;newCol&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">connection</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;CreateFile&#34;</span><span class="p">,</span> <span class="nx">newFileName</span><span class="p">,</span> <span class="nx">newCol</span><span class="p">,</span> <span class="nx">newRow</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 切換成文件列表畫面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">createFileDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fileListDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>再來到後端的<code>FileHub</code>引用泛型和<code>Models</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">EditFileWeb.Models</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後到建立一個方法<code>CreateFile</code>，內容跟之前建立測試文件一樣，只要把內容換成前端Form傳回的值就行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">async</span> <span class="n">Task</span> <span class="n">CreateFile</span><span class="p">(</span><span class="kt">string</span> <span class="n">fileName</span><span class="p">,</span> <span class="kt">int</span> <span class="n">col</span><span class="p">,</span> <span class="kt">int</span> <span class="n">row</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">fileModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileModel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fileModel</span><span class="p">.</span><span class="n">creator</span> <span class="p">=</span> <span class="n">Context</span><span class="p">.</span><span class="n">ConnectionId</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fileModel</span><span class="p">.</span><span class="n">filename</span> <span class="p">=</span> <span class="n">fileName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fileModel</span><span class="p">.</span><span class="n">row</span> <span class="p">=</span> <span class="n">row</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fileModel</span><span class="p">.</span><span class="n">column</span> <span class="p">=</span> <span class="n">col</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fileModel</span><span class="p">.</span><span class="n">editor</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">UserModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="p">&lt;</span><span class="n">CellModel</span><span class="p">&gt;</span> <span class="n">textList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">CellModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">col</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">j</span> <span class="p">&lt;</span> <span class="n">row</span><span class="p">;</span> <span class="n">j</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">cellModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CellModel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cellModel</span><span class="p">.</span><span class="n">lockState</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cellModel</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cellModel</span><span class="p">.</span><span class="n">cellName</span> <span class="p">=</span> <span class="s">$&#34;{i}{j}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">textList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cellModel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fileModel</span><span class="p">.</span><span class="n">textList</span> <span class="p">=</span> <span class="n">textList</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_service</span><span class="p">.</span><span class="n">AddFile</span><span class="p">(</span><span class="n">fileModel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">Clients</span><span class="p">.</span><span class="n">All</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveFileList&#34;</span><span class="p">,</span> <span class="n">_service</span><span class="p">.</span><span class="n">GetFileList</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="讀取文件部分修改">讀取文件部分修改
+</h1><p>回到前端部分，讀取文件的按鈕事件，先把讀取中的<code>LoadFile</code>對象換成選擇的文件<code>fileName</code>，再來因為我們已經多了名稱的機制，所以讀取文件時多傳一個<code>name</code>回去</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">// 取得文件按鈕事件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">getFileBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 去得選擇文件的名稱
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">var</span> <span class="nx">fileName</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fileList&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 使用中的文件變數
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">LoadFile</span> <span class="o">=</span> <span class="nx">fileName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">connection</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;GetFile&#34;</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">,</span> <span class="nx">name</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>建立表格的方式我們不需要改，只需加入切換畫面就好</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;ReceiveFile&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 切換成文件編輯畫面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">fileListDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fileDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 建立文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 略....
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="使用者清單改用名稱顯示">使用者清單改用名稱顯示
+</h2><p><code>connection.on(&quot;ReceiveUserList&quot;)</code>改成使用<code>name</code>來判斷是不是自己，塞進去的名稱也改成<code>name</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;ReceiveUserList&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">userListData</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">userList</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">userListData</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">user</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">userListData</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">user</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;user&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">userColor</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">userColor</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;userColor&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">userColor</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="nx">userListData</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">user</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">userColor</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 判斷對象改成名稱
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="nx">userListData</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">user</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;自己&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">user</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">userListData</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// 改成塞進名稱
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">userList</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>後端也需要修改，首先是<code>FileService</code>的<code>AddUser</code>，需要增加接收一個使用者名稱變數<code>name</code>，然後塞進<code>UserModel</code>容器內。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">AddUser</span><span class="p">(</span><span class="kt">string</span> <span class="n">fileName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">id</span><span class="p">,</span> <span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 找出哪個file</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">file</span> <span class="p">=</span> <span class="p">(</span><span class="k">from</span> <span class="n">f</span> <span class="k">in</span> <span class="n">list</span> <span class="k">where</span> <span class="n">f</span><span class="p">.</span><span class="n">filename</span> <span class="p">==</span> <span class="n">fileName</span> <span class="k">select</span> <span class="n">f</span><span class="p">).</span><span class="n">FirstOrDefault</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">userModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UserModel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">rnd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">userModel</span><span class="p">.</span><span class="n">id</span> <span class="p">=</span> <span class="n">id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">userModel</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 顏色隨機產生</span>
+</span></span><span class="line"><span class="cl">    <span class="n">userModel</span><span class="p">.</span><span class="n">color</span> <span class="p">=</span> <span class="s">$&#34;rgb({rnd.Next(0, 255)}, {rnd.Next(0, 255)}, {rnd.Next(0, 255)})&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">file</span><span class="p">.</span><span class="n">editor</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">userModel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>再來<code>FileHub</code>部分，也是多一個名稱變數，使用<code>AddUser</code>新增進去就行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">async</span> <span class="n">Task</span> <span class="n">GetFile</span><span class="p">(</span><span class="kt">string</span> <span class="n">fileName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 取得文件</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">file</span> <span class="p">=</span> <span class="n">_service</span><span class="p">.</span><span class="n">GetFile</span><span class="p">(</span><span class="n">fileName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 加入使用者</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_service</span><span class="p">.</span><span class="n">AddUser</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">Context</span><span class="p">.</span><span class="n">ConnectionId</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">Clients</span><span class="p">.</span><span class="n">All</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveUserList&#34;</span><span class="p">,</span> <span class="n">_service</span><span class="p">.</span><span class="n">GetUserList</span><span class="p">(</span><span class="n">fileName</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">Clients</span><span class="p">.</span><span class="n">Caller</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveFile&#34;</span><span class="p">,</span> <span class="n">file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>這樣就大功告成啦！！！</p>
+<h1 id="demo">DEMO
+</h1><p><img src="/FileEditFinal.gif"
+	
+	
+	
+	loading="lazy"
+	
+		alt="FileEditFinal"
+	
+	
+></p>
+<p>發現時間有點長，多個影片版</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fXFrCN7lH7M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>做完這邊發現有不少BUG，明天再來把這些小BUG慢慢地修正完成！</p>
+<h1 id="範例下載">範例下載
+</h1><ul>
+<li><a class="link" href="https://drive.google.com/file/d/1Lrq5kkinHoa3Zpd7FYdM0rZ4jUw8LBpQ/view?usp=sharing"  target="_blank" rel="noopener"
+    >範例下載</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
+        
+            <a href="/tags/signalr/">SignalR</a>
+        
+            <a href="/tags/asp.net-core/">ASP.NET Core</a>
+        
+            <a href="/tags/sharefile/">ShareFile</a>
+        
+            <a href="/tags/javascript/">JavaScript</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday28-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-8-%E6%9C%80%E5%BE%8C%E7%9A%84bug%E4%BF%AE%E6%AD%A3-%E5%B0%8F%E5%8A%9F%E8%83%BD%E6%B7%BB%E5%8A%A0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day28] 實作Web即時共同編輯文件 (8) - 最後的BUG修正&#43;小功能添加</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday26-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-6-%E6%96%B0%E5%A2%9E%E7%99%BB%E9%8C%84%E7%95%AB%E9%9D%A2%E5%8F%8A%E9%81%B8%E6%93%87%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/ironman-day-25/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day25] 實作Web即時共同編輯文件 (5) - 一些小功能修正</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday24-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-4-%E5%B9%AB%E7%B7%A8%E8%BC%AF%E4%B8%AD%E7%9A%84%E8%A1%A8%E6%A0%BC%E6%B7%BB%E5%8A%A0%E9%A1%8F%E8%89%B2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day24] 實作Web即時共同編輯文件 (4) - 幫編輯中的表格添加顏色</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday23-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-3-%E5%8A%A0%E5%85%A5%E4%B8%8A%E7%B7%9A%E4%BD%BF%E7%94%A8%E8%80%85%E6%B8%85%E5%96%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day23] 實作Web即時共同編輯文件 (3) - 加入上線使用者清單</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "homura0731" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Homura Lin
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

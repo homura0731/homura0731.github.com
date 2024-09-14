@@ -1,2 +1,0 @@
-User-agent: *
-Sitemap: https://homura0731.github.io/sitemap.xml

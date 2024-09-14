@@ -1,105 +1,100 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Categories on Homura&#39;s Blog</title>
-    <link>https://homura0731.github.io/categories/</link>
-    <description>Recent content in Categories on Homura&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-TW</language>
-    <lastBuildDate>Mon, 12 Nov 2018 06:56:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://homura0731.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>2019鐵人賽</title>
-      <link>https://homura0731.github.io/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</link>
-      <pubDate>Mon, 12 Nov 2018 06:56:00 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ASP.NET</title>
-      <link>https://homura0731.github.io/categories/asp.net/</link>
-      <pubDate>Tue, 18 Apr 2017 20:34:16 +0000</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/asp.net/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CSS</title>
-      <link>https://homura0731.github.io/categories/css/</link>
-      <pubDate>Thu, 01 Jun 2017 21:37:20 +0000</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/css/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cordova</title>
-      <link>https://homura0731.github.io/categories/cordova/</link>
-      <pubDate>Mon, 08 May 2017 20:14:58 +0000</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/cordova/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Entity Framework</title>
-      <link>https://homura0731.github.io/categories/entity-framework/</link>
-      <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/entity-framework/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hexo</title>
-      <link>https://homura0731.github.io/categories/hexo/</link>
-      <pubDate>Sun, 16 Apr 2017 14:40:48 +0000</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/hexo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hugo</title>
-      <link>https://homura0731.github.io/categories/hugo/</link>
-      <pubDate>Sat, 15 Sep 2018 20:19:23 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>IT日常</title>
-      <link>https://homura0731.github.io/categories/it%E6%97%A5%E5%B8%B8/</link>
-      <pubDate>Mon, 10 Sep 2018 20:52:41 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/it%E6%97%A5%E5%B8%B8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://homura0731.github.io/categories/javascript/</link>
-      <pubDate>Sat, 08 Sep 2018 21:12:17 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vue.js</title>
-      <link>https://homura0731.github.io/categories/vue.js/</link>
-      <pubDate>Mon, 14 May 2018 21:20:59 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/categories/vue.js/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Categories on Homura&#39;s Blog</title>
+        <link>http://localhost:1313/categories/</link>
+        <description>Recent content in Categories on Homura&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <copyright>Homura Lin</copyright>
+        <lastBuildDate>Mon, 12 Nov 2018 06:56:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>2019鐵人賽</title>
+        <link>http://localhost:1313/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</link>
+        <pubDate>Mon, 12 Nov 2018 06:56:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Hugo</title>
+        <link>http://localhost:1313/categories/hugo/</link>
+        <pubDate>Sat, 15 Sep 2018 20:19:23 +0800</pubDate>
+        
+        <guid>http://localhost:1313/categories/hugo/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>IT日常</title>
+        <link>http://localhost:1313/categories/it%E6%97%A5%E5%B8%B8/</link>
+        <pubDate>Mon, 10 Sep 2018 20:52:41 +0800</pubDate>
+        
+        <guid>http://localhost:1313/categories/it%E6%97%A5%E5%B8%B8/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>JavaScript</title>
+        <link>http://localhost:1313/categories/javascript/</link>
+        <pubDate>Sat, 08 Sep 2018 21:12:17 +0800</pubDate>
+        
+        <guid>http://localhost:1313/categories/javascript/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Node.js</title>
+        <link>http://localhost:1313/categories/node.js/</link>
+        <pubDate>Thu, 16 Aug 2018 22:43:43 +0800</pubDate>
+        
+        <guid>http://localhost:1313/categories/node.js/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Vue.js</title>
+        <link>http://localhost:1313/categories/vue.js/</link>
+        <pubDate>Mon, 14 May 2018 21:20:59 +0800</pubDate>
+        
+        <guid>http://localhost:1313/categories/vue.js/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Entity Framework</title>
+        <link>http://localhost:1313/categories/entity-framework/</link>
+        <pubDate>Sat, 10 Jun 2017 14:47:35 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/entity-framework/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>CSS</title>
+        <link>http://localhost:1313/categories/css/</link>
+        <pubDate>Thu, 01 Jun 2017 21:37:20 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/css/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Cordova</title>
+        <link>http://localhost:1313/categories/cordova/</link>
+        <pubDate>Mon, 08 May 2017 20:14:58 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/cordova/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ASP.NET</title>
+        <link>http://localhost:1313/categories/asp.net/</link>
+        <pubDate>Tue, 18 Apr 2017 20:34:16 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/asp.net/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Hexo</title>
+        <link>http://localhost:1313/categories/hexo/</link>
+        <pubDate>Sun, 16 Apr 2017 14:40:48 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/hexo/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
 </rss>

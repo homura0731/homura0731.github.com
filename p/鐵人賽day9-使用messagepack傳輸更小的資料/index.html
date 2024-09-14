@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="MessagePack是一個類似Json格式但是比Json速度更快、檔案更小，不過似乎還沒很流行就是了，既然ASP.Net Core SignalR文件上面有特別提到，那我們今天就來用用看這個新的資料格式吧! MessagePack跟Json差在哪?\rMessagePack使用二進位序列化組成，下面是官方示意圖 從圖來看他會幫你把資料轉成二進位來達成更小的容量，從27bytes縮小到18bytes，縮小了快一半，如果長期下來真的是可以少不少的流量，官網有個Demo可以幫你把JSON轉成MessagePack，點進去後再點上方的Try DEMO網址 安裝及使用MessagePack\r官網不知道為什麼同一語言有好幾個版本&hellip;，SingalR本身就支援MessagePack了，有自己的版本，所以就使用SignalR的版本吧! 後端部分\r先用aspnet cli安裝 1 $ dotnet add package Microsoft.AspNetCore.SignalR.Protocols.MessagePack 首先先在Starup.cs註冊服務，放在AddSignalR後面。 1 services.AddSignalR().AddMessagePackProtocol(); 前端部分\r我們要先用NPM安裝套件 1 $ npm install @aspnet/signalr-protocol-msgpack 然後去node_module裡面找出下面2個檔案signalr-prtocol-msgpack.js和msgpack5.js，把它移動到wwwroot/lib底下，覺得這樣有點麻煩，所以我直接把他寫成shell指令了&hellip; cmd 1 2 copy node_modules\\@aspnet\\signalr-protocol-msgpack\\dist\\browser\\signalr-protocol-msgpack.js wwwroot\\lib\\signalr-protocol-msgpack.js copy node_modules\\msgpack5\\dist\\msgpack5.js wwwroot\\lib\\msgpack5.js bash 1 2 cp node_modules/@aspnet/signalr-protocol-msgpack/dist/browser/signalr-protocol-msgpack.js wwwroot/lib/signalr-protocol-msgpack.js cp node_modules/msgpack5/dist/msgpack5.js wwwroot/lib/msgpack5.js 開啟wwwroot/index.html引入js 1 2 &lt;script src=&#34;lib/msgpack5.js&#34;&gt;&lt;/script&gt; &lt;script src=&#34;lib/signalr-protocol-msgpack.js&#34;&gt;&lt;/script&gt; 註冊到SignalR到protocol裡 1 2 3 4 const connection = new signalR.HubConnectionBuilder() .withUrl(&#34;/chatHub&#34;) .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol()) .build(); 到這邊就OK了！你說好像看不出來有什麼變化??因為都是在SigalR內部跑的，其實可以用F12開發者工具來看 打開F12 -&gt; NetWork -&gt; 找到type是Websocket -&gt; 選擇後右邊在選Frames">
+<title>[鐵人賽Day9] 使用MessagePack傳輸更小的資料</title>
+
+<link rel='canonical' href='http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/'>
+
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="[鐵人賽Day9] 使用MessagePack傳輸更小的資料">
+<meta property='og:description' content="MessagePack是一個類似Json格式但是比Json速度更快、檔案更小，不過似乎還沒很流行就是了，既然ASP.Net Core SignalR文件上面有特別提到，那我們今天就來用用看這個新的資料格式吧! MessagePack跟Json差在哪?\rMessagePack使用二進位序列化組成，下面是官方示意圖 從圖來看他會幫你把資料轉成二進位來達成更小的容量，從27bytes縮小到18bytes，縮小了快一半，如果長期下來真的是可以少不少的流量，官網有個Demo可以幫你把JSON轉成MessagePack，點進去後再點上方的Try DEMO網址 安裝及使用MessagePack\r官網不知道為什麼同一語言有好幾個版本&hellip;，SingalR本身就支援MessagePack了，有自己的版本，所以就使用SignalR的版本吧! 後端部分\r先用aspnet cli安裝 1 $ dotnet add package Microsoft.AspNetCore.SignalR.Protocols.MessagePack 首先先在Starup.cs註冊服務，放在AddSignalR後面。 1 services.AddSignalR().AddMessagePackProtocol(); 前端部分\r我們要先用NPM安裝套件 1 $ npm install @aspnet/signalr-protocol-msgpack 然後去node_module裡面找出下面2個檔案signalr-prtocol-msgpack.js和msgpack5.js，把它移動到wwwroot/lib底下，覺得這樣有點麻煩，所以我直接把他寫成shell指令了&hellip; cmd 1 2 copy node_modules\\@aspnet\\signalr-protocol-msgpack\\dist\\browser\\signalr-protocol-msgpack.js wwwroot\\lib\\signalr-protocol-msgpack.js copy node_modules\\msgpack5\\dist\\msgpack5.js wwwroot\\lib\\msgpack5.js bash 1 2 cp node_modules/@aspnet/signalr-protocol-msgpack/dist/browser/signalr-protocol-msgpack.js wwwroot/lib/signalr-protocol-msgpack.js cp node_modules/msgpack5/dist/msgpack5.js wwwroot/lib/msgpack5.js 開啟wwwroot/index.html引入js 1 2 &lt;script src=&#34;lib/msgpack5.js&#34;&gt;&lt;/script&gt; &lt;script src=&#34;lib/signalr-protocol-msgpack.js&#34;&gt;&lt;/script&gt; 註冊到SignalR到protocol裡 1 2 3 4 const connection = new signalR.HubConnectionBuilder() .withUrl(&#34;/chatHub&#34;) .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol()) .build(); 到這邊就OK了！你說好像看不出來有什麼變化??因為都是在SigalR內部跑的，其實可以用F12開發者工具來看 打開F12 -&gt; NetWork -&gt; 找到type是Websocket -&gt; 選擇後右邊在選Frames">
+<meta property='og:url' content='http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/'>
+<meta property='og:site_name' content='Homura&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='2019鐵人賽' /><meta property='article:tag' content='SignalR' /><meta property='article:tag' content='ASP.NET Core' /><meta property='article:tag' content='MessagePack' /><meta property='article:published_time' content='2018-10-22T19:22:04&#43;08:00'/><meta property='article:modified_time' content='2018-10-22T19:22:04&#43;08:00'/>
+<meta name="twitter:title" content="[鐵人賽Day9] 使用MessagePack傳輸更小的資料">
+<meta name="twitter:description" content="MessagePack是一個類似Json格式但是比Json速度更快、檔案更小，不過似乎還沒很流行就是了，既然ASP.Net Core SignalR文件上面有特別提到，那我們今天就來用用看這個新的資料格式吧! MessagePack跟Json差在哪?\rMessagePack使用二進位序列化組成，下面是官方示意圖 從圖來看他會幫你把資料轉成二進位來達成更小的容量，從27bytes縮小到18bytes，縮小了快一半，如果長期下來真的是可以少不少的流量，官網有個Demo可以幫你把JSON轉成MessagePack，點進去後再點上方的Try DEMO網址 安裝及使用MessagePack\r官網不知道為什麼同一語言有好幾個版本&hellip;，SingalR本身就支援MessagePack了，有自己的版本，所以就使用SignalR的版本吧! 後端部分\r先用aspnet cli安裝 1 $ dotnet add package Microsoft.AspNetCore.SignalR.Protocols.MessagePack 首先先在Starup.cs註冊服務，放在AddSignalR後面。 1 services.AddSignalR().AddMessagePackProtocol(); 前端部分\r我們要先用NPM安裝套件 1 $ npm install @aspnet/signalr-protocol-msgpack 然後去node_module裡面找出下面2個檔案signalr-prtocol-msgpack.js和msgpack5.js，把它移動到wwwroot/lib底下，覺得這樣有點麻煩，所以我直接把他寫成shell指令了&hellip; cmd 1 2 copy node_modules\\@aspnet\\signalr-protocol-msgpack\\dist\\browser\\signalr-protocol-msgpack.js wwwroot\\lib\\signalr-protocol-msgpack.js copy node_modules\\msgpack5\\dist\\msgpack5.js wwwroot\\lib\\msgpack5.js bash 1 2 cp node_modules/@aspnet/signalr-protocol-msgpack/dist/browser/signalr-protocol-msgpack.js wwwroot/lib/signalr-protocol-msgpack.js cp node_modules/msgpack5/dist/msgpack5.js wwwroot/lib/msgpack5.js 開啟wwwroot/index.html引入js 1 2 &lt;script src=&#34;lib/msgpack5.js&#34;&gt;&lt;/script&gt; &lt;script src=&#34;lib/signalr-protocol-msgpack.js&#34;&gt;&lt;/script&gt; 註冊到SignalR到protocol裡 1 2 3 4 const connection = new signalR.HubConnectionBuilder() .withUrl(&#34;/chatHub&#34;) .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol()) .build(); 到這邊就OK了！你說好像看不出來有什麼變化??因為都是在SigalR內部跑的，其實可以用F12開發者工具來看 打開F12 -&gt; NetWork -&gt; 找到type是Websocket -&gt; 選擇後右邊在選Frames">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu9840778618514022233.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Homura&#39;s Blog</a></h1>
+            <h2 class="site-description">IT技術學習記錄</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/homura0731'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/haru-lin-227676170/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/10272735/homura-lin?tab=profile'
+                        target="_blank"
+                        title="stackoverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-stackoverflow"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" /><path d="M8 16h8" /><path d="M8.322 12.582l7.956 .836" /><path d="M8.787 9.168l7.826 1.664" /><path d="M10.096 5.764l7.608 2.472" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                                    <option value="http://localhost:1313/" selected>中文</option>
+                                
+                                    <option value="http://localhost:1313/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#後端部分">後端部分</a></li>
+    <li><a href="#前端部分">前端部分</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/" >
+                2019鐵人賽
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/">[鐵人賽Day9] 使用MessagePack傳輸更小的資料</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 22, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 1 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><code>MessagePack</code>是一個類似Json格式但是比Json速度更快、檔案更小，不過似乎還沒很流行就是了，既然<code>ASP.Net Core SignalR</code>文件上面有特別提到，那我們今天就來用用看這個新的資料格式吧!</p>
+<h1 id="messagepack跟json差在哪">MessagePack跟Json差在哪?
+</h1><p>MessagePack使用二進位序列化組成，下面是官方示意圖</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MeassagePackDEMO.PNG"
+	width="724"
+	height="398"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MeassagePackDEMO_hu9593072928510739243.PNG 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MeassagePackDEMO_hu3916598264002645061.PNG 1024w"
+	loading="lazy"
+	
+		alt="MeassagePackDEMO"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="181"
+		data-flex-basis="436px"
+	
+></p>
+<p>從圖來看他會幫你把資料轉成二進位來達成更小的容量，從<code>27bytes</code>縮小到<code>18bytes</code>，縮小了快一半，如果長期下來真的是可以少不少的流量，官網有個Demo可以幫你把JSON轉成MessagePack，點進去後再點上方的<code>Try</code></p>
+<p><a class="link" href="https://msgpack.org/"  target="_blank" rel="noopener"
+    >DEMO網址</a></p>
+<h1 id="安裝及使用messagepack">安裝及使用MessagePack
+</h1><p>官網不知道為什麼同一語言有好幾個版本&hellip;，SingalR本身就支援MessagePack了，有自己的版本，所以就使用SignalR的版本吧!</p>
+<h2 id="後端部分">後端部分
+</h2><p>先用aspnet cli安裝</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dotnet add package Microsoft.AspNetCore.SignalR.Protocols.MessagePack
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>首先先在Starup.cs註冊服務，放在AddSignalR後面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddSignalR</span><span class="p">().</span><span class="n">AddMessagePackProtocol</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="前端部分">前端部分
+</h2><p>我們要先用NPM安裝套件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ npm install @aspnet/signalr-protocol-msgpack
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然後去<code>node_module</code>裡面找出下面2個檔案<code>signalr-prtocol-msgpack.js</code>和<code>msgpack5.js</code>，把它移動到<code>wwwroot/lib</code>底下，覺得這樣有點麻煩，所以我直接把他寫成shell指令了&hellip;</p>
+<p><strong>cmd</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">copy node_modules<span class="se">\@</span>aspnet<span class="se">\s</span>ignalr-protocol-msgpack<span class="se">\d</span>ist<span class="se">\b</span>rowser<span class="se">\s</span>ignalr-protocol-msgpack.js wwwroot<span class="se">\l</span>ib<span class="se">\s</span>ignalr-protocol-msgpack.js
+</span></span><span class="line"><span class="cl">copy node_modules<span class="se">\m</span>sgpack5<span class="se">\d</span>ist<span class="se">\m</span>sgpack5.js  wwwroot<span class="se">\l</span>ib<span class="se">\m</span>sgpack5.js
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>bash</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">cp</span> <span class="n">node_modules</span><span class="o">/</span><span class="err">@</span><span class="n">aspnet</span><span class="o">/</span><span class="n">signalr</span><span class="o">-</span><span class="n">protocol</span><span class="o">-</span><span class="n">msgpack</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">browser</span><span class="o">/</span><span class="n">signalr</span><span class="o">-</span><span class="n">protocol</span><span class="o">-</span><span class="n">msgpack</span><span class="o">.</span><span class="n">js</span> <span class="n">wwwroot</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">signalr</span><span class="o">-</span><span class="n">protocol</span><span class="o">-</span><span class="n">msgpack</span><span class="o">.</span><span class="n">js</span>
+</span></span><span class="line"><span class="cl"><span class="n">cp</span> <span class="n">node_modules</span><span class="o">/</span><span class="n">msgpack5</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">msgpack5</span><span class="o">.</span><span class="n">js</span>  <span class="n">wwwroot</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">msgpack5</span><span class="o">.</span><span class="n">js</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>開啟<code>wwwroot/index.html</code>引入js</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;lib/msgpack5.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;lib/signalr-protocol-msgpack.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>註冊到SignalR到protocol裡</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">signalR</span><span class="p">.</span><span class="nx">HubConnectionBuilder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">withUrl</span><span class="p">(</span><span class="s2">&#34;/chatHub&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">withHubProtocol</span><span class="p">(</span><span class="k">new</span> <span class="nx">signalR</span><span class="p">.</span><span class="nx">protocols</span><span class="p">.</span><span class="nx">msgpack</span><span class="p">.</span><span class="nx">MessagePackHubProtocol</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>到這邊就OK了！你說好像看不出來有什麼變化??因為都是在SigalR內部跑的，其實可以用F12開發者工具來看</p>
+<p>打開F12 -&gt; NetWork -&gt; 找到type是Websocket -&gt; 選擇後右邊在選Frames</p>
+<p>那麼就來比較一下差別吧，資料統一貓派群組、名字和訊息都是123</p>
+<p>下面這個是JSON，資料長度是傳送<code>91</code>，接收<code>73</code></p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/Json.gif"
+	width="838"
+	height="617"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/Json_hu981500236710670233.gif 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/Json_hu1094002754858245960.gif 1024w"
+	loading="lazy"
+	
+		alt="Json"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="325px"
+	
+></p>
+<p>這個是MessagePack，傳送<code>41</code>，接收<code>49</code>，資料也很明顯的改成二進位</p>
+<p><img src="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MessagePack.gif"
+	width="838"
+	height="617"
+	srcset="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MessagePack_hu6044168460063573644.gif 480w, /p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MessagePack_hu6396131513152305903.gif 1024w"
+	loading="lazy"
+	
+		alt="MessagePack"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="325px"
+	
+></p>
+<p>結論是其實MessagePack資料量真的小蠻多，所以要開發signalR時記得都要把它打開，反正signal會解析，我們只要安裝並套用設定就好了，今天大概就介紹這樣吧！</p>
+<h1 id="參考">參考
+</h1><ul>
+<li><a class="link" href="https://docs.microsoft.com/zh-tw/aspnet/core/signalr/messagepackhubprotocol?view=aspnetcore-2.1"  target="_blank" rel="noopener"
+    >MSDN文件</a></li>
+<li><a class="link" href="https://msgpack.org/"  target="_blank" rel="noopener"
+    >MessagePack官網</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD/">2019鐵人賽</a>
+        
+            <a href="/tags/signalr/">SignalR</a>
+        
+            <a href="/tags/asp.net-core/">ASP.NET Core</a>
+        
+            <a href="/tags/messagepack/">MessagePack</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday30-%E4%BE%86%E7%8E%A9%E7%8E%A9%E5%8D%B3%E6%99%82%E4%BA%92%E5%8B%95app%E5%90%A7-asp.net-core-signalr-%E7%B8%BD%E7%B5%90-%E5%AE%8C%E8%B3%BD%E5%BF%83%E5%BE%97/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day30] 來玩玩即時互動App吧! ASP.NET Core SignalR 總結 &amp; 完賽心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday29-%E9%83%A8%E7%BD%B2signalr%E5%88%B0server%E4%B8%8A/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day29] 部署SignalR到Server上</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday28-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-8-%E6%9C%80%E5%BE%8C%E7%9A%84bug%E4%BF%AE%E6%AD%A3-%E5%B0%8F%E5%8A%9F%E8%83%BD%E6%B7%BB%E5%8A%A0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day28] 實作Web即時共同編輯文件 (8) - 最後的BUG修正&#43;小功能添加</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday27-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-7-%E6%96%B0%E5%A2%9E%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6%E5%8F%8A%E8%BC%89%E5%85%A5%E8%87%AA%E8%A8%82%E6%96%87%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day27] 實作Web即時共同編輯文件 (7) - 新增自訂文件及載入自訂文件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday26-%E5%AF%A6%E4%BD%9Cweb%E5%8D%B3%E6%99%82%E5%85%B1%E5%90%8C%E7%B7%A8%E8%BC%AF%E6%96%87%E4%BB%B6-6-%E6%96%B0%E5%A2%9E%E7%99%BB%E9%8C%84%E7%95%AB%E9%9D%A2%E5%8F%8A%E9%81%B8%E6%93%87%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[鐵人賽Day26] 實作Web即時共同編輯文件 (6) - 新增登錄畫面及選擇文件列表</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "homura0731" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Homura Lin
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

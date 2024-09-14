@@ -1,24 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Git on Homura&#39;s Blog</title>
-    <link>https://homura0731.github.io/tags/git/</link>
-    <description>Recent content in Git on Homura&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-TW</language>
-    <lastBuildDate>Sat, 15 Sep 2018 20:19:23 +0800</lastBuildDate>
-    
-	<atom:link href="https://homura0731.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Hugo - 文件路徑問題</title>
-      <link>https://homura0731.github.io/post/2018/09/hugo-path/</link>
-      <pubDate>Sat, 15 Sep 2018 20:19:23 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/2018/09/hugo-path/</guid>
-      <description>前言 最近發現Hugo有些路徑問題，這篇記錄一下解決方法 Hugo文件產生路徑 發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Git on Homura&#39;s Blog</title>
+        <link>http://localhost:1313/tags/git/</link>
+        <description>Recent content in Git on Homura&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <copyright>Homura Lin</copyright>
+        <lastBuildDate>Sat, 15 Sep 2018 20:19:23 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo - 文件路徑問題</title>
+        <link>http://localhost:1313/p/hugo-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%91%E5%95%8F%E9%A1%8C/</link>
+        <pubDate>Sat, 15 Sep 2018 20:19:23 +0800</pubDate>
+        
+        <guid>http://localhost:1313/p/hugo-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%91%E5%95%8F%E9%A1%8C/</guid>
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言
+&lt;/h1&gt;&lt;p&gt;最近發現Hugo有些路徑問題，這篇記錄一下解決方法&lt;/p&gt;
+&lt;h1 id=&#34;hugo文件產生路徑&#34;&gt;Hugo文件產生路徑
+&lt;/h1&gt;&lt;p&gt;發現Hugo產生的路徑一定會變成小寫，所以圖片資料夾一定要全小寫，分類及Tags則是沒關係還是能打大寫。&lt;/p&gt;
+&lt;h2 id=&#34;github-大小寫不同的同名資料&#34;&gt;GitHub 大小寫不同的同名資料
+&lt;/h2&gt;&lt;p&gt;這邊我也是最近才發現，原來以前Hexo沒這問題，所以push會變成2種名字依樣同時存在的問題，例如&lt;code&gt;Hexo&lt;/code&gt;和&lt;code&gt;hexo&lt;/code&gt;。
+解決方法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ git mv -f Hexo ../hexo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此時hexo會被移動到外層，在手動拖回去就行了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;註：不曉得為啥Rename同層路徑會一直失敗，所以目標才會設在前一層&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;參考&#34;&gt;參考
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.peterdavehello.org/2014/05/change-filename-case-int-git-repository/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.peterdavehello.org/2014/05/change-filename-case-int-git-repository/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

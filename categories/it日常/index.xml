@@ -1,33 +1,50 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>IT日常 on Homura&#39;s Blog</title>
-    <link>https://homura0731.github.io/categories/it%E6%97%A5%E5%B8%B8/</link>
-    <description>Recent content in IT日常 on Homura&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-TW</language>
-    <lastBuildDate>Mon, 10 Sep 2018 20:52:41 +0800</lastBuildDate>
-    
-	<atom:link href="https://homura0731.github.io/categories/it%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>IT日常 - IT邦升級研究生和報名鐵人賽</title>
-      <link>https://homura0731.github.io/post/2018/09/it-daily-ithelp/</link>
-      <pubDate>Mon, 10 Sep 2018 20:52:41 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/2018/09/it-daily-ithelp/</guid>
-      <description>以往都是看著IT邦各位大大的文章，就在某次看到了Vue.js的問題讓我也 辦了IT邦會員於是開始了玩論壇不歸路，然後解開了一題之後讓我一直覺得</description>
-    </item>
-    
-    <item>
-      <title>Blog - Blog開張</title>
-      <link>https://homura0731.github.io/post/2017/04/new-blog/</link>
-      <pubDate>Thu, 13 Apr 2017 19:37:42 +0000</pubDate>
-      
-      <guid>https://homura0731.github.io/post/2017/04/new-blog/</guid>
-      <description>紀念的第一篇的文章(完)</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>IT日常 on Homura&#39;s Blog</title>
+        <link>http://localhost:1313/categories/it%E6%97%A5%E5%B8%B8/</link>
+        <description>Recent content in IT日常 on Homura&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <copyright>Homura Lin</copyright>
+        <lastBuildDate>Mon, 10 Sep 2018 20:52:41 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/it%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>IT日常 - IT邦升級研究生和報名鐵人賽</title>
+        <link>http://localhost:1313/p/it%E6%97%A5%E5%B8%B8-it%E9%82%A6%E5%8D%87%E7%B4%9A%E7%A0%94%E7%A9%B6%E7%94%9F%E5%92%8C%E5%A0%B1%E5%90%8D%E9%90%B5%E4%BA%BA%E8%B3%BD/</link>
+        <pubDate>Mon, 10 Sep 2018 20:52:41 +0800</pubDate>
+        
+        <guid>http://localhost:1313/p/it%E6%97%A5%E5%B8%B8-it%E9%82%A6%E5%8D%87%E7%B4%9A%E7%A0%94%E7%A9%B6%E7%94%9F%E5%92%8C%E5%A0%B1%E5%90%8D%E9%90%B5%E4%BA%BA%E8%B3%BD/</guid>
+        <description>&lt;p&gt;以往都是看著IT邦各位大大的文章，就在某次看到了&lt;code&gt;Vue.js&lt;/code&gt;的&lt;a class=&#34;link&#34; href=&#34;https://ithelp.ithome.com.tw/questions/10189197&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;問題&lt;/a&gt;讓我也
+辦了IT邦會員&lt;del&gt;於是開始了玩論壇不歸路&lt;/del&gt;，然後解開了一題之後讓我一直覺得躍躍欲試，還順便辦了MSDN，MSDN排名還曾經超越MVP過&amp;hellip;.。&lt;/p&gt;
+&lt;p&gt;還有大大推薦我stackovflow，這邊真得是挫敗連連，一來是英文不好，一來是你講錯話很容易被糾正及扣分（覺得壓力很大，而且搶答速度實在太
+快了，競爭非常的激烈，另外就是問的問題難度比起很多中文論壇還來得要有深度，回答也是更式各樣，可以學到不少東西。&lt;/p&gt;
+&lt;p&gt;IT邦不知為啥限制一天的發言次數，所以我剛辦完第一個目標就是先成為研究生，發言量新手的2倍，這樣就很夠用了，直到昨天剛好達成了&lt;del&gt;努力發廢文的結果&lt;/del&gt;，仔細看看辦帳號的時間是今年5/8，昨天是9/9，大概只花了5個月，升級倒是挺快，把Email升級通知截張圖當紀念吧！
+&lt;img src=&#34;http://localhost:1313/p/it%E6%97%A5%E5%B8%B8-it%E9%82%A6%E5%8D%87%E7%B4%9A%E7%A0%94%E7%A9%B6%E7%94%9F%E5%92%8C%E5%A0%B1%E5%90%8D%E9%90%B5%E4%BA%BA%E8%B3%BD/1.png&#34;
+	width=&#34;1142&#34;
+	height=&#34;636&#34;
+	srcset=&#34;http://localhost:1313/p/it%E6%97%A5%E5%B8%B8-it%E9%82%A6%E5%8D%87%E7%B4%9A%E7%A0%94%E7%A9%B6%E7%94%9F%E5%92%8C%E5%A0%B1%E5%90%8D%E9%90%B5%E4%BA%BA%E8%B3%BD/1_hu6943048556958402561.png 480w, http://localhost:1313/p/it%E6%97%A5%E5%B8%B8-it%E9%82%A6%E5%8D%87%E7%B4%9A%E7%A0%94%E7%A9%B6%E7%94%9F%E5%92%8C%E5%A0%B1%E5%90%8D%E9%90%B5%E4%BA%BA%E8%B3%BD/1_hu5667330609740649408.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;升級研究生截圖&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;430px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然後就在今天，我也報名了鐵人賽，主題是我想很久找到的&lt;code&gt;ASP.NET Core SigalR&lt;/code&gt;，為什麼會不挑&lt;code&gt;.NET&lt;/code&gt;而挑&lt;code&gt;.NET Core&lt;/code&gt;呢？因為&lt;code&gt;.NET SigalR&lt;/code&gt;已經出了好一段時間，&lt;code&gt;.NET Core SignalR&lt;/code&gt;今年才正式1.0版，剛好在文章很少可以參考的狀況寫出來，這樣不僅自己學的比較多，文章也會比較精彩，不會有感覺都像抄來的，總之希望我能夠完賽30天囉！&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Blog - Blog開張</title>
+        <link>http://localhost:1313/p/blog-blog%E9%96%8B%E5%BC%B5/</link>
+        <pubDate>Thu, 13 Apr 2017 19:37:42 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/blog-blog%E9%96%8B%E5%BC%B5/</guid>
+        <description>&lt;p&gt;紀念的第一篇的文章(完)&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

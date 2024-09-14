@@ -1,24 +1,161 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>MessagePack on Homura&#39;s Blog</title>
-    <link>https://homura0731.github.io/tags/messagepack/</link>
-    <description>Recent content in MessagePack on Homura&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-TW</language>
-    <lastBuildDate>Mon, 22 Oct 2018 19:22:04 +0800</lastBuildDate>
-    
-	<atom:link href="https://homura0731.github.io/tags/messagepack/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>[鐵人賽Day9] 使用MessagePack傳輸更小的資料</title>
-      <link>https://homura0731.github.io/post/ironman2019/ironman-day-09/</link>
-      <pubDate>Mon, 22 Oct 2018 19:22:04 +0800</pubDate>
-      
-      <guid>https://homura0731.github.io/post/ironman2019/ironman-day-09/</guid>
-      <description>MessagePack是一個類似Json格式但是比Json速度更快、檔案更小，不過似乎還沒很流行就是了，既然ASP.Net Core SignalR文</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>MessagePack on Homura&#39;s Blog</title>
+        <link>http://localhost:1313/tags/messagepack/</link>
+        <description>Recent content in MessagePack on Homura&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <copyright>Homura Lin</copyright>
+        <lastBuildDate>Mon, 22 Oct 2018 19:22:04 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/messagepack/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[鐵人賽Day9] 使用MessagePack傳輸更小的資料</title>
+        <link>http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/</link>
+        <pubDate>Mon, 22 Oct 2018 19:22:04 +0800</pubDate>
+        
+        <guid>http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/</guid>
+        <description>&lt;p&gt;&lt;code&gt;MessagePack&lt;/code&gt;是一個類似Json格式但是比Json速度更快、檔案更小，不過似乎還沒很流行就是了，既然&lt;code&gt;ASP.Net Core SignalR&lt;/code&gt;文件上面有特別提到，那我們今天就來用用看這個新的資料格式吧!&lt;/p&gt;
+&lt;h1 id=&#34;messagepack跟json差在哪&#34;&gt;MessagePack跟Json差在哪?
+&lt;/h1&gt;&lt;p&gt;MessagePack使用二進位序列化組成，下面是官方示意圖&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MeassagePackDEMO.PNG&#34;
+	width=&#34;724&#34;
+	height=&#34;398&#34;
+	srcset=&#34;http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MeassagePackDEMO_hu9593072928510739243.PNG 480w, http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MeassagePackDEMO_hu3916598264002645061.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;MeassagePackDEMO&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;436px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;從圖來看他會幫你把資料轉成二進位來達成更小的容量，從&lt;code&gt;27bytes&lt;/code&gt;縮小到&lt;code&gt;18bytes&lt;/code&gt;，縮小了快一半，如果長期下來真的是可以少不少的流量，官網有個Demo可以幫你把JSON轉成MessagePack，點進去後再點上方的&lt;code&gt;Try&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msgpack.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DEMO網址&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;安裝及使用messagepack&#34;&gt;安裝及使用MessagePack
+&lt;/h1&gt;&lt;p&gt;官網不知道為什麼同一語言有好幾個版本&amp;hellip;，SingalR本身就支援MessagePack了，有自己的版本，所以就使用SignalR的版本吧!&lt;/p&gt;
+&lt;h2 id=&#34;後端部分&#34;&gt;後端部分
+&lt;/h2&gt;&lt;p&gt;先用aspnet cli安裝&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ dotnet add package Microsoft.AspNetCore.SignalR.Protocols.MessagePack
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;首先先在Starup.cs註冊服務，放在AddSignalR後面。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cs&#34; data-lang=&#34;cs&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AddSignalR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AddMessagePackProtocol&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;前端部分&#34;&gt;前端部分
+&lt;/h2&gt;&lt;p&gt;我們要先用NPM安裝套件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npm install @aspnet/signalr-protocol-msgpack
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然後去&lt;code&gt;node_module&lt;/code&gt;裡面找出下面2個檔案&lt;code&gt;signalr-prtocol-msgpack.js&lt;/code&gt;和&lt;code&gt;msgpack5.js&lt;/code&gt;，把它移動到&lt;code&gt;wwwroot/lib&lt;/code&gt;底下，覺得這樣有點麻煩，所以我直接把他寫成shell指令了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;cmd&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;copy node_modules&lt;span class=&#34;se&#34;&gt;\@&lt;/span&gt;aspnet&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ignalr-protocol-msgpack&lt;span class=&#34;se&#34;&gt;\d&lt;/span&gt;ist&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;rowser&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ignalr-protocol-msgpack.js wwwroot&lt;span class=&#34;se&#34;&gt;\l&lt;/span&gt;ib&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ignalr-protocol-msgpack.js
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;copy node_modules&lt;span class=&#34;se&#34;&gt;\m&lt;/span&gt;sgpack5&lt;span class=&#34;se&#34;&gt;\d&lt;/span&gt;ist&lt;span class=&#34;se&#34;&gt;\m&lt;/span&gt;sgpack5.js  wwwroot&lt;span class=&#34;se&#34;&gt;\l&lt;/span&gt;ib&lt;span class=&#34;se&#34;&gt;\m&lt;/span&gt;sgpack5.js
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;bash&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node_modules&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aspnet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;signalr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;protocol&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msgpack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dist&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;browser&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;signalr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;protocol&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msgpack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;js&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wwwroot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;signalr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;protocol&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msgpack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;js&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node_modules&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msgpack5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dist&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msgpack5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;js&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;wwwroot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;msgpack5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;js&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;開啟&lt;code&gt;wwwroot/index.html&lt;/code&gt;引入js&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;lib/msgpack5.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;lib/signalr-protocol-msgpack.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;註冊到SignalR到protocol裡&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;connection&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;signalR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;HubConnectionBuilder&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;withUrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/chatHub&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;withHubProtocol&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;signalR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;protocols&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;msgpack&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;MessagePackHubProtocol&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;build&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;到這邊就OK了！你說好像看不出來有什麼變化??因為都是在SigalR內部跑的，其實可以用F12開發者工具來看&lt;/p&gt;
+&lt;p&gt;打開F12 -&amp;gt; NetWork -&amp;gt; 找到type是Websocket -&amp;gt; 選擇後右邊在選Frames&lt;/p&gt;
+&lt;p&gt;那麼就來比較一下差別吧，資料統一貓派群組、名字和訊息都是123&lt;/p&gt;
+&lt;p&gt;下面這個是JSON，資料長度是傳送&lt;code&gt;91&lt;/code&gt;，接收&lt;code&gt;73&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/Json.gif&#34;
+	width=&#34;838&#34;
+	height=&#34;617&#34;
+	srcset=&#34;http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/Json_hu981500236710670233.gif 480w, http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/Json_hu1094002754858245960.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Json&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;325px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;這個是MessagePack，傳送&lt;code&gt;41&lt;/code&gt;，接收&lt;code&gt;49&lt;/code&gt;，資料也很明顯的改成二進位&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MessagePack.gif&#34;
+	width=&#34;838&#34;
+	height=&#34;617&#34;
+	srcset=&#34;http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MessagePack_hu6044168460063573644.gif 480w, http://localhost:1313/p/%E9%90%B5%E4%BA%BA%E8%B3%BDday9-%E4%BD%BF%E7%94%A8messagepack%E5%82%B3%E8%BC%B8%E6%9B%B4%E5%B0%8F%E7%9A%84%E8%B3%87%E6%96%99/MessagePack_hu6396131513152305903.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;MessagePack&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;325px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;結論是其實MessagePack資料量真的小蠻多，所以要開發signalR時記得都要把它打開，反正signal會解析，我們只要安裝並套用設定就好了，今天大概就介紹這樣吧！&lt;/p&gt;
+&lt;h1 id=&#34;參考&#34;&gt;參考
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/zh-tw/aspnet/core/signalr/messagepackhubprotocol?view=aspnetcore-2.1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MSDN文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://msgpack.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MessagePack官網&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>
